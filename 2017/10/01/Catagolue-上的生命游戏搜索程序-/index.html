@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<meta name="LifeViewer" content="rle pre 37 hide limit">
+<script src="/js/src/lv-plugin.js"></script>
+
+
+  <meta name="description" content="不久前，我发现了这个叫 Catagolue 的神奇的网站，收录的规则和图样比 LifeWiki 要全得多。 这里收录的图样都是用一个叫 apgsearch 的程序找出来的。apgsearch 的不同版本有不同的名字，最新的第4版叫 apgluxe。它的功能就是自己倒汤，煮汤，然后在汤的残骸中自动搜索有意义的图样，然后自动上传到 Catagolue 上。 不过，正是因为这最后一步，这个程序无法在中国">
+<meta name="keywords" content="简书搬运,生命游戏">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Catagolue-上的生命游戏搜索程序-">
+<meta property="og:url" content="https://AlephAlpha.github.io/2017/10/01/Catagolue-上的生命游戏搜索程序-/index.html">
+<meta property="og:site_name" content="锑星杂记">
+<meta property="og:description" content="不久前，我发现了这个叫 Catagolue 的神奇的网站，收录的规则和图样比 LifeWiki 要全得多。 这里收录的图样都是用一个叫 apgsearch 的程序找出来的。apgsearch 的不同版本有不同的名字，最新的第4版叫 apgluxe。它的功能就是自己倒汤，煮汤，然后在汤的残骸中自动搜索有意义的图样，然后自动上传到 Catagolue 上。 不过，正是因为这最后一步，这个程序无法在中国">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-12T15:03:01.022Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Catagolue-上的生命游戏搜索程序-">
+<meta name="twitter:description" content="不久前，我发现了这个叫 Catagolue 的神奇的网站，收录的规则和图样比 LifeWiki 要全得多。 这里收录的图样都是用一个叫 apgsearch 的程序找出来的。apgsearch 的不同版本有不同的名字，最新的第4版叫 apgluxe。它的功能就是自己倒汤，煮汤，然后在汤的残骸中自动搜索有意义的图样，然后自动上传到 Catagolue 上。 不过，正是因为这最后一步，这个程序无法在中国">
+
+
+
+
+
+
+  <link rel="canonical" href="https://AlephAlpha.github.io/2017/10/01/Catagolue-上的生命游戏搜索程序-/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Catagolue-上的生命游戏搜索程序- | 锑星杂记</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">锑星杂记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">AlephAlpha 写的一些乱七八糟的东西</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2017/10/01/Catagolue-上的生命游戏搜索程序-/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Catagolue-上的生命游戏搜索程序-
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-10-01 18:39:00" itemprop="dateCreated datePublished" datetime="2017-10-01T18:39:00+08:00">2017-10-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 23:03:01" itemprop="dateModified" datetime="2019-03-12T23:03:01+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>不久前，我发现了这个叫 <a href="http://catagolue.appspot.com/" target="_blank" rel="noopener">Catagolue</a> 的神奇的网站，收录的规则和图样比 LifeWiki 要全得多。</p>
+<p>这里收录的图样都是用一个叫 apgsearch 的程序找出来的。apgsearch 的不同版本有不同的名字，最新的第4版叫 apgluxe。它的功能就是自己倒汤，煮汤，然后在汤的残骸中自动搜索有意义的图样，然后自动上传到 Catagolue 上。</p>
+<p>不过，正是因为这最后一步，这个程序无法在中国大陆正常运行：Catagolue 用的是谷歌旗下某网站的域名，于是被墙了。而且有翻墙工具也没用，因为它用了个叫 HappyHTML 的东西，不支持代理！</p>
+<p>无奈之下，我把它改了一下，去掉与上传有关的部分。我完全不懂 C++，只能胡乱修改，把看起来像是和联网有关的内容都删掉，好像能够正常编译，不能保证不会有错。</p>
+<p>这是我修改后的离线版：<a href="https://github.com/AlephAlpha/apgluxe_offline" target="_blank" rel="noopener">https://github.com/AlephAlpha/apgluxe_offline</a></p>
+<p>这个程序（无论是原版还是我修改后的离线版）是写给64位的 Unix 系统的，32位的操作系统没法使用。在64位的 Windows 上要用的话好像要先装个 <a href="http://cygwin.com/" target="_blank" rel="noopener">Cygwin</a>。反正我不用 Windows。</p>
+<p>下载这个程序时可以用<code>git clone</code>，也可以直接下载 ZIP 压缩包。在下载好之后，要编译程序，在终端里 <code>cd</code> 到这个目录里，然后运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./recompile.sh</span><br></pre></td></tr></table></figure>
+<p>即可。</p>
+<p>要运行程序的话，在同一个目录里，运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./apgluxe -n 1000000</span><br></pre></td></tr></table></figure>
+<p>这里的1000000是每一轮倒的汤的数量，可以换成你喜欢的任何数字。每倒完一轮，会生成一个统计结果，保存在一个类似于 <code>log.一串类似于乱码的东西.txt</code> 的文件当中（图样用的是 <a href="http://conwaylife.com/wiki/Apgcode" target="_blank" rel="noopener">apgcode</a> 格式，我不知道怎样转成 rle 或者别的 Golly 能读的格式），然后自动开始下一轮。什么时候不想玩了，按 Ctrl+C 可以退出。也可以不加 <code>-n 1000000</code> 这个参数，这样默认每轮会煮20000000锅汤（我觉得这个数字有点太大了）。如果 CPU 是多核的，还可以加 <code>-p 4</code> 这样的参数来并行运算，这个4表示4个线程。</p>
+<p>运行时如果找到线性增长的图样（一般是 <a href="http://conwaylife.com/wiki/Block-laying_switch_engine" target="_blank" rel="noopener">Block-laying switch engine</a> 或者 <a href="http://conwaylife.com/wiki/Glider-producing_switch_engine" target="_blank" rel="noopener">Glider-producing switch engine</a>），或者罕见的周期大于2的振荡子，它会直接告诉你。刚才试了一轮，煮到将近第九十万锅汤的时候找到一个 <a href="https://catagolue.appspot.com/object?apgcode=xp30_w33z8kqrqk8zzzw33&amp;rule=b3s23" target="_blank" rel="noopener">xp30_w33z8kqrqk8zzzw33</a>，在 Catagolue 上查了一下是个<a href="http://conwaylife.com/wiki/Queen_bee_shuttle" target="_blank" rel="noopener">蜂王梭</a>，运气不错。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/简书搬运/" rel="tag"># 简书搬运</a>
+          
+            <a href="/tags/生命游戏/" rel="tag"># 生命游戏</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/01/汤，以及生命游戏里的稀有掉落/" rel="next" title="汤，以及生命游戏里的稀有掉落">
+                <i class="fa fa-chevron-left"></i> 汤，以及生命游戏里的稀有掉落
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/06/用Mathematica搜索生命游戏中的静物/" rel="prev" title="用Mathematica搜索生命游戏中的静物">
+                用Mathematica搜索生命游戏中的静物 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">AlephAlpha</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AlephAlpha</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

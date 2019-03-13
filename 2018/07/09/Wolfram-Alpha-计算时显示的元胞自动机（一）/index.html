@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<meta name="LifeViewer" content="rle pre 37 hide limit">
+<script src="/js/src/lv-plugin.js"></script>
+
+
+  <meta name="description" content="果壳网已完，不知道我发过的帖子什么时候会消失，于是我要把它们搬到简书。 但这篇不是搬运，只是想说一下这个帖子背后的故事……以及代码。  Wolfram|Alpha 在显示计算或查询的结果之前，往往需要思考一番。几年前，它在思考过程的中会显示一个漂亮的图案。现在那个图案已经变成了一个无聊的 COMPUTING...，不过网上还是留下了一点痕迹，比如说知乎的这个问题：Wolfram|Alpha在搜索时">
+<meta name="keywords" content="Mathematica,简书搬运,生命游戏">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wolfram-Alpha-计算时显示的元胞自动机（一）">
+<meta property="og:url" content="https://AlephAlpha.github.io/2018/07/09/Wolfram-Alpha-计算时显示的元胞自动机（一）/index.html">
+<meta property="og:site_name" content="锑星杂记">
+<meta property="og:description" content="果壳网已完，不知道我发过的帖子什么时候会消失，于是我要把它们搬到简书。 但这篇不是搬运，只是想说一下这个帖子背后的故事……以及代码。  Wolfram|Alpha 在显示计算或查询的结果之前，往往需要思考一番。几年前，它在思考过程的中会显示一个漂亮的图案。现在那个图案已经变成了一个无聊的 COMPUTING...，不过网上还是留下了一点痕迹，比如说知乎的这个问题：Wolfram|Alpha在搜索时">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-e0b20d78f3d9817b.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-11e4a70a70ef8fec.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-0969b4819fee46e2.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-412fbded84edcd35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-9c38605d7dcb8808.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-f9095bbc8fcecf20.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2019-03-12T15:52:10.281Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Wolfram-Alpha-计算时显示的元胞自动机（一）">
+<meta name="twitter:description" content="果壳网已完，不知道我发过的帖子什么时候会消失，于是我要把它们搬到简书。 但这篇不是搬运，只是想说一下这个帖子背后的故事……以及代码。  Wolfram|Alpha 在显示计算或查询的结果之前，往往需要思考一番。几年前，它在思考过程的中会显示一个漂亮的图案。现在那个图案已经变成了一个无聊的 COMPUTING...，不过网上还是留下了一点痕迹，比如说知乎的这个问题：Wolfram|Alpha在搜索时">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1770625-e0b20d78f3d9817b.gif?imageMogr2/auto-orient/strip">
+
+
+
+
+
+
+  <link rel="canonical" href="https://AlephAlpha.github.io/2018/07/09/Wolfram-Alpha-计算时显示的元胞自动机（一）/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Wolfram-Alpha-计算时显示的元胞自动机（一） | 锑星杂记</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">锑星杂记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">AlephAlpha 写的一些乱七八糟的东西</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2018/07/09/Wolfram-Alpha-计算时显示的元胞自动机（一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Wolfram-Alpha-计算时显示的元胞自动机（一）
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-09 20:39:00" itemprop="dateCreated datePublished" datetime="2018-07-09T20:39:00+08:00">2018-07-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 23:52:10" itemprop="dateModified" datetime="2019-03-12T23:52:10+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>果壳网已完，不知道我发过的帖子什么时候会消失，于是我要把它们搬到简书。</p>
+<p>但这篇不是搬运，只是想说一下<a href="https://www.guokr.com/post/558717/" target="_blank" rel="noopener">这个帖子</a>背后的故事……以及代码。</p>
+<hr>
+<p><a href="http://www.wolframalpha.com/" target="_blank" rel="noopener">Wolfram|Alpha</a> 在显示计算或查询的结果之前，往往需要思考一番。几年前，它在思考过程的中会显示一个漂亮的图案。现在那个图案已经变成了一个无聊的 <code>COMPUTING...</code>，不过网上还是留下了一点痕迹，比如说知乎的这个问题：<a href="https://www.zhihu.com/question/38451613" target="_blank" rel="noopener">Wolfram|Alpha在搜索时出现的图案有什么含义?</a>和 StackOverflow 的这个问题：<a href="https://stackoverflow.com/q/27332460/2756937" target="_blank" rel="noopener">What is the cellular automaton shown as loading screen on Wolfram Alpha?</a></p>
+<p>我也一直想知道这是什么图案。它显然是一个元胞自动机，大小不同的点表示不同的状态；而且状态不止一种，因此肯定不是生命游戏，也不是生命游戏家族（<a href="https://en.wikipedia.org/wiki/Life-like_cellular_automaton" target="_blank" rel="noopener">Life-like</a>）的规则。但它思考的速度太快，我总是来不及看清它到底是什么规则。</p>
+<p>直到有一天，我在人人网上——当时人人网还不是直播平台——看到这么一个截图：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-e0b20d78f3d9817b.gif?imageMogr2/auto-orient/strip" alt="Wolfram|Alpha 的元胞自动机。忘了是哪位同学的截图。"></p>
+<p>不知那位同学用的是什么截图工具，能够截得这么清晰，而且没有掉帧。总之，有了这个截图，我就能把它导入到 Mathematica，一帧一帧地慢慢看……并不能看出它是什么规则，甚至不能看清它有几种状态——最小的两种点个头差不多，只是颜色的深浅稍稍有点区别，肉眼不容易看清。不过我还是看出了一点规律：稍大一点的点会变得越来越大，直到爆掉，消失。而且，我还看到了这个一个振荡子：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-11e4a70a70ef8fec.gif?imageMogr2/auto-orient/strip" alt="一个周期8的小振荡子。我想给它起名叫 Loading。"></p>
+<p>除了 Life-like 的规则，还有什么规则？我在 Golly （最好的元胞自动机模拟器，没有之一）的帮助里看到了一类叫 <a href="http://golly.sourceforge.net/Help/Algorithms/Generations.html" target="_blank" rel="noopener">Generations</a> 的规则，觉得和这个有点像。不过那里给的几个 Generations 规则的例子和 Wolfram|Alpha 的这个元胞自动机都对不上。</p>
+<p>Generations 的规则和 Life-like 的规则类似，每个细胞也有死活两种状态，下一回合的状态由这一回合的死活、以及与它相邻的活细胞的个数来决定。与 Life-like 不同的是，活细胞在临死之前，还能苟延残喘几个回合，但死亡的过程并不受周围的细胞影响，最终也无法摆脱死亡的命运。</p>
+<p>比如说，那个叫 Frogs 的元胞自动机，规则按 Golly 的写法是 <code>12/34/3</code>。最后这个数字 <code>3</code> 表示它有三种状态：一个是死，一个是活，一个是正在死亡。也就是说，一个活细胞在临死前只能多活一个回合。前面的 <code>12</code> 说的是：一个活细胞要想继续好好活着，八个邻居里活细胞的个数必须是1或者2； <code>34</code> 的意思则是：一个已经死掉的细胞要想活过来，周围的活细胞个数必须是3或者4。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-0969b4819fee46e2.gif?imageMogr2/auto-orient/strip" alt="Frogs 规则因图中的这个像青蛙一样跳跃前进的飞船而得名。小点、大点和没有点分别代表活细胞、半死的细胞和死透了的细胞。"></p>
+<p>Wolfram|Alpha 的元胞自动机应该也是 Generations 一类，但肉眼不容易看出具体是什么规则。不过不要紧，我们还有 Mathematica。直接看不出，我们就把图片二值化了看，拆成一个个连通分支来看，数清了每个点周围的活细胞个数再看。</p>
+<p>当年的代码我没有留着。下面的代码都是新写的，用了不少这几年才引进的新函数。</p>
+<hr>
+<p>首先当然是导入图片并去掉重复帧。我一开始没发现截图中有重复帧，导致结果很奇怪，还以为它不是 Generations 的规则。</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CA = <span class="keyword">First</span> /@ <span class="keyword">Split</span>@<span class="keyword">Import</span>[<span class="string">"WolframAlphaCA.gif"</span>];</span><br></pre></td></tr></table></figure>
+<p>先试着把第一帧二值化一下，发现它还有一个框框：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Binarize</span>[CA[[<span class="number">1</span>]]]</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-412fbded84edcd35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="不二值化的话根本看不出这截图还戴黑框。"></p>
+<p>摘掉黑框再二值化。二值化的阈值不能太低，以免最小的点消失；也不能太高，以免相邻的点连起来。试了好几个数，<code>0.85</code> 是最合适的。</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Binarize</span>[<span class="keyword">ImagePad</span>[#, -<span class="keyword">BorderDimensions</span>@#], <span class="number">0.85</span>] &amp;@CA[[<span class="number">1</span>]]</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-9c38605d7dcb8808.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="这只是第一帧二值化的结果。"></p>
+<p>看起来不错。于是我就把每一帧都二值化了。顺手还给它们反个色，以方便下一步处理。</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CABinarized = <span class="number">1</span> - <span class="keyword">Binarize</span>[<span class="keyword">ImagePad</span>[#, -<span class="keyword">BorderDimensions</span>@#], <span class="number">0.85</span>] &amp; /@ CA;</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-f9095bbc8fcecf20.gif?imageMogr2/auto-orient/strip" alt="这样好看多了。"></p>
+<p>现在每个细胞——死细胞不算——是这个图片的一个连通分支。细胞的状态对应于连通分支的大小。于是可以用上 <a href="https://reference.wolfram.com/language/ref/ComponentMeasurements.html" target="_blank" rel="noopener"><code>ComponentMeasurements</code></a> 函数。</p>
+<p>先来看看这些细胞的位置。还是先看第一帧，算出所有连通分支的重心，把所有的横坐标和所有的纵坐标分别从小到大排列：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Union</span> /@ <span class="keyword">Transpose</span>[<span class="keyword">Last</span> /@ <span class="keyword">ComponentMeasurements</span>[CABinarized[[<span class="number">1</span>]], <span class="string">"Centroid"</span>]]</span><br></pre></td></tr></table></figure>
+<p>结果是：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;8.5, 18.5, 28.5, 38.5, 48.5, 58.5, 68.5, 78.5, 88.5, 98.5, 108.5, </span><br><span class="line">  118.5, 128.5, 138.5, 148.5, 158.5, 168.5, 178.5, 188.5, 198.5, </span><br><span class="line">  208.5, 218.5, 228.5, 238.5, 248.5, 258.5, 268.5, 278.5, 288.5, </span><br><span class="line">  358.5, 368.5, 378.5, 388.5, 398.5, 408.5, 418.5, 428.5, 438.5, </span><br><span class="line">  448.5, 458.5, 468.5, 478.5, 488.5, 498.5, 508.5, 518.5, 528.5, </span><br><span class="line">  538.5, 548.5, 558.5, 568.5, 578.5, 588.5, 598.5, 608.5, 618.5, </span><br><span class="line">  628.5, 638.5, 648.5&#125;,</span><br><span class="line"> &#123;12., 12.2193, 21.5, 22., 31.5, 32., 41.5, 42., 51.5, 52., 61.5, 62., </span><br><span class="line">  71.5, 72., 81.5, 82., 91.5, 92., 101.5, 102., 111.5, 112., 121.5, </span><br><span class="line">  122., 131.5, 132., 141.5, 142., 151.5, 152., 161.5, 162., 171.5, </span><br><span class="line">  172., 181.5, 182., 191.5, 192., 201.5, 202., 211.5, 212., 221.5, </span><br><span class="line">  222., 231.5, 232., 241.5, 242., 251.5, 252., 261.5, 262., 271.5, </span><br><span class="line">  272., 281.5, 282., 291.5, 292., 301.5, 302., 311.5, 312., 321.5, </span><br><span class="line">  322., 331.5, 332., 341.5, 342., 351.5, 352., 361.5, 362., 372.&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看出相邻的两个点之间大概差10个像素，整个图片中的细胞个数是 65 × 37。这里出现了一个很奇怪的 <code>12.2193</code>，是因为最下面一排有一个点只露出了大半。为了避免这种问题，我去掉了最外面的一圈细胞，只取重心的横坐标在 15 和 645 之间，纵坐标在 15 和365 之间的那些连通分支。</p>
+<p>然后看连通分支的大小。取了一下 <code>Union</code>，发现图片的每一帧，在去掉了最外面的一圈细胞之后，连通分支的大小都只有 <code>{6, 9, 37, 69}</code> 这么四种：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Union</span>[<span class="keyword">Last</span> /@ </span><br><span class="line">    <span class="keyword">ComponentMeasurements</span>[#, <span class="string">"Count"</span>, </span><br><span class="line">     <span class="number">15</span> &lt; #Centroid[[<span class="number">1</span>]] &lt; <span class="number">645</span> &amp;&amp; </span><br><span class="line">       <span class="number">15</span> &lt; #Centroid[[<span class="number">2</span>]] &lt; <span class="number">365</span> &amp;]] &amp; /@ CABinarized</span><br></pre></td></tr></table></figure>
+<p>于是这四种不同大小的活细胞和濒死的细胞，再加上死细胞，一共有五种状态。最初的截图里分不太清的两种状态，在这里分别对应 <code>6</code> 和 <code>9</code>。</p>
+<p>然后我们可以把这些图片化成代表细胞状态的数组，把 <code>{6, 9, 37, 69}</code> 分别换成 <code>{1, 2, 3, 4}</code>，死细胞还是用 <code>0</code> 表示。</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CAArray = </span><br><span class="line">  <span class="keyword">SparseArray</span>[</span><br><span class="line">     <span class="keyword">Round</span>[(#[[<span class="number">2</span>, <span class="number">1</span>]] - &#123;8.5, 12&#125;)/<span class="number">10</span>] -&gt; (#[[<span class="number">2</span>, <span class="number">2</span>]] /. </span><br><span class="line">          <span class="keyword">Thread</span>[&#123;6, 9, 37, 69&#125; -&gt; <span class="keyword">Range</span>@<span class="number">4</span>]) &amp; /@ </span><br><span class="line">      <span class="keyword">ComponentMeasurements</span>[#, &#123;"Centroid", "Count"&#125;, </span><br><span class="line">       <span class="number">15</span> &lt; #Centroid[[<span class="number">1</span>]] &lt; <span class="number">645</span> &amp;&amp; <span class="number">15</span> &lt; #Centroid[[<span class="number">2</span>]] &lt; <span class="number">365</span> &amp;],</span><br><span class="line">     &#123;63, 35&#125;] &amp; /@ CABinarized;</span><br></pre></td></tr></table></figure>
+<p>如果它真的是 Generations 的规则，每个细胞在下一回合的状态就完全由它在这一回合的状态和周围的活细胞的个数来决定。于是来算一算，看看是否如此：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Union</span>@<span class="keyword">Flatten</span>@</span><br><span class="line">  BlockMap[&#123;#[[1, 2, 2]], Count[#[[1]], 1, &#123;2&#125;]&#125; -&gt; #[[<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>]] &amp;, </span><br><span class="line">   CAArray, &#123;2, 3, 3&#125;, <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<p>结果是：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;0, 0&#125; -&gt; <span class="number">0</span>, &#123;0, 1&#125; -&gt; <span class="number">0</span>, &#123;0, 2&#125; -&gt; <span class="number">0</span>, &#123;0, 3&#125; -&gt; <span class="number">1</span>, &#123;0, 4&#125; -&gt; <span class="number">0</span>,</span><br><span class="line"> &#123;0, 5&#125; -&gt; <span class="number">1</span>, &#123;0, 6&#125; -&gt; <span class="number">0</span>, &#123;0, 7&#125; -&gt; <span class="number">1</span>, &#123;0, 8&#125; -&gt; <span class="number">0</span>, &#123;1, 1&#125; -&gt; <span class="number">2</span>,</span><br><span class="line"> &#123;1, 2&#125; -&gt; <span class="number">2</span>, &#123;1, 3&#125; -&gt; <span class="number">2</span>, &#123;1, 4&#125; -&gt; <span class="number">1</span>, &#123;1, 5&#125; -&gt; <span class="number">1</span>, &#123;1, 6&#125; -&gt; <span class="number">1</span>,</span><br><span class="line"> &#123;1, 7&#125; -&gt; <span class="number">2</span>, &#123;1, 8&#125; -&gt; <span class="number">1</span>, &#123;1, 9&#125; -&gt; <span class="number">2</span>, &#123;2, 0&#125; -&gt; <span class="number">3</span>, &#123;2, 1&#125; -&gt; <span class="number">3</span>,</span><br><span class="line"> &#123;2, 2&#125; -&gt; <span class="number">3</span>, &#123;2, 3&#125; -&gt; <span class="number">3</span>, &#123;2, 4&#125; -&gt; <span class="number">3</span>, &#123;2, 5&#125; -&gt; <span class="number">3</span>, &#123;2, 6&#125; -&gt; <span class="number">3</span>,</span><br><span class="line"> &#123;2, 7&#125; -&gt; <span class="number">3</span>, &#123;2, 8&#125; -&gt; <span class="number">3</span>, &#123;3, 0&#125; -&gt; <span class="number">4</span>, &#123;3, 1&#125; -&gt; <span class="number">4</span>, &#123;3, 2&#125; -&gt; <span class="number">4</span>,</span><br><span class="line"> &#123;3, 3&#125; -&gt; <span class="number">4</span>, &#123;3, 4&#125; -&gt; <span class="number">4</span>, &#123;3, 5&#125; -&gt; <span class="number">4</span>, &#123;3, 6&#125; -&gt; <span class="number">4</span>, &#123;3, 7&#125; -&gt; <span class="number">4</span>,</span><br><span class="line"> &#123;3, 8&#125; -&gt; <span class="number">4</span>, &#123;4, 0&#125; -&gt; <span class="number">0</span>, &#123;4, 1&#125; -&gt; <span class="number">0</span>, &#123;4, 2&#125; -&gt; <span class="number">0</span>, &#123;4, 3&#125; -&gt; <span class="number">0</span>,</span><br><span class="line"> &#123;4, 4&#125; -&gt; <span class="number">0</span>, &#123;4, 5&#125; -&gt; <span class="number">0</span>, &#123;4, 6&#125; -&gt; <span class="number">0</span>, &#123;4, 7&#125; -&gt; <span class="number">0</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>结果中的这些数据是 <code>{本回合的状态, 周围的活细胞个数} -&gt; 下一回合的状态</code>。比如说， <code>{1, 3} -&gt; 2</code> 表示某个细胞的状态是 <code>1</code>，也就是一个活细胞；它周围的活细胞个数，包括它本身，是 <code>3</code>；它在下一回合的状态是 <code>2</code>，也就是说刚刚开始死亡。这里同样的键总是对应同样的值，因此每个细胞在下一回合的状态确实由这两个数来决定。</p>
+<p>我们还能看出，<code>0</code> 只会变成 <code>0</code> 或 <code>1</code>， <code>1</code> 只会变成 <code>1</code> 或 <code>2</code>，<code>2</code> 只会变成 <code>3</code>，<code>3</code> 只会变成 <code>4</code>，<code>4</code> 只会死亡。</p>
+<p>果然是 Generations。</p>
+<p>再来算算这个规则在 Golly 里该怎么写：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;Cases[%, (&#123;1, x_&#125; -&gt; <span class="number">1</span>) :&gt; x - <span class="number">1</span>], <span class="keyword">Cases</span>[%, (&#123;0, x_&#125; -&gt; <span class="number">1</span>) :&gt; x], </span><br><span class="line"> <span class="keyword">Max</span>@%[[;; , <span class="number">1</span>, <span class="number">1</span>]] + <span class="number">1</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>结果是：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;3, 4, 5, 7&#125;, &#123;3, 5, 7&#125;, <span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>也就是说它在 Golly 里叫做 <code>3457/357/5</code>。</p>
+<p>这个规则的含义是：它有五种状态。<code>0</code> 表示死，<code>1</code> 表示活，<code>2</code>、<code>3</code>、<code>4</code> 都是死亡的过程。每个回合每个细胞的变化如下：</p>
+<ul>
+<li><code>0</code> -&gt; 如果相邻的活细胞个数是3、5、7，则变成 <code>1</code>，否则还是 <code>0</code></li>
+<li><code>1</code> -&gt; 如果相邻的活细胞个数是3、4、5、7，则保持是 <code>1</code>，否则变成 <code>2</code></li>
+<li><code>2</code> -&gt; <code>3</code></li>
+<li><code>3</code> -&gt; <code>4</code></li>
+<li><code>4</code> -&gt; <code>0</code></li>
+</ul>
+<hr>
+<p>接下来我们把时间交给 Golly。Mathematica 只负责画图。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mathematica/" rel="tag"># Mathematica</a>
+          
+            <a href="/tags/简书搬运/" rel="tag"># 简书搬运</a>
+          
+            <a href="/tags/生命游戏/" rel="tag"># 生命游戏</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/02/可以用克罗内克符号来画龙曲线/" rel="next" title="可以用克罗内克符号来画龙曲线">
+                <i class="fa fa-chevron-left"></i> 可以用克罗内克符号来画龙曲线
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/14/维基百科的新年图标/" rel="prev" title="维基百科的新年图标">
+                维基百科的新年图标 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">AlephAlpha</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AlephAlpha</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

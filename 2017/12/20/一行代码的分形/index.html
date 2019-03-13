@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<meta name="LifeViewer" content="rle pre 37 hide limit">
+<script src="/js/src/lv-plugin.js"></script>
+
+
+  <meta name="description" content="继续搬运果壳网上的旧帖。部分代码有改动。  Wolfram 公司在 Twitter 上开了个帐号，叫 Tweet-a-Program (@wolframtap)。你只要发一段 Mathematica 代码并@它，它就会自动把运行结果回复给你。由于 Twitter 的字数限制，这段 Mathematica 代码不能超过128字（现在 Twitter 的字数限制涨了，但 Tweet-a-Program">
+<meta name="keywords" content="Mathematica,简书搬运,果壳搬运">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一行代码的分形">
+<meta property="og:url" content="https://AlephAlpha.github.io/2017/12/20/一行代码的分形/index.html">
+<meta property="og:site_name" content="锑星杂记">
+<meta property="og:description" content="继续搬运果壳网上的旧帖。部分代码有改动。  Wolfram 公司在 Twitter 上开了个帐号，叫 Tweet-a-Program (@wolframtap)。你只要发一段 Mathematica 代码并@它，它就会自动把运行结果回复给你。由于 Twitter 的字数限制，这段 Mathematica 代码不能超过128字（现在 Twitter 的字数限制涨了，但 Tweet-a-Program">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1770625-9e3e9332ebcc50e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1770625-ea6cc1bc9c02fc64.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1770625-bccf24d6c25a7fd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1770625-442b9d71c8810d04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1770625-4b22b0e99729a1c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1770625-ccf789fca9c6378f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1770625-13d8f24de7370b6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1770625-e41d484a60ea724f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1770625-66b94bdac1e79553.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-12T15:31:28.048Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一行代码的分形">
+<meta name="twitter:description" content="继续搬运果壳网上的旧帖。部分代码有改动。  Wolfram 公司在 Twitter 上开了个帐号，叫 Tweet-a-Program (@wolframtap)。你只要发一段 Mathematica 代码并@它，它就会自动把运行结果回复给你。由于 Twitter 的字数限制，这段 Mathematica 代码不能超过128字（现在 Twitter 的字数限制涨了，但 Tweet-a-Program">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1770625-9e3e9332ebcc50e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+
+  <link rel="canonical" href="https://AlephAlpha.github.io/2017/12/20/一行代码的分形/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>一行代码的分形 | 锑星杂记</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">锑星杂记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">AlephAlpha 写的一些乱七八糟的东西</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2017/12/20/一行代码的分形/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">一行代码的分形
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-12-20 09:59:00" itemprop="dateCreated datePublished" datetime="2017-12-20T09:59:00+08:00">2017-12-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 23:31:28" itemprop="dateModified" datetime="2019-03-12T23:31:28+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>继续搬运果壳网上的<a href="https://www.guokr.com/post/669790/" target="_blank" rel="noopener">旧帖</a>。部分代码有改动。</p>
+<hr>
+<p>Wolfram 公司在 Twitter 上开了个帐号，叫 Tweet-a-Program (<a href="https://twitter.com/wolframtap" target="_blank" rel="noopener">@wolframtap</a>)。你只要发一段 Mathematica 代码并@它，它就会自动把运行结果回复给你。由于 Twitter 的字数限制，这段 Mathematica 代码不能超过128字（现在 Twitter 的字数限制涨了，但 Tweet-a-Program 的字数限制还是不变）。</p>
+<p>我一般用它来画分形。</p>
+<hr>
+<p><img src="http://upload-images.jianshu.io/upload_images/1770625-9e3e9332ebcc50e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Multicolumn[<span class="keyword">Table</span>[<span class="keyword">Image3D</span>@<span class="keyword">Array</span>[<span class="keyword">Boole</span>@SubsetQ[s,<span class="keyword">Plus</span>@@<span class="keyword">Abs</span>[<span class="keyword">IntegerDigits</span>[&#123;##&#125;,<span class="number">3</span>,<span class="number">3</span>]<span class="number">-1</span>]]&amp;,&#123;3,3,3&#125;^<span class="number">3</span>,<span class="number">0</span>],&#123;s,Subsets@&#123;0,1,2,3&#125;&#125;],<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><img src="http://upload-images.jianshu.io/upload_images/1770625-ea6cc1bc9c02fc64.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JuliaSetPlot[z-(z^<span class="number">9</span><span class="number">-1</span>)/(<span class="number">9</span>z^<span class="number">2</span>),z,<span class="keyword">ColorFunction</span>-&gt;<span class="string">"RustTones"</span>]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><img src="http://upload-images.jianshu.io/upload_images/1770625-bccf24d6c25a7fd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Image</span>@<span class="keyword">Array</span>[<span class="keyword">BitAnd</span>,&#123;2,2&#125;^<span class="number">9</span>,<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><img src="http://upload-images.jianshu.io/upload_images/1770625-442b9d71c8810d04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Image</span>[<span class="number">1</span>-<span class="keyword">Last</span>@SubstitutionSystem[&#123;0-&gt;&#123;&#123;1,1,1&#125;,&#123;1,1,1&#125;,&#123;1,1,1&#125;&#125;,<span class="number">1</span>-&gt;&#123;&#123;0,1,0&#125;,&#123;1,0,1&#125;,&#123;0,1,0&#125;&#125;&#125;,&#123;&#123;1&#125;&#125;,<span class="number">6</span>]]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><img src="http://upload-images.jianshu.io/upload_images/1770625-4b22b0e99729a1c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Graphics</span>[&#123;RGBColor@##3,Point@&#123;#,#2&#125;&#125;&amp;@@(<span class="number">2</span>y^<span class="keyword">Range</span>[<span class="number">7</span>].#)&amp;/@<span class="keyword">Tuples</span>[&#123;&#123;x=.886,y=.5,y,0,0&#125;,&#123;-x,y,0,y,0&#125;,&#123;0,-1,0,0,y&#125;&#125;,<span class="number">7</span>]]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><img src="http://upload-images.jianshu.io/upload_images/1770625-ccf789fca9c6378f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Image</span>[<span class="keyword">Table</span>[<span class="keyword">If</span>[ColorQ@#,#,<span class="keyword">Black</span>]&amp;[<span class="keyword">Hue</span>[(<span class="keyword">Arg</span>@#+<span class="keyword">Pi</span>)/(<span class="number">2</span><span class="keyword">Pi</span>),<span class="number">1</span>/<span class="keyword">Abs</span>@#]&amp;[MandelbrotSetBoettcher[x+<span class="keyword">I</span> y]]],&#123;y,-2,2,.01&#125;,&#123;x,-2,2,.01&#125;]]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><img src="http://upload-images.jianshu.io/upload_images/1770625-13d8f24de7370b6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Graphics</span>@<span class="keyword">Line</span>[AnglePath@#,<span class="keyword">VertexColors</span>-&gt;<span class="keyword">Hue</span>/@Subdivide@<span class="keyword">Length</span>@#]&amp;@<span class="keyword">MapIndexed</span>[#(<span class="number">-1</span>)^<span class="keyword">Tr</span>@#<span class="number">2</span>&amp;,<span class="keyword">Flatten</span>@<span class="keyword">Nest</span>[&#123;#,#[[1]]&#125;&amp;,&#123;Pi/2,0&#125;,<span class="number">17</span>]]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><img src="http://upload-images.jianshu.io/upload_images/1770625-e41d484a60ea724f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Multicolumn[<span class="keyword">Table</span>[<span class="keyword">Image3D</span>[<span class="keyword">Array</span>[<span class="keyword">BitXor</span>,&#123;2,2,2&#125;^<span class="number">5</span>,<span class="number">0</span>]/.&#123;i-&gt;1,_Integer-&gt;0&#125;],&#123;i,0,31&#125;],<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><img src="http://upload-images.jianshu.io/upload_images/1770625-66b94bdac1e79553.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f=&#123;Tuples[Range[2^#]-1,#2],First@HilbertCurve@##&#125;&amp;;<span class="keyword">Grid</span>@<span class="keyword">Table</span>[<span class="keyword">Image</span>@<span class="keyword">Partition</span>[a[[<span class="keyword">Ordering</span>@b]]/<span class="number">2</span>^<span class="number">6</span>,<span class="number">2</span>^<span class="number">9</span>],&#123;a,f[6,3]&#125;,&#123;b,f[9,2]&#125;]</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mathematica/" rel="tag"># Mathematica</a>
+          
+            <a href="/tags/简书搬运/" rel="tag"># 简书搬运</a>
+          
+            <a href="/tags/果壳搬运/" rel="tag"># 果壳搬运</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/28/Mathematica二三事/" rel="next" title="Mathematica二三事">
+                <i class="fa fa-chevron-left"></i> Mathematica二三事
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/14/π日，来吃个派/" rel="prev" title="π日，来吃个派">
+                π日，来吃个派 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">AlephAlpha</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AlephAlpha</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

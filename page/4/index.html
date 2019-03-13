@@ -1,0 +1,2255 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<meta name="LifeViewer" content="rle pre 37 hide limit">
+<script src="/js/src/lv-plugin.js"></script>
+
+
+  <meta name="keywords" content="Game of Life, 生命游戏,">
+<meta property="og:type" content="website">
+<meta property="og:title" content="锑星杂记">
+<meta property="og:url" content="https://AlephAlpha.github.io/page/4/index.html">
+<meta property="og:site_name" content="锑星杂记">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="锑星杂记">
+
+
+
+
+
+
+  <link rel="canonical" href="https://AlephAlpha.github.io/page/4/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>锑星杂记</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">锑星杂记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">AlephAlpha 写的一些乱七八糟的东西</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2016/03/30/魔法阵/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/03/30/魔法阵/" class="post-title-link" itemprop="url">魔法阵</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-03-30 20:27:00" itemprop="dateCreated datePublished" datetime="2016-03-30T20:27:00+08:00">2016-03-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 22:47:30" itemprop="dateModified" datetime="2019-03-12T22:47:30+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>魔法（ŋulibu）一词有两种含义：狭义的魔法，仅指咒文（rimu）、咒语（slovin）等语言的魔法；广义的魔法，则包含了包括狭义的魔法在内的各种奇妙的法术。</p>
+<p>魔法阵便是语言的魔法以外的另一种魔法。</p>
+<p>魔法阵比语言的魔法要少见得多，学习起来也更加困难。但它与语言的魔法遵循着类似的逻辑。事实上，它与咒文是等价的：任一个能用咒文产生的效果都能用魔法阵来实现，反之亦然。</p>
+<p>其实，魔法阵是一种特殊的文字，一种二维的文字。它并不记录任何语言。它与人们日常使用的文字有着共同的起源：都是来自于远古的图画文字。但是，图画文字逐渐向着更适合记录语言的方向发展，表音的符号越来越多，也变得越来越抽象；魔法阵却走上了另一条道路：它同样是变得更加抽象，却去除了原本图画文字中刚刚显出雏形的标音符号，离人们所说的语言越来越远……仔细观察，依稀还能从那繁杂的图案中识别出主谓宾，但人类语言的语序对它而言已毫无意义。</p>
+<p>但是，在乌图帝国末年，一位萨满却提出了一个有趣的观点：魔法阵并非不记录任何语言；相反，它能同时记录世界上的所有语言。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2016/03/30/傀儡/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/03/30/傀儡/" class="post-title-link" itemprop="url">傀儡</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-03-30 20:23:00" itemprop="dateCreated datePublished" datetime="2016-03-30T20:23:00+08:00">2016-03-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 22:47:17" itemprop="dateModified" datetime="2019-03-12T22:47:17+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>兽人曾建立起发达的文明，但他们从未掌握能成为生产力的魔法。不过，在北土西部流传的一些民间传说中，兽人有傀儡。</p>
+<p>傀儡是傀儡木（Guelemu）的简称，或者称为哥廉（Golem）——这只是同一个词在不同的方言中的念法。它们原本是用粘土或别的材料制成的粗糙的人形。然后，只需要经过一个简单的步骤——在不同版本的传说中，这一步骤也完全不同——这些人形就会活动起来，像人一样，去劳动，去战斗。这一步骤，便是傀儡的秘密。</p>
+<p>兽人比人类更强壮，更聪明，掌握的技术也更先进，与人类相比唯一的缺陷就在于繁殖能力较低，人口不足。而傀儡正好在一定程度上弥补了这一缺陷。</p>
+<p>根据这些传说，在人类与兽人的战争中，人类攻打兽人乌煞部的一座城池的时候，便遇上了由傀儡组成的大军。面对这支数量庞大而又不惧死亡的军队，人类束手无策。</p>
+<p>但是，人类的军师拇姬便是叛逃过来的兽人，他知晓傀儡的秘密。于是，拇姬仅仅采取了一个简单的计策——关于这个计策，不同版本的传说里的说法也完全不同——人类便顺利地击败了傀儡大军。</p>
+<p>在诸多不同版本的传说中，有一个看起来最像是真的。在这里，制作傀儡的那一步骤，是为它起一个名字；而拇姬的对策，也是给这些傀儡另起一个名字——借助人类的人口优势，人类所使用的名字便成了它们真正的名字，于是，这些傀儡也成了人类的傀儡。</p>
+<p>当然，传说只是传说，无论是考古还是严肃的史诗中都无法找到任何傀儡存在过的证据。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2016/03/30/兽人/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/03/30/兽人/" class="post-title-link" itemprop="url">兽人</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-03-30 20:21:00" itemprop="dateCreated datePublished" datetime="2016-03-30T20:21:00+08:00">2016-03-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 22:47:03" itemprop="dateModified" datetime="2019-03-12T22:47:03+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在龙的文明衰亡之后，第一个建立起先进的文明的物种，不是人类，而是兽人。 但也有人认为，兽人并非与人类不同的物种，而只是人类的一个亚种。</p>
+<p>人类和兽人的共同祖先——古猿诞生的那块大陆，叫做南土（Xlabat Storin）；南土的北面是一块更大的大陆，叫做北土（Xlabat Verin）。在不同的时期，由于地质的变化，或者海平面的升降，两块大陆曾多次连接或分离。</p>
+<p>在人类尚未称为人类的时候，人类祖先的一支，趁着一次两块大陆相连的时候，来到了北土。他们便是兽人的祖先。当两块大陆再一次相连，已经是人类的人类开始进入北土的时候，兽人已经建立起了自己的文明——与当时的人类相比，是相当发达的文明。</p>
+<p>兽人比人类更高大，更强壮，更聪明，寿命是人类的三四倍。但是，他们并没有把入侵的人类赶尽杀绝。从此开始了人类与兽人共存的时期。直到兽人中出了一个叛徒，人类才夺取了北土的统治权，最终把兽人灭绝。</p>
+<p>人类的不同语言中对兽人有不同的称呼，这些词往往带有侮辱的意味。在人类记录下来的历史中，兽人也常被描绘成丑陋、残忍、贪婪、邪恶的形象。讽刺的是，记录下这些历史所用的文字，最初也是从兽人处学来的。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2016/03/30/乌图语/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/03/30/乌图语/" class="post-title-link" itemprop="url">乌图语</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-03-30 20:19:00" itemprop="dateCreated datePublished" datetime="2016-03-30T20:19:00+08:00">2016-03-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 22:46:45" itemprop="dateModified" datetime="2019-03-12T22:46:45+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>乌图语（Ŋuliba Utuma），最初是乌图人（Utu）的语言。在乌图帝国（Gaŋžu Utumu）成立之后，它成了乌图帝国的语言。然后，它又成了乌图时代的语言——以世界通用的族际交际语来划分时代，是后世史学界的传统。</p>
+<p>在乌图帝国灭亡多年（“年”这个词的使用还有争议，待改）之后，乌图语逐渐被别的语言——包括一些乌图语的方言的后裔——所取代。除了研究语言和历史的学者之外，熟练掌握乌图语的最后一个群体是魔法师。魔法的咒文必须是用乌图语或者基于乌图语的人造语言写下的诗篇。于是，乌图语的语法和修辞是魔法教育的最重要的部分之一。</p>
+<p>根据魔法界的传统，一位魔法师学到的第一句乌图语往往是“Axoj, salkal!”其中Axoj是“你好”的意思，但这种用法在古典乌图语中并不常见，而更常出现在北方海盗所用的乌图语方言中；salkal则是“世界”的意思，这个词的历史远比乌图语本身的历史要久远，甚至可以追溯到卅猫时代——它最初指的是卅猫发明的一种叫“生命”（Uxaj）的游戏中的棋盘。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2016/03/30/魔法的起源（二）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/03/30/魔法的起源（二）/" class="post-title-link" itemprop="url">魔法的起源（二）</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-03-30 20:15:00" itemprop="dateCreated datePublished" datetime="2016-03-30T20:15:00+08:00">2016-03-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 22:46:28" itemprop="dateModified" datetime="2019-03-12T22:46:28+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>人类的魔法和龙的魔法一样，也是语言的游戏。</p>
+<p>人类最早的魔法便是卅猫的文字游戏。在卅猫刚设计出这个游戏的时候，它还不是魔法，游戏中的“魔法词”也仅仅是一些附带了规则的标签，让玩家根据这些规则来改变句子的内容；但当这个游戏在卅猫的弟子——萨满当中传播开来，并成为萨满这个群体的语言的一部分的时候，那些“魔法词”变真的有了魔法。这是作用于语言的魔法，所以也可以当作是作用于魔法的魔法——后来有的人把这种魔法称为“元魔法”。但在那个时候，它仅仅是流传在萨满间的一种游戏。</p>
+<p>在传播的过程中，一些萨满给这个游戏增加了一些新的魔法词，或者更改原有的魔法词的含义，这个游戏逐渐变的强大。然后，有的萨满看到了它的用处，开始用它来辅助自己创作诗歌和音乐。那些魔法词就直接插入在押韵的诗歌当中。这样用起来并不方便，于是他们就专门写出一些包含大量魔法词的诗歌，然后用这些诗歌来处理别的诗歌。这种诗歌便是最早的咒文。咒文一定要押韵，这条规矩就是那时形成的。</p>
+<p>每次都要吟诵完整的诗歌，还是不太方便。于是萨满们给诗歌起了标题，在使用的时候只要念出诗歌的标题。这些标题便是咒语。咒语不仅可以单独使用，还可以像魔法词那样插入诗歌当中。魔法词也被视为一种咒语——事实上，当一种来自咒文的标题的咒语被萨满们普遍使用的时候，它就跟魔法词没有任何区别了。于是，渐渐地，人们就只说“咒语”而不说“魔法词”了。</p>
+<p>在乌图语中，咒文叫做rimu，词源来自于“韵律”；咒语唤作slovin，词源来自“词语”；魔法则称为ŋulibu，词源来自“语言”。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2016/03/30/火球术/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/03/30/火球术/" class="post-title-link" itemprop="url">火球术</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-03-30 20:14:00" itemprop="dateCreated datePublished" datetime="2016-03-30T20:14:00+08:00">2016-03-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 22:46:10" itemprop="dateModified" datetime="2019-03-12T22:46:10+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>火球术是最广为人知的魔法之一。但它的发明者却不是人类，而是龙。</p>
+<p>在人类还是古猿的时候，龙就已经建立起了自己的文明。它们有自己的语言，自己的魔法——语言即是魔法。魔法不在语音当中，而在语义当中。气流从肺部喷出，冲过咽腔和口腔，冲击着声带、会厌、悬雍垂和舌头，发出一声龙的嘶吼。但这个声音仅仅是一个声音。只有当它有了约定的含义，它才是一个词。而约定的语法，又将一个个词语粘成句子，最后称为常常的咒文。当一条龙念完火球术的咒文，一团火焰便从它的口中产生，又随着语言的气流从口中喷出。</p>
+<p>但随着语言的演变，火球术这个常用魔法的咒文逐渐地缩短，最终缩成一个词：“呵呵”（Xorxor）。此后，这个词就不再变化。直到龙的文明衰落、灭亡，苟延残喘在山区中的幸存的龙也遗忘了一切别的魔法，甚至语言也已经退化，“呵呵”却一直没有改变。</p>
+<p>人类文明兴起之后，人类的萨满为了研究火球术，也曾尝试模仿龙的嘶吼声。但他们没能成功地从口中喷出火球，因为“呵呵”在人类的语言中不是火球术的咒语。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2016/03/30/魔法的起源/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/03/30/魔法的起源/" class="post-title-link" itemprop="url">魔法的起源</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-03-30 20:12:00" itemprop="dateCreated datePublished" datetime="2016-03-30T20:12:00+08:00">2016-03-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 22:45:42" itemprop="dateModified" datetime="2019-03-12T22:45:42+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>传说中，魔法的创始人是卅猫（Samau）。</p>
+<p>人们已经难以考证卅猫是什么年代的人物。关于卅猫的传说流传在各个不同的民族，不同的传说之间又有不少互相矛盾的地方。甚至考古挖掘出来的兽人的石碑上也记载了卅猫的故事——这样我们可以断定他活跃在兽人灭绝之前，但这也令卅猫的身份更加扑朔迷离：连他是智人还是兽人也不知道了。</p>
+<p>从这些传说来看，卅猫云游四方，行踪不定，在不同的地方会使用不同的化名。他似乎无所不知，又充满智慧。他有无数的发明创造，其中包括了不少小游戏。例如，一种叫做“生命”（Uxaj）的元胞自动机游戏。他把游戏中的棋盘称为“世界”（salkal）——“世”（sal）指棋盘上的纵线，“界”（kal）指棋盘上的横线。后来，人们用这个词来借指整个世界，而忘了“世界”一词本来的含义。</p>
+<p>他发明的另一种游戏则被认为是魔法的起源。这是一种文字游戏：在句子中插入一些“魔法词”，然后根据一定的规则——不同的“魔法词”对应不同的规则，比如说调换词的顺序、删掉一些词、把一些词换成另一些词——来改写句子，直到这些“魔法词”全部消失。这和今天的魔法非常不同：它的作用范围仅仅是语言本身，而不是自然界。</p>
+<p>卅猫曾收过一些弟子，弟子们又收了更多的弟子，形成了一个特殊的群体。他们自称萨满（Saman），意为“卅猫的门徒”。他们从卅猫处学到了关于自然的知识，也学到了文字游戏。他们便是魔法师的前身。和现代的魔法师不同，那时的萨满更多的是学者和哲学家。正是他们把卅猫发明的简单的文字游戏，发展成了一套具有强大力量的严密的体系。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2016/03/26/用Mathematica转发网漫/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/03/26/用Mathematica转发网漫/" class="post-title-link" itemprop="url">用Mathematica转发网漫</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-03-26 12:59:00" itemprop="dateCreated datePublished" datetime="2016-03-26T12:59:00+08:00">2016-03-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 22:44:42" itemprop="dateModified" datetime="2019-03-12T22:44:42+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>此文本来是发在<a href="http://www.guokr.com/blog/462333/" target="_blank" rel="noopener">果壳日志</a>的，发表时间是2013年6月26日。现在果壳日志下线了，搬来这里。</p>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><p>在最新版的 Mathematica 11.3 中这里的代码已无法使用。我尝试把<code>URLFetch</code>改写成<code>URLExecute</code>，但并不成功。最后只能不再用Mathematica自带的处理网络请求的函数，而是调用<a href="https://en.wikipedia.org/wiki/CURL" target="_blank" rel="noopener">cURL</a>。修改后的代码和这里已经完全不同，请见<a href="https://github.com/AlephAlpha/WebComics" target="_blank" rel="noopener">GitHub</a>.</p>
+<p>以下是原文：</p>
+<hr>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(*_*)</span></span><br></pre></td></tr></table></figure>
+<p>前一段时间无聊，在微博上注册了个<a href="http://weibo.com/u/3404002352" target="_blank" rel="noopener">马甲与小号</a>（好吧，小号暴露了），又顺手写了一段Mathematica代码，专门用来转发网漫。</p>
+<p>这里就说说我是怎么干的吧。</p>
+<p>首先，要申请一个微博APP。申请了之后，你就获得了一个access_token。然后就可以用它来发微博了。</p>
+<p>发微博要用到<a href="http://open.weibo.com/wiki/%E5%BE%AE%E5%8D%9AAPI" target="_blank" rel="noopener">新浪微博的API接口</a>。比如说，发不带图片的微博用<a href="http://open.weibo.com/wiki/2/statuses/update" target="_blank" rel="noopener">statuses/update</a>：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">URLFetch</span>[<span class="string">"https://api.weibo.com/2/statuses/update.json"</span>, </span><br><span class="line"> <span class="string">"Method"</span> -&gt; <span class="string">"POST"</span>, </span><br><span class="line"> <span class="string">"Parameters"</span> -&gt; &#123;"access_token" -&gt; "你的access_token", </span><br><span class="line">   "status" -&gt; "喵呜。"&#125;]</span><br></pre></td></tr></table></figure>
+<p>发带图片的微博用<a href="http://open.weibo.com/wiki/2/statuses/upload" target="_blank" rel="noopener">statuses/upload</a>。这个比较麻烦，要采用multipart/form-data编码方式。我琢磨了很久才弄明白这个用Mathematica怎么弄。反正代码差不多是这样：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">URLFetch</span>[<span class="string">"https://api.weibo.com/2/statuses/upload.json"</span>, </span><br><span class="line"> <span class="string">"Method"</span> -&gt; <span class="string">"POST"</span>, </span><br><span class="line"> <span class="string">"MultipartData"</span> -&gt; &#123;&#123;"access_token", "", </span><br><span class="line">    ToCharacterCode@"你的access_token"&#125;, &#123;"status", "", </span><br><span class="line">    ToCharacterCode["@拇姬 ", </span><br><span class="line">     "UTF8"]&#125;, &#123;"pic\"; filename=\"mandrill.png", "image/png", </span><br><span class="line">    ImportString[</span><br><span class="line">     ExportString[ExampleData[&#123;"TestImage", "Mandrill"&#125;], <span class="string">"PNG"</span>], </span><br><span class="line">     <span class="string">"Binary"</span>]&#125;&#125;]</span><br></pre></td></tr></table></figure>
+<p>（不用UTF8编码的话可能会导致乱码。）</p>
+<p>发图片的时候要先导出成PNG或者别的图片格式再导入成二进制形式，还是挺麻烦的。不过如果是网上的图片或者电脑里本来有的图片，就省去了第一步。</p>
+<p><strong><em>（注意：由于2017年7月的微博接口更新，以上方法以不适用，无论发带图片或不带图片的微博都改用<a href="http://open.weibo.com/wiki/2/statuses/share" target="_blank" rel="noopener">statuses/share</a>接口，而且所发的内容有一些奇怪的限制。）</em></strong></p>
+<p>然后是网漫。我是通过网漫RSS来获取网漫。RSS是XML格式，Mathematica可以把XML格式文件导入成Mathematica的树状结构，然后模式匹配什么的用起来还是很方便的。</p>
+<p>麻烦就在于有些网漫的RSS在一个叫feeds.feedburner.com的网站上。这个网站被墙了……</p>
+<p>如果有好用的翻墙工具的话，这个不是问题。在Mathematica中可以方便地设置代理服务器：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UseInternetProxy[<span class="keyword">True</span>];</span><br><span class="line">SetInternetProxy[<span class="string">"HTTP"</span>, &#123;"代理服务器的地址", 端口&#125;];</span><br></pre></td></tr></table></figure>
+<p>读取完了RSS，在发微博的时候可以关掉代理：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UseInternetProxy[<span class="keyword">False</span>];</span><br></pre></td></tr></table></figure>
+<p>然后从RSS中读出内容、图片地址、链接、发表日期等信息。我把每次转发漫画时把其中最新的一期的发表日期存在一个叫做webcomics.mx的文件中，以后只转发这个日期之后的漫画，这样就可以做到不重不漏。</p>
+<p>下面是转发网漫的完整代码：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(* 请设成脚本所在的目录 *)</span></span><br><span class="line"><span class="keyword">SetDirectory</span>[</span><br><span class="line">  <span class="keyword">FromCharacterCode</span>[</span><br><span class="line">   <span class="keyword">ToCharacterCode</span>@<span class="string">"/home/alephalpha/文档/马甲与小号/WebComics/"</span>, <span class="string">"UTF8"</span>]];</span><br><span class="line"></span><br><span class="line">accessToken = <span class="string">"████不████给████你████看████"</span>;</span><br><span class="line">appURL = <span class="string">" http://example.com"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">(* 请根据所使用的翻墙软件修改此处的参数 *)</span></span><br><span class="line">SetInternetProxy[<span class="string">"HTTP"</span>, &#123;"127.0.0.1", 8087&#125;];</span><br><span class="line">ProxyImport[url_, options___] := <span class="keyword">Module</span>[&#123;data&#125;,</span><br><span class="line">   UseInternetProxy[<span class="keyword">True</span>];</span><br><span class="line">   data = <span class="keyword">Import</span>[url, options];</span><br><span class="line">   UseInternetProxy[<span class="keyword">False</span>];</span><br><span class="line">   data];</span><br><span class="line"></span><br><span class="line"><span class="comment">(* 上传图片，发布微博，并记录原漫画的发布时间 *)</span></span><br><span class="line">Post[name_][pubDate_, title_, link_, image_String] :=  </span><br><span class="line">  <span class="keyword">URLFetch</span>[<span class="string">"https://api.weibo.com/2/statuses/share.json"</span>,</span><br><span class="line">   <span class="string">"Method"</span> -&gt; <span class="string">"POST"</span>,</span><br><span class="line">   <span class="string">"MultipartData"</span> -&gt; &#123;&#123;"access_token", "",</span><br><span class="line">      ToCharacterCode@accessToken&#125;,</span><br><span class="line">     &#123;"status", "",</span><br><span class="line">      ToCharacterCode[</span><br><span class="line">       "【" &lt;&gt; name &lt;&gt; "】" &lt;&gt; link &lt;&gt; " " &lt;&gt; title &lt;&gt; appURL,</span><br><span class="line">       "UTF8"]&#125;,</span><br><span class="line">     &#123;"pic\"; filename=\"" &lt;&gt; StringDelete[image, ___ ~~ "/"],</span><br><span class="line">      "image/" &lt;&gt; StringDelete[image, ___ ~~ "."], </span><br><span class="line">      Import[image, "Binary"]&#125;&#125;,</span><br><span class="line">   <span class="string">"StoreCookies"</span> -&gt; <span class="keyword">False</span>];</span><br><span class="line"></span><br><span class="line">Post[name_][pubDate_, title_, link_, image_Integer: <span class="number">1</span>] :=</span><br><span class="line">  Post[name][pubDate, title, link, </span><br><span class="line">   <span class="keyword">Import</span>[link, <span class="string">"ImageLinks"</span>][[image]]];</span><br><span class="line"></span><br><span class="line"><span class="comment">(* 根据 pattern 来从 RSS 中获取信息，并用 Post 函数发布微博 *)</span></span><br><span class="line">ShareWebComics[name_, rss_, pattern_] :=</span><br><span class="line">  <span class="keyword">Module</span>[&#123;data&#125;,</span><br><span class="line">   data = <span class="keyword">Sort</span>[</span><br><span class="line">     <span class="keyword">Select</span>[<span class="keyword">Cases</span>[ProxyImport[rss, <span class="string">"XML"</span>], pattern, &#123;0, Infinity&#125;],</span><br><span class="line">      <span class="keyword">First</span>@# &gt; Lookup[pubDates, name, <span class="number">0</span>] &amp;]];</span><br><span class="line">   Post[name] @@@ data;</span><br><span class="line">   pubDates[name] = <span class="keyword">Max</span>[Lookup[pubDates, name, <span class="number">0</span>], <span class="keyword">First</span> /@ data];];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">Get</span>[<span class="string">"webcomics.mx"</span>];</span><br><span class="line"></span><br><span class="line">ShareWebComics[<span class="string">"xkcd"</span>, <span class="string">"http://xkcd.com/rss.xml"</span>,</span><br><span class="line">  <span class="keyword">XMLElement</span>[<span class="string">"item"</span>, &#123;&#125;,</span><br><span class="line">    &#123;XMLElement["title", &#123;&#125;, &#123;title_&#125;],</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"link"</span>, &#123;&#125;, &#123;link_&#125;],</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"description"</span>, &#123;&#125;, &#123;description_&#125;],</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"pubDate"</span>, &#123;&#125;, &#123;pubDate_&#125;], ___&#125;] :&gt;</span><br><span class="line">   &#123;AbsoluteTime@StringDrop[pubDate, -5], title, link,</span><br><span class="line">    First@</span><br><span class="line">     StringCases[description, </span><br><span class="line">      "&lt;img src=\"" ~~ Shortest[src__] ~~ "\"" ~~ ___ :&gt; src]&#125;];</span><br><span class="line"></span><br><span class="line">ShareWebComics[<span class="string">"Buni"</span>, <span class="string">"http://www.bunicomic.com/feed/"</span>,</span><br><span class="line">  <span class="keyword">XMLElement</span>[<span class="string">"item"</span>, &#123;&#125;,</span><br><span class="line">    &#123;XMLElement["title", &#123;&#125;, &#123;"Buni"&#125;],</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"link"</span>, &#123;&#125;, &#123;link_&#125;], ___,</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"pubDate"</span>, &#123;&#125;, &#123;pubDate_&#125;], ___,</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"description"</span>, &#123;&#125;, &#123;description_&#125;], ___&#125;] :&gt;</span><br><span class="line">   &#123;AbsoluteTime@StringDrop[pubDate, -5], "", link,</span><br><span class="line">    First@StringCases[description,</span><br><span class="line">      "src=\"" ~~ Shortest[src__] ~~ "-150x150" ~~ Shortest[fmt__] ~~ </span><br><span class="line">        "\"" ~~ ___ :&gt;</span><br><span class="line">       src &lt;&gt; fmt]&#125;];</span><br><span class="line"></span><br><span class="line">ShareWebComics[<span class="string">"Optipess"</span>, <span class="string">"http://feeds.feedburner.com/Optipess?format=xml"</span>,</span><br><span class="line">  <span class="keyword">XMLElement</span>[<span class="string">"item"</span>, &#123;&#125;,</span><br><span class="line">    &#123;XMLElement["title", &#123;&#125;, &#123;title_&#125;], ___,</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"pubDate"</span>, &#123;&#125;, &#123;pubDate_&#125;], ___,</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"category"</span>, &#123;&#125;, &#123;"Comic"&#125;], ___,</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"description"</span>, &#123;&#125;, &#123;description_&#125;], ___,</span><br><span class="line">     <span class="keyword">XMLElement</span>[&#123;___, "origLink"&#125;, &#123;&#125;, &#123;link_&#125;], ___&#125;] :&gt;</span><br><span class="line">   &#123;AbsoluteTime@StringDrop[pubDate, -5], title, link,</span><br><span class="line">    First@StringCases[description,</span><br><span class="line">      "&lt;img src=\"" ~~ Shortest[src__] ~~ "\"" ~~ ___ :&gt; src]&#125;];</span><br><span class="line"></span><br><span class="line">ShareWebComics[<span class="string">"Buttersafe"</span>, <span class="string">"http://feeds.feedburner.com/Buttersafe?format=xml"</span>,</span><br><span class="line">  <span class="keyword">XMLElement</span>[<span class="string">"item"</span>, &#123;&#125;,</span><br><span class="line">    &#123;XMLElement["title", &#123;&#125;, &#123;title_&#125;], ___,</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"pubDate"</span>, &#123;&#125;, &#123;pubDate_&#125;], ___,</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"category"</span>, &#123;&#125;, &#123;"Comic"&#125;], ___,</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"description"</span>, &#123;&#125;, &#123;description_&#125;], ___,</span><br><span class="line">     <span class="keyword">XMLElement</span>[&#123;___, "origLink"&#125;, &#123;&#125;, &#123;link_&#125;], ___&#125;] :&gt;</span><br><span class="line">   &#123;AbsoluteTime@StringDrop[pubDate, -5], title, link,</span><br><span class="line">    First@StringCases[description,</span><br><span class="line">      "&lt;img src=\"" ~~ Shortest[src1__] ~~ "/rss" ~~ </span><br><span class="line">        Shortest[src2__] ~~ "RSS" ~~ Shortest[src3__] ~~ "\"" ~~ ___ :&gt;</span><br><span class="line">       src1 &lt;&gt; src2 &lt;&gt; src3]&#125;];</span><br><span class="line"></span><br><span class="line">ShareWebComics[<span class="string">"SMBC"</span>, <span class="string">"http://www.smbc-comics.com/rss.php"</span>,</span><br><span class="line">  <span class="keyword">XMLElement</span>[<span class="string">"item"</span>, &#123;&#125;,</span><br><span class="line">    &#123;XMLElement["title", &#123;&#125;, &#123;title_&#125;],</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"description"</span>, &#123;&#125;, &#123;description_&#125;],</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"link"</span>, &#123;&#125;, &#123;link_&#125;], ___,</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"pubDate"</span>, &#123;&#125;, &#123;pubDate_&#125;], ___&#125;] :&gt;</span><br><span class="line">   &#123;AbsoluteTime@StringDrop[pubDate, -5], StringDrop[title, 36], </span><br><span class="line">    link,</span><br><span class="line">    First@StringCases[description,</span><br><span class="line">      "&lt;img src=\"" ~~ Shortest[src__] ~~ "\"" ~~ ___ :&gt; src]&#125;];</span><br><span class="line"></span><br><span class="line">ShareWebComics[<span class="string">"SpikedMath"</span>, <span class="string">"http://feeds.feedburner.com/SpikedMath?format=xml"</span>,</span><br><span class="line">  <span class="keyword">XMLElement</span>[<span class="string">"entry"</span>, &#123;&#125;,</span><br><span class="line">    &#123;XMLElement["title", &#123;&#125;, &#123;title_&#125;], ___,</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"published"</span>, &#123;&#125;, &#123;pubDate_&#125;], ___,</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"content"</span>, &#123;___&#125;, &#123;description_&#125;], ___,</span><br><span class="line">     <span class="keyword">XMLElement</span>[&#123;___, "origLink"&#125;, &#123;&#125;, &#123;link_&#125;], ___&#125;] :&gt;</span><br><span class="line">   &#123;AbsoluteTime@pubDate, title, link,</span><br><span class="line">    First@StringCases[description,</span><br><span class="line">      "&lt;img src=\"" ~~ Shortest[src__] ~~ "\"" ~~ ___ :&gt; src]&#125;];</span><br><span class="line"></span><br><span class="line">ShareWebComics[<span class="string">"don't shoot the pianist"</span>, <span class="string">"http://euge.ca/feed/"</span>,</span><br><span class="line">  <span class="keyword">XMLElement</span>[<span class="string">"item"</span>, &#123;&#125;,</span><br><span class="line">    &#123;XMLElement["title", &#123;&#125;, &#123;title_&#125;],</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"link"</span>, &#123;&#125;, &#123;link_&#125;], ___,</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"pubDate"</span>, &#123;&#125;, &#123;pubDate_&#125;], ___&#125;] :&gt;</span><br><span class="line">   &#123;AbsoluteTime@StringDrop[pubDate, -5], title, link&#125;];</span><br><span class="line"></span><br><span class="line">ShareWebComics[<span class="string">"ExtraOrdinary"</span>, <span class="string">"http://www.exocomics.com/feed"</span>,</span><br><span class="line">  <span class="keyword">XMLElement</span>[<span class="string">"item"</span>, &#123;&#125;,</span><br><span class="line">    &#123;XMLElement["title", &#123;&#125;, &#123;title_&#125;],</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"link"</span>, &#123;&#125;, &#123;link_&#125;], ___,</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"pubDate"</span>, &#123;&#125;, &#123;pubDate_&#125;], ___,</span><br><span class="line">     <span class="keyword">XMLElement</span>[&#123;_, "encoded"&#125;, &#123;&#125;, &#123;description_&#125;], ___&#125;] :&gt;</span><br><span class="line">   &#123;AbsoluteTime@StringDrop[pubDate, -5], title, link,</span><br><span class="line">    First@StringCases[description,</span><br><span class="line">      "src=\"" ~~ Shortest[src1__] ~~ "/feed" ~~ Shortest[src2__] ~~ </span><br><span class="line">        "\"" ~~ ___ :&gt;</span><br><span class="line">       src1 &lt;&gt; <span class="string">"/comics"</span> &lt;&gt; src2]&#125;];</span><br><span class="line"></span><br><span class="line">ShareWebComics[<span class="string">"pbfcomics"</span>, <span class="string">"http://www.pbfcomics.com/feed/feed.xml"</span>,</span><br><span class="line">  <span class="keyword">XMLElement</span>[<span class="string">"entry"</span>, &#123;&#125;,</span><br><span class="line">    &#123;XMLElement["id", &#123;&#125;, &#123;link_&#125;],</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"title"</span>, &#123;_&#125;, &#123;title_&#125;],</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"updated"</span>, &#123;&#125;, &#123;updated_&#125;], ___,</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"summary"</span>, &#123;_&#125;, &#123;description_&#125;], ___&#125;] :&gt;</span><br><span class="line">   &#123;AbsoluteTime@updated, title, link,</span><br><span class="line">    First@StringCases[description,</span><br><span class="line">      " src=\"" ~~ Shortest[src__] ~~ "\"" ~~ ___ :&gt; src]&#125;];</span><br><span class="line"></span><br><span class="line">ShareWebComics[<span class="string">"Geek&amp;Poke"</span>, <span class="string">"http://feeds.feedburner.com/GeekAndPoke"</span>,</span><br><span class="line">  <span class="keyword">XMLElement</span>[<span class="string">"item"</span>, &#123;&#125;,</span><br><span class="line">    &#123;XMLElement["title", &#123;&#125;, &#123;title_&#125;], ___,</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"pubDate"</span>, &#123;&#125;, &#123;pubDate_&#125;], ___,</span><br><span class="line">     <span class="keyword">XMLElement</span>[<span class="string">"description"</span>, &#123;&#125;, &#123;description_&#125;], ___,</span><br><span class="line">     <span class="keyword">XMLElement</span>[&#123;___, "origLink"&#125;, &#123;&#125;, &#123;link_&#125;], ___&#125;] :&gt;</span><br><span class="line">   &#123;AbsoluteTime@StringDrop[pubDate, -5], title, link,</span><br><span class="line">    First@StringCases[description,</span><br><span class="line">      " data-image=\"" ~~ Shortest[src__] ~~ "\"" ~~ ___ :&gt; src]&#125;];</span><br><span class="line"></span><br><span class="line"><span class="keyword">DumpSave</span>[<span class="string">"webcomics.mx"</span>, pubDates];</span><br></pre></td></tr></table></figure>
+<p>第一次运行之前要先把<code>pubDates</code>设定成一个空的<a href="https://reference.wolfram.com/language/guide/Associations.html" target="_blank" rel="noopener">Association</a>：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pubDates = &lt;||&gt;</span><br></pre></td></tr></table></figure>
+<p>然后，如果用的是Linux，还可以把这段保存在一个Mathematica脚本中，然后用<a href="https://en.wikipedia.org/wiki/Cron" target="_blank" rel="noopener">cron</a>定时执行这个脚本，就可以做到自动转发了。</p>
+<p>就这样吧。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/1970/01/01/神庙/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/1970/01/01/神庙/" class="post-title-link" itemprop="url">神庙</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：1970-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="1970-01-01T00:00:00+08:00">1970-01-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 22:43:23" itemprop="dateModified" datetime="2019-03-12T22:43:23+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>神庙，在不同的语言里有着不同的名字：玛特丽扎<sup><a href="#fn_1" id="reffn_1">1</a></sup>，阿瓦琉斯<sup><a href="#fn_2" id="reffn_2">2</a></sup>，哈玛赞茨<sup><a href="#fn_3" id="reffn_3">3</a></sup>……但它最常见的一个名字还是神庙。</p>
+<p>在最早的时候，神庙确实是一座神庙。它最初的一批建造者是齐兹堡地区的一群邪教徒。因为是邪教，他们不敢公开地建造神殿和庙宇，只能用诗歌来表达对邪神的崇拜。在诗歌中也不敢提及邪神的名讳，甚至不敢描绘邪神的外貌。</p>
+<blockquote id="fn_1">
+<sup>1</sup>. 俄语 матрица<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. 芬兰语 avaruus<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_3">
+<sup>3</sup>. 亚美尼亚语 համացանց<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/1970/01/01/触手/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/1970/01/01/触手/" class="post-title-link" itemprop="url">触手</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：1970-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="1970-01-01T00:00:00+08:00">1970-01-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 22:43:23" itemprop="dateModified" datetime="2019-03-12T22:43:23+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>乌图人信仰的一神教，崇拜一位独一的真神——赫屠鲁（Xtulu）。</p>
+<p>随着乌图帝国的扩张，对赫屠鲁的信仰也被带到北土西方的每一个角落。使用各种不同语言的民族，用各种奇怪的发音来念诵赫屠鲁的名字。不同地区的艺术家也把赫屠鲁的形象描绘得千奇百怪。但有一点是不变的——触手。</p>
+<p>赫屠鲁的下巴上有触手，这是经书上写明了的。经书上还写了，它用泥土捏出最早的人类的时候，用的不是锋利的双爪，而是触手；它掀起飓风与洪水的时候，用的不是背上的双翼，而是触手；甚至在操纵天上的星辰的时候，用的也是触手。民间流传着这样一种说法：它的每一根触手，对应着天上的一个星座；当群星处在正确的位置之时，赫屠鲁便会重返人间。</p>
+<p>经书上也没有说清楚触手的数量，于是这成了教派纷争焦点：古老的三十六触手宗，新兴的七十二触手宗，帝国钦定的八十八触手宗，民间流传的一百触手宗，东方的一百零八触手宗，南土的八十一触手宗，被视为异端中的异端的一百三十七触手宗……</p>
+<p>触手是从哪里来的？</p>
+<p>北土出现过的其它神灵都没有触手。于是，神学家们宣称：这就是赫屠鲁是唯一的真神的证据，没有触手的都是伪神。</p>
+<p>不信神的萨满们当然不会接受这种解释。乌图人来自北土的最南方，于是他们很自然地把目光落到比北土的最南方更南的地方——南土。</p>
+<hr>
+<p>他们沿着乌图人扩张的历史，不难就追溯到了赫屠鲁信仰的源头——它来自于南土的一支渔民所信仰的海神。乌图人在与这些渔民的接触中接受了这个神灵，并把它与乌图人信仰的其它神灵的形象融合起来——它已变得面目全非，但经书上的一些故事还能在南土渔民的传说中找到原型；而且，它还保留着触手。</p>
+<p>但是，这位个南土的海神的触手又是从哪里来的呢？这些渔民没有自己的文字，对自己民族的历史也语焉不详。萨满们只能猜测，海神的触手是来自于某种海洋生物——也许是章鱼，也许是水母，也有可能是龙——如果对龙须进行某种夸张，看起来确实很像触手。</p>
+<p>但这一猜测很快就被推翻——随着北土人接触到南土更多的民族，他们发现了更多长着触手的神灵。这些民族的语言、文化和生活的环境各不相同，相互之间也没有什么接触，有些民族生活的环境里根本没有肉眼可见的任何长着触手的生物。这些神灵没有任何触手之外的共同点，甚至触手长的部位也各不相同。有的民族还同时信仰多位长有触手的神灵，并且相信，触手越多的神灵越强大。</p>
+<p>北土的萨满和人类学家组成了一支探险队，决定深入南土深处，一探究竟。越是往南，他们发现了越多的触手神灵，神灵身上的触手也越来越多。崇拜的仪式变得越发诡异，神灵的形象也越发离奇，已经没有了任何人类和人们所熟悉的动物的特征。谁能想到，在南土的丛林里的一些与世隔绝的部落，在木头上雕刻出的粗糙的神像，却能远远超出北土最疯狂的艺术家的想象？</p>
+<p>但探险队的成员一直没有把这些触手怪当成真实的存在。直到他们继续往南，在接近了南土的中心的地方发现了一种新的信仰形式——这里的人信仰的不是别的神灵，而是触手本身。而且，在当地人的宗教仪式上，探险队员们看到了活生生的触手。（待续）</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">AlephAlpha</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AlephAlpha</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+  
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

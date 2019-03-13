@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<meta name="LifeViewer" content="rle pre 37 hide limit">
+<script src="/js/src/lv-plugin.js"></script>
+
+
+  <meta name="description" content="在之前的《那些奇奇怪怪的编程语言》一文里，我介绍了 Esolang 的概念，以及几种 Esolang 的例子。当然，这种事情自己动手更有意思。于是我也设计了一种编程语言，叫做 DipDup。 DipDup 是一种基于堆栈的编程语言。它的设计参考了另外两种基于堆栈的编程语言：Underload 和 Joy。 Underload 是一种极简主义的编程语言，由 Ais523 设计于2006年。它只有七条">
+<meta name="keywords" content="简书搬运,Esolang">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DipDup">
+<meta property="og:url" content="https://AlephAlpha.github.io/2017/01/20/DipDup/index.html">
+<meta property="og:site_name" content="锑星杂记">
+<meta property="og:description" content="在之前的《那些奇奇怪怪的编程语言》一文里，我介绍了 Esolang 的概念，以及几种 Esolang 的例子。当然，这种事情自己动手更有意思。于是我也设计了一种编程语言，叫做 DipDup。 DipDup 是一种基于堆栈的编程语言。它的设计参考了另外两种基于堆栈的编程语言：Underload 和 Joy。 Underload 是一种极简主义的编程语言，由 Ais523 设计于2006年。它只有七条">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-12T14:56:45.085Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DipDup">
+<meta name="twitter:description" content="在之前的《那些奇奇怪怪的编程语言》一文里，我介绍了 Esolang 的概念，以及几种 Esolang 的例子。当然，这种事情自己动手更有意思。于是我也设计了一种编程语言，叫做 DipDup。 DipDup 是一种基于堆栈的编程语言。它的设计参考了另外两种基于堆栈的编程语言：Underload 和 Joy。 Underload 是一种极简主义的编程语言，由 Ais523 设计于2006年。它只有七条">
+
+
+
+
+
+
+  <link rel="canonical" href="https://AlephAlpha.github.io/2017/01/20/DipDup/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>DipDup | 锑星杂记</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">锑星杂记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">AlephAlpha 写的一些乱七八糟的东西</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2017/01/20/DipDup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">DipDup
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-20 16:44:00" itemprop="dateCreated datePublished" datetime="2017-01-20T16:44:00+08:00">2017-01-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 22:56:45" itemprop="dateModified" datetime="2019-03-12T22:56:45+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在之前的<a href="http://www.jianshu.com/p/ed929cf72312" target="_blank" rel="noopener">《那些奇奇怪怪的编程语言》</a>一文里，我介绍了 Esolang 的概念，以及几种 Esolang 的例子。当然，这种事情自己动手更有意思。于是我也设计了一种编程语言，叫做 DipDup。</p>
+<p><strong>DipDup</strong> 是一种基于堆栈的编程语言。它的设计参考了另外两种基于堆栈的编程语言：<a href="http://esolangs.org/wiki/Underload" target="_blank" rel="noopener">Underload</a> 和 <a href="http://www.latrobe.edu.au/humanities/research/research-projects/past-projects/joy-programming-language" target="_blank" rel="noopener">Joy</a>。</p>
+<p><a href="http://esolangs.org/wiki/Underload" target="_blank" rel="noopener">Underload</a> 是一种极简主义的编程语言，由 <a href="http://esolangs.org/wiki/User:Ais523" target="_blank" rel="noopener">Ais523</a> 设计于2006年。它只有七条指令（或者是八条，如果把列表也算作一种指令的话）。除了表示输出的<code>S</code>之外，都是一些简单的堆栈操作。Underload 是图灵完备的。如果你设计了一种基于堆栈的编程语言，想要证明它是图灵完备的，只需要用它实现一下 Underload 里的这些指令就行了。</p>
+<p><a href="https://en.wikipedia.org/wiki/Joy_(programming_language" target="_blank" rel="noopener">Joy</a>) 由 Manfred von Thun 设计于2001年。它不是 Esolang。除了基于堆栈（确切地说，是 <a href="https://en.wikipedia.org/wiki/Concatenative_programming_language" target="_blank" rel="noopener">Concatenative</a>，这个词不知道怎么翻译）以外，它没有太多奇怪的地方，一门普通的编程语言该实现的功能它都有实现。不过 Manfred von Thun 设计这门语言主要是出于学术用途，实际使用的人不多。</p>
+<p>DipDup 可以看作是 Joy 的一个子集。我从 Joy 的两百多条指令当中选取了四条：<code>dip</code>，<code>dup</code>，<code>pop</code> 和 <code>cons</code>，分别把它们记作 <code>^</code>，<code>_</code>，<code>!</code> 和 <code>:</code>。DipDup 这个名字就是从这里来的。</p>
+<p>DipDup 是一种基于堆栈的语言，它的每一条指令都可以看作是一个把堆栈映成堆栈的函数。把几条指令写成一串，相当于是函数的复合，得到的依然是一个把堆栈映成堆栈的函数。</p>
+<p>四条指令的介绍如下：</p>
+<ul>
+<li><p><code>dup</code><br><code>dup</code> 指的是 duplicate，复制。如果原先的堆栈是 <code>...ba</code>（堆栈的顶端写在右边），执行操作后堆栈变成 <code>...baa</code>。在 DipDup 当中，<code>dup</code> 写成 <code>_</code>。</p>
+</li>
+<li><p><code>pop</code><br>不同于别的编程语言里的 <code>pop</code>，它把堆栈顶上的东西弹出之后就扔掉了，不会返回也不会输出。如果原先的堆栈是 <code>...ba</code>，执行操作后堆栈变成 <code>...b</code>。在 DipDup 当中，<code>pop</code> 写成 <code>!</code>。</p>
+</li>
+<li><p><code>cons</code><br>类似于 Lisp 里的 <code>cons</code> 和 Haskell 里的 <code>:</code>。如果原先的堆栈是 <code>...b[a]</code>，执行操作后堆栈变成 <code>...[ba]</code>。在 DipDup 当中，<code>cons</code> 写成 <code>:</code>。</p>
+</li>
+<li><p><code>dip</code><br>这个有点复杂，不过它是 DipDup 里最关键的一条指令。如果原先的堆栈是 <code>...cb[a]</code>，它会先弹出 <code>[a]</code> 和 <code>b</code>，然后把 <code>[a]</code> 当成一个程序作用在堆栈 <code>...c</code> 上，最后把 <code>b</code> 压回堆栈。在 DipDup 当中，<code>dip</code> 写成 <code>^</code>。</p>
+</li>
+</ul>
+<p>除了四条指令之外，还有列表。一个列表就是把若干个指令和列表写成一串，中间不加任何分隔符，然后用方括号 <code>[</code> 和 <code>]</code> 括起来。比如说，<code>[]</code> 就是一个列表，<code>[[_:]_:]</code> 也是一个列表。在程序中，列表可以看作是一个指令，其作用是把这个列表本身压入堆栈。一个列表也可以看作是一段程序（是的，代码即数据），或者一个函数，可以作用在堆栈上（比如说，借助 <code>dip</code> 指令）。</p>
+<p>初始的堆栈由无穷多个空列表组成——采用无穷堆栈是因为我懒得处理堆栈为空的情况。在程序运行完了之后，输出的是堆栈最顶上的东西。</p>
+<p>举个最简单的例子，这是一个 <a href="https://en.wikipedia.org/wiki/Quine_(computing" target="_blank" rel="noopener">Quine</a>)，它输出的结果和程序本身一模一样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[_:]_:</span><br></pre></td></tr></table></figure>
+<p>然后问题来了：DipDup 是图灵完备的吗？</p>
+<p>前面说过，要证明一个基于堆栈的编程语言是图灵完备的，只需要用它实现一下 Underload 里的全部指令就行了。</p>
+<p>除了列表之外， Underload 只有7种指令。其中 <code>S</code>表示输出，对图灵完备与否没有影响；<code>:</code> 就相当于 DipDup 里的 <code>_</code>（<code>dup</code>）；<code>!</code> 就相当于 DipDup 里的 <code>!</code>（<code>pop</code>）；<code>a</code> 表示用括号把堆栈最顶上的东西括起来，这个在 DipDup 里用 <code>[]:</code> 就能实现；<code>~</code> 表示交换堆栈最顶上的两个东西，相当于 Joy 里的 <code>swap</code>，这个在 DipDup 里可以用 <code>[]:^</code> 实现；<code>^</code> 表示弹出堆栈最顶上的东西（必须是个列表），并把它作为一个程序作用在剩下的堆栈上，相当于 Joy 里的 <code>i</code>，这个在 DipDup 里可以用 <code>[]^!</code> 或者 <code>_^!</code> 实现。</p>
+<p>于是，我们只剩下一条指令没有实现：<code>*</code>。它表示的是弹出堆栈最顶上的两个东西（两个都是列表；事实上，无论是 Underload 还是 DipDup，堆栈里的东西都只有列表），把它们串接成一个列表，再压回堆栈。如果原先的堆栈是 <code>...[b][a]</code>，执行操作后堆栈变成 <code>...[ba]</code>。看起来与 DipDup 里的 <code>cons</code> 很像。但遗憾的是，这个用 DipDup 是实现不了的。</p>
+<p>不过，我们可以换一条思路，先来看看 Underload 的图灵完备性是怎样证明的。<a href="https://esolangs.org/wiki/Underload#Unlambda_to_Underload" target="_blank" rel="noopener">Esolang Wiki 里给出的办法</a>是证明所有的 <a href="https://esolangs.org/wiki/Unlambda" target="_blank" rel="noopener">Unlambda</a> 代码都可以直接翻译成 Underload。Unlambda 是一种基于组合子逻辑的 Esolang，它是图灵完备的，因此 Underload 也是图灵完备的。</p>
+<p>因此，我们也可以试着把 Unlambda 翻译成 DipDup。事实上，不需要翻译整个 Unlambda，<a href="https://esolangs.org/wiki/S_and_K_Turing-completeness_proof" target="_blank" rel="noopener">只需要实现 <code>S</code> 和 <code>K</code> 这两个组合子就够了</a>（当然，还需要用上 Underload 里的 <code>^</code>，也就是 DipDup 里的 <code>_^!</code>）。它们的实现不算复杂：</p>
+<ul>
+<li><code>K</code> 组合子</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[[!]^]:]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>S</code> 组合子</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[[[[_]^^]^_^!_^!]::]:]</span><br></pre></td></tr></table></figure>
+<p>具体的推导我就不写了。</p>
+<p>最后附上用 Haskell 写的解释器：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> System.Console.Haskeline</span><br><span class="line"><span class="keyword">import</span> Text.ParserCombinators.ReadP</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">data</span> <span class="type">Term</span> = <span class="type">C</span> <span class="type">Char</span> | <span class="type">E</span> <span class="type">Expr</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">type</span> <span class="type">Expr</span> = [<span class="type">Term</span>]</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">instance</span> <span class="type">Show</span> <span class="type">Term</span> <span class="keyword">where</span></span></span><br><span class="line">    show (<span class="type">C</span> c) = [c]</span><br><span class="line">    show (<span class="type">E</span> e) = <span class="string">"["</span> ++ show e ++ <span class="string">"]"</span></span><br><span class="line">    showList = (++) . concatMap show</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">instance</span> <span class="type">Read</span> <span class="type">Term</span> <span class="keyword">where</span></span></span><br><span class="line">    readsPrec = const $ readP_to_S readTerm</span><br><span class="line">    readList = readP_to_S readExpr</span><br><span class="line"></span><br><span class="line"><span class="title">readTerm</span> :: <span class="type">ReadP</span> <span class="type">Term</span></span><br><span class="line"><span class="title">readTerm</span> = (<span class="type">C</span> &lt;$&gt; satisfy (`notElem` <span class="string">"[]"</span>)) +++ (<span class="type">E</span> &lt;$&gt; between (char '[') (char ']') readExpr)</span><br><span class="line"></span><br><span class="line"><span class="title">readExpr</span> :: <span class="type">ReadP</span> <span class="type">Expr</span></span><br><span class="line"><span class="title">readExpr</span> = many readTerm</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">data</span> <span class="type">Stack</span> = <span class="type">Expr</span> :-: <span class="type">Stack</span></span></span><br><span class="line"><span class="keyword">infixr</span> <span class="number">5</span> :-:</span><br><span class="line"></span><br><span class="line"><span class="title">initStack</span> :: <span class="type">Stack</span></span><br><span class="line"><span class="title">initStack</span> = [] :-: initStack</span><br><span class="line"></span><br><span class="line"><span class="title">top</span> :: <span class="type">Stack</span> -&gt; <span class="type">Expr</span></span><br><span class="line"><span class="title">top</span> (x :-: _) = x</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">type</span> <span class="type">Func</span> = <span class="type">Stack</span> -&gt; <span class="type">Stack</span></span></span><br><span class="line"></span><br><span class="line"><span class="title">evalTerm</span> :: <span class="type">Term</span> -&gt; <span class="type">Func</span></span><br><span class="line"><span class="title">evalTerm</span> (<span class="type">E</span> e) = (e :-:)</span><br><span class="line"><span class="title">evalTerm</span> (<span class="type">C</span> '^') = dip</span><br><span class="line"><span class="title">evalTerm</span> (<span class="type">C</span> '_') = dup</span><br><span class="line"><span class="title">evalTerm</span> (<span class="type">C</span> '!') = pop</span><br><span class="line"><span class="title">evalTerm</span> (<span class="type">C</span> ':') = cons</span><br><span class="line"><span class="title">evalTerm</span> _ = id</span><br><span class="line"></span><br><span class="line"><span class="title">evalExpr</span> :: <span class="type">Expr</span> -&gt; <span class="type">Func</span></span><br><span class="line"><span class="title">evalExpr</span> = flip . foldl $ flip evalTerm</span><br><span class="line"></span><br><span class="line"><span class="title">eval</span> :: <span class="type">Expr</span> -&gt; <span class="type">Expr</span></span><br><span class="line"><span class="title">eval</span> = top . flip evalExpr initStack</span><br><span class="line"></span><br><span class="line"><span class="title">dip</span> :: <span class="type">Func</span></span><br><span class="line"><span class="title">dip</span> (x :-: y :-: s) = y :-: evalExpr x s</span><br><span class="line"></span><br><span class="line"><span class="title">dup</span> :: <span class="type">Func</span></span><br><span class="line"><span class="title">dup</span> (x :-: s) = x :-: x :-: s</span><br><span class="line"></span><br><span class="line"><span class="title">pop</span> :: <span class="type">Func</span></span><br><span class="line"><span class="title">pop</span> (_ :-: s) = s</span><br><span class="line"></span><br><span class="line"><span class="title">cons</span> :: <span class="type">Func</span></span><br><span class="line"><span class="title">cons</span> (x :-: y :-: s) = (<span class="type">E</span> y : x) :-: s</span><br><span class="line"></span><br><span class="line"><span class="title">rep</span> :: <span class="type">String</span> -&gt; <span class="type">String</span></span><br><span class="line"><span class="title">rep</span> input = <span class="keyword">case</span> [x | (x, <span class="string">""</span>) &lt;- reads input] <span class="keyword">of</span></span><br><span class="line">    [x] -&gt; show $ eval x</span><br><span class="line">    _ -&gt; error <span class="string">"parse error"</span></span><br><span class="line"></span><br><span class="line"><span class="title">repl</span> :: <span class="type">InputT</span> <span class="type">IO</span> ()</span><br><span class="line"><span class="title">repl</span> = <span class="keyword">do</span></span><br><span class="line">    minput &lt;- getInputLine <span class="string">"&gt; "</span></span><br><span class="line">    <span class="keyword">case</span> minput <span class="keyword">of</span></span><br><span class="line">        <span class="type">Nothing</span> -&gt; return ()</span><br><span class="line">        <span class="type">Just</span> input -&gt; <span class="keyword">do</span></span><br><span class="line">            catch (outputStrLn $ rep input) $ \e -&gt; outputStrLn $ show (e :: <span class="type">SomeException</span>)</span><br><span class="line">            repl</span><br><span class="line"></span><br><span class="line"><span class="title">main</span> :: <span class="type">IO</span> ()</span><br><span class="line"><span class="title">main</span> = runInputT defaultSettings repl</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/简书搬运/" rel="tag"># 简书搬运</a>
+          
+            <a href="/tags/Esolang/" rel="tag"># Esolang</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/06/Rime-西里尔拼音输入方案/" rel="next" title="Rime-西里尔拼音输入方案">
+                <i class="fa fa-chevron-left"></i> Rime-西里尔拼音输入方案
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/23/毛利语中化学元素的名称/" rel="prev" title="毛利语中化学元素的名称">
+                毛利语中化学元素的名称 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">AlephAlpha</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AlephAlpha</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

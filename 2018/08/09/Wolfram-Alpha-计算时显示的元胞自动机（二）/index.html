@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<meta name="LifeViewer" content="rle pre 37 hide limit">
+<script src="/js/src/lv-plugin.js"></script>
+
+
+  <meta name="description" content="这篇文章没什么内容，只是列举一些我们找到的图样。 对随机的开局，这个元胞自动机也有可能会稳定下来，但大部分情况下会保持一种乱糟糟的状态，缓慢地无限增长。按照 Wolfram 对元胞自动机的分类，它应该算是 Chaotic 的。 静物静物有很多。由于 3457/357/5 规则的静物在 B3457/S357 规则里也是静物，因此可以用《用 Mathematica 搜索生命游戏中的静物（二）》里的代码">
+<meta name="keywords" content="Mathematica,简书搬运,生命游戏">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wolfram-Alpha-计算时显示的元胞自动机（二）">
+<meta property="og:url" content="https://AlephAlpha.github.io/2018/08/09/Wolfram-Alpha-计算时显示的元胞自动机（二）/index.html">
+<meta property="og:site_name" content="锑星杂记">
+<meta property="og:description" content="这篇文章没什么内容，只是列举一些我们找到的图样。 对随机的开局，这个元胞自动机也有可能会稳定下来，但大部分情况下会保持一种乱糟糟的状态，缓慢地无限增长。按照 Wolfram 对元胞自动机的分类，它应该算是 Chaotic 的。 静物静物有很多。由于 3457/357/5 规则的静物在 B3457/S357 规则里也是静物，因此可以用《用 Mathematica 搜索生命游戏中的静物（二）》里的代码">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-1bc8bce922f8b565.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-25deee0c002d6dc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-760cd55eaffb64d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-3363bf7535f1203b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-904dcc9aeb9e4937.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-62111e35e0876878.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-125f380ff6031184.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-d5c8dc605cf79ece.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-e2bd05006fb2a43d.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-11cbeb01f814556d.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-384abf84f69cdcbe.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-b5c8a90eb7a50df5.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-9624a7a1517d5a2b.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-09ebfc7ef69595e5.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-43a2783d8ff68fa1.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-1dfe0f3e6ff71670.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-db765d792a94b155.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-ed213bb8831e3a5e.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-3b470a6e30a182cb.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-0ffae596f2ff1ee1.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1770625-59b8c46861fcb995.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2019-03-12T15:52:53.761Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Wolfram-Alpha-计算时显示的元胞自动机（二）">
+<meta name="twitter:description" content="这篇文章没什么内容，只是列举一些我们找到的图样。 对随机的开局，这个元胞自动机也有可能会稳定下来，但大部分情况下会保持一种乱糟糟的状态，缓慢地无限增长。按照 Wolfram 对元胞自动机的分类，它应该算是 Chaotic 的。 静物静物有很多。由于 3457/357/5 规则的静物在 B3457/S357 规则里也是静物，因此可以用《用 Mathematica 搜索生命游戏中的静物（二）》里的代码">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1770625-1bc8bce922f8b565.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+
+  <link rel="canonical" href="https://AlephAlpha.github.io/2018/08/09/Wolfram-Alpha-计算时显示的元胞自动机（二）/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Wolfram-Alpha-计算时显示的元胞自动机（二） | 锑星杂记</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">锑星杂记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">AlephAlpha 写的一些乱七八糟的东西</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2018/08/09/Wolfram-Alpha-计算时显示的元胞自动机（二）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Wolfram-Alpha-计算时显示的元胞自动机（二）
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-09 13:20:00" itemprop="dateCreated datePublished" datetime="2018-08-09T13:20:00+08:00">2018-08-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 23:52:53" itemprop="dateModified" datetime="2019-03-12T23:52:53+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这篇文章没什么内容，只是列举一些我们找到的图样。</p>
+<p>对随机的开局，这个元胞自动机也有可能会稳定下来，但大部分情况下会保持一种乱糟糟的状态，缓慢地无限增长。按照 Wolfram 对元胞自动机的分类，它应该算是 Chaotic 的。</p>
+<h1 id="静物"><a href="#静物" class="headerlink" title="静物"></a>静物</h1><p>静物有很多。由于 <code>3457/357/5</code> 规则的静物在 <code>B3457/S357</code> 规则里也是静物，因此可以用<a href="https://www.jianshu.com/p/7c0b4c685722" target="_blank" rel="noopener">《用 Mathematica 搜索生命游戏中的静物（二）》</a>里的代码来搜索。这样可以找到很大的静物，比如说：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-1bc8bce922f8b565.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>因此我无法，也没有必要去列举找到的所有静物。</p>
+<p>最常见的静物是方块：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-25deee0c002d6dc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 2, y = 2, rule = 3457/357/5</span><br><span class="line">2A$2A!</span><br></pre></td></tr></table></figure>
+<p>或者两个方块相连：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-760cd55eaffb64d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 4, y = 3, rule = 3457/357/5</span><br><span class="line">2.2A$4A$2A!</span><br></pre></td></tr></table></figure>
+<p>或者三个：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-3363bf7535f1203b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 5, y = 4, rule = 3457/357/5</span><br><span class="line">2.2A$2.2A$2A.2A$2A.2A!</span><br></pre></td></tr></table></figure>
+<p>或者更多……</p>
+<p>最常见的一个不是由多个方块组成的静物是这个：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-904dcc9aeb9e4937.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 5, y = 5, rule = 3457/357/5</span><br><span class="line">2.2A$2.2A$2A.2A$3A.A$2.2A!</span><br></pre></td></tr></table></figure>
+<p>也有一些稍大一点的对称的静物，比如说：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-62111e35e0876878.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = 10, y = 10, rule = 3457/357/5</span><br><span class="line">4.2A$2.6A$.A.A2.A.A$.2A.2A.2A$2A.A2.A.2A$2A.A2.A.2A$.2A.2A.2A$.A.A2.A</span><br><span class="line">.A$2.6A$4.2A!</span><br></pre></td></tr></table></figure>
+<h1 id="振荡子"><a href="#振荡子" class="headerlink" title="振荡子"></a>振荡子</h1><p>由于一个活的细胞至少要过4代才能死掉，因此不存在周期小于5的振荡子。</p>
+<p>目前发现的振荡子不多，而且没法转换成 Life-like 的情形来搜索。</p>
+<p>最常见的振荡子是这个周期8的转圈圈：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-125f380ff6031184.gif?imageMogr2/auto-orient/strip" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 3, y = 3, rule = 3457/357/5</span><br><span class="line">3A$B2A$.CD!</span><br></pre></td></tr></table></figure>
+<p>第二常见的是这个周期26的梭：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-d5c8dc605cf79ece.gif?imageMogr2/auto-orient/strip" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 5, y = 5, rule = 3457/357/5</span><br><span class="line">2.A$.2AB$3ADC$.2AB$2.A!</span><br></pre></td></tr></table></figure>
+<p>然后还找到这个周期15的：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-e2bd05006fb2a43d.gif?imageMogr2/auto-orient/strip" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 9, y = 9, rule = 3457/357/5</span><br><span class="line">3.3A$3.3A$3.ACA$3A.A.3A$2ACA.AC2A$3A.A.3A$3.ACA$3.3A$3.3A!</span><br></pre></td></tr></table></figure>
+<p>以及这个周期18的：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-11cbeb01f814556d.gif?imageMogr2/auto-orient/strip" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 5, y = 5, rule = 3457/357/5</span><br><span class="line">2.B$3AC$2ADAB$3AC$2.B!</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.jianshu.com/u/f0e7b9b2c7e1" target="_blank" rel="noopener">Hunting</a> 发现，两个梭相撞有时也能得到新的振荡子，比如说：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-384abf84f69cdcbe.gif?imageMogr2/auto-orient/strip" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 13, y = 6, rule = 3457/357/5</span><br><span class="line">2.A$.B2A6.A$CD3A4.2AB$.B2A4.3ADC$2.A6.2AB$10.A!</span><br></pre></td></tr></table></figure>
+<p>此外，<a href="http://www.conwaylife.com/forums/viewtopic.php?f=11&amp;t=2409&amp;p=68221#p68221" target="_blank" rel="noopener">ConwayLife.com</a> 上的 <a href="http://www.conwaylife.com/forums/memberlist.php?mode=viewprofile&amp;u=1857" target="_blank" rel="noopener">danny</a> 发现了一个周期 10 的振荡子：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-b5c8a90eb7a50df5.gif?imageMogr2/auto-orient/strip" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 9, y = 9, rule = 3457/357/5</span><br><span class="line">4.DC$4.3A$3.2AB.A$2.A.A.BAC$D3A.3AD$CAB.A.A$.A.B2A$2.3A$3.CD!</span><br></pre></td></tr></table></figure>
+<p>目前找到的就这么多。</p>
+<h1 id="飞船"><a href="#飞船" class="headerlink" title="飞船"></a>飞船</h1><p>已经找到好几架飞船，但速度都是c/2。</p>
+<p>最常见的飞船是这个周期2的：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-9624a7a1517d5a2b.gif?imageMogr2/auto-orient/strip" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 5, y = 4, rule = 3457/357/5</span><br><span class="line">.CA$DB3A$2.C2A$.DB2A!</span><br></pre></td></tr></table></figure>
+<p>以及这个，也是周期2：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-09ebfc7ef69595e5.gif?imageMogr2/auto-orient/strip" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 5, y = 6, rule = 3457/357/5</span><br><span class="line">.CA$DB3A$2.C2A$2.C2A$DB3A$.CA!</span><br></pre></td></tr></table></figure>
+<p>这个不知道该算一架飞船还是两架：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-43a2783d8ff68fa1.gif?imageMogr2/auto-orient/strip" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 5, y = 9, rule = 3457/357/5</span><br><span class="line">.CA$DB3A$2.C2A$.DB2A2$.DB2A$2.C2A$DB3A$.CA!</span><br></pre></td></tr></table></figure>
+<p>别的飞船的头部都和上面这些飞船一样，只是尾部有些区别。</p>
+<p>比如说这个周期4的：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-1dfe0f3e6ff71670.gif?imageMogr2/auto-orient/strip" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 8, y = 6, rule = 3457/357/5</span><br><span class="line">4.CA$.BADB3A$BC2A.C2A$BC2A.C2A$.BADB3A$4.CA!</span><br></pre></td></tr></table></figure>
+<p>这个也是周期4：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-db765d792a94b155.gif?imageMogr2/auto-orient/strip" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 9, y = 9, rule = 3457/357/5</span><br><span class="line">5.CA$2.BADB3A$.AC2A.C2A$DB3ADB2A2$DB3ADB2A$.AC2A.C2A$2.BADB3A$5.CA!</span><br></pre></td></tr></table></figure>
+<p>还是周期4：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-ed213bb8831e3a5e.gif?imageMogr2/auto-orient/strip" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = 9, y = 12, rule = 3457/357/5</span><br><span class="line">5.CA$4.DB3A$3.CA.C2A$.CD2A.C2A$.BD6A$BC2A2DA$BC2A2DA$.BD6A$.CD2A.C2A$</span><br><span class="line">3.CA.C2A$4.DB3A$5.CA!</span><br></pre></td></tr></table></figure>
+<p>最后这个是周期8：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-3b470a6e30a182cb.gif?imageMogr2/auto-orient/strip" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 8, y = 10, rule = 3457/357/5</span><br><span class="line">4.CA$3.DB3A$2.CA.C2A$DABA.C2A$8A$.2B2DA$ABA2DA$AC6A$BA.A.C2A$4.DB2A!</span><br></pre></td></tr></table></figure>
+<p>目前找到的就这些。</p>
+<h1 id="Puffer"><a href="#Puffer" class="headerlink" title="Puffer"></a>Puffer</h1><p>Puffer 这个词不知道怎么翻译……河豚？蒸汽机车？喷气者？</p>
+<p>目前发现的好看的 puffer 只有两个。</p>
+<p>这个周期是28：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-0ffae596f2ff1ee1.gif?imageMogr2/auto-orient/strip" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = 8, y = 18, rule = 3457/357/5</span><br><span class="line">4.CA$3.DB3A$2.CA.C2A$DABA.C2A$.AB5A$2.A2DA$2.A2DA$.7A$2ADA.C2A$2ADA.C</span><br><span class="line">2A$.7A$2.A2DA$2.A2DA$.AB5A$DABA.C2A$2.CA.C2A$3.DB3A$4.CA!</span><br></pre></td></tr></table></figure>
+<p>这个周期是64：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1770625-59b8c46861fcb995.gif?imageMogr2/auto-orient/strip" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = 13, y = 24, rule = 3457/357/5</span><br><span class="line">9.CA$8.DB3A$3.DCA.CA.C2A$2.C.5A.C2A$2.DB3AC5A$2.C2.2BA2DA$3.4AB2DA$.D</span><br><span class="line">A.9A$2.2A.A2DA.C2A$.2AC2A2DA.C2A$D2A2C8A$D2A2CA2C2DA$D2A2CA2C2DA$D2A</span><br><span class="line">2C8A$.2AC2A2DA.C2A$2.2A.A2DA.C2A$.DA.9A$3.4AB2DA$2.C2.2BA2DA$2.DB3AC</span><br><span class="line">5A$2.C.5A.C2A$3.DCA.CA.C2A$8.DB3A$9.CA!</span><br></pre></td></tr></table></figure>
+<p>还有别的 puffer，但后面喷出的东西很不规则，而且无法稳定下来，并不好看。它们的速度基本上都是 c/2，“头部”也类似于上面的这些飞船和 puffer。目前发现的唯一例外是一个 (2,14)c/46 的斜 puffer（也就是说，每46代向下移动2格，向右移动14格）：</p>
+<p>（这个我就不画图了。）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 4, y = 5, rule = 3457/357/5</span><br><span class="line">2.BA$.C2A$D.CA$.3A$.2A!</span><br></pre></td></tr></table></figure>
+<h1 id="复制子？"><a href="#复制子？" class="headerlink" title="复制子？"></a>复制子？</h1><p>除了以上这些东西之外，还有一个比较有趣的图样。它差点就能成为一个复制子了，不过复制了十几代之后就乱了。</p>
+<p>这个我也懒得发图了，有兴趣的可以看<a href="https://www.zhihu.com/pin/1002204898095673344" target="_blank" rel="noopener">我发在知乎的视频</a>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 5, y = 5, rule = 3457/357/5</span><br><span class="line">2.A$.BAB$2AC2A$.3A$.3A!</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mathematica/" rel="tag"># Mathematica</a>
+          
+            <a href="/tags/简书搬运/" rel="tag"># 简书搬运</a>
+          
+            <a href="/tags/生命游戏/" rel="tag"># 生命游戏</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/14/维基百科的新年图标/" rel="next" title="维基百科的新年图标">
+                <i class="fa fa-chevron-left"></i> 维基百科的新年图标
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/10/生命游戏搜索程序汇总/" rel="prev" title="生命游戏搜索程序汇总">
+                生命游戏搜索程序汇总 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">AlephAlpha</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#静物"><span class="nav-number">1.</span> <span class="nav-text">静物</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#振荡子"><span class="nav-number">2.</span> <span class="nav-text">振荡子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#飞船"><span class="nav-number">3.</span> <span class="nav-text">飞船</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Puffer"><span class="nav-number">4.</span> <span class="nav-text">Puffer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复制子？"><span class="nav-number">5.</span> <span class="nav-text">复制子？</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AlephAlpha</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

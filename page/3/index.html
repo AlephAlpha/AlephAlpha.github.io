@@ -1,0 +1,2851 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<meta name="LifeViewer" content="rle pre 37 hide limit">
+<script src="/js/src/lv-plugin.js"></script>
+
+
+  <meta name="keywords" content="Game of Life, 生命游戏,">
+<meta property="og:type" content="website">
+<meta property="og:title" content="锑星杂记">
+<meta property="og:url" content="https://AlephAlpha.github.io/page/3/index.html">
+<meta property="og:site_name" content="锑星杂记">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="锑星杂记">
+
+
+
+
+
+
+  <link rel="canonical" href="https://AlephAlpha.github.io/page/3/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>锑星杂记</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">锑星杂记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">AlephAlpha 写的一些乱七八糟的东西</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2017/01/20/DipDup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/01/20/DipDup/" class="post-title-link" itemprop="url">DipDup</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-20 16:44:00" itemprop="dateCreated datePublished" datetime="2017-01-20T16:44:00+08:00">2017-01-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 22:56:45" itemprop="dateModified" datetime="2019-03-12T22:56:45+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在之前的<a href="http://www.jianshu.com/p/ed929cf72312" target="_blank" rel="noopener">《那些奇奇怪怪的编程语言》</a>一文里，我介绍了 Esolang 的概念，以及几种 Esolang 的例子。当然，这种事情自己动手更有意思。于是我也设计了一种编程语言，叫做 DipDup。</p>
+<p><strong>DipDup</strong> 是一种基于堆栈的编程语言。它的设计参考了另外两种基于堆栈的编程语言：<a href="http://esolangs.org/wiki/Underload" target="_blank" rel="noopener">Underload</a> 和 <a href="http://www.latrobe.edu.au/humanities/research/research-projects/past-projects/joy-programming-language" target="_blank" rel="noopener">Joy</a>。</p>
+<p><a href="http://esolangs.org/wiki/Underload" target="_blank" rel="noopener">Underload</a> 是一种极简主义的编程语言，由 <a href="http://esolangs.org/wiki/User:Ais523" target="_blank" rel="noopener">Ais523</a> 设计于2006年。它只有七条指令（或者是八条，如果把列表也算作一种指令的话）。除了表示输出的<code>S</code>之外，都是一些简单的堆栈操作。Underload 是图灵完备的。如果你设计了一种基于堆栈的编程语言，想要证明它是图灵完备的，只需要用它实现一下 Underload 里的这些指令就行了。</p>
+<p><a href="https://en.wikipedia.org/wiki/Joy_(programming_language" target="_blank" rel="noopener">Joy</a>) 由 Manfred von Thun 设计于2001年。它不是 Esolang。除了基于堆栈（确切地说，是 <a href="https://en.wikipedia.org/wiki/Concatenative_programming_language" target="_blank" rel="noopener">Concatenative</a>，这个词不知道怎么翻译）以外，它没有太多奇怪的地方，一门普通的编程语言该实现的功能它都有实现。不过 Manfred von Thun 设计这门语言主要是出于学术用途，实际使用的人不多。</p>
+<p>DipDup 可以看作是 Joy 的一个子集。我从 Joy 的两百多条指令当中选取了四条：<code>dip</code>，<code>dup</code>，<code>pop</code> 和 <code>cons</code>，分别把它们记作 <code>^</code>，<code>_</code>，<code>!</code> 和 <code>:</code>。DipDup 这个名字就是从这里来的。</p>
+<p>DipDup 是一种基于堆栈的语言，它的每一条指令都可以看作是一个把堆栈映成堆栈的函数。把几条指令写成一串，相当于是函数的复合，得到的依然是一个把堆栈映成堆栈的函数。</p>
+<p>四条指令的介绍如下：</p>
+<ul>
+<li><p><code>dup</code><br><code>dup</code> 指的是 duplicate，复制。如果原先的堆栈是 <code>...ba</code>（堆栈的顶端写在右边），执行操作后堆栈变成 <code>...baa</code>。在 DipDup 当中，<code>dup</code> 写成 <code>_</code>。</p>
+</li>
+<li><p><code>pop</code><br>不同于别的编程语言里的 <code>pop</code>，它把堆栈顶上的东西弹出之后就扔掉了，不会返回也不会输出。如果原先的堆栈是 <code>...ba</code>，执行操作后堆栈变成 <code>...b</code>。在 DipDup 当中，<code>pop</code> 写成 <code>!</code>。</p>
+</li>
+<li><p><code>cons</code><br>类似于 Lisp 里的 <code>cons</code> 和 Haskell 里的 <code>:</code>。如果原先的堆栈是 <code>...b[a]</code>，执行操作后堆栈变成 <code>...[ba]</code>。在 DipDup 当中，<code>cons</code> 写成 <code>:</code>。</p>
+</li>
+<li><p><code>dip</code><br>这个有点复杂，不过它是 DipDup 里最关键的一条指令。如果原先的堆栈是 <code>...cb[a]</code>，它会先弹出 <code>[a]</code> 和 <code>b</code>，然后把 <code>[a]</code> 当成一个程序作用在堆栈 <code>...c</code> 上，最后把 <code>b</code> 压回堆栈。在 DipDup 当中，<code>dip</code> 写成 <code>^</code>。</p>
+</li>
+</ul>
+<p>除了四条指令之外，还有列表。一个列表就是把若干个指令和列表写成一串，中间不加任何分隔符，然后用方括号 <code>[</code> 和 <code>]</code> 括起来。比如说，<code>[]</code> 就是一个列表，<code>[[_:]_:]</code> 也是一个列表。在程序中，列表可以看作是一个指令，其作用是把这个列表本身压入堆栈。一个列表也可以看作是一段程序（是的，代码即数据），或者一个函数，可以作用在堆栈上（比如说，借助 <code>dip</code> 指令）。</p>
+<p>初始的堆栈由无穷多个空列表组成——采用无穷堆栈是因为我懒得处理堆栈为空的情况。在程序运行完了之后，输出的是堆栈最顶上的东西。</p>
+<p>举个最简单的例子，这是一个 <a href="https://en.wikipedia.org/wiki/Quine_(computing" target="_blank" rel="noopener">Quine</a>)，它输出的结果和程序本身一模一样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[_:]_:</span><br></pre></td></tr></table></figure>
+<p>然后问题来了：DipDup 是图灵完备的吗？</p>
+<p>前面说过，要证明一个基于堆栈的编程语言是图灵完备的，只需要用它实现一下 Underload 里的全部指令就行了。</p>
+<p>除了列表之外， Underload 只有7种指令。其中 <code>S</code>表示输出，对图灵完备与否没有影响；<code>:</code> 就相当于 DipDup 里的 <code>_</code>（<code>dup</code>）；<code>!</code> 就相当于 DipDup 里的 <code>!</code>（<code>pop</code>）；<code>a</code> 表示用括号把堆栈最顶上的东西括起来，这个在 DipDup 里用 <code>[]:</code> 就能实现；<code>~</code> 表示交换堆栈最顶上的两个东西，相当于 Joy 里的 <code>swap</code>，这个在 DipDup 里可以用 <code>[]:^</code> 实现；<code>^</code> 表示弹出堆栈最顶上的东西（必须是个列表），并把它作为一个程序作用在剩下的堆栈上，相当于 Joy 里的 <code>i</code>，这个在 DipDup 里可以用 <code>[]^!</code> 或者 <code>_^!</code> 实现。</p>
+<p>于是，我们只剩下一条指令没有实现：<code>*</code>。它表示的是弹出堆栈最顶上的两个东西（两个都是列表；事实上，无论是 Underload 还是 DipDup，堆栈里的东西都只有列表），把它们串接成一个列表，再压回堆栈。如果原先的堆栈是 <code>...[b][a]</code>，执行操作后堆栈变成 <code>...[ba]</code>。看起来与 DipDup 里的 <code>cons</code> 很像。但遗憾的是，这个用 DipDup 是实现不了的。</p>
+<p>不过，我们可以换一条思路，先来看看 Underload 的图灵完备性是怎样证明的。<a href="https://esolangs.org/wiki/Underload#Unlambda_to_Underload" target="_blank" rel="noopener">Esolang Wiki 里给出的办法</a>是证明所有的 <a href="https://esolangs.org/wiki/Unlambda" target="_blank" rel="noopener">Unlambda</a> 代码都可以直接翻译成 Underload。Unlambda 是一种基于组合子逻辑的 Esolang，它是图灵完备的，因此 Underload 也是图灵完备的。</p>
+<p>因此，我们也可以试着把 Unlambda 翻译成 DipDup。事实上，不需要翻译整个 Unlambda，<a href="https://esolangs.org/wiki/S_and_K_Turing-completeness_proof" target="_blank" rel="noopener">只需要实现 <code>S</code> 和 <code>K</code> 这两个组合子就够了</a>（当然，还需要用上 Underload 里的 <code>^</code>，也就是 DipDup 里的 <code>_^!</code>）。它们的实现不算复杂：</p>
+<ul>
+<li><code>K</code> 组合子</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[[!]^]:]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>S</code> 组合子</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[[[[_]^^]^_^!_^!]::]:]</span><br></pre></td></tr></table></figure>
+<p>具体的推导我就不写了。</p>
+<p>最后附上用 Haskell 写的解释器：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> System.Console.Haskeline</span><br><span class="line"><span class="keyword">import</span> Text.ParserCombinators.ReadP</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">data</span> <span class="type">Term</span> = <span class="type">C</span> <span class="type">Char</span> | <span class="type">E</span> <span class="type">Expr</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">type</span> <span class="type">Expr</span> = [<span class="type">Term</span>]</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">instance</span> <span class="type">Show</span> <span class="type">Term</span> <span class="keyword">where</span></span></span><br><span class="line">    show (<span class="type">C</span> c) = [c]</span><br><span class="line">    show (<span class="type">E</span> e) = <span class="string">"["</span> ++ show e ++ <span class="string">"]"</span></span><br><span class="line">    showList = (++) . concatMap show</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">instance</span> <span class="type">Read</span> <span class="type">Term</span> <span class="keyword">where</span></span></span><br><span class="line">    readsPrec = const $ readP_to_S readTerm</span><br><span class="line">    readList = readP_to_S readExpr</span><br><span class="line"></span><br><span class="line"><span class="title">readTerm</span> :: <span class="type">ReadP</span> <span class="type">Term</span></span><br><span class="line"><span class="title">readTerm</span> = (<span class="type">C</span> &lt;$&gt; satisfy (`notElem` <span class="string">"[]"</span>)) +++ (<span class="type">E</span> &lt;$&gt; between (char '[') (char ']') readExpr)</span><br><span class="line"></span><br><span class="line"><span class="title">readExpr</span> :: <span class="type">ReadP</span> <span class="type">Expr</span></span><br><span class="line"><span class="title">readExpr</span> = many readTerm</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">data</span> <span class="type">Stack</span> = <span class="type">Expr</span> :-: <span class="type">Stack</span></span></span><br><span class="line"><span class="keyword">infixr</span> <span class="number">5</span> :-:</span><br><span class="line"></span><br><span class="line"><span class="title">initStack</span> :: <span class="type">Stack</span></span><br><span class="line"><span class="title">initStack</span> = [] :-: initStack</span><br><span class="line"></span><br><span class="line"><span class="title">top</span> :: <span class="type">Stack</span> -&gt; <span class="type">Expr</span></span><br><span class="line"><span class="title">top</span> (x :-: _) = x</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">type</span> <span class="type">Func</span> = <span class="type">Stack</span> -&gt; <span class="type">Stack</span></span></span><br><span class="line"></span><br><span class="line"><span class="title">evalTerm</span> :: <span class="type">Term</span> -&gt; <span class="type">Func</span></span><br><span class="line"><span class="title">evalTerm</span> (<span class="type">E</span> e) = (e :-:)</span><br><span class="line"><span class="title">evalTerm</span> (<span class="type">C</span> '^') = dip</span><br><span class="line"><span class="title">evalTerm</span> (<span class="type">C</span> '_') = dup</span><br><span class="line"><span class="title">evalTerm</span> (<span class="type">C</span> '!') = pop</span><br><span class="line"><span class="title">evalTerm</span> (<span class="type">C</span> ':') = cons</span><br><span class="line"><span class="title">evalTerm</span> _ = id</span><br><span class="line"></span><br><span class="line"><span class="title">evalExpr</span> :: <span class="type">Expr</span> -&gt; <span class="type">Func</span></span><br><span class="line"><span class="title">evalExpr</span> = flip . foldl $ flip evalTerm</span><br><span class="line"></span><br><span class="line"><span class="title">eval</span> :: <span class="type">Expr</span> -&gt; <span class="type">Expr</span></span><br><span class="line"><span class="title">eval</span> = top . flip evalExpr initStack</span><br><span class="line"></span><br><span class="line"><span class="title">dip</span> :: <span class="type">Func</span></span><br><span class="line"><span class="title">dip</span> (x :-: y :-: s) = y :-: evalExpr x s</span><br><span class="line"></span><br><span class="line"><span class="title">dup</span> :: <span class="type">Func</span></span><br><span class="line"><span class="title">dup</span> (x :-: s) = x :-: x :-: s</span><br><span class="line"></span><br><span class="line"><span class="title">pop</span> :: <span class="type">Func</span></span><br><span class="line"><span class="title">pop</span> (_ :-: s) = s</span><br><span class="line"></span><br><span class="line"><span class="title">cons</span> :: <span class="type">Func</span></span><br><span class="line"><span class="title">cons</span> (x :-: y :-: s) = (<span class="type">E</span> y : x) :-: s</span><br><span class="line"></span><br><span class="line"><span class="title">rep</span> :: <span class="type">String</span> -&gt; <span class="type">String</span></span><br><span class="line"><span class="title">rep</span> input = <span class="keyword">case</span> [x | (x, <span class="string">""</span>) &lt;- reads input] <span class="keyword">of</span></span><br><span class="line">    [x] -&gt; show $ eval x</span><br><span class="line">    _ -&gt; error <span class="string">"parse error"</span></span><br><span class="line"></span><br><span class="line"><span class="title">repl</span> :: <span class="type">InputT</span> <span class="type">IO</span> ()</span><br><span class="line"><span class="title">repl</span> = <span class="keyword">do</span></span><br><span class="line">    minput &lt;- getInputLine <span class="string">"&gt; "</span></span><br><span class="line">    <span class="keyword">case</span> minput <span class="keyword">of</span></span><br><span class="line">        <span class="type">Nothing</span> -&gt; return ()</span><br><span class="line">        <span class="type">Just</span> input -&gt; <span class="keyword">do</span></span><br><span class="line">            catch (outputStrLn $ rep input) $ \e -&gt; outputStrLn $ show (e :: <span class="type">SomeException</span>)</span><br><span class="line">            repl</span><br><span class="line"></span><br><span class="line"><span class="title">main</span> :: <span class="type">IO</span> ()</span><br><span class="line"><span class="title">main</span> = runInputT defaultSettings repl</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2016/10/06/Rime-西里尔拼音输入方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/10/06/Rime-西里尔拼音输入方案/" class="post-title-link" itemprop="url">Rime-西里尔拼音输入方案</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-10-06 13:41:00" itemprop="dateCreated datePublished" datetime="2016-10-06T13:41:00+08:00">2016-10-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 22:57:08" itemprop="dateModified" datetime="2019-03-12T22:57:08+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这是我给 <a href="http://rime.im/" target="_blank" rel="noopener">RIME 输入法</a>弄的一个输入方案，通过西里尔字母来输入中文。采用的是俄罗斯汉学家 Пётр Иванович Кафаров （教名Palladius）设计的转写方案。使用前请背熟俄文键盘，但使用时<strong>不要</strong>将自己的键盘布局切换成俄文。</p>
+<p>截图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1770625-99ea3fa4f4acc9fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我能吞下玻璃而不伤身体"></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Rime schema</span></span><br><span class="line"><span class="comment"># vim: set sw=2 sts=2 et:</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="attr">schema:</span></span><br><span class="line"><span class="attr">  schema_id:</span> <span class="string">palladius</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">"西里尔拼音"</span></span><br><span class="line"><span class="attr">  version:</span> <span class="string">"0.0"</span></span><br><span class="line"><span class="attr">  author:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">AlephAlpha</span> <span class="string">&lt;alephalpha911@gmail.com&gt;</span></span><br><span class="line"><span class="attr">  description:</span> <span class="string">|</span></span><br><span class="line"><span class="string">    通过西里尔转写（Систима Палладия）输入中文</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span><span class="attr">switches:</span></span><br><span class="line"><span class="attr">  - name:</span> <span class="string">ascii_mode</span></span><br><span class="line"><span class="attr">    reset:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">    states:</span> <span class="string">[</span> <span class="string">中文,</span> <span class="string">西文</span> <span class="string">]</span></span><br><span class="line"><span class="attr">  - name:</span> <span class="string">full_shape</span></span><br><span class="line"><span class="attr">    states:</span> <span class="string">[</span> <span class="string">半角,</span> <span class="string">全角</span> <span class="string">]</span></span><br><span class="line"><span class="attr">  - name:</span> <span class="string">simplification</span></span><br><span class="line"><span class="attr">    reset:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">    states:</span> <span class="string">[</span> <span class="string">漢字,</span> <span class="string">汉字</span> <span class="string">]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">engine:</span></span><br><span class="line"><span class="attr">  processors:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">ascii_composer</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">key_binder</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">speller</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">punctuator</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">selector</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">navigator</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">express_editor</span></span><br><span class="line"><span class="attr">  segmentors:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">ascii_segmentor</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">abc_segmentor</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">punct_segmentor</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">fallback_segmentor</span></span><br><span class="line"><span class="attr">  translators:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">punct_translator</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">r10n_translator</span></span><br><span class="line"><span class="attr">  filters:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">simplifier</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">uniquifier</span></span><br><span class="line"></span><br><span class="line"><span class="attr">speller:</span></span><br><span class="line"><span class="attr">  alphabet:</span> <span class="string">'`qwertyuiop[]asdfghjkl;'</span><span class="string">'zxcvbnm,.'</span></span><br><span class="line"><span class="attr">  delimiter:</span> <span class="string">" "</span></span><br><span class="line"><span class="attr">  algebra:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">erase/^xx$/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/^([zcs])i/$1I/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/^([jqxy])u/$1v/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/^j/cz/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/^q/c/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/^x/s/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/^zh/CZ/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/^ch/C/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/^sh/S/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/^r/Z/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/^z/cz/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/^you$/iu/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/^yv/v/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/^yi?/i/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/^wu$/u/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/ong$/ung/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/uo$/o/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/v$/iui/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/v/iu/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/([aeou])i$/$1y/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/n$/nY/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/ng$/n/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/ia/A/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/ie/E/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/io/O/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/iu/U/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">derive/uy$/uey/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">derive/huy/hoy/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">derive/([bpmf])en/$1In/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">derive/^e$/I/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">derive/([CSZ])i/$1I/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">abbrev/^([A-Za-z]).+$/$1/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">abbrev/^(cz|CZ).+$/$1/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">abbrev/^(.+)Y$/$1/</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">'xlit|abwgdEOZziyklmnoprstufhcCSXHIYeUA|f,dult`;pbqrkvyjghcnea[wxio]sm'</span><span class="string">'.z|'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">translator:</span></span><br><span class="line"><span class="attr">  dictionary:</span> <span class="string">luna_pinyin</span></span><br><span class="line"><span class="attr">  prism:</span> <span class="string">palladius</span></span><br><span class="line"><span class="attr">  preedit_format:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">'xlit|`qwertyuiop[]asdfghjkl;'</span><span class="string">'zxcvbnm,.|ёйцукенгшщзхъфывапролджэячсмитьбю|'</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xform/хуй/хуэй/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">punctuator:</span></span><br><span class="line"><span class="attr">  full_shape:</span></span><br><span class="line">    <span class="string">' '</span> <span class="string">:</span> <span class="string">&#123;</span> <span class="attr">commit:</span> <span class="string">'　'</span> <span class="string">&#125;</span></span><br><span class="line">    <span class="string">'/'</span> <span class="string">:</span> <span class="string">&#123;</span> <span class="attr">commit:</span> <span class="string">。</span> <span class="string">&#125;</span></span><br><span class="line">    <span class="string">'?'</span> <span class="string">:</span> <span class="string">&#123;</span> <span class="attr">commit:</span> <span class="string">，</span> <span class="string">&#125;</span></span><br><span class="line">    <span class="string">'\' : [ 、, ＼, ｀ ]</span></span><br><span class="line"><span class="string">    '</span><span class="string">|'</span> <span class="string">:</span> <span class="string">[</span> <span class="string">／,</span> <span class="string">÷,</span> <span class="string">｜,</span> <span class="string">'§'</span><span class="string">,</span> <span class="string">'¦'</span> <span class="string">]</span></span><br><span class="line">    <span class="string">'!'</span> <span class="string">:</span> <span class="string">&#123;</span> <span class="attr">commit:</span> <span class="string">！</span> <span class="string">&#125;</span></span><br><span class="line">    <span class="string">'@'</span> <span class="string">:</span> <span class="string">&#123;</span> <span class="attr">pair:</span> <span class="string">[</span> <span class="string">'“'</span><span class="string">,</span> <span class="string">'”'</span> <span class="string">]</span> <span class="string">&#125;</span></span><br><span class="line">    <span class="string">'#'</span> <span class="string">:</span> <span class="string">[</span> <span class="string">＃,</span> <span class="string">⌘</span> <span class="string">]</span></span><br><span class="line">    <span class="string">'$'</span> <span class="string">:</span> <span class="string">&#123;</span> <span class="attr">commit:</span> <span class="string">；</span> <span class="string">&#125;</span></span><br><span class="line">    <span class="string">'%'</span> <span class="string">:</span> <span class="string">[</span> <span class="string">％,</span> <span class="string">'°'</span><span class="string">,</span> <span class="string">'℃'</span><span class="string">,</span> <span class="string">＆</span> <span class="string">]</span></span><br><span class="line">    <span class="string">'^'</span> <span class="string">:</span> <span class="string">&#123;</span> <span class="attr">commit:</span> <span class="string">：</span> <span class="string">&#125;</span></span><br><span class="line">    <span class="string">'&amp;'</span> <span class="string">:</span> <span class="string">&#123;</span> <span class="attr">commit:</span> <span class="string">？</span> <span class="string">&#125;</span></span><br><span class="line">    <span class="string">'*'</span> <span class="string">:</span> <span class="string">[</span> <span class="string">＊,</span> <span class="string">·,</span> <span class="string">・,</span> <span class="string">×,</span> <span class="string">※,</span> <span class="string">❂,</span> <span class="string">＠,</span> <span class="string">☯,</span> <span class="string">￥,</span> <span class="string">'$'</span><span class="string">,</span> <span class="string">'€'</span><span class="string">,</span> <span class="string">'£'</span><span class="string">,</span> <span class="string">'¥'</span><span class="string">,</span> <span class="string">'¢'</span><span class="string">,</span> <span class="string">'¤'</span> <span class="string">]</span></span><br><span class="line">    <span class="string">'('</span> <span class="string">:</span> <span class="string">[</span> <span class="string">（,</span>  <span class="string">「,</span> <span class="string">【,</span> <span class="string">〔,</span> <span class="string">［,</span> <span class="string">『,</span> <span class="string">〖,</span> <span class="string">｛,</span> <span class="string">《,</span> <span class="string">〈,</span> <span class="string">«,</span> <span class="string">‹,</span> <span class="string">‘</span> <span class="string">]</span></span><br><span class="line">    <span class="string">')'</span> <span class="string">:</span> <span class="string">[</span> <span class="string">）,</span>  <span class="string">」,</span> <span class="string">】,</span> <span class="string">〕,</span> <span class="string">］,</span> <span class="string">』,</span> <span class="string">〗,</span> <span class="string">｝,</span> <span class="string">》,</span> <span class="string">〉,</span> <span class="string">»,</span> <span class="string">›,</span> <span class="string">’</span> <span class="string">]</span></span><br><span class="line">    <span class="string">'-'</span> <span class="string">:</span> <span class="string">[</span> <span class="string">－,</span> <span class="string">～</span> <span class="string">]</span></span><br><span class="line">    <span class="string">'_'</span> <span class="string">:</span> <span class="string">[</span> <span class="string">——,</span> <span class="string">……</span> <span class="string">]</span></span><br><span class="line">    <span class="string">'+'</span> <span class="string">:</span> <span class="string">＋</span></span><br><span class="line">    <span class="string">'='</span> <span class="string">:</span> <span class="string">＝</span></span><br><span class="line"><span class="attr">  half_shape:</span></span><br><span class="line">    <span class="string">'/'</span> <span class="string">:</span> <span class="string">&#123;</span> <span class="attr">commit:</span> <span class="string">。</span> <span class="string">&#125;</span></span><br><span class="line">    <span class="string">'?'</span> <span class="string">:</span> <span class="string">&#123;</span> <span class="attr">commit:</span> <span class="string">，</span> <span class="string">&#125;</span></span><br><span class="line">    <span class="string">'\' : [ 、, '</span><span class="string">\',</span> <span class="string">'`'</span> <span class="string">]</span></span><br><span class="line">    <span class="string">'|'</span> <span class="string">:</span> <span class="string">[</span> <span class="string">、,</span> <span class="string">'/'</span><span class="string">,</span> <span class="string">÷,</span> <span class="string">'|'</span><span class="string">,</span> <span class="string">'§'</span><span class="string">,</span> <span class="string">'¦'</span> <span class="string">]</span></span><br><span class="line">    <span class="string">'!'</span> <span class="string">:</span> <span class="string">&#123;</span> <span class="attr">commit:</span> <span class="string">！</span> <span class="string">&#125;</span></span><br><span class="line">    <span class="string">'@'</span> <span class="string">:</span> <span class="string">&#123;</span> <span class="attr">pair:</span> <span class="string">[</span> <span class="string">'“'</span><span class="string">,</span> <span class="string">'”'</span> <span class="string">]</span> <span class="string">&#125;</span></span><br><span class="line">    <span class="string">'#'</span> <span class="string">:</span> <span class="string">[</span> <span class="string">'#'</span><span class="string">,</span> <span class="string">№,</span> <span class="string">⌘</span> <span class="string">]</span></span><br><span class="line">    <span class="string">'$'</span> <span class="string">:</span> <span class="string">&#123;</span> <span class="attr">commit:</span> <span class="string">；</span> <span class="string">&#125;</span></span><br><span class="line">    <span class="string">'%'</span> <span class="string">:</span> <span class="string">[</span> <span class="string">'%'</span><span class="string">,</span> <span class="string">'°'</span><span class="string">,</span> <span class="string">'℃'</span><span class="string">,</span> <span class="string">'&amp;'</span> <span class="string">]</span></span><br><span class="line">    <span class="string">'^'</span> <span class="string">:</span> <span class="string">&#123;</span> <span class="attr">commit:</span> <span class="string">：</span> <span class="string">&#125;</span></span><br><span class="line">    <span class="string">'&amp;'</span> <span class="string">:</span> <span class="string">&#123;</span> <span class="attr">commit:</span> <span class="string">？</span> <span class="string">&#125;</span></span><br><span class="line">    <span class="string">'*'</span> <span class="string">:</span> <span class="string">[</span> <span class="string">'*'</span><span class="string">,</span> <span class="string">·,</span> <span class="string">・,</span> <span class="string">×,</span> <span class="string">※,</span> <span class="string">❂,</span> <span class="string">'@'</span><span class="string">,</span> <span class="string">☯,</span> <span class="string">￥,</span> <span class="string">'$'</span><span class="string">,</span> <span class="string">'€'</span><span class="string">,</span> <span class="string">'£'</span><span class="string">,</span> <span class="string">'¥'</span><span class="string">,</span> <span class="string">'¢'</span><span class="string">,</span> <span class="string">'¤'</span> <span class="string">]</span></span><br><span class="line">    <span class="string">'('</span> <span class="string">:</span> <span class="string">[</span> <span class="string">（,</span>  <span class="string">「,</span> <span class="string">【,</span> <span class="string">〔,</span> <span class="string">［,</span> <span class="string">『,</span> <span class="string">〖,</span> <span class="string">｛,</span> <span class="string">《,</span> <span class="string">〈,</span> <span class="string">«,</span> <span class="string">‹,</span> <span class="string">‘</span> <span class="string">]</span></span><br><span class="line">    <span class="string">')'</span> <span class="string">:</span> <span class="string">[</span> <span class="string">）,</span>  <span class="string">」,</span> <span class="string">】,</span> <span class="string">〕,</span> <span class="string">］,</span> <span class="string">』,</span> <span class="string">〗,</span> <span class="string">｝,</span> <span class="string">》,</span> <span class="string">〉,</span> <span class="string">»,</span> <span class="string">›,</span> <span class="string">’</span> <span class="string">]</span></span><br><span class="line">    <span class="string">'-'</span> <span class="string">:</span> <span class="string">[</span> <span class="string">'-'</span><span class="string">,</span> <span class="string">'~'</span> <span class="string">]</span></span><br><span class="line">    <span class="string">'_'</span> <span class="string">:</span> <span class="string">[</span> <span class="string">——,</span> <span class="string">……</span> <span class="string">]</span></span><br><span class="line">    <span class="string">'+'</span> <span class="string">:</span> <span class="string">'+'</span></span><br><span class="line">    <span class="string">'='</span> <span class="string">:</span> <span class="string">'='</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="attr">key_binder:</span></span><br><span class="line"><span class="attr">  import_preset:</span> <span class="string">default</span></span><br><span class="line"><span class="attr">  bindings:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">&#123;</span> <span class="attr">when:</span> <span class="string">has_menu,</span> <span class="attr">accept:</span> <span class="string">comma,</span> <span class="attr">send:</span> <span class="string">comma</span> <span class="string">&#125;</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">&#123;</span> <span class="attr">when:</span> <span class="string">has_menu,</span> <span class="attr">accept:</span> <span class="string">period,</span> <span class="attr">send:</span> <span class="string">period</span> <span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2016/10/06/粤语西里尔字母转写方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/10/06/粤语西里尔字母转写方案/" class="post-title-link" itemprop="url">粤语西里尔字母转写方案</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-10-06 13:20:00" itemprop="dateCreated datePublished" datetime="2016-10-06T13:20:00+08:00">2016-10-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 22:57:35" itemprop="dateModified" datetime="2019-03-12T22:57:35+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这肯定不是世界上第一套粤语西里尔字母转写方案。<a href="https://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%9A%D0%B0%D0%BD%D1%82%D0%BE%D0%BD%D1%81%D0%BA%D0%BE-%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B0%D1%8F_%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%86%D0%B8%D1%8F" target="_blank" rel="noopener">俄文维基百科里就有一套现成的。</a>虽然我不太喜欢那套方案，尤其不喜欢那个莫名其妙的冒号（<code>:</code>），但我自己设计的方案也未必比它更好。</p>
+<p>转写的是<a href="https://zh.wikipedia.org/wiki/%E9%A6%99%E6%B8%AF%E8%AA%9E%E8%A8%80%E5%AD%B8%E5%AD%B8%E6%9C%83%E7%B2%B5%E8%AA%9E%E6%8B%BC%E9%9F%B3%E6%96%B9%E6%A1%88" target="_blank" rel="noopener">香港语言学学会粤语拼音方案</a>反映的这套粤语音系，即所谓“<a href="https://zh.wikipedia.org/wiki/%E5%B9%BF%E5%B7%9E%E8%AF%9D" target="_blank" rel="noopener">标准粤语</a>”。和<a href="http://www.jianshu.com/p/cf9634902b7c" target="_blank" rel="noopener">我为普通话设计的那套拼音方案</a>一样，一个音位尽量只用一个字母来表示，避免用几个字母的组合来表示一个发音——这也是使用西里尔字母的语言的惯例。</p>
+<p>同样，这也只是图个好玩，完全不考虑实用性。</p>
+<p>以下的国际音标和例字均取自维基词条“<a href="https://zh.wikipedia.org/wiki/%E9%A6%99%E6%B8%AF%E8%AA%9E%E8%A8%80%E5%AD%B8%E5%AD%B8%E6%9C%83%E7%B2%B5%E8%AA%9E%E6%8B%BC%E9%9F%B3%E6%96%B9%E6%A1%88" target="_blank" rel="noopener">香港语言学学会粤语拼音方案</a>”，仅供参考。</p>
+<h2 id="声母"><a href="#声母" class="headerlink" title="声母"></a>声母</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">粤拼</th>
+<th style="text-align:center">西里尔</th>
+<th style="text-align:center">国际音标</th>
+<th style="text-align:center">例字</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">b</td>
+<td style="text-align:center">б</td>
+<td style="text-align:center">/p/</td>
+<td style="text-align:center">巴 ба</td>
+</tr>
+<tr>
+<td style="text-align:center">p</td>
+<td style="text-align:center">п</td>
+<td style="text-align:center">/pʰ/</td>
+<td style="text-align:center">怕 па</td>
+</tr>
+<tr>
+<td style="text-align:center">m</td>
+<td style="text-align:center">м</td>
+<td style="text-align:center">/m/</td>
+<td style="text-align:center">妈 ма</td>
+</tr>
+<tr>
+<td style="text-align:center">f</td>
+<td style="text-align:center">ф</td>
+<td style="text-align:center">/f/</td>
+<td style="text-align:center">花 фа</td>
+</tr>
+<tr>
+<td style="text-align:center">d</td>
+<td style="text-align:center">д</td>
+<td style="text-align:center">/t/</td>
+<td style="text-align:center">打 да</td>
+</tr>
+<tr>
+<td style="text-align:center">t</td>
+<td style="text-align:center">т</td>
+<td style="text-align:center">/tʰ/</td>
+<td style="text-align:center">他 та</td>
+</tr>
+<tr>
+<td style="text-align:center">n</td>
+<td style="text-align:center">н</td>
+<td style="text-align:center">/n/</td>
+<td style="text-align:center">那 на</td>
+</tr>
+<tr>
+<td style="text-align:center">l</td>
+<td style="text-align:center">л</td>
+<td style="text-align:center">/l/</td>
+<td style="text-align:center">啦 ла</td>
+</tr>
+<tr>
+<td style="text-align:center">g</td>
+<td style="text-align:center">г</td>
+<td style="text-align:center">/k/</td>
+<td style="text-align:center">家 га</td>
+</tr>
+<tr>
+<td style="text-align:center">k</td>
+<td style="text-align:center">к</td>
+<td style="text-align:center">/kʰ/</td>
+<td style="text-align:center">卡 ка</td>
+</tr>
+<tr>
+<td style="text-align:center">ng</td>
+<td style="text-align:center">ң</td>
+<td style="text-align:center">/ŋ/</td>
+<td style="text-align:center">牙 ңа</td>
+</tr>
+<tr>
+<td style="text-align:center">h</td>
+<td style="text-align:center">х</td>
+<td style="text-align:center">/h/</td>
+<td style="text-align:center">哈 ха</td>
+</tr>
+<tr>
+<td style="text-align:center">gw</td>
+<td style="text-align:center">гу</td>
+<td style="text-align:center">/kʷ/</td>
+<td style="text-align:center">瓜 гуа</td>
+</tr>
+<tr>
+<td style="text-align:center">kw</td>
+<td style="text-align:center">ку</td>
+<td style="text-align:center">/kʰʷ/</td>
+<td style="text-align:center">夸 куа</td>
+</tr>
+<tr>
+<td style="text-align:center">w</td>
+<td style="text-align:center">в</td>
+<td style="text-align:center">/w/</td>
+<td style="text-align:center">蛙 ва</td>
+</tr>
+<tr>
+<td style="text-align:center">z</td>
+<td style="text-align:center">џ</td>
+<td style="text-align:center">/ts/</td>
+<td style="text-align:center">渣 џа</td>
+</tr>
+<tr>
+<td style="text-align:center">c</td>
+<td style="text-align:center">ч</td>
+<td style="text-align:center">/tsʰ/</td>
+<td style="text-align:center">叉 ча</td>
+</tr>
+<tr>
+<td style="text-align:center">s</td>
+<td style="text-align:center">с</td>
+<td style="text-align:center">/s/</td>
+<td style="text-align:center">沙 са</td>
+</tr>
+<tr>
+<td style="text-align:center">j</td>
+<td style="text-align:center">й</td>
+<td style="text-align:center">/j/</td>
+<td style="text-align:center">也 йа</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="韵母"><a href="#韵母" class="headerlink" title="韵母"></a>韵母</h2><h3 id="韵腹"><a href="#韵腹" class="headerlink" title="韵腹"></a>韵腹</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">粤拼</th>
+<th style="text-align:center">西里尔</th>
+<th style="text-align:center">国际音标</th>
+<th style="text-align:center">例字</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">aa</td>
+<td style="text-align:center">а</td>
+<td style="text-align:center">/aː/</td>
+<td style="text-align:center">沙 са</td>
+</tr>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:center">ә</td>
+<td style="text-align:center">/ɐ/</td>
+<td style="text-align:center">新 сән</td>
+</tr>
+<tr>
+<td style="text-align:center">e</td>
+<td style="text-align:center">е</td>
+<td style="text-align:center">/ɛː/ &lt;/br&gt; /e/</td>
+<td style="text-align:center">些 се &lt;/br&gt; 四 сей</td>
+</tr>
+<tr>
+<td style="text-align:center">i</td>
+<td style="text-align:center">и</td>
+<td style="text-align:center">/iː/ &lt;/br&gt; /ɪ/</td>
+<td style="text-align:center">诗 си &lt;/br&gt; 识 сик &lt;/br&gt; 星 сиң</td>
+</tr>
+<tr>
+<td style="text-align:center">o</td>
+<td style="text-align:center">о</td>
+<td style="text-align:center">/ɔː/ &lt;/br&gt; /o/</td>
+<td style="text-align:center">疏 со &lt;/br&gt; 苏 соу</td>
+</tr>
+<tr>
+<td style="text-align:center">oe &lt;/br&gt; eo</td>
+<td style="text-align:center">ө</td>
+<td style="text-align:center">/œː/ &lt;/br&gt; /ɵ/</td>
+<td style="text-align:center">靴 хө &lt;/br&gt; 询 сөн</td>
+</tr>
+<tr>
+<td style="text-align:center">u</td>
+<td style="text-align:center">у</td>
+<td style="text-align:center">/uː/ &lt;/br&gt; /ʊ/</td>
+<td style="text-align:center">夫 фу &lt;/br&gt; 风 фуң &lt;/br&gt; 福 фук</td>
+</tr>
+<tr>
+<td style="text-align:center">yu</td>
+<td style="text-align:center">ү</td>
+<td style="text-align:center">/yː/</td>
+<td style="text-align:center">书 сү</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="韵尾"><a href="#韵尾" class="headerlink" title="韵尾"></a>韵尾</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">粤拼</th>
+<th style="text-align:center">西里尔</th>
+<th style="text-align:center">国际音标</th>
+<th style="text-align:center">例字</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">p</td>
+<td style="text-align:center">п</td>
+<td style="text-align:center">/p̚/</td>
+<td style="text-align:center">湿 сәп</td>
+</tr>
+<tr>
+<td style="text-align:center">t</td>
+<td style="text-align:center">т</td>
+<td style="text-align:center">/t̚/</td>
+<td style="text-align:center">失 сәт</td>
+</tr>
+<tr>
+<td style="text-align:center">k</td>
+<td style="text-align:center">к</td>
+<td style="text-align:center">/k̚/</td>
+<td style="text-align:center">塞 сәк</td>
+</tr>
+<tr>
+<td style="text-align:center">m</td>
+<td style="text-align:center">м</td>
+<td style="text-align:center">/m/</td>
+<td style="text-align:center">心 сәм</td>
+</tr>
+<tr>
+<td style="text-align:center">n</td>
+<td style="text-align:center">н</td>
+<td style="text-align:center">/n/</td>
+<td style="text-align:center">新 сән</td>
+</tr>
+<tr>
+<td style="text-align:center">ng</td>
+<td style="text-align:center">ң</td>
+<td style="text-align:center">/ŋ/</td>
+<td style="text-align:center">生 сәң</td>
+</tr>
+<tr>
+<td style="text-align:center">i</td>
+<td style="text-align:center">й</td>
+<td style="text-align:center">/i/ &lt;/br&gt; /y/</td>
+<td style="text-align:center">西 сәй &lt;/br&gt; 需 сөй</td>
+</tr>
+<tr>
+<td style="text-align:center">u</td>
+<td style="text-align:center">у</td>
+<td style="text-align:center">/u/</td>
+<td style="text-align:center">收 сәу</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="鼻音独立韵"><a href="#鼻音独立韵" class="headerlink" title="鼻音独立韵"></a>鼻音独立韵</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">粤拼</th>
+<th style="text-align:center">西里尔</th>
+<th style="text-align:center">国际音标</th>
+<th style="text-align:center">例字</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">m</td>
+<td style="text-align:center">м</td>
+<td style="text-align:center">/m/</td>
+<td style="text-align:center">唔 м</td>
+</tr>
+<tr>
+<td style="text-align:center">ng</td>
+<td style="text-align:center">ң</td>
+<td style="text-align:center">/ŋ/</td>
+<td style="text-align:center">吴 ң</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="声调"><a href="#声调" class="headerlink" title="声调"></a>声调</h2><p>用阿拉伯数字1-6或者1-9，可以上标也可以不上标。也可以不标声调。</p>
+<h2 id="例句"><a href="#例句" class="headerlink" title="例句"></a>例句</h2><ul>
+<li><p>识得唔识得啊？<br>粤拼：Sik1 dak1 m4 Sik1 dak1 aa3?<br>西里尔：Сик1 дәк1 м4 сик1 дәк1 а3?</p>
+</li>
+<li><p>春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少？<br>粤拼：Ceon1 min4 bat1 gok3 hiu2, cyu3 cyu3 man4 tai4 niu5.      Je6 loi4 fung1 jyu5 sing1, faa1 lok6 zi1 do1 siu2?<br>西里尔：Чөн1 мин4 бәт1 гок3 хиу2, чү3 чү3 мән4 тәй4 ниу5. Йе6 лой4 фуң1 ү5 сиң1, фа1 лок6 џи1 до1 сиу2?</p>
+</li>
+<li><p>苟利国家生死以，岂因祸福避趋之。<br>粤拼：Gau2 lei6 gwok3 gaa1 sang1 sei2 ji5, hei2 jan1 wo5 fuk1 bei6 ceoi1 zi1.<br>西里尔：Гәу2 лей6 гуок4 га1 сәң1 сей2 и5, хей2 йән1 во5 фук1 бей6 чөй1 џи1.</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2016/06/23/那些奇奇怪怪的编程语言/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/06/23/那些奇奇怪怪的编程语言/" class="post-title-link" itemprop="url">那些奇奇怪怪的编程语言</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-06-23 10:17:00" itemprop="dateCreated datePublished" datetime="2016-06-23T10:17:00+08:00">2016-06-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-13 00:09:11" itemprop="dateModified" datetime="2019-03-13T00:09:11+08:00">2019-03-13</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>原发在<a href="http://www.15yan.com/story/5Y8BZqIGwjg/" target="_blank" rel="noopener">十五言</a>。现在十五言和果壳网一样，死了。</p>
+<hr>
+<p>世界上的编程语言，按照其应用领域，可以粗略地分成三类。</p>
+<p>有的语言是多面手，在很多不同的领域都能派上用场。这类编程语言叫 general-purpose language，简称 GPL。大家学过的编程语言很多都属于这一类，比如说 C，Java， Python。</p>
+<p>有的语言专注于某一特定的领域，甚至只能用在特定的软件中。这类编程语言叫 domain-specific language，简称 DSL。典型的例子如 Game Maker Language，只用在一个叫 Game Maker 的游戏开发软件中。</p>
+<p>有的语言则完全没什么卵用。它们设计出来根本不是为了实用的目的，而是为了搞笑，为了玩梗，为了开脑洞，为了证明某个概念，为了测试语言设计的界限，或者纯粹是为了让你没法好好编程……这些语言往往怪里怪气的，一看就不是正经的编程语言。</p>
+<p>这就是 <a href="http://esolangs.org/wiki/Esoteric_programming_language" target="_blank" rel="noopener"><strong>esoteric programming language</strong></a>。虽说也可以简称 EPL，但一般人不这样叫，而是取 esoteric 的前两个音节和 language 的第一个音节，叫它 <strong>esolang</strong>。</p>
+<p>Esoteric programming language 这个词有点不好翻译。中文维基百科把它译成“<a href="https://zh.wikipedia.org/wiki/%E6%B7%B1%E5%A5%A5%E7%9A%84%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80" target="_blank" rel="noopener">深奥的编程语言</a>”——这个翻译让总我觉得有点深奥。知乎的<a href="https://www.zhihu.com/people/Metaphox" target="_blank" rel="noopener">@涛吴</a> 则把它译成“<a href="https://www.zhihu.com/question/19756886/answer/13078616" target="_blank" rel="noopener">蛋疼编程语言</a>”——蛋疼一词与 esoteric 差别有点大，但用在 esolang 身上还挺贴切。</p>
+<p>程序员在正经的工作中当然不会用到 esolang。Esolang 的使用者和创作者主要是一个由爱好者组成的小圈子，圈子中有程序员，有计算机科学家，有业余学习编程的人，也有像我这样基本不会编程的人。他们活跃在互联网的各个角落，还建起了一个叫 <a href="http://esolangs.org/wiki/Main_Page" target="_blank" rel="noopener"><strong>Esolang</strong></a> 的维基网站。</p>
+<p>说了这么多，举个例子。</p>
+<h1 id="Brainfuck"><a href="#Brainfuck" class="headerlink" title="Brainfuck"></a>Brainfuck</h1><p>脑……操？</p>
+<p>没错，这种 esolang 就叫  <a href="http://esolangs.org/wiki/Brainfuck" target="_blank" rel="noopener"><strong>brainfuck</strong></a>。</p>
+<p>看名字就知道不是什么正经的编程语言。</p>
+<p>名字虽然不正经，这却是最著名的一种 esolang。很多地方都可以看到它的身影，比如说 Stack Overflow 的404页面：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1770625-517a59e857630113.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="这段代码可以在包括 brainfuck 在内的几种不同的语言中运行，输出结果都是404"></p>
+<p>Brainfuck 的语法非常简单，只有八条指令。除了指令之外，只有一个由很多个存储单元组成的数组（可以想像成一条有无数个格子的纸带），一个指向数组的指针。开始的时候，数组的每个存储单元都被初始化为0，指针指着数组的第一个存储单元。八条指令对应于数组和指针的八个操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;	指针向右移动一位</span><br><span class="line">&lt;	指针向左移动一位</span><br><span class="line">+	指针指向的存储单元加一</span><br><span class="line">-	指针指向的存储单元减一</span><br><span class="line">.	将指针指向的存储单元的内容作为字符输出</span><br><span class="line">,	输入一个字符并保存到指针指向的存储单元</span><br><span class="line">[	如果指针指向的存储单元为零，向后跳转到对应的 ] 指令处</span><br><span class="line">]	如果指针指向的存储单元不为零，向前跳转到对应的 [ 指令处</span><br></pre></td></tr></table></figure>
+<p>这里的方括号其实就相当于 C 语言里的 while 循环。</p>
+<p>除了这八条指令以外的所有字符都会被忽略。你可以把它们当成注释。</p>
+<p>按照传统，学习编程时的第一个范例程序往往是输出字符串<code>Hello, World!</code>。我们就用 brainfuck 来写一个 Hello World 程序吧。</p>
+<p>首先，字母<code>H</code>的 ASCII 码是72，而存储单元的初始值为0。于是我们需要72个<code>+</code>，然后用<code>.</code>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.</span><br></pre></td></tr></table></figure>
+<p>然后，<code>e</code>的 ASCII 码是101，比72多了29，于是我们加上29个<code>+</code>，再用<code>.</code>输出。后面的11个字符也同样处理。最终写出来的程序是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.</span><br><span class="line">+++++++++++++++++++++++++++++.</span><br><span class="line">+++++++. .</span><br><span class="line">+++.</span><br><span class="line">-------------------------------------------------------------------.</span><br><span class="line">------------.</span><br><span class="line">+++++++++++++++++++++++++++++++++++++++++++++++++++++++.</span><br><span class="line">++++++++++++++++++++++++.</span><br><span class="line">+++.</span><br><span class="line">------.</span><br><span class="line">--------.</span><br><span class="line">-------------------------------------------------------------------.</span><br></pre></td></tr></table></figure>
+<p>长得有点离谱。不过我们只用了一个存储单元，没有移动过指针，也没有用上循环。用上一些技巧之后，代码可以缩短很多，比如说下面这个 <a href="http://codegolf.stackexchange.com/users/4098/primo" target="_blank" rel="noopener">primo</a> 写的 <a href="http://codegolf.stackexchange.com/a/68494/9288" target="_blank" rel="noopener">Hello World 程序</a>只有87个字符：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">---&gt;-&gt;-&gt;&gt;+&gt;+&gt;&gt;+[++++[&gt;+++[&gt;++++&gt;--&gt;+++&lt;&lt;&lt;-]&lt;-]&lt;+++]&gt;&gt;&gt;.&gt;--&gt;-.&gt;..+&gt;++++&gt;+++.+&gt;--&gt;[&gt;-.&lt;&lt;]</span><br></pre></td></tr></table></figure>
+<p>感兴趣的读者可以在这个 <a href="http://copy.sh/brainfuck/" target="_blank" rel="noopener">brainfuck 在线解释器</a>上试试这些代码。</p>
+<p>可以看出，brainfuck 语言的可读性非常糟糕，一个 Hello World 程序就已经完全让人看不懂了。</p>
+<p>这样的语言有什么用呢？</p>
+<p>文章一开头我就说过了：没什么卵用。没人会用它来写实用的程序。</p>
+<p>不过总是能找到一点用处的吧？</p>
+<p>一个用处是当成智力题。用 brainfuck 写程序相当考验智力，稍复杂一点的程序写起来就有一种脑子被操的感觉。</p>
+<p>另一个用处是用来拼成字符画。由于每个指令只有一个字符，而且可以任意插入别的字符，例如空格和换行，因此很容易把 brainfuck 程序打扮成字符画。就像这样：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1770625-f3074ddb5aa3b37c.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="输出结果是 Guokr"></p>
+<p>第三种用处则关系到 brainfuck 语言的一个重要特点：它是图灵完备的。</p>
+<h1 id="极简主义与-Turing-Tarpit"><a href="#极简主义与-Turing-Tarpit" class="headerlink" title="极简主义与 Turing Tarpit"></a>极简主义与 Turing Tarpit</h1><p>图灵完备不稀奇。我们熟悉的编程语言，绝大部分都是图灵完备的。<br>神奇的地方在于，brainfuck 仅仅用了八条指令，就实现了一个图灵完备的模型。它是一种极简主义的编程语言。</p>
+<p>从这点来说，这种语言虽然名字难听，却有着独特的美学价值。</p>
+<p>比美学价值更重要的是，它实现起来非常简单。因此，要证明一种编程语言是图灵完备的，我们只需要用它实现一个 brainfuck，或者证明它的一个子集与 brainfuck 等价。很多 esolang 的图灵完备性就是通过 brainfuck 来证明的。</p>
+<p>有不少 esolang 以极简主义为自己追求的目标， brainfuck 只是其中的一种。这些语言有些是图灵完备的，有些不是。其中图灵完备的那些称为 <a href="http://esolangs.org/wiki/Turing_tarpit" target="_blank" rel="noopener"><strong>Turing tarpit</strong></a> ——中文维基百科把这个词译作“图灵焦油坑”。</p>
+<p>提出 Turing tarpit 这个词的是美国计算机科学家，首届图灵奖得主 Alan Perlis。他在《Epigrams on Programming》一书中提到：</p>
+<blockquote>
+<p>Beware of the Turing tar-pit in which everything is possible but nothing of interest is easy.</p>
+</blockquote>
+<p>和别的 Turing tarpit——比如说，只有一条指令的<a href="https://en.wikipedia.org/wiki/One_instruction_set_computer" target="_blank" rel="noopener">单一指令计算机</a>，基于组合子逻辑的 <a href="http://esolangs.org/wiki/Jot" target="_blank" rel="noopener">Jot</a> 和 <a href="http://esolangs.org/wiki/Iota" target="_blank" rel="noopener">Iota</a>，基于字符串重写的 <a href="http://esolangs.org/wiki/Thue" target="_blank" rel="noopener">Thue</a>——比起来，brainfuck 有多达八条指令，算是比较复杂的一种，离极简主义的要求还是有一点距离。<br>不过，brainfuck 还可以简化﻿﻿。</p>
+<p>首先，八条指令的操作对象是一个有很多个存储单元的数组。Brainfuck 并没有规定每个存储单元有多大，主流的 brainfuck 实现大多把它定为一个字节（byte）。我们也可以把它改成一个比特（bit）；也就是说，每个存储单元只有0和1两种状态。这样<code>+</code>和<code>-</code>就没有区别了，我们可以把这两个指令合并，写成<code>@</code>。</p>
+<p>然后，我们可以用<code>}</code>来表示<code>&gt;@</code>；也就是指针向右移动一格，然后加一。注意向左移动一个和向右移动一格可以抵消，两次加一也可以抵消。由此容易看出，<code>@</code>就相当于<code>&lt;}</code>，<code>&gt;</code>相当于<code>}&lt;}</code>。于是我们可以把<code>@</code>换成<code>&lt;}</code>，<code>&gt;</code>换成<code>}&lt;}</code>，这样就只剩下<code>}&lt;[].,</code>这六条指令了。</p>
+<p>六条指令还是比较多。输入输出和循环结构还可以进一步简化，甚至简化到只有三条指令。不过简化的过程比较复杂，我就不介绍了，感兴趣的读者可以看<a href="http://esolangs.org/wiki/BF_instruction_minimalization" target="_blank" rel="noopener">这里</a>。</p>
+<p>不过，经过这一步步的简化，写出有意义的程序也变得越来越难。</p>
+<p>当然，为了实现极简主义的理想，牺牲一点易用性是值得的。</p>
+<p>何况，有的 esolang 本来就是为了难用而设计的。</p>
+<h1 id="地狱级的编程语言"><a href="#地狱级的编程语言" class="headerlink" title="地狱级的编程语言"></a>地狱级的编程语言</h1><p>我在文章开头就说过，某些 esolang 的设计目的，就“纯粹是为了让你没法好好编程”。</p>
+<p>这方面最典型的例子是 <a href="https://en.wikipedia.org/wiki/Malbolge" target="_blank" rel="noopener"><strong>Malbolge</strong></a>。</p>
+<p>Malbolge 是 Ben Olmstead 发明于1998年的一种编程语言。Malbolge 这个词来自但丁《神曲・地狱篇》中的地狱第八层——Malebolge。</p>
+<p>Malbolge 编程的难度确实称得上是地狱级。它把程序存储在一个三进制虚拟机上，运行过程中会不断地修改自身；同一个字符在程序的不同位置代表不同的指令，而有效的指令总共只有8条；每一条指令在执行之后会被“加密”，变成另一个字符……</p>
+<p>事实上，Ben Olmstead 本人也没有写出过一个完整的 Malbolge 程序。第一个 Malbolge 的 Hello World 程序是通过一个 LISP 程序用束搜索算法搜出来的。</p>
+<p>这个<a href="http://acooke.org/malbolge.html" target="_blank" rel="noopener">用 LISP 找出来的 Hello World 程序</a>长这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(=&lt;`$9]7&lt;5YXz7wT.3,+O/o&apos;K%$H&quot;&apos;~D|#z@b=`&#123;^Lx8%$Xmrkpohm-kNi;gsedcba`_^]\[ZYXWVUTSRQPONMLKJIHGFEDCBA@?&gt;=&lt;;:9876543s+O&lt;oLm</span><br></pre></td></tr></table></figure>
+<p>这不是一个完美的 Hello World 程序，它输出的是“HEllO WORld”，连大小写都做不到统一。</p>
+<p>看来这种语言真的是无解了。</p>
+<p>但就在几年之后，Malbolge 被一位叫做 Lou Scheffer 的密码学爱好者“破解”了。</p>
+<p>Lou Scheffer 意识到，看待 Malbolge 的正确方法是把它看作一套密码系统，而非一种编程语言。于是，他用密码学的方法对 Malbolge 进行了分析，找到了它的“弱点”，写出了几个 Malbolge 程序，还提出了一套写 Malbolge 程序的策略。有了这套策略，用 Malbolge 语言写程序依然十分困难，但已经不再是不可能。</p>
+<p>于是，我们写 Hello World 程序的时候不必再用 LISP 来搜索。这是 <a href="http://codegolf.stackexchange.com/users/38661/jacob" target="_blank" rel="noopener">Jacob</a> 写的一个<a href="http://codegolf.stackexchange.com/a/55656/9288" target="_blank" rel="noopener">能完整输出“Hello, World!”的程序</a>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(&apos;&amp;%:9]!~&#125;|z2Vxwv-,POqponl$Hjihf|B@@&gt;,=&lt;M:9&amp;7Y#VV2TSn.Oe*c;(I&amp;%$#&quot;mCBA?zxxv*Pb8`qo42mZF.&#123;Iy*@dD&apos;&lt;;_?!\&#125;&#125;|z2VxSSQ</span><br></pre></td></tr></table></figure>
+<p>当然，我还是读不懂。</p>
+<p>无论是追求极简的 Turing tarpits，还是追求极难的 Malbolge，都可以归结为测试语言设计的界限。正如 Ben Olmstead 在<a href="http://esoteric.codes/post/101675489813/interview-with-ben-olmstead" target="_blank" rel="noopener">某次采访</a>中所说的：</p>
+<blockquote>
+<p>… pushing the boundaries of programming… but not in useful directions.</p>
+</blockquote>
+<p>有的语言则走得更远，突破了维度的界限。</p>
+<h1 id="二维的编程语言"><a href="#二维的编程语言" class="headerlink" title="二维的编程语言"></a>二维的编程语言</h1><p>无论是大部分日常的编程语言，还是前面介绍的 brainfuck 和 Malbolge，代码都是一维的。即使有换行和缩进的要求，读代码的时候还是从前往后按顺序阅读。</p>
+<p>你有没有想过，有的语言可以把代码铺在一个二维的平面上，用箭头或别的符号来指引阅读和执行的方向，读代码就像走迷宫？</p>
+<p>比如说 <a href="http://esolangs.org/wiki/Befunge" target="_blank" rel="noopener"><strong>Befunge</strong></a>。</p>
+<p>Befunge 是一个基于堆栈的编程语言，大部分指令都是堆栈操作：往堆栈里压入一个东西，从堆栈里弹出一个东西，交换堆栈顶部的两个东西……Befunge 中也有加减乘除、模、逻辑非、大于等常见的运算，只不过要理解为堆栈操作。比如说，加法<code>+</code>表示从堆栈里弹出两个数，把它们加起来，然后把结果压回堆栈。</p>
+<p>基于堆栈的编程语言不常见，但也算不上离奇。有些实用的编程语言，比如说 PostScript，Forth，Factor，也是基于堆栈的，只不过 Befunge 里每一条指令都只用一个字符来表示。</p>
+<p>除了堆栈操作的指令之外，Befunge 中还有一些指示方向的指令。比如说，<code>^v&lt;&gt;</code>分别表示上下左右四个方向的箭头；问号<code>?</code>表示随机的一个方向；<code>|</code>和<code>_</code>这两个符号表示条件选择，比如说<code>_</code>表示从堆栈里弹出一个值，如果它等于0就转向右边，否则转向左边。此外，<code>#</code>表示跳过一个指令，<code>@</code>表示结束程序。</p>
+<p>这些指示方向的指令规定了代码执行的顺序：开始的时候，也是从左上角开始向右走，但并不理会换行；一旦遇到指示方向的指令，它就会转向这些指令所指的方向，沿着这个方向走下去。</p>
+<p>于是，在 Befunge 里，你看不到别的语言中的循环语句；只要用箭头画出一个回路，就可以实现循环。</p>
+<p>比如说，这是一个死循环：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;v</span><br><span class="line">^&lt;</span><br></pre></td></tr></table></figure>
+<p>再比如说 <a href="http://www.matrix67.com/blog/archives/253" target="_blank" rel="noopener">Matrix67 的博客</a>里的这个 Hello World 程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">                 v</span><br><span class="line">&gt;v&quot;Hello world!&quot;0&lt;</span><br><span class="line">,:</span><br><span class="line">^_25*,@</span><br></pre></td></tr></table></figure>
+<p>这个程序该怎么读？</p>
+<p>首先，从第一行的最左边开始向右走，直到碰到最右边的<code>v</code>。顺着<code>v</code>的方向向下走，遇到<code>&lt;</code>，转向左边。遇到<code>0</code>，把数字0压入堆栈。</p>
+<p>然后我们看到了熟悉的<code>&quot;Hello world!&quot;</code>。但这时程序运行的方向是从右往左，所以这个字符串其实是<code>&quot;!dlrow olleH&quot;</code>。为什么要倒过来？因为 Befunge 处理字符串的方式是把它拆成一个个字符，按顺序压入堆栈。因此，把<code>&quot;!dlrow olleH&quot;</code>压入堆栈的时候，<code>!</code>在最下面，<code>H</code>在最上面。输出的时候，就可以先输出<code>H</code>，最后输出<code>!</code>。</p>
+<p><code>&quot;Hello world!&quot;</code>的后面是一个向下的箭头。顺着箭头，程序进入了一个由箭头围成的回路：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;v</span><br><span class="line">,:</span><br><span class="line">^_</span><br></pre></td></tr></table></figure>
+<p>进入循环之后遇到的第一个非箭头的指令是<code>:</code>，它的意思是把堆栈最顶上的东西复制一份。需要复制是因为在条件选择<code>_</code>中要用掉一份。然后，如果堆栈顶上不是0，则向左拐，再向上，遇到<code>,</code>指令，输出一个字符，向右走回到<code>v</code>处；如果堆栈顶上是0，则在<code>_</code>处直接向右拐退出循环。<code>&quot;Hello World!&quot;</code>这几个字符都不等于0，于是程序把它们按顺序一个个输了出来。</p>
+<p>出了循环向右走，是数字2和数字5——Befunge 里的数字要分开一个个读——和一个乘号。2乘5等于10，对应的是换行的 ASCII 码，于是后面的一个<code>,</code>输出换行。最后<code>@</code>结束程序。</p>
+<p>Befunge 不是唯一一个二维的 esolang。Esolang 维基的 <a href="http://esolangs.org/wiki/Category:Two-dimensional_languages" target="_blank" rel="noopener">Two-dimensional languages</a> 分类里列出了一百多种二维编程语言，其中有 Befunge 的模仿者，也有一些脑洞特别大的作品，比如说 <a href="http://esolangs.org/wiki/Piet" target="_blank" rel="noopener">Piet</a>。</p>
+<p>我也曾写过一个 Piet 程序：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1770625-cab1af5bd6b23ac5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Project Euler 第五题的解答"></p>
+<p>没错，这幅图片就是一个 Piet 程序。这种语言的设计目标就是让程序看起来像抽象画。Piet 这个名字正是来自荷兰风格派画家 Piet Mondrian。</p>
+<h1 id="更多的脑洞"><a href="#更多的脑洞" class="headerlink" title="更多的脑洞"></a>更多的脑洞</h1><p>Befunge 把程序写到二维，Piet 把程序写成图片，都算得上是脑洞之作。</p>
+<p>日常的编程语言往往被看作是工具。无论语言本身设计得多精美，多神奇，我们更看重的往往还是写出来的程序；语言本身的精美和神奇之处也往往只是为了写出更好的程序，或者更好地写出程序。</p>
+<p>但很多 esolang 并非如此。这些语言并不适合于写程序，令人赞叹的只是语言本身。与其把它们看作编程的工具，不如把它们看成是恰好能用来编程的艺术品。</p>
+<p>既然是艺术品，当然可以天马行空，脑洞大开。有怎样的脑洞，就有怎样的编程语言。</p>
+<p>下面列举了一些我比较喜欢的作品，限于篇幅就不详细介绍了。</p>
+<h3 id="MarioLANG"><a href="#MarioLANG" class="headerlink" title="MarioLANG"></a><a href="http://esolangs.org/wiki/MarioLANG" target="_blank" rel="noopener">MarioLANG</a></h3><p>把程序写成超级马里奥关卡的样子。设计者是 <a href="http://esolangs.org/wiki/User:Wh1teWolf" target="_blank" rel="noopener">Wh1teWolf</a>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">++++:       &gt;       &gt;  +:+:+:+:+:+:+:::::</span><br><span class="line">====+      &gt;^===    &quot;&quot;&quot;=================</span><br><span class="line">    +:-):(:^=   =                       !</span><br><span class="line">    =========    =                      #</span><br><span class="line">                  = !             .+.,:-&lt;</span><br><span class="line">                   =###           ======&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="Starry"><a href="#Starry" class="headerlink" title="Starry"></a><a href="http://esolangs.org/wiki/Starry" target="_blank" rel="noopener">Starry</a></h3><p>原悠在《Rubyで作る奇妙なプログラミング言語》一书中设计的编程语言。代码全是星星，读起来有一种仰望星空的感觉。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">            +               +  *       +    </span><br><span class="line"> * + .        +              +  *       +   </span><br><span class="line">  *     * + .            +     * + . + .    </span><br><span class="line">    +     * + .              +            + </span><br><span class="line"> *         +     * * + .                 + *</span><br><span class="line"> + .              + +  *           +     *  </span><br><span class="line">   * + .             + * + .        +     * </span><br><span class="line">+ .           + * + .             + * + .   </span><br><span class="line">           +            +  *         +     *</span><br><span class="line"> * + .</span><br></pre></td></tr></table></figure>
+<h3 id="Parenthesis-Hell"><a href="#Parenthesis-Hell" class="headerlink" title="Parenthesis Hell"></a><a href="http://esolangs.org/wiki/Parenthesis_Hell" target="_blank" rel="noopener">Parenthesis Hell</a></h3><p><a href="http://esolangs.org/wiki/Special:Contributions/Qpliu" target="_blank" rel="noopener">Qpliu</a> 设计的一种 LISP 方言，继承了 LISP 最重要的特点：括号。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((())(((())()((())())(()())((())())(((())())(((())())(()())((())())(())(()))())(())))((())())(()())((())())(((())())(((())())(()())((())())(())(()))())(()))</span><br></pre></td></tr></table></figure>
+<h3 id="Unreadable"><a href="#Unreadable" class="headerlink" title="Unreadable"></a><a href="http://esolangs.org/wiki/Unreadable" target="_blank" rel="noopener">Unreadable</a></h3><p>完全不可读的编程语言，代码中只允许出现两种字符：单引号和双引号。作者是 <a href="http://esolangs.org/wiki/User:TehZ" target="_blank" rel="noopener">TehZ</a>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&apos;&quot;&apos;&quot;&quot;&quot;&quot;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&quot;&quot;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&quot;&quot;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&quot;&quot;&quot;&quot;&apos;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&apos;&quot;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&quot;&quot;&quot;&quot;&apos;&quot;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&quot;&apos;&quot;&apos;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&apos;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&apos;&quot;&quot;&quot;&apos;&quot;&apos;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&apos;&quot;&quot;&quot;&apos;&quot;&apos;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&quot;&apos;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&quot;&apos;&quot;&apos;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&quot;&apos;&quot;&apos;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&quot;&apos;&quot;&apos;&quot;&quot;&apos;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&apos;&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="Quipu"><a href="#Quipu" class="headerlink" title="Quipu"></a><a href="http://esolangs.org/wiki/Quipu" target="_blank" rel="noopener">Quipu</a></h3><p>古印加人有一套结绳记事的方法，叫做奇普。这种语言就是基于奇普而设计，作者是 <a href="http://esolangs.org/wiki/User:Vkostyukov" target="_blank" rel="noopener">Vladimir Kostyukov</a>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&quot;0  1  2  3  4  5  6  7  8&quot;</span><br><span class="line"></span><br><span class="line">\/ 1&amp; 3&amp; 4&amp; 3&amp; 7&amp; 3&amp; 1&amp; 7&amp;</span><br><span class="line">   -- [] [] [] [] [] ^^ []</span><br><span class="line">   0&amp;    1&amp; 2&amp; 6&amp; /\ -- 7&amp;</span><br><span class="line">   []    -- [] == 7&amp; 1&amp; &gt;&gt;</span><br><span class="line">   --    7&amp; ++ &apos;, [] &gt;&gt; &apos;.</span><br><span class="line">   7&amp;    []    /\ 1&amp;    /\</span><br><span class="line">   []    **    &apos;  &gt;&gt;</span><br><span class="line">   **    1&amp;    /\</span><br><span class="line">   0&amp;    ++</span><br><span class="line">   []</span><br><span class="line">   ++</span><br><span class="line">   8&amp;</span><br><span class="line">   ==</span><br></pre></td></tr></table></figure>
+<h3 id="Hexagony"><a href="#Hexagony" class="headerlink" title="Hexagony"></a><a href="http://esolangs.org/wiki/Hexagony" target="_blank" rel="noopener">Hexagony</a></h3><p>可能是第一种六边形编程语言。不仅代码要排成六边形，它模拟的存储布局也是一个六边形网格。作者是 <a href="http://esolangs.org/wiki/User:Martin_B%C3%BCttner" target="_blank" rel="noopener">Martin Büttner</a>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    4 \ / &quot; 1</span><br><span class="line">   &quot; 0 . &quot; . .</span><br><span class="line">  . 0 . . 0 . =</span><br><span class="line"> . \ 0 0 0 / + .</span><br><span class="line">&#125; = \ &gt; - &quot; &lt; &gt; &amp;</span><br><span class="line"> . + &amp; . / &lt; . _</span><br><span class="line">  &#125; &apos; . . ) _ !</span><br><span class="line">   \ + &#123; = / @</span><br><span class="line">    &#123; &#123; &#125; = +</span><br></pre></td></tr></table></figure>
+<h3 id="Rail"><a href="#Rail" class="headerlink" title="Rail"></a><a href="http://esolangs.org/wiki/Rail" target="_blank" rel="noopener">Rail</a></h3><p>把代码铺成铁路。作者是 <a href="http://esolangs.org/wiki/User:Duerig" target="_blank" rel="noopener">Jonathon Duerig</a>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ &apos;main&apos; (--):</span><br><span class="line"> \</span><br><span class="line"> | /---------\</span><br><span class="line"> | |         |</span><br><span class="line"> | \    /-io-/</span><br><span class="line"> \---e-&lt;</span><br><span class="line">        \-#</span><br></pre></td></tr></table></figure>
+<h3 id="Polynomial"><a href="#Polynomial" class="headerlink" title="Polynomial"></a><a href="http://esolangs.org/wiki/Polynomial" target="_blank" rel="noopener">Polynomial</a></h3><p>这是 <a href="http://esolangs.org/wiki/User:Maedhros777" target="_blank" rel="noopener">Maedhros777</a> 设计的一种语言。一个程序就是一个多项式，指令隐藏在多项式的零点当中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f(x) = x^10 - 4827056x^9 + 1192223600x^8 - 8577438158x^7 + 958436165464x^6 - 4037071023854x^5 + 141614997956730x^4 - 365830453724082x^3 + 5225367261446055x^2 - 9213984708801250x + 21911510628393750</span><br></pre></td></tr></table></figure>
+<h3 id="Velato"><a href="#Velato" class="headerlink" title="Velato"></a><a href="http://esolangs.org/wiki/Velato" target="_blank" rel="noopener">Velato</a></h3><p>程序既然能写成图片，当然也能写成音乐。Velato 是一种以 MIDI 音乐为源代码的编程语言，作者是 <a href="http://esolangs.org/wiki/User:Rottytooth" target="_blank" rel="noopener">Rottytooth</a>。</p>
+<p><img src="http://esolangs.org/w/images/7/71/Velato_HelloWorld.gif" alt="这只是程序对应的乐谱，真正的程序是一个 MIDI 文件"></p>
+<p>除此之外，还有一些更加优秀的作品，出自 <a href="http://www.dangermouse.net/esoteric/" target="_blank" rel="noopener">Danger Mouse</a>（Piet 的作者）、<a href="http://esolangs.org/wiki/User:Timwi" target="_blank" rel="noopener">Timwi</a> 这样的 esolang 大师之手。如果这一系列没有坑掉的话，我会在以后专门用一两篇文章介绍他们的作品。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2016/06/18/我也来设计一个拼音方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/06/18/我也来设计一个拼音方案/" class="post-title-link" itemprop="url">我也来设计一个拼音方案</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-06-18 19:44:00" itemprop="dateCreated datePublished" datetime="2016-06-18T19:44:00+08:00">2016-06-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 22:52:33" itemprop="dateModified" datetime="2019-03-12T22:52:33+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在知乎看到一个<a href="https://www.zhihu.com/question/47545688" target="_blank" rel="noopener">贴子</a>，该贴楼主设计了一套汉语拼音方案，挺好玩的。</p>
+<p>我也一直有自己设计一套拼音方案的想法。于是基于上个世纪30年代鞑靼语的<a href="https://en.wikipedia.org/wiki/Ya%C3%B1alif" target="_blank" rel="noopener">Jaꞑalif</a>字母表，设计了一套富有异域风情的拼音方案。</p>
+<p>反正就是图个好玩，完全不考虑实用性。</p>
+<h2 id="声母"><a href="#声母" class="headerlink" title="声母"></a>声母</h2><p>表格中左边加粗的是我设计的拼音方案，右边是原本的汉语拼音。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">双唇音/唇齿音</th>
+<th style="text-align:center">齿龈音</th>
+<th style="text-align:center">卷舌音</th>
+<th style="text-align:center">龈颚音</th>
+<th style="text-align:center">软颚音</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">鼻音</td>
+<td style="text-align:center"><strong>m</strong> m</td>
+<td style="text-align:center"><strong>n</strong> n</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">塞音（不送气）</td>
+<td style="text-align:center"><strong>b</strong> b</td>
+<td style="text-align:center"><strong>d</strong> d</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"><strong>g</strong> g</td>
+</tr>
+<tr>
+<td style="text-align:center">塞音（送气）</td>
+<td style="text-align:center"><strong>p</strong> p</td>
+<td style="text-align:center"><strong>t</strong> t</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"><strong>k</strong> k</td>
+</tr>
+<tr>
+<td style="text-align:center">塞擦音（不送气）</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"><strong>z</strong> z</td>
+<td style="text-align:center"><strong>ƶ</strong> zh</td>
+<td style="text-align:center"><strong>ƣ</strong> j</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">塞擦音（送气）</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"><strong>c</strong> c</td>
+<td style="text-align:center"><strong>ç</strong> ch</td>
+<td style="text-align:center"><strong>q</strong> q</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">擦音（清）</td>
+<td style="text-align:center"><strong>f</strong> f</td>
+<td style="text-align:center"><strong>s</strong> s</td>
+<td style="text-align:center"><strong>ş</strong> sh</td>
+<td style="text-align:center"><strong>x</strong> x</td>
+<td style="text-align:center"><strong>h</strong> h</td>
+</tr>
+<tr>
+<td style="text-align:center">擦音（浊）</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"><strong>r</strong> r</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">边音</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"><strong>l</strong> l</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="韵母"><a href="#韵母" class="headerlink" title="韵母"></a>韵母</h2><p>表格中左边加粗的是我设计的拼音方案，右边是原本的汉语拼音。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">开口呼</th>
+<th style="text-align:center">齐齿呼</th>
+<th style="text-align:center">合口呼</th>
+<th style="text-align:center">撮口呼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>ь</strong> i</td>
+<td style="text-align:center"><strong>i</strong> i</td>
+<td style="text-align:center"><strong>u</strong> u</td>
+<td style="text-align:center"><strong>y</strong> ü</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>a</strong> a</td>
+<td style="text-align:center"><strong>ja</strong> ia</td>
+<td style="text-align:center"><strong>va</strong> ua</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>o</strong> o</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"><strong>vo</strong> uo</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>ə</strong> e</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>e</strong> ê</td>
+<td style="text-align:center"><strong>je</strong> ie</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"><strong>ye</strong> üe</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>ər</strong> er</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>aj</strong> ai</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"><strong>vaj</strong> uai</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>ej</strong> ei</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"><strong>vej</strong> uei (ui)</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>av</strong> ao</td>
+<td style="text-align:center"><strong>jav</strong> iao</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>ov</strong> ou</td>
+<td style="text-align:center"><strong>jov</strong> iou (iu)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>an</strong> an</td>
+<td style="text-align:center"><strong>jan</strong> ian</td>
+<td style="text-align:center"><strong>van</strong> uan</td>
+<td style="text-align:center"><strong>yan</strong> üan</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>ən</strong> en</td>
+<td style="text-align:center"><strong>in</strong> in</td>
+<td style="text-align:center"><strong>vən</strong> uen (un)</td>
+<td style="text-align:center"><strong>yn</strong> ün</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>aꞑ</strong> ang</td>
+<td style="text-align:center"><strong>jaꞑ</strong> iang</td>
+<td style="text-align:center"><strong>vaꞑ</strong> uang</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>əꞑ</strong> eng</td>
+<td style="text-align:center"><strong>iꞑ</strong> ing</td>
+<td style="text-align:center"><strong>uꞑ</strong> ong</td>
+<td style="text-align:center"><strong>juꞑ</strong> iong</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"><strong>vəꞑ</strong> ueng</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="声调"><a href="#声调" class="headerlink" title="声调"></a>声调</h2><p>可以不标。需要标记时，第一声不标，二、三、四声分别用音节后加上ƨ、з、ч来表示。轻声不标，也可以在其<strong>前方</strong>用一个小点.来表示。为避免与句号混淆，在真正的句号后若不换行，一定要加上空格。</p>
+<h2 id="隔音符号"><a href="#隔音符号" class="headerlink" title="隔音符号"></a>隔音符号</h2><p>两个音节分界处，第二个音节开头是零声母，可能引起混淆时，用隔音符号’来隔开。</p>
+<h2 id="例句"><a href="#例句" class="headerlink" title="例句"></a>例句</h2><ul>
+<li><p>我能吞下玻璃而不伤身体。<br>汉语拼音：Wǒ néng tūnxia bōli ér bù shāng shēntǐ.<br>我的方案（不标声调）：Vo nəꞑ tvənxja boli ər bu şaꞑ şənti.<br>我的方案（标记声调）：Voз nəꞑƨ tvən.xja bo.li ərƨ buч şaꞑ şəntiз.</p>
+</li>
+<li><p>人人生而自由，在尊严和权利上一律平等。他们赋有理性和良心，并应以兄弟关系的精神互相对待。<br>汉语拼音：Rénrén shēng ér zìyóu, zài zūnyán hé quánlì shàng yílǜ píngděng. Tāmen fùyǒu lǐxìng hé liángxīn, bìng yīng yǐ xiōngdi guānxì de jīngshén hùxiāng duìdài.<br>我的方案（不标声调）：Rənrən şəꞑ ər zьjov, zaj zvəꞑjan hə qyanli şaꞑ ily piꞑdəꞑ. Tamən fujov lixiꞑ hə ljaꞑxin, biꞑ iꞑ i xjuꞑdi gvanxi də ƣiꞑşən huxjaꞑ dvejdaj.<br>我的方案（标记声调）：Rənƨrənƨ şəꞑ ərƨ zьчjovƨ, zajч zvəꞑjanƨ həƨ qyanƨliч şaꞑч ilyч piꞑƨdəꞑз. Ta.mən fuчjovз liзxiꞑч həƨ ljaꞑƨxin, biꞑч iꞑ iз xjuꞑdiч gvanxiч .də ƣiꞑşənƨ huчxjaꞑ dvejчdajч.</p>
+</li>
+<li><p>苟利国家生死以，岂因祸福避趋之。<br>汉语拼音：Gǒu lì guó jiā shēng sǐ yǐ, qǐ yīn huò fú bì qū zhī.<br>我的方案（不标声调）：Gov li gvo ƣja şəꞑ sь i, qi in hvo fu bi qy ƶь.<br>我的方案（标记声调）：Govз liч gvoƨ ƣja şəꞑ sьз iз, qiз in hvoч fuƨ biч qy ƶь.</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2016/05/28/10个惊艳的Mathematica单行代码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/05/28/10个惊艳的Mathematica单行代码/" class="post-title-link" itemprop="url">10个惊艳的Mathematica单行代码</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-28 14:56:00" itemprop="dateCreated datePublished" datetime="2016-05-28T14:56:00+08:00">2016-05-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 22:49:24" itemprop="dateModified" datetime="2019-03-12T22:49:24+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>几年前兴起过一个“10个惊艳的XX单行代码”的潮流。始作俑者好象是Marcus Kazmierczak的<a href="https://gist.github.com/mkaz/d11f8f08719d6d27bab5" target="_blank" rel="noopener">《10 Scala One Liners to Impress Your Friends》</a>，然后出现了各种其它语言的版本。</p>
+<p>我不是编程工作者，现在才看到那些文章，跟风写了个Mathematica版。不过很多功能在Mathematica里都可以直接用一个函数搞定，看起来不是那么惊艳。</p>
+<p>需要Mathematica 10.1以上的版本。</p>
+<h3 id="1-列表每项乘以2"><a href="#1-列表每项乘以2" class="headerlink" title="1. 列表每项乘以2"></a>1. 列表每项乘以2</h3><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Range</span>[<span class="number">10</span>] * <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-列表求和"><a href="#2-列表求和" class="headerlink" title="2. 列表求和"></a>2. 列表求和</h3><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fold</span>[<span class="keyword">Plus</span>, <span class="keyword">Range</span>[<span class="number">1000</span>]]</span><br><span class="line"></span><br><span class="line"><span class="keyword">Total</span>[<span class="keyword">Range</span>[<span class="number">1000</span>]]</span><br></pre></td></tr></table></figure>
+<h3 id="3-验证字符串中是否存在某词"><a href="#3-验证字符串中是否存在某词" class="headerlink" title="3. 验证字符串中是否存在某词"></a>3. 验证字符串中是否存在某词</h3><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wordList = &#123;"coffeescript", "eko", "play framework", "and stuff", "falsy"&#125;</span><br><span class="line">tweet = <span class="string">"This is an example tweet talking about javascript and stuff."</span></span><br><span class="line"></span><br><span class="line">StringContainsQ[tweet, wordList]</span><br></pre></td></tr></table></figure>
+<h3 id="4-读取文件"><a href="#4-读取文件" class="headerlink" title="4. 读取文件"></a>4. 读取文件</h3><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fileText = <span class="keyword">Import</span>[<span class="string">"data.txt"</span>]</span><br><span class="line"></span><br><span class="line">fileLines = <span class="keyword">Import</span>[<span class="string">"data.txt"</span>, <span class="string">"List"</span>, <span class="string">"Numeric"</span> -&gt; <span class="keyword">False</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="5-生日歌"><a href="#5-生日歌" class="headerlink" title="5. 生日歌"></a>5. 生日歌</h3><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Do</span>[<span class="keyword">Print</span>[<span class="string">"Happy Birthday "</span> &lt;&gt; <span class="keyword">If</span>[i == <span class="number">3</span>, <span class="string">"dear NAME"</span>, <span class="string">"to You"</span>]], &#123;i, 4&#125;]</span><br></pre></td></tr></table></figure>
+<h3 id="6-过滤列表中的数字"><a href="#6-过滤列表中的数字" class="headerlink" title="6. 过滤列表中的数字"></a>6. 过滤列表中的数字</h3><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;passed, failed&#125; = Lookup[GroupBy[&#123;49, 58, 76, 82, 88, 90&#125;, # &gt; <span class="number">60</span> &amp;], &#123;True, False&#125;, &#123;&#125;]</span><br></pre></td></tr></table></figure>
+<h3 id="7-读取和分析XML-Web-service"><a href="#7-读取和分析XML-Web-service" class="headerlink" title="7. 读取和分析XML Web service"></a>7. 读取和分析XML Web service</h3><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">results = <span class="keyword">Import</span>[<span class="string">"http://search.twitter.com/search.atom?&amp;q=scala"</span>, <span class="string">"XML"</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="8-寻找列表中最大最小值"><a href="#8-寻找列表中最大最小值" class="headerlink" title="8. 寻找列表中最大最小值"></a>8. 寻找列表中最大最小值</h3><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Min</span>[&#123;14, 35, -7, 46, 98&#125;]</span><br><span class="line"><span class="keyword">Max</span>[&#123;14, 35, -7, 46, 98&#125;]</span><br></pre></td></tr></table></figure>
+<h3 id="9-并行处理"><a href="#9-并行处理" class="headerlink" title="9. 并行处理"></a>9. 并行处理</h3><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = <span class="keyword">ParallelMap</span>[processItem, dataList]</span><br></pre></td></tr></table></figure>
+<h3 id="10-埃拉托斯特尼筛法"><a href="#10-埃拉托斯特尼筛法" class="headerlink" title="10. 埃拉托斯特尼筛法"></a>10. 埃拉托斯特尼筛法</h3><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Reap</span>[<span class="keyword">Range</span>[<span class="number">2</span>, #] //. p : &#123;x_, ___&#125; :&gt; <span class="keyword">Complement</span>[p, <span class="keyword">Range</span>[<span class="number">0</span>, #, <span class="keyword">Sow</span>[x]]]][[<span class="number">2</span>, <span class="number">1</span>]] &amp;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2016/05/20/一个二维码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/05/20/一个二维码/" class="post-title-link" itemprop="url">一个二维码</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-20 21:14:00" itemprop="dateCreated datePublished" datetime="2016-05-20T21:14:00+08:00">2016-05-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 22:48:47" itemprop="dateModified" datetime="2019-03-12T22:48:47+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="http://upload-images.jianshu.io/upload_images/1770625-cc58a318bb296d7e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="扫码可知生成此二维码的Mathematica代码（需要Mathematica 10）"></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2016/03/30/语言之墙/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/03/30/语言之墙/" class="post-title-link" itemprop="url">语言之墙</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-03-30 20:41:00" itemprop="dateCreated datePublished" datetime="2016-03-30T20:41:00+08:00">2016-03-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 22:48:21" itemprop="dateModified" datetime="2019-03-12T22:48:21+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>魔法不过是一类特殊的语言。拦截魔法的结界，自然也能拦截一般的语言。这样的结界叫做“语言之墙”（gisgaja ŋulibama）。乌图语中“语言”（ŋuliba）和“魔法”（ŋulibu）只差一个字母，很多古典时期之后的方言更是取消了这个区别。对这些方言的使用者来说，语言之墙就是魔法之墙。</p>
+<p>第一座大规模的语言之墙的建造者是安思陀罗帝国——它只是乌图帝国瓦解后冒出来的无数个大大小小的“帝国”之一，统治的疆域未曾达到过乌图帝国全盛时的五分之一，但它的财力已足以支撑起这么一个庞大的工程。</p>
+<p>这座语言之墙建造在帝国北方的边境上，目的是防御北方的海盗。它不是用砖石砌成，而是用语言编制而成——确切地说，用的是诗歌。整座语言之墙就是一首长诗，也许是人类所创作的最长的诗歌之一——当然，除了卅猫百科。这首长诗本身有时由无数较短的诗歌组成，有普通的、不带魔法的诗歌，也有咒文。这无数的诗歌交织在一起，组成一张大网。任何魔法——以及语言——想要越过帝国的国境线，都要经过这张网的筛选。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2016/03/30/海盗/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/03/30/海盗/" class="post-title-link" itemprop="url">海盗</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-03-30 20:30:00" itemprop="dateCreated datePublished" datetime="2016-03-30T20:30:00+08:00">2016-03-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 22:48:01" itemprop="dateModified" datetime="2019-03-12T22:48:01+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>北土北面是北海，北海边上是海盗们生活的地方。</p>
+<p>他们不是真正的海盗，也从未干过杀人越货的勾当，“海盗”（乌图语Pirata，海盗语Pyret）只是别人对他们的称呼。他们是来自乌图帝国的萨满的后代。</p>
+<p>乌图帝国有过一段一神教神权统治的时代，一神教信仰被强加到人们的头上。但萨满的理念与一神教的信仰并不兼容：卅猫的思想更倾向于无神论或不可知论，而一神教的教义也有反魔法的倾向。</p>
+<p>一些萨满选择了妥协，表面上接受了一神教，继续生活在帝国的统治之下，甚至出任帝国的官职。一些不愿合作的萨满，则来到了北海边上。这里名义上也是帝国的领地，但从未得到有效的统治，帝国也并不在乎这片贫瘠的土地。</p>
+<p>土地虽然贫瘠，他们还是活了下来。他们为当地的原住民带来了先进的魔法，原住民则教给了他们捕鱼的技术。逐渐地，他们与原住民融合，形成了一套独特的文化。</p>
+<p>他们有了自己的宗教。为了表达对一神教的讽刺，他们按照南土“触手越多的神越强大”的信条，为自己的神添加了无数面条般的触手，比一神教所信仰的赫屠鲁要多得多。</p>
+<p>他们也有了自己的语言。它是乌图语的一种方言，融合了一些原住民的词汇和语法，还将大量的咒语直接用在日常的语言当中。这便是海盗语。</p>
+<p>他们不再服从帝国的统治，还建立了自己的武装力量。在乌图帝国看来，武装反抗帝国的统治，便是盗；又生活在海边，因此便是海盗。海盗们欣然接受了这一称呼，还模仿帝国的骑士团，将自己的武装力量命名为盗士团。</p>
+<p>直到乌图帝国灭亡多年之后，北海盗士团依然是北土的一支重要的势力。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2016/03/30/百科全书/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/03/30/百科全书/" class="post-title-link" itemprop="url">百科全书</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-03-30 20:29:00" itemprop="dateCreated datePublished" datetime="2016-03-30T20:29:00+08:00">2016-03-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 22:47:44" itemprop="dateModified" datetime="2019-03-12T22:47:44+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>百科全书，在乌图语中叫做维基亚（vikia）。</p>
+<p>这又是一个历史比乌图语本身还要悠久的词语。它的词源是Viki加上表示名词的后缀-a。Viki便是维基岛，是北土与南土间的一个小岛的名字。这是卅猫百科（Samavikia）的第一个版本写成的地方。</p>
+<p>卅猫百科并非第一本百科全书，也非卅猫所写，起这个名字只是为了向卅猫致敬。事实上，在卅猫的时代，人类还没有自己的文字，更谈不上什么书。卅猫传授的知识，主要还是口头传播，偶尔也用兽人的文字来记录。</p>
+<p>与知识一同被传播的，是卅猫发明的各种小游戏，其中的一种文字游戏便是最早的魔法。当时的魔法确实只是个游戏，它能做到的不过是把词句颠来倒去，删掉一些词，添上一些词……</p>
+<p>卅猫的弟子是第一代萨满。经过一代又一代萨满的努力，萨满们的知识变得丰富起来。原来的文字游戏也已经变成了文字魔法，成为了处理文字的利器，被萨满们用来辅助诗歌的创作。</p>
+<p>一位萨满开始整理这些知识，试着将它们编写成长篇的诗歌。对这么长的一首诗歌来说，无论是编写还是阅读都是一件繁重的任务。于是，他采用了一种全新的写法。魔法不仅被用在诗歌的创作过程中，还大量地插入到诗歌当中。咒语太多，读起来就不顺畅，于是他又用了一些手法，将诗中的咒语巧妙地隐藏了起来。</p>
+<p>最终，写出来的诗歌不同于以往的任何一首诗歌：不同于寻常的诗歌，咒语在这首诗中占了极大的篇幅；又不同于咒文，你在诵读的时候不会读出任何咒语；你不仅可以像普通的诗歌一样，从开头一直读到结尾；也可以在读到某个词的时候，激活其中的魔法，诗歌便会跳转到另一个章节。</p>
+<p>这首诗便是百科全书的雏形。受它的影响，最早的百科全书都是以诗歌的形式出现。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">AlephAlpha</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AlephAlpha</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+  
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

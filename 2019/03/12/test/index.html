@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<meta name="LifeViewer" content="rle pre 37 hide limit">
+<script src="/js/src/lv-plugin.js"></script>
+
+
+  <meta name="description" content="测试在 Hexo 中插入 LifeViewer。 x = 59, y = 7, rule = B3/S23 o5b5ob5ob5obo3bob5ob5obobobob5ob4o$o7bo3bo5bo5bo3bo3bo3bo5bobobobo5bo 3bo$o7bo3bo5bo5bo3bo3bo3bo5bobobobo5bo3bo$o7bo3b3o3b3o3bo3bo3bo3b3o3bo bobob">
+<meta name="keywords" content="生命游戏">
+<meta property="og:type" content="article">
+<meta property="og:title" content="测试在 Hexo 中插入 LifeViewer">
+<meta property="og:url" content="https://AlephAlpha.github.io/2019/03/12/test/index.html">
+<meta property="og:site_name" content="锑星杂记">
+<meta property="og:description" content="测试在 Hexo 中插入 LifeViewer。 x = 59, y = 7, rule = B3/S23 o5b5ob5ob5obo3bob5ob5obobobob5ob4o$o7bo3bo5bo5bo3bo3bo3bo5bobobobo5bo 3bo$o7bo3bo5bo5bo3bo3bo3bo5bobobobo5bo3bo$o7bo3b3o3b3o3bo3bo3bo3b3o3bo bobob">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-13T02:52:46.854Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="测试在 Hexo 中插入 LifeViewer">
+<meta name="twitter:description" content="测试在 Hexo 中插入 LifeViewer。 x = 59, y = 7, rule = B3/S23 o5b5ob5ob5obo3bob5ob5obobobob5ob4o$o7bo3bo5bo5bo3bo3bo3bo5bobobobo5bo 3bo$o7bo3bo5bo5bo3bo3bo3bo5bobobobo5bo3bo$o7bo3b3o3b3o3bo3bo3bo3b3o3bo bobob">
+
+
+
+
+
+
+  <link rel="canonical" href="https://AlephAlpha.github.io/2019/03/12/test/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>测试在 Hexo 中插入 LifeViewer | 锑星杂记</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">锑星杂记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">AlephAlpha 写的一些乱七八糟的东西</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2019/03/12/test/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AlephAlpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锑星杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">测试在 Hexo 中插入 LifeViewer
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-12 21:03:21" itemprop="dateCreated datePublished" datetime="2019-03-12T21:03:21+08:00">2019-03-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-13 10:52:46" itemprop="dateModified" datetime="2019-03-13T10:52:46+08:00">2019-03-13</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>测试在 Hexo 中插入 LifeViewer。</p>
+<div class="rle"><pre>x = 59, y = 7, rule = B3/S23
+o5b5ob5ob5obo3bob5ob5obobobob5ob4o$o7bo3bo5bo5bo3bo3bo3bo5bobobobo5bo
+3bo$o7bo3bo5bo5bo3bo3bo3bo5bobobobo5bo3bo$o7bo3b3o3b3o3bo3bo3bo3b3o3bo
+bobob3o3b4o$o7bo3bo5bo5bo3bo3bo3bo5bobobobo5bo3bo$o7bo3bo5bo6bobo4bo3b
+o5bobobobo5bo3bo$5ob5obo5b5o3bo3b5ob5o2bobo2b5obo3bo!
+#C [[ COLOUR DEAD 0 0 0 COLOUR ALIVE 0 0 0 ]]
+#C [[ LOOP 1101 STARS NOSTEPBACK ]]
+#C [[ AUTOSTART X -90 Y 60 LAYERS 6 ZOOM 4 DEPTH 3 ]]
+#C [[ PAUSE 3 X 90 Y -60 ANGLE 20 THEME 0 ]]
+#C [[ PAUSE 1.5 X 90 Y 60 ANGLE 340 ZOOM 6 ]]
+#C [[ PAUSE 1.5 X 0 Y 0 ANGLE 0 THEME 3 ZOOM 4 ]]
+#C [[ PAUSE 1 X 0 DEPTH 0.2 ZOOM 6 THEME 4 ]]
+#C [[ T 1 THEME 7 ]]
+#C [[ T 400 ZOOM 5 X 5 Y -10 THEME 2 ]]
+#C [[ T 450 DEPTH 5 ]]
+#C [[ T 560 X -155 Y 127 DEPTH 0.5 ]]
+#C [[ T 950 X -242 Y 214 ANGLE 20 ]]
+#C [[ T 1050 DEPTH 0 ANGLE 0 AUTOFIT "#T" ]]
+#C [[ T 1100 X 0 Y 0 ZOOM 0.25 THEME CUSTOM ]]</pre><canvas width="480" height="480"></canvas></div>
+<p><a href="http://www.conwaylife.com/wiki/LifeViewer" target="_blank" rel="noopener">LifeViewer</a> 是 Chris Rowett 写的一个在线版的生命游戏模拟器，功能十分强大，支持的规则很多，还可以通过脚本来控制其速度和视角。</p>
+<p>我修改了一下 Hexo 的 <a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">NexT</a> 主题，使得可以在文章中方便地插入 LifeViewer。</p>
+<p>只需要修改了 NexT 主题的三个地方：</p>
+<p>首先，下载 <a href="http://www.conwaylife.com/forums/styles/prosilver/template/lv-plugin.js" target="_blank" rel="noopener">lv-plugin.js</a>，放到 <code>source/js/src/</code> 文件夹。</p>
+<p>然后，在 <code>scripts/tags/</code> 文件夹中放进这么一个扩展名为 <code>.js</code> 的文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line"></span><br><span class="line">function lifeViewer(args, content) &#123;</span><br><span class="line">  return `&lt;div class=&quot;rle&quot;&gt;&lt;pre&gt;$&#123;content&#125;&lt;/pre&gt;&lt;canvas width=&quot;480&quot; height=&quot;480&quot;&gt;&lt;/canvas&gt;&lt;/div&gt;`;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">hexo.extend.tag.register(&apos;lifeviewer&apos;, lifeViewer, &#123;ends: true&#125;);</span><br></pre></td></tr></table></figure>
+<p>最后，在 <code>layout/_custom/head.swig</code> 文件中插入这么两行（参见<a href="http://www.conwaylife.com/forums/viewtopic.php?f=3&amp;t=1622#p17014" target="_blank" rel="noopener">此处</a>）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;LifeViewer&quot; content=&quot;rle pre 37 hide limit&quot;&gt;</span><br><span class="line">&lt;script src=&quot;&#123;&#123; url_for(theme.js) &#125;&#125;/src/lv-plugin.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>然后就能用了。比如说，要在文章中插入一架滑翔机，只需要在 MarkDown 中插入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;% lifeviewer %&#125;</span><br><span class="line">x = 3, y = 3, rule = B3/S23</span><br><span class="line">bob$2bo$3o!</span><br><span class="line">&#123;% endlifeviewer %&#125;</span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<div class="rle"><pre>x = 3, y = 3, rule = B3/S23
+bob$2bo$3o!</pre><canvas width="480" height="480"></canvas></div>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/生命游戏/" rel="tag"># 生命游戏</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/04/用-Mathematica-搜索生命游戏中的静物（三）/" rel="next" title="用-Mathematica-搜索生命游戏中的静物（三）">
+                <i class="fa fa-chevron-left"></i> 用-Mathematica-搜索生命游戏中的静物（三）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">AlephAlpha</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AlephAlpha</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
