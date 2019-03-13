@@ -96,7 +96,7 @@ footer:
 
   # -------------------------------------------------------------
   # Any custom text can be defined here.
-  #custom_text: Hosted by <a href="https://pages.coding.me" class="theme-link" rel="noopener" target="_blank">Coding Pages</a>
+  custom_text: Powered by <a href="http://lazyslug.no-ip.biz/lifeview/" class="theme-link" rel="noopener" target="_blank">LifeViewer</a>
 
 # Creative Commons 4.0 International License.
 # See: https://creativecommons.org/share-your-work/licensing-types-examples
@@ -106,9 +106,9 @@ footer:
 # Valid values of language: deed.zh, deed.fr, deed.de, etc.
 creative_commons:
   license: by-nc-sa
-  sidebar: false
+  sidebar: true
   post: false
-  language:
+  language: deed.zh
 
 # Follow me on GitHub banner in right-top corner.
 github_banner:
