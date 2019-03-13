@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -72,7 +72,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     version: '7.0.1',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
@@ -111,6 +111,8 @@
 <meta name="twitter:title" content="锑星杂记">
 
 
+
+  <link rel="alternate" href="/atom.xml" title="锑星杂记" type="application/atom+xml">
 
 
 
@@ -233,6 +235,23 @@
         
         
           
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
           <li class="menu-item menu-item-archives">
 
     
@@ -251,9 +270,6 @@
       
     </ul>
   
-
-  
-    
 
   
 
@@ -275,6 +291,9 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
           
           <div id="content" class="content">
             
@@ -300,7 +319,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="AlephAlpha">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/guokr.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -456,7 +475,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="AlephAlpha">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/guokr.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -471,7 +490,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018/05/13/用-Mathematica-搜索生命游戏中的静物（二）/" class="post-title-link" itemprop="url">用-Mathematica-搜索生命游戏中的静物（二）</a>
+                <a href="/2018/05/13/用-Mathematica-搜索生命游戏中的静物（二）/" class="post-title-link" itemprop="url">用 Mathematica 搜索生命游戏中的静物（二）</a>
               
             
           </h1>
@@ -513,7 +532,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-12 23:37:39" itemprop="dateModified" datetime="2019-03-12T23:37:39+08:00">2019-03-12</time>
+                <time title="修改时间：2019-03-13 12:34:05" itemprop="dateModified" datetime="2019-03-13T12:34:05+08:00">2019-03-13</time>
               
             
           </span>
@@ -548,59 +567,25 @@
 
       
         
-          
-            <p>之前写的那篇<a href="https://www.jianshu.com/p/74900ea7f07d" target="_blank" rel="noopener">《用 Mathematica 搜索生命游戏中的静物》</a>，由于自己写的部分多了一点（虽然关键的一步还是用 Mathematica 自带的 <code>FindPath</code> 函数），特别慢，还特别耗内存。果然对我这种<strong>完全</strong>不懂算法的人，就应该把所有的事情都交给 Mathematica 才对。</p>
+          <ul>
+<li><a href="/2017/11/06/用-Mathematica-搜索生命游戏中的静物/" title="用 Mathematica 搜索生命游戏中的静物">用 Mathematica 搜索生命游戏中的静物</a></li>
+<li><a href="/2019/03/04/用-Mathematica-搜索生命游戏中的静物（三）/" title="用 Mathematica 搜索生命游戏中的静物（三）">用 Mathematica 搜索生命游戏中的静物（三）</a>
+</li>
+</ul>
+<hr>
+<p>之前写的那篇《<a href="/2017/11/06/用-Mathematica-搜索生命游戏中的静物/" title="用 Mathematica 搜索生命游戏中的静物">用 Mathematica 搜索生命游戏中的静物</a>》，由于自己写的部分多了一点（虽然关键的一步还是用 Mathematica 自带的 <code>FindPath</code> 函数），特别慢，还特别耗内存。果然对我这种<strong>完全</strong>不懂算法的人，就应该把所有的事情都交给 Mathematica 才对。</p>
 <!--我在 Mathematica StackExchange 上提了一个问题：[Searching for still lifes in Conway's Game of Life](https://mathematica.stackexchange.com/questions/160865/searching-for-still-lifes-in-conways-game-of-life)。大家如果有什么改进代码的建议，欢迎去那里回答。-->
 <hr>
 <p>生命游戏里的每个细胞的状态可以看成一个布尔值，一个（大小有限的）图样则可以看成一个由布尔值组成的二维数组。于是，要寻找满足某些条件图样，就相当于要求这些布尔值满足某个方程。于是，这是一个<a href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem" target="_blank" rel="noopener">布尔可满足性问题</a>（SAT）。Mathematica 里有个叫 <a href="http://reference.wolfram.com/language/ref/SatisfiabilityInstances.html" target="_blank" rel="noopener"><code>SatisfiabilityInstances</code></a> 的函数就是干这个的。</p>
-<hr>
-<p>我们先把要满足的条件用 Mathematica 代码写出来。</p>
-<p>假设我们要找的图样在一个 <code>x</code> 乘 <code>y</code> 的长方形里边，它对应的数组可以用 <code>Array[b, {x, y}]</code> 来表示，这里每个 <code>b[i,j]</code> 表示一个细胞。</p>
-<p>静物（<a href="http://conwaylife.com/wiki/Still_life" target="_blank" rel="noopener">Still life</a>）指的是稳定的图样，它要满足下面两个条件：</p>
-<ul>
-<li>每个活细胞周围的活细胞个数必须是2或者3，</li>
-<li>每个死细胞周围的活细胞个数不能是3。</li>
-</ul>
-<p>我们先写一个函数来数一个细胞周围的活细胞个数：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NeighborCount[k_, &#123;i_, j_&#125;] :=</span><br><span class="line">  <span class="keyword">BooleanCountingFunction</span>[&#123;k&#125;,</span><br><span class="line">   <span class="keyword">Delete</span>[Catenate[<span class="keyword">Array</span>[b, &#123;3, 3&#125;, &#123;i, j&#125; - <span class="number">1</span>]], <span class="number">5</span>]];</span><br></pre></td></tr></table></figure>
-<p>然后每个细胞要满足的条件可以写成这样：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">StillLifeCondition[i_, j_] :=</span><br><span class="line">  (b[i, j] &amp;&amp; NeighborCount[&#123;2, 3&#125;, &#123;i, j&#125;]) ||</span><br><span class="line">   (! b[i, j] &amp;&amp; ! NeighborCount[&#123;3&#125;, &#123;i, j&#125;]);</span><br></pre></td></tr></table></figure>
-<p>此外，这个图样是有限的，边界之外的细胞总是死的。于是，整个图样要满足的条件可以写成：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Array</span>[StillLifeCondition[##] /.</span><br><span class="line">   b[i_, j_] /; i &lt; <span class="number">1</span> || i &gt; x || j &lt; <span class="number">1</span> || j &gt; y :&gt; <span class="keyword">False</span> &amp;,</span><br><span class="line"> &#123;x, y&#125; + <span class="number">2</span>, <span class="number">0</span>, <span class="keyword">And</span>]</span><br></pre></td></tr></table></figure>
-<p>然后我们可以用 <code>SatisfiabilityInstances</code> 函数：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SearchStillLife[x_, y_] :=</span><br><span class="line"> <span class="keyword">ArrayReshape</span>[</span><br><span class="line">  <span class="keyword">SatisfiabilityInstances</span>[</span><br><span class="line">    <span class="keyword">Array</span>[StillLifeCondition[##] /.</span><br><span class="line">       b[i_, j_] /; i &lt; <span class="number">1</span> || i &gt; x || j &lt; <span class="number">1</span> || j &gt; y :&gt; <span class="keyword">False</span> &amp;,</span><br><span class="line">     &#123;x, y&#125; + <span class="number">2</span>, <span class="number">0</span>, <span class="keyword">And</span>],</span><br><span class="line">    Catenate[<span class="keyword">Array</span>[b, &#123;x, y&#125;]]][[<span class="number">1</span>]], &#123;x, y&#125;];</span><br></pre></td></tr></table></figure>
-<p>然后我们就可以用这个 <code>SearchStillLife</code> 函数来找静物。不过，它出奇地慢，找个16乘16大小的静物也要花上44秒：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ArrayPlot</span>[<span class="keyword">Boole</span>@SearchStillLife[<span class="number">16</span>, <span class="number">16</span>], <span class="keyword">Mesh</span> -&gt; <span class="keyword">All</span>] // <span class="keyword">AbsoluteTiming</span></span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-d609735164bfbc6a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>能不能快一些？</p>
-<p>我不清楚这个 <code>SatisfiabilityInstances</code> 函数用的是什么算法。不过看了一下维基百科，SAT 问题最常用的好像是一种叫 <a href="https://en.wikipedia.org/wiki/DPLL_algorithm" target="_blank" rel="noopener">DPLL</a> 的算法。我<strong>完全</strong>不懂算法，就不管它的细节了。总之，它要求输入的是一个<a href="https://en.wikipedia.org/wiki/Conjunctive_normal_form" target="_blank" rel="noopener">合取范式</a>（CNF）。</p>
-<p>于是，我们可以试试把条件转换成 CNF，也就是说，把前面的 <code>StillLifeCondition</code> 函数改写成：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">StillLifeCondition[i_, j_] :=</span><br><span class="line"> <span class="keyword">BooleanConvert</span>[</span><br><span class="line">  (b[i, j] &amp;&amp; NeighborCount[&#123;2, 3&#125;, &#123;i, j&#125;]) ||</span><br><span class="line">   (! b[i, j] &amp;&amp; ! NeighborCount[&#123;3&#125;, &#123;i, j&#125;]), <span class="string">"CNF"</span>];</span><br></pre></td></tr></table></figure>
-<p>后面的 <code>SearchStillLife</code> 函数定义不变。现在再找一遍16乘16的静物，果然快了很多，只花了2.2秒。不过找出来的静物……</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-554e2d7ef47fe53b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="居然是空的……"></p>
-<p>看来 <code>SatisfiabilityInstances</code> 函数在处理 CNF 时用的是和别的形式不同的算法。满足条件的静物有很多，但 <code>SatisfiabilityInstances</code> 只会输出其中的第一个。而在输入 CNF 的时候，不巧空静物就是这“第一个”。</p>
-<p>只能找到空静物的代码并没有什么用。我们可以试试给原来的代码引入一点随机的因素，让这个空静物不再是“第一个”。比如说，把原来数组异或上一个随机的数组，把前面的 <code>SearchStillLife</code> 函数改写成：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">SearchStillLife[x_, y_] := </span><br><span class="line"> <span class="keyword">Block</span>[&#123;r = RandomChoice[&#123;True, False&#125;, &#123;x, y&#125;]&#125;,</span><br><span class="line">  <span class="keyword">MapThread</span>[<span class="keyword">Xor</span>, &#123;r,</span><br><span class="line">    ArrayReshape[</span><br><span class="line">     SatisfiabilityInstances[</span><br><span class="line">       Array[StillLifeCondition[##] /. </span><br><span class="line">           b[i_, j_] /; i &lt; 1 || i &gt; x || j &lt; 1 || j &gt; y :&gt; False /.</span><br><span class="line">                   b[i_, j_] :&gt; <span class="keyword">Xor</span>[b[i, j], r[[i, j]]] &amp;,</span><br><span class="line">        &#123;x, y&#125; + <span class="number">2</span>, <span class="number">0</span>, <span class="keyword">And</span>],</span><br><span class="line">       Catenate[<span class="keyword">Array</span>[b, &#123;x, y&#125;]]][[<span class="number">1</span>]], &#123;x, y&#125;]&#125;, <span class="number">2</span>]]</span><br></pre></td></tr></table></figure>
-<p>现在完整的代码变成了：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">NeighborCount[k_, &#123;i_, j_&#125;] :=</span><br><span class="line">  <span class="keyword">BooleanCountingFunction</span>[&#123;k&#125;,</span><br><span class="line">   <span class="keyword">Delete</span>[Catenate[<span class="keyword">Array</span>[b, &#123;3, 3&#125;, &#123;i, j&#125; - <span class="number">1</span>]], <span class="number">5</span>]];</span><br><span class="line"></span><br><span class="line">StillLifeCondition[i_, j_] :=</span><br><span class="line"> <span class="keyword">BooleanConvert</span>[</span><br><span class="line">  (b[i, j] &amp;&amp; NeighborCount[&#123;2, 3&#125;, &#123;i, j&#125;]) ||</span><br><span class="line">   (! b[i, j] &amp;&amp; ! NeighborCount[&#123;3&#125;, &#123;i, j&#125;]), <span class="string">"CNF"</span>];</span><br><span class="line"></span><br><span class="line">SearchStillLife[x_, y_] := </span><br><span class="line"> <span class="keyword">Block</span>[&#123;r = RandomChoice[&#123;True, False&#125;, &#123;x, y&#125;]&#125;,</span><br><span class="line">  <span class="keyword">MapThread</span>[<span class="keyword">Xor</span>, &#123;r,</span><br><span class="line">    ArrayReshape[</span><br><span class="line">     SatisfiabilityInstances[</span><br><span class="line">       Array[StillLifeCondition[##] /. </span><br><span class="line">           b[i_, j_] /; i &lt; 1 || i &gt; x || j &lt; 1 || j &gt; y :&gt; False /.</span><br><span class="line">                   b[i_, j_] :&gt; <span class="keyword">Xor</span>[b[i, j], r[[i, j]]] &amp;,</span><br><span class="line">        &#123;w, h&#125; + <span class="number">2</span>, <span class="number">0</span>, <span class="keyword">And</span>],</span><br><span class="line">       Catenate[<span class="keyword">Array</span>[b, &#123;w, y&#125;]]][[<span class="number">1</span>]], &#123;x, y&#125;]&#125;, <span class="number">2</span>]]</span><br></pre></td></tr></table></figure>
-<p>这次能找到好看的静物了，花的时间时间在2.7秒左右：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SeedRandom</span>[<span class="number">233</span>];</span><br><span class="line"><span class="keyword">ArrayPlot</span>[<span class="keyword">Boole</span>@SearchStillLife[<span class="number">16</span>, <span class="number">16</span>], <span class="keyword">Mesh</span> -&gt; <span class="keyword">All</span>] // <span class="keyword">AbsoluteTiming</span></span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-39cedb3203c9c013.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>再试试大一点的静物，比如说64乘64的。花了大概46秒。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-d6e2d72fa2229168.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<hr>
-<p>找完了静物，再来找振荡子（<a href="http://conwaylife.com/wiki/Oscillator" target="_blank" rel="noopener">Oscillator</a>）。振荡子是随时间周期变化的图样。于是，我们可以给那个布尔值的数组增加一个时间的维度，写成 <code>Array[b, {p, w, h}]</code>，这里 <code>p</code> 是它的周期。它们满足的条件也要作出相应的修改：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">NeighborCount[k_, &#123;t_, i_, j_&#125;] := </span><br><span class="line">  <span class="keyword">BooleanCountingFunction</span>[&#123;k&#125;, </span><br><span class="line">   <span class="keyword">Delete</span>[<span class="keyword">Flatten</span>[<span class="keyword">Array</span>[b, &#123;1, 3, 3&#125;, &#123;t, i - 1, j - 1&#125;]], <span class="number">5</span>]];</span><br><span class="line"></span><br><span class="line">OscillatorCondition[t_, i_, j_] := </span><br><span class="line">  <span class="keyword">BooleanConvert</span>[</span><br><span class="line">   (b[t, i, j] &amp;&amp; (b[t + <span class="number">1</span>, i, j] ⧦ </span><br><span class="line">        NeighborCount[&#123;2, 3&#125;, &#123;t, i, j&#125;])) ||</span><br><span class="line">    (! b[t, i, j] &amp;&amp; (b[t + <span class="number">1</span>, i, j] ⧦ </span><br><span class="line">        NeighborCount[&#123;3&#125;, &#123;t, i, j&#125;])), <span class="string">"CNF"</span>];</span><br><span class="line"></span><br><span class="line">SearchOscillator[p_, w_, h_] :=</span><br><span class="line"> <span class="keyword">Block</span>[&#123;r = RandomChoice[&#123;True, False&#125;, &#123;p, w, h&#125;]&#125;,</span><br><span class="line">  <span class="keyword">MapThread</span>[</span><br><span class="line">   <span class="keyword">Xor</span>, &#123;r, </span><br><span class="line">    ArrayReshape[</span><br><span class="line">     SatisfiabilityInstances[</span><br><span class="line">       Array[OscillatorCondition[##] /.</span><br><span class="line">           &#123;b[t_, i_, j_] /; i &lt; 1 || i &gt; w || j &lt; 1 || j &gt; h :&gt; False, </span><br><span class="line">            b[<span class="number">0</span>, i_, j_] :&gt; b[p, i, j]&#125; /.</span><br><span class="line">          b[t_, i_, j_] :&gt; <span class="keyword">Xor</span>[b[t, i, j], r[[t, i, j]]] &amp;,</span><br><span class="line">        &#123;p, w + 2, h + 2&#125;, <span class="number">0</span>, <span class="keyword">And</span>],</span><br><span class="line">       <span class="keyword">Flatten</span>[<span class="keyword">Array</span>[b, &#123;p, w, h&#125;]]][[<span class="number">1</span>]], &#123;p, w, h&#125;]&#125;, <span class="number">3</span>]]</span><br></pre></td></tr></table></figure>
-<p>（代码里的这个 <code>⧦</code> 符号表示的是等价，Mathematica 里显示为 ⇔。）</p>
-<p>可能因为静物比较稀少，速度比找静物时慢了很多，找一个周期2的16乘16的静物花了11秒：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SeedRandom</span>[<span class="number">233</span>];</span><br><span class="line"><span class="keyword">ArrayPlot</span>[#, <span class="keyword">Mesh</span> -&gt; <span class="keyword">All</span>] &amp; /@ </span><br><span class="line">  <span class="keyword">Boole</span>@SearchOscillator[<span class="number">2</span>, <span class="number">16</span>, <span class="number">16</span>] // <span class="keyword">AbsoluteTiming</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/1770625-31512cd099d389d7.gif?imageMogr2/auto-orient/strip" alt></p>
-<p>周期3的就更慢了，找下面这个振荡子花了14分钟。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1770625-4796a4cbf5b93041.gif?imageMogr2/auto-orient/strip" alt></p>
-<p>更高的周期我就不敢试了。</p>
-<p>应该会有更快的办法。有好的建议欢迎评论。</p>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/05/13/用-Mathematica-搜索生命游戏中的静物（二）/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -660,7 +645,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="AlephAlpha">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/guokr.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -717,7 +702,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-12 23:33:54" itemprop="dateModified" datetime="2019-03-12T23:33:54+08:00">2019-03-12</time>
+                <time title="修改时间：2019-03-13 12:34:26" itemprop="dateModified" datetime="2019-03-13T12:34:26+08:00">2019-03-13</time>
               
             
           </span>
@@ -752,49 +737,20 @@
 
       
         
-          
-            <p>原于2013年的π日发于<a href="https://www.guokr.com/blog/440686/" target="_blank" rel="noopener">果壳日志</a>。这里转的是2016年的π日发在<a href="http://www.15yan.com/story/8PQQ46j2f0q/" target="_blank" rel="noopener">十五言</a>的版本。</p>
+          <p>原于2013年的π日发于<a href="https://www.guokr.com/blog/440686/" target="_blank" rel="noopener">果壳日志</a>。这里转的是2016年的π日发在<a href="http://www.15yan.com/story/8PQQ46j2f0q/" target="_blank" rel="noopener">十五言</a>的版本。</p>
 <hr>
 <p>今天是π日，要吃派。</p>
 <p>这是一个派：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1770625-4969c4b75bf72635..jpg!content?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="π"></p>
-<p>嗯，其实是一个π……确切地说，是<a href="http://www.conwaylife.com/wiki/Pi" target="_blank" rel="noopener">pi-heptomino</a>，一个长成π的样子的七联骨牌。</p>
-<p>不过，在生命游戏的世界里，这个π不听话，不好好地呆在那里，却要变成一堆奇怪的东西：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1770625-d728ce43068e3c5e.gif?imageMogr2/auto-orient/strip" alt="π的变化"></p>
-<p>不听话怎么办？把它吃掉！</p>
-<p>不过，这个π生活在生命游戏的世界里，不是我们人类的嘴巴能够吃掉的。</p>
-<p>那叫谁去吃呢？</p>
-<p>生命游戏中有一类东西，英文名叫<a href="http://www.conwaylife.com/wiki/Eater" target="_blank" rel="noopener">eater</a>，有人把它翻译成“吞噬者”，不过我更喜欢把它翻译成“吃货”。它们<a href="https://en.wikipedia.org/wiki/I_Can_Eat_Glass" target="_blank" rel="noopener">能吞下玻璃而不伤身体</a>……呃不，它们能把生命游戏中各种奇怪的东西吃掉，吃完之后自己会恢复原样。</p>
-<p>让我们请出生命游戏中最出名的吃货：吃货一号（<a href="https://en.wikipedia.org/wiki/I_Can_Eat_Glass" target="_blank" rel="noopener">eater 1</a>）：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-62967b2e6739b706..jpg!content?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Eater 1"></p>
-<p>长得像个鱼钩。其实，它的另一个名字就是鱼钩（fishhook）。它是生命游戏中第一个发现的吃货。</p>
-<p>只需要四代时间，它就能吃掉一架滑翔机（<a href="http://www.conwaylife.com/wiki/Glider" target="_blank" rel="noopener">glider</a>）：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-5b12c2a81a017c14..jpg!content?imageMogr2/auto-orient/strip" alt="吃货一号吃滑翔机"></p>
-<p>也能轻松吞下轻型飞船（<a href="http://www.conwaylife.com/wiki/LWSS" target="_blank" rel="noopener">lightweight spaceship</a>）和中型飞船（<a href="http://www.conwaylife.com/wiki/Middleweight_spaceship" target="_blank" rel="noopener">middleweight spaceship</a>）：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-0cb6e10a9ef79c19..jpg!content?imageMogr2/auto-orient/strip" alt="吃货一号吃轻型飞船和中型飞船"></p>
-<p>它还能吃掉很多别的东西，比如说面包（<a href="http://www.conwaylife.com/wiki/Loaf" target="_blank" rel="noopener">loaf</a>）、小圆面包（<a href="http://www.conwaylife.com/wiki/Bun" target="_blank" rel="noopener">bun</a>）（大概给这些东西起名字的人也是个吃货）……这里就不再一一举例了。</p>
-<p>那么，它能不能吃掉π呢？</p>
-<p>当然能。不过π太不听话了，一个吃货吃不掉，得两个。左边一个右边一个：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-7edd82151bdfec39..jpg!content?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="吃货一号准备吃π"></p>
-<p>嗯，吃得还挺快：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-95b34219de4cca2e..jpg!content?imageMogr2/auto-orient/strip" alt="吃货一号吃π"></p>
-<p>除了吃货一号，另一个吃货也能吃掉π：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-35485fb60d2f75fe..jpg!content?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="方块"></p>
-<p>嗯，就是个方块（<a href="http://www.conwaylife.com/wiki/Block" target="_blank" rel="noopener">block</a>）。它是生命游戏中最常见的一种静物（<a href="http://www.conwaylife.com/wiki/Still_life" target="_blank" rel="noopener">still life</a>）。在平面上随机倒上一锅<a href="http://www.guokr.com/post/655824/" target="_blank" rel="noopener">汤</a>（<a href="http://www.conwaylife.com/wiki/Soup" target="_blank" rel="noopener">soup</a>，指随机的初始状态），然后开始生命游戏，等稳定下来之后基本上都能看到它。</p>
-<p>它其实也是一个吃货，不过胃口没有吃货一号那么好。一些别的吃货，比如说吃货二号（<a href="http://www.conwaylife.com/wiki/Eater_2" target="_blank" rel="noopener">eater 2</a>），就是在它的基础上构造出来的。</p>
-<p>和吃货一号一样，也是需要两个方块才能吃掉π：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-9b549518f70192c9..jpg!content?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="方块准备吃π"></p>
-<p>（有点囧……）</p>
-<p>这次就没有吃货一号吃得那么快了：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-7776be3797dfdf16..jpg!content?imageMogr2/auto-orient/strip" alt="方块吃π"></p>
-<p>不过总是把π吃掉了。</p>
-<p>参考资料：<a href="http://www.conwaylife.com/wiki/Main_Page" target="_blank" rel="noopener">LifeWiki</a></p>
-<hr>
-<p>另外，<a href="https://www.guokr.com/post/668449/#6253283" target="_blank" rel="noopener">卅猫说两个方块吃π的图片像苦力怕</a>。</p>
-<p>于是我试了一下。真正的苦力怕会变成两只蜂巢：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-47a49a7b7c2e914f..jpg!content?imageMogr2/auto-orient/strip" alt="苦力怕"></p>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/03/14/π日，来吃个派/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -854,7 +810,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="AlephAlpha">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/guokr.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -911,7 +867,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-12 23:31:28" itemprop="dateModified" datetime="2019-03-12T23:31:28+08:00">2019-03-12</time>
+                <time title="修改时间：2019-03-13 12:34:58" itemprop="dateModified" datetime="2019-03-13T12:34:58+08:00">2019-03-13</time>
               
             
           </span>
@@ -946,40 +902,19 @@
 
       
         
-          
-            <p>继续搬运果壳网上的<a href="https://www.guokr.com/post/669790/" target="_blank" rel="noopener">旧帖</a>。部分代码有改动。</p>
+          <p>继续搬运果壳网上的<a href="https://www.guokr.com/post/669790/" target="_blank" rel="noopener">旧帖</a>。部分代码有改动。</p>
 <hr>
 <p>Wolfram 公司在 Twitter 上开了个帐号，叫 Tweet-a-Program (<a href="https://twitter.com/wolframtap" target="_blank" rel="noopener">@wolframtap</a>)。你只要发一段 Mathematica 代码并@它，它就会自动把运行结果回复给你。由于 Twitter 的字数限制，这段 Mathematica 代码不能超过128字（现在 Twitter 的字数限制涨了，但 Tweet-a-Program 的字数限制还是不变）。</p>
 <p>我一般用它来画分形。</p>
-<hr>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-9e3e9332ebcc50e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Multicolumn[<span class="keyword">Table</span>[<span class="keyword">Image3D</span>@<span class="keyword">Array</span>[<span class="keyword">Boole</span>@SubsetQ[s,<span class="keyword">Plus</span>@@<span class="keyword">Abs</span>[<span class="keyword">IntegerDigits</span>[&#123;##&#125;,<span class="number">3</span>,<span class="number">3</span>]<span class="number">-1</span>]]&amp;,&#123;3,3,3&#125;^<span class="number">3</span>,<span class="number">0</span>],&#123;s,Subsets@&#123;0,1,2,3&#125;&#125;],<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
-<hr>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-ea6cc1bc9c02fc64.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JuliaSetPlot[z-(z^<span class="number">9</span><span class="number">-1</span>)/(<span class="number">9</span>z^<span class="number">2</span>),z,<span class="keyword">ColorFunction</span>-&gt;<span class="string">"RustTones"</span>]</span><br></pre></td></tr></table></figure>
-<hr>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-bccf24d6c25a7fd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Image</span>@<span class="keyword">Array</span>[<span class="keyword">BitAnd</span>,&#123;2,2&#125;^<span class="number">9</span>,<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-<hr>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-442b9d71c8810d04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Image</span>[<span class="number">1</span>-<span class="keyword">Last</span>@SubstitutionSystem[&#123;0-&gt;&#123;&#123;1,1,1&#125;,&#123;1,1,1&#125;,&#123;1,1,1&#125;&#125;,<span class="number">1</span>-&gt;&#123;&#123;0,1,0&#125;,&#123;1,0,1&#125;,&#123;0,1,0&#125;&#125;&#125;,&#123;&#123;1&#125;&#125;,<span class="number">6</span>]]</span><br></pre></td></tr></table></figure>
-<hr>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-4b22b0e99729a1c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Graphics</span>[&#123;RGBColor@##3,Point@&#123;#,#2&#125;&#125;&amp;@@(<span class="number">2</span>y^<span class="keyword">Range</span>[<span class="number">7</span>].#)&amp;/@<span class="keyword">Tuples</span>[&#123;&#123;x=.886,y=.5,y,0,0&#125;,&#123;-x,y,0,y,0&#125;,&#123;0,-1,0,0,y&#125;&#125;,<span class="number">7</span>]]</span><br></pre></td></tr></table></figure>
-<hr>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-ccf789fca9c6378f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Image</span>[<span class="keyword">Table</span>[<span class="keyword">If</span>[ColorQ@#,#,<span class="keyword">Black</span>]&amp;[<span class="keyword">Hue</span>[(<span class="keyword">Arg</span>@#+<span class="keyword">Pi</span>)/(<span class="number">2</span><span class="keyword">Pi</span>),<span class="number">1</span>/<span class="keyword">Abs</span>@#]&amp;[MandelbrotSetBoettcher[x+<span class="keyword">I</span> y]]],&#123;y,-2,2,.01&#125;,&#123;x,-2,2,.01&#125;]]</span><br></pre></td></tr></table></figure>
-<hr>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-13d8f24de7370b6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Graphics</span>@<span class="keyword">Line</span>[AnglePath@#,<span class="keyword">VertexColors</span>-&gt;<span class="keyword">Hue</span>/@Subdivide@<span class="keyword">Length</span>@#]&amp;@<span class="keyword">MapIndexed</span>[#(<span class="number">-1</span>)^<span class="keyword">Tr</span>@#<span class="number">2</span>&amp;,<span class="keyword">Flatten</span>@<span class="keyword">Nest</span>[&#123;#,#[[1]]&#125;&amp;,&#123;Pi/2,0&#125;,<span class="number">17</span>]]</span><br></pre></td></tr></table></figure>
-<hr>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-e41d484a60ea724f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Multicolumn[<span class="keyword">Table</span>[<span class="keyword">Image3D</span>[<span class="keyword">Array</span>[<span class="keyword">BitXor</span>,&#123;2,2,2&#125;^<span class="number">5</span>,<span class="number">0</span>]/.&#123;i-&gt;1,_Integer-&gt;0&#125;],&#123;i,0,31&#125;],<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
-<hr>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-66b94bdac1e79553.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f=&#123;Tuples[Range[2^#]-1,#2],First@HilbertCurve@##&#125;&amp;;<span class="keyword">Grid</span>@<span class="keyword">Table</span>[<span class="keyword">Image</span>@<span class="keyword">Partition</span>[a[[<span class="keyword">Ordering</span>@b]]/<span class="number">2</span>^<span class="number">6</span>,<span class="number">2</span>^<span class="number">9</span>],&#123;a,f[6,3]&#125;,&#123;b,f[9,2]&#125;]</span><br></pre></td></tr></table></figure>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/12/20/一行代码的分形/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1039,7 +974,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="AlephAlpha">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/guokr.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1096,7 +1031,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-13 00:07:54" itemprop="dateModified" datetime="2019-03-13T00:07:54+08:00">2019-03-13</time>
+                <time title="修改时间：2019-03-13 12:35:21" itemprop="dateModified" datetime="2019-03-13T12:35:21+08:00">2019-03-13</time>
               
             
           </span>
@@ -1131,48 +1066,18 @@
 
       
         
-          
-            <p>原发于<a href="https://www.guokr.com/post/650918/" target="_blank" rel="noopener">果壳网Matlab小组</a>。没错，是Matlab小组。</p>
+          <p>原发于<a href="https://www.guokr.com/post/650918/" target="_blank" rel="noopener">果壳网Matlab小组</a>。没错，是Matlab小组。</p>
 <hr>
 <p>这样一个标题出现在Matlab小组里是不是有点奇怪？<sup><a href="#fn_1" id="reffn_1">1</a></sup></p>
-<hr>
-<p>第一件事，还是在2011年，当时果壳网的小组还不多，死理性派小组的风气也还好。当时<a href="http://www.guokr.com/group/n/dwt" target="_blank" rel="noopener">@dwt</a> 发了个“表白函数”的帖子，引来大家的膜拜：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-76d9d53f1a0bd387.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="表白函数"></p>
-<p>于是我把这帖子转到了百度贴吧，并照着图片把这段代码打了出来，不过没说明用的是什么软件。</p>
-<p>帖子不久就沉了。然后过了几个月，迎来这么一个回帖：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-3b008f20e8541847.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="贴吧回帖"></p>
-<hr>
-<p>第二件事还是与果壳网有关。当时是2012年，知性社区<sup><a href="#fn_2" id="reffn_2">2</a></sup>还是果壳网的一个小组，叫做性情。当时有人发了一个帖子，帖子里用一个函数（数学上的函数，不是编程语言的函数）画了一个胸部的曲线。</p>
-<p>我在回帖中将函数公式修改了一下，把曲线变成曲面，并贴出了Mathematica代码。当然，也没有说明用的是Mathematica，不过我当时用的号在果壳认证的头衔就是“Mathematica玩家”，于是在果壳里也没有引起误会。</p>
-<p>然后果壳网将这个帖子的内容连着我的回复推到了微博上面：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-77eecc091c9d0c7c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="果壳微博"></p>
-<p>我很高兴，然后在这条微博的评论和转发里看到了这样的内容：</p>
-<ul>
-<li>我去装Matlab了</li>
-<li>回去到matlab里试试。。。</li>
-<li>这个是用matlab画的。。。原来数学之美是介个意思。。</li>
-<li>当初学matlab的时候，如果你拿这个作示范，我相信我会学得更认真点的</li>
-<li>神马都敌不过数学之美！！！伟大的MATLAB！！！</li>
-</ul>
-<p>…………</p>
-<hr>
-<p>第三件事是在最近<sup><a href="#fn_3" id="reffn_3">3</a></sup>。在知乎，有人问了一个问题：如何用数学软件画一个“圣诞树”?</p>
-<p>我刚好在codegolf.stackexchange.com上见过一个类似的问题，那里有个网友用Mathematica给了一个很漂亮的回答，于是把那个答案搬运了过来。总之画出来是这样的：</p>
-<p><img src="https://i.stack.imgur.com/OGv5a.gif" alt="圣诞树"></p>
-<p>这个答案在知乎里获得了50多个赞，还有20个收藏。其中有个收藏夹名字叫matlab。我想，大概他是懒得开一个Mathematica的收藏夹，就把这个答案跟一些与Matlab有关的答案放在一起吧。这样想着，我点开了那个收藏夹。</p>
-<p>收藏夹里只有一个答案。</p>
-<p>我发誓这次我是清清楚楚地写了“用的是Mathematica”的。</p>
-<blockquote id="fn_1">
-<sup>1</sup>. 不，我没有要黑Matlab及其用户的意思。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_2">
-<sup>2</sup>. 现在知性社区也没了。果壳网也差不多没了。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_3">
-<sup>3</sup>. 2014年12月16日。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
-</blockquote>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/11/28/Mathematica二三事/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1232,7 +1137,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="AlephAlpha">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/guokr.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1289,7 +1194,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-12 23:29:37" itemprop="dateModified" datetime="2019-03-12T23:29:37+08:00">2019-03-12</time>
+                <time title="修改时间：2019-03-13 12:35:38" itemprop="dateModified" datetime="2019-03-13T12:35:38+08:00">2019-03-13</time>
               
             
           </span>
@@ -1324,31 +1229,19 @@
 
       
         
-          
-            <p>果壳网已完。也许第二天我的帖子就会消失。以防万一，我决定把我发过的一些帖子搬运到简书。也包括这么无聊的帖子。</p>
+          <p>果壳网已完。也许第二天我的帖子就会消失。以防万一，我决定把我发过的一些帖子搬运到简书。也包括这么无聊的帖子。</p>
 <p>这个帖子原发于<a href="https://www.guokr.com/post/743729/" target="_blank" rel="noopener">果壳网维基百科小组</a>。</p>
 <hr>
 <p>除了中文、英文的维基百科，我用的最多的一个维基旗下网站就英文维基词典。用得虽然多，平时并没有盯着图标看，因此并不知道图标是什么时候换的。</p>
-<p>我刚接触维基词典的时候，英文维基词典的图标是这样的：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-d83ba4ac91280de3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="英文维基词典的老图标"></p>
-<p>不过我觉得，在基本只有黑白两色的网页上配上一个彩色的图标，挺丑的。</p>
-<p>很多别的语言的维基词典借用了这个图标。中文维基词典至今还在用一个与其类似的图标，不过把W字和维字换了一下位置：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-a5f4af9cb6027a0b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="中文维基词典的图标"></p>
-<p>顺便吐槽一下乌克兰文的维基词典，这崩坏的“漢”字：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-795ff11721c4f832.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="乌克兰文维基词典的图标"></p>
-<p>说回英文维基百科。后来，它换成了这么一个图标：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-2051219e0e66516c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="英文维基百科的另一个老图标"></p>
-<p>这是我最喜欢的一个图标。不过我看了一下文件历史，它的上传时间比上一个图标还要早。可能是这两个图标轮换使用吧。</p>
-<p>也有不少语言的维基词典参考了这一图标。由于语言不同，只能参考，不能照搬，于是做得各有特色。比如说这是俄语维基词典使用至今的图标：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-356c44e23431fa30.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="俄文维基词典的图标"></p>
-<p>不过，图标里的注音也会引发一点争议，比如说wiktionary里的a该不该发音。英文维基词典的图标就有过这么一个提议，注意这里的国际音标中a的发音：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-71b2cc64b1b53fc2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="英文维基词典的图标提议"></p>
-<p>俄语维基词典甚至为了修正国际音标而换过一次图标。</p>
-<p>然后，不知什么时候，英文维基换成了现在的图标。它应该是基于第一个图标，但简洁了许多：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-03466702ae464a95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="英文维基词典的图标"></p>
-<p>我暂时还没有发现别的语言的维基百科采用这一图标。有趣的是，在维基共享资源的Wiktionary logos分类里也找不到这一图标。我暂时还没有发现别的语言的维基百科采用这一图标。有趣的是，在维基共享资源的<a href="https://commons.wikimedia.org/wiki/Category:Wiktionary_logos" target="_blank" rel="noopener">Wiktionary logos</a>分类里也找不到这一图标。</p>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/11/28/维基词典的图标/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1403,12 +1296,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2017/11/06/用Mathematica搜索生命游戏中的静物/">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2017/11/06/用-Mathematica-搜索生命游戏中的静物/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="AlephAlpha">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/guokr.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1423,7 +1316,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2017/11/06/用Mathematica搜索生命游戏中的静物/" class="post-title-link" itemprop="url">用Mathematica搜索生命游戏中的静物</a>
+                <a href="/2017/11/06/用-Mathematica-搜索生命游戏中的静物/" class="post-title-link" itemprop="url">用 Mathematica 搜索生命游戏中的静物</a>
               
             
           </h1>
@@ -1465,7 +1358,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-12 23:27:46" itemprop="dateModified" datetime="2019-03-12T23:27:46+08:00">2019-03-12</time>
+                <time title="修改时间：2019-03-13 12:36:06" itemprop="dateModified" datetime="2019-03-13T12:36:06+08:00">2019-03-13</time>
               
             
           </span>
@@ -1500,24 +1393,24 @@
 
       
         
-          
-            <p>果壳网已死。临死前<a href="https://www.guokr.com/group/381/" target="_blank" rel="noopener">元胞自动机小组</a>还回光返照了一段时间——虽然真正活跃的人大概不超过五个。</p>
+          <ul>
+<li><a href="/2018/05/13/用-Mathematica-搜索生命游戏中的静物（二）/" title="用 Mathematica 搜索生命游戏中的静物（二）">用 Mathematica 搜索生命游戏中的静物（二）</a></li>
+<li><a href="/2019/03/04/用-Mathematica-搜索生命游戏中的静物（三）/" title="用 Mathematica 搜索生命游戏中的静物（三）">用 Mathematica 搜索生命游戏中的静物（三）</a>
+</li>
+</ul>
+<hr>
+<p>果壳网已死。临死前<a href="https://www.guokr.com/group/381/" target="_blank" rel="noopener">元胞自动机小组</a>还回光返照了一段时间——虽然真正活跃的人大概不超过五个。</p>
 <p>以下的代码就算是我给果壳网以及元胞自动机小组烧的一点纸钱吧。</p>
 <figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">a = Merge[</span><br><span class="line">   k[#[[;; <span class="number">2</span>]], </span><br><span class="line">       <span class="keyword">CellularAutomaton</span>[<span class="string">"GameOfLife"</span>, #][[<span class="number">2</span>, <span class="number">2</span>]]] -&gt; #[[<span class="number">3</span>]] &amp; /@ </span><br><span class="line">    <span class="keyword">Tuples</span>[<span class="keyword">Tuples</span>[&#123;0, 1&#125;, <span class="number">3</span>], <span class="number">3</span>], <span class="keyword">Identity</span>];</span><br><span class="line">g[x_, y_, z_] := </span><br><span class="line">  FindPath[<span class="keyword">Flatten</span>@</span><br><span class="line">     <span class="keyword">MapIndexed</span>[</span><br><span class="line">      <span class="keyword">Outer</span>[v[#<span class="number">2</span> - <span class="number">1</span>, <span class="keyword">Most</span>[#<span class="number">1</span>]] -&gt; v[#<span class="number">2</span>, <span class="keyword">Rest</span>[#<span class="number">1</span>]] &amp;, ##, <span class="number">1</span>] &amp;, </span><br><span class="line">      Lookup[a, </span><br><span class="line">       <span class="keyword">MapThread</span>[</span><br><span class="line">        k, &#123;First[</span><br><span class="line">          Partition[&#123;x, y&#125;, &#123;2, 3&#125;, &#123;2, 1&#125;, &#123;&#123;1, -2&#125;, &#123;-1, 2&#125;&#125;, <span class="number">0</span>]], </span><br><span class="line">         z&#125;], &#123;&#125;]], v[<span class="number">0</span>, &#123;0, 0&#125;], v[<span class="keyword">Length</span>[z], &#123;0, 0&#125;], <span class="keyword">Length</span>[z] + <span class="number">2</span>,</span><br><span class="line">     <span class="keyword">All</span>][[;; , <span class="number">2</span> ;;, <span class="number">2</span>, <span class="number">1</span>]];</span><br><span class="line"><span class="keyword">With</span>[&#123;w = 16, h = 16&#125;,</span><br><span class="line"> o = <span class="keyword">Table</span>[<span class="number">0</span>, w + <span class="number">2</span>];</span><br><span class="line"> i = g[o, o, o];</span><br><span class="line"> f[l : &#123;___, x_, y_&#125;] := </span><br><span class="line">  <span class="keyword">If</span>[<span class="keyword">Length</span>@l == h + <span class="number">2</span>, </span><br><span class="line">   <span class="keyword">If</span>[y == o &amp;&amp; <span class="keyword">MemberQ</span>[i, x], l, <span class="keyword">Missing</span>[<span class="string">"NotFound"</span>]], </span><br><span class="line">   <span class="keyword">Catch</span>[<span class="keyword">Do</span>[</span><br><span class="line">     <span class="keyword">If</span>[MissingQ[#], , <span class="keyword">Throw</span>[#]] &amp;[f[<span class="keyword">Append</span>[l, z]]], &#123;z, </span><br><span class="line">      RandomSample[g[x, y, y]]&#125;]; <span class="keyword">Missing</span>[<span class="string">"NotFound"</span>]]];</span><br><span class="line"> <span class="keyword">SparseArray</span>[f[&#123;o, RandomChoice[i]&#125;]]]</span><br></pre></td></tr></table></figure>
-<p>返回的结果是一个<code>SparseArray</code>，可以用<code>ArrayPlot</code>来转换成图片。这是搜索16*16的静物。把<code>With[{w = 16, h = 16},</code>里的16换成别的数字可以搜索别的大小的静物，但不要把<code>w</code>改得太大。如果一次搜索的时间太久，可能是运气不好，可以用<code>Alt+.</code>来中断计算。</p>
-<p>下面是5次搜索的结果：</p>
-<div class="rle"><pre>x = 16, y = 16, rule = B3/S23
-ob2o2bob2o5bo$2ob4obobo2b3o$9bo2bo$5o5b2ob3o$o2bobob3o2bo2bo$5bobo3bo2bo$4bo3b2ob3o$o2bob3o2bo$4obo2bo2bob3o$5bo2b2ob2o2bo$3obo4bo4bo$o2b2obo2bob2ob2o$bo3b2o3bobo2bo$2b2o10bo$obob3o4b3o$2o4bo4bo!</pre><canvas width="480" height="480"></canvas></div>
-<div class="rle"><pre>x = 16, y = 16, rule = B3/S23
-bo11bobo$b3o6bobob2o$4bobob3obo$b2obob2o4bo$o2bo5b2obobo$2o8bo2bobo$6bobo2bobobo$3bobob5ob2o$b3obo$o4b3obob4o$b4o3b3o4bo$3bo2bo5bo2bo$5b2ob7o$b4o3bo$bo3bobo3bob2o$4b2ob2o2b2obo!</pre><canvas width="480" height="480"></canvas></div>
-<div class="rle"><pre>x = 16, y = 16, rule = B3/S23
-2bobob2obobobo$bob2obob2ob2obo$bo4bo3bo3bo$2bob3o3bo3b2o$ob2o5b2obobo$2o3b2o4b2obo$3b2ob4o3bo$2obo5bob2o$2o3b2o2bobo$3bobobobobo$3obo2b2obob2o$o3bobo3bo3bo$4b2obobob2obo$2b2o3bobo3bo$bo2bob2o2bobo$2b2o5b2ob2o!</pre><canvas width="480" height="480"></canvas></div>
-<div class="rle"><pre>x = 16, y = 16, rule = B3/S23
-2b2obo4bo3b2o$bob2obob3o2bobo$o5b2o3b3o$b5o3b2o4bo$2bo2bob3o2b4o$o5bo4b2o$2o6b3o3b2o$bo4bobo2b2obo$bobo2b2o3bo2bo$2ob3o6bob2o$bo4b2o3b2o2bo$bob2obo5bobo$2o2bo3bobo3b2o$2bobo2b2ob2o2bo$2bobobo2bo2bobo$3b2ob2o3b2ob2o!</pre><canvas width="480" height="480"></canvas></div>
-<div class="rle"><pre>x = 16, y = 16, rule = B3/S23
-bobo2bob2o2bobo$ob6ob5obo$o14bo$b4ob5ob3o$4b2o4bobo$obo4bo2bo2bobo$2ob8o3b2o$3bo$2obo2bo2b2o$bob4o3bo2bobo$o9bobob2o$3obo4b2obo$3b2o3bo4b3o$2o5bobob2o2bo$ob3o3b2obo2bo$4bo7b2o!</pre><canvas width="480" height="480"></canvas></div>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/11/06/用-Mathematica-搜索生命游戏中的静物/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1572,12 +1465,12 @@ bobo2bob2o2bobo$ob6ob5obo$o14bo$b4ob5ob3o$4b2o4bobo$obo4bo2bo2bobo$2ob8o3b2o$3bo
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2017/10/01/Catagolue-上的生命游戏搜索程序-/">
+    <link itemprop="mainEntityOfPage" href="https://AlephAlpha.github.io/2017/10/01/Catagolue-上的生命游戏搜索程序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="AlephAlpha">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/guokr.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1592,7 +1485,7 @@ bobo2bob2o2bobo$ob6ob5obo$o14bo$b4ob5ob3o$4b2o4bobo$obo4bo2bo2bobo$2ob8o3b2o$3bo
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2017/10/01/Catagolue-上的生命游戏搜索程序-/" class="post-title-link" itemprop="url">Catagolue-上的生命游戏搜索程序-</a>
+                <a href="/2017/10/01/Catagolue-上的生命游戏搜索程序/" class="post-title-link" itemprop="url">Catagolue 上的生命游戏搜索程序</a>
               
             
           </h1>
@@ -1634,7 +1527,7 @@ bobo2bob2o2bobo$ob6ob5obo$o14bo$b4ob5ob3o$4b2o4bobo$obo4bo2bo2bobo$2ob8o3b2o$3bo
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-12 23:03:01" itemprop="dateModified" datetime="2019-03-12T23:03:01+08:00">2019-03-12</time>
+                <time title="修改时间：2019-03-13 12:36:31" itemprop="dateModified" datetime="2019-03-13T12:36:31+08:00">2019-03-13</time>
               
             
           </span>
@@ -1669,22 +1562,19 @@ bobo2bob2o2bobo$ob6ob5obo$o14bo$b4ob5ob3o$4b2o4bobo$obo4bo2bo2bobo$2ob8o3b2o$3bo
 
       
         
-          
-            <p>不久前，我发现了这个叫 <a href="http://catagolue.appspot.com/" target="_blank" rel="noopener">Catagolue</a> 的神奇的网站，收录的规则和图样比 LifeWiki 要全得多。</p>
+          <p>注意：apgluxe 的原作者为 Catagolue 提供了另一个域名：gol.hatsya.co.uk。这个没有被墙。只需把原版的 apgluxe 中的 catagolue.appspot.com 换成 gol.hatsya.co.uk 就能正常工作了。原版的最新版也已经添加这个地址（如果访问不稳定，可以尝试在 ping 得通的时候记下 ip 地址，然后改 Host）。因此这里说离线版已经没有意义了。</p>
+<hr>
+<p>不久前，我发现了这个叫 <a href="http://catagolue.appspot.com/" target="_blank" rel="noopener">Catagolue</a> 的神奇的网站，收录的规则和图样比 LifeWiki 要全得多。</p>
 <p>这里收录的图样都是用一个叫 apgsearch 的程序找出来的。apgsearch 的不同版本有不同的名字，最新的第4版叫 apgluxe。它的功能就是自己倒汤，煮汤，然后在汤的残骸中自动搜索有意义的图样，然后自动上传到 Catagolue 上。</p>
-<p>不过，正是因为这最后一步，这个程序无法在中国大陆正常运行：Catagolue 用的是谷歌旗下某网站的域名，于是被墙了。而且有翻墙工具也没用，因为它用了个叫 HappyHTML 的东西，不支持代理！</p>
-<p>无奈之下，我把它改了一下，去掉与上传有关的部分。我完全不懂 C++，只能胡乱修改，把看起来像是和联网有关的内容都删掉，好像能够正常编译，不能保证不会有错。</p>
-<p>这是我修改后的离线版：<a href="https://github.com/AlephAlpha/apgluxe_offline" target="_blank" rel="noopener">https://github.com/AlephAlpha/apgluxe_offline</a></p>
-<p>这个程序（无论是原版还是我修改后的离线版）是写给64位的 Unix 系统的，32位的操作系统没法使用。在64位的 Windows 上要用的话好像要先装个 <a href="http://cygwin.com/" target="_blank" rel="noopener">Cygwin</a>。反正我不用 Windows。</p>
-<p>下载这个程序时可以用<code>git clone</code>，也可以直接下载 ZIP 压缩包。在下载好之后，要编译程序，在终端里 <code>cd</code> 到这个目录里，然后运行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./recompile.sh</span><br></pre></td></tr></table></figure>
-<p>即可。</p>
-<p>要运行程序的话，在同一个目录里，运行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./apgluxe -n 1000000</span><br></pre></td></tr></table></figure>
-<p>这里的1000000是每一轮倒的汤的数量，可以换成你喜欢的任何数字。每倒完一轮，会生成一个统计结果，保存在一个类似于 <code>log.一串类似于乱码的东西.txt</code> 的文件当中（图样用的是 <a href="http://conwaylife.com/wiki/Apgcode" target="_blank" rel="noopener">apgcode</a> 格式，我不知道怎样转成 rle 或者别的 Golly 能读的格式），然后自动开始下一轮。什么时候不想玩了，按 Ctrl+C 可以退出。也可以不加 <code>-n 1000000</code> 这个参数，这样默认每轮会煮20000000锅汤（我觉得这个数字有点太大了）。如果 CPU 是多核的，还可以加 <code>-p 4</code> 这样的参数来并行运算，这个4表示4个线程。</p>
-<p>运行时如果找到线性增长的图样（一般是 <a href="http://conwaylife.com/wiki/Block-laying_switch_engine" target="_blank" rel="noopener">Block-laying switch engine</a> 或者 <a href="http://conwaylife.com/wiki/Glider-producing_switch_engine" target="_blank" rel="noopener">Glider-producing switch engine</a>），或者罕见的周期大于2的振荡子，它会直接告诉你。刚才试了一轮，煮到将近第九十万锅汤的时候找到一个 <a href="https://catagolue.appspot.com/object?apgcode=xp30_w33z8kqrqk8zzzw33&amp;rule=b3s23" target="_blank" rel="noopener">xp30_w33z8kqrqk8zzzw33</a>，在 Catagolue 上查了一下是个<a href="http://conwaylife.com/wiki/Queen_bee_shuttle" target="_blank" rel="noopener">蜂王梭</a>，运气不错。</p>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/10/01/Catagolue-上的生命游戏搜索程序/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1744,7 +1634,7 @@ bobo2bob2o2bobo$ob6ob5obo$o14bo$b4ob5ob3o$4b2o4bobo$obo4bo2bo2bobo$2ob8o3b2o$3bo
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="AlephAlpha">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/guokr.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1801,7 +1691,7 @@ bobo2bob2o2bobo$ob6ob5obo$o14bo$b4ob5ob3o$4b2o4bobo$obo4bo2bo2bobo$2ob8o3b2o$3bo
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-12 23:00:46" itemprop="dateModified" datetime="2019-03-12T23:00:46+08:00">2019-03-12</time>
+                <time title="修改时间：2019-03-13 12:39:26" itemprop="dateModified" datetime="2019-03-13T12:39:26+08:00">2019-03-13</time>
               
             
           </span>
@@ -1836,50 +1726,20 @@ bobo2bob2o2bobo$ob6ob5obo$o14bo$b4ob5ob3o$4b2o4bobo$obo4bo2bo2bobo$2ob8o3b2o$3bo
 
       
         
-          
-            <p>原发表在<a href="https://www.15yan.com/story/furLzvV7nsn/" target="_blank" rel="noopener">十五言</a></p>
+          <p>原发表在<a href="https://www.15yan.com/story/furLzvV7nsn/" target="_blank" rel="noopener">十五言</a></p>
 <hr>
 <p><a href="http://www.conwaylife.com/wiki/Soup" target="_blank" rel="noopener"><strong>汤</strong></a>，英文叫 soup，或者 broth，在生命游戏里指的是随机的初始状态。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1770625-8a810620486502b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="这是一锅512*512的汤"></p>
 <p>很多人刚接触生命游戏的时候，第一种玩法就是倒上一锅汤，然后开始游戏，看着这些方块变来变去，直到整个局面稳定下来为止。</p>
-<p>稳定下来之后，游戏的画面一般不再有大的变化，只散落着一些静止不动的小部件，叫做静物（<a href="http://www.conwaylife.com/wiki/Still_life" target="_blank" rel="noopener">still life</a>）；以及一些周期性地动来动去的小东西，叫做振荡子（<a href="http://www.conwaylife.com/wiki/Oscillator" target="_blank" rel="noopener">oscillator</a>）。就像这样：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-e4ee91d3c450d6e6.gif?imageMogr2/auto-orient/strip" alt="上面那锅汤稳定下来的结果"></p>
-<p>对很多人来说，游戏到了这里就结束了，然后就是关掉游戏或者再来一局。</p>
-<p>不过，既然是游戏，为什么不观察一下，看看自己刷出了什么稀有掉落呢？</p>
-<p>怎样才算稀有掉落？</p>
-<p>Achim Flammenkamp 在2048*2048的环面上，以密度为0.375的汤为初始条件，进行了1829196场游戏，统计出了稳定下来之后最常见的100种物体。</p>
-<p>常见的物体还有自己的名字，比如说，排名前十的如下（没有统一的中文翻译，这里给的只是我个人的翻译；图片均来自 <a href="http://www.conwaylife.com/wiki/Main_Page" target="_blank" rel="noopener">LifeWiki</a>）：</p>
-<p>一、闪闪 <a href="http://www.conwaylife.com/wiki/Blinker" target="_blank" rel="noopener">Blinker</a></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-3afaa467f581912d.gif?imageMogr2/auto-orient/strip" alt="闪闪"></p>
-<p>二、方块 <a href="http://www.conwaylife.com/wiki/Block" target="_blank" rel="noopener">Block</a></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-50a66491d8acfe2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="方块"></p>
-<p>三、蜂巢 <a href="http://www.conwaylife.com/wiki/Beehive" target="_blank" rel="noopener">Beehive﻿</a></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-7cad31dfc7ecfc3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="蜂巢"></p>
-<p>四、面包 <a href="http://www.conwaylife.com/wiki/Loaf" target="_blank" rel="noopener">Loaf</a></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-430abee8cdc04008.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="面包"></p>
-<p>五、小船 <a href="http://www.conwaylife.com/wiki/Boat" target="_blank" rel="noopener">Boat</a></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-e477d35c678992dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="小船"></p>
-<p>六、澡盆 <a href="http://www.conwaylife.com/wiki/Tub" target="_blank" rel="noopener">Tub</a></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-18f777f793e1b618.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="澡盆"></p>
-<p>七、池塘 <a href="http://www.conwaylife.com/wiki/Pond" target="_blank" rel="noopener">Pond</a></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-58e3847036f091ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="池塘"></p>
-<p>八、大船 <a href="http://www.conwaylife.com/wiki/Ship" target="_blank" rel="noopener">Ship</a></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-7e6feab603cc30d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="大船"></p>
-<p>九、长船 <a href="http://www.conwaylife.com/wiki/Long_boat" target="_blank" rel="noopener">Long boat</a></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-f2934ad975d2fed7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="长船"></p>
-<p>十、蛤 <a href="http://www.conwaylife.com/wiki/Toad" target="_blank" rel="noopener">Toad</a></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-69099edb52b0578c.gif?imageMogr2/auto-orient/strip" alt="蛤"></p>
-<p>完整排名见<a href="http://wwwhomes.uni-bielefeld.de/achim/freq_top_life.html" target="_blank" rel="noopener">这里</a>。表中排名靠后的，或者表上没有的，绝对算是稀有掉落了。</p>
-<p>在上面那幅图中，我刷出来的最罕见的物品，大概是左上角的一个脉冲星（<a href="http://www.conwaylife.com/wiki/CP_pulsar" target="_blank" rel="noopener">CP pulsar</a>）。它是一个周期为3的振荡子，个头很大，特别醒目。在表上排行19，算不上太稀有，不过是前100个物体中个头最大的，也是最常见的周期大于2的振荡子：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-7f63f8937a2cc9f9.gif?imageMogr2/auto-orient/strip" alt="脉冲星"></p>
-<p>表中的100种物体绝大多数都是静物，振荡子只占了8个。脉冲星在振荡子中排第四，仅次于闪闪、蛤和信标（<a href="http://www.conwaylife.com/wiki/Beacon" target="_blank" rel="noopener">Beacon</a>）。</p>
-<p>同一个网页中的另一个表格则列出了最常见的——确切地说，在整个实验中出现了两次或以上的——振荡子。除了排名靠前的几种之外，其余的都特别少见。</p>
-<p>能出现在表格中的振荡子大部分周期都比较短，只有2或者3。但也有个别周期比较长的。其中周期最长的是下图中的蜂王梭（<a href="http:///www.conwaylife.com/wiki/Queen_bee_shuttle" target="_blank" rel="noopener">Queen bee shuttle</a>）：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-d56257fec840fc0d.gif?imageMogr2/auto-orient/strip" alt="蜂王梭"></p>
-<p>蜂王梭在生命游戏中是一个非常重要的物体，很多有意思的物体都是以它为基础造出来的，比如说下图中的 Gosper 滑翔机枪（<a href="http:A//www.conwaylife.com/wiki/Gosper_glider_gun" target="_blank" rel="noopener">Gosper glider gun</a>）。不过根据 Achim Flammenkamp 的统计，蜂王梭的出现率低于一亿分之一，除非是用专门的搜索程序，不然是不太可能看到了。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1770625-fe80e5ee9d308810.gif?imageMogr2/auto-orient/strip" alt="Gosper 滑翔机枪"></p>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/10/01/汤，以及生命游戏里的稀有掉落/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1939,7 +1799,7 @@ bobo2bob2o2bobo$ob6ob5obo$o14bo$b4ob5ob3o$4b2o4bobo$obo4bo2bo2bobo$2ob8o3b2o$3bo
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="AlephAlpha">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/guokr.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1996,7 +1856,7 @@ bobo2bob2o2bobo$ob6ob5obo$o14bo$b4ob5ob3o$4b2o4bobo$obo4bo2bo2bobo$2ob8o3b2o$3bo
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-12 23:29:41" itemprop="dateModified" datetime="2019-03-12T23:29:41+08:00">2019-03-12</time>
+                <time title="修改时间：2019-03-13 12:39:43" itemprop="dateModified" datetime="2019-03-13T12:39:43+08:00">2019-03-13</time>
               
             
           </span>
@@ -2031,155 +1891,21 @@ bobo2bob2o2bobo$ob6ob5obo$o14bo$b4ob5ob3o$4b2o4bobo$obo4bo2bo2bobo$2ob8o3b2o$3bo
 
       
         
-          
-            <p>原发于果壳 <a href="http://www.guokr.com/post/695992/" target="_blank" rel="noopener">Today I Learned 小组</a>。</p>
+          <p>原发于果壳 <a href="http://www.guokr.com/post/695992/" target="_blank" rel="noopener">Today I Learned 小组</a>。</p>
 <hr>
 <p>毛利语是新西兰原住民毛利人的语言，属于南岛语系马来-波利尼西亚语族。</p>
 <p>大部分语言里化学元素的名称，除了金银铜铁等少数几个元素，都是借自拉丁语或者英语。毛利语是个例外，他们用的是自己造的新词。</p>
 <p>这些新词大多是由现有的词拼成的复合词，而且造词的办法有点像中国化学家造的那批汉字：气体元素都有hau（气体）这个前缀，而金属元素用的是konu（金属）这个前缀。</p>
 <p>不过非气体的非金属元素没有统一的前缀。其中一些用的是pū——毛利语中“元素”一词（pūmotu）的第一个音节。比较特别的是碘：hautawa，直译为“紫气”。碘在常温下是固体，但容易升华成紫色气体。</p>
-<p>下面是毛利语中前面二十个元素的名称及其含义：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">汉语</th>
-<th style="text-align:center">元素符号</th>
-<th style="text-align:center">毛利语</th>
-<th style="text-align:center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">氢</td>
-<td style="text-align:center">H</td>
-<td style="text-align:center">hauwai</td>
-<td style="text-align:center">hau 气 + wai 水</td>
-</tr>
-<tr>
-<td style="text-align:center">氦</td>
-<td style="text-align:center">He</td>
-<td style="text-align:center">haumāmā</td>
-<td style="text-align:center">hau 气 + māmā 轻</td>
-</tr>
-<tr>
-<td style="text-align:center">锂</td>
-<td style="text-align:center">Li</td>
-<td style="text-align:center">konukōhatu</td>
-<td style="text-align:center">konu 金属 + kōhatu 石</td>
-</tr>
-<tr>
-<td style="text-align:center">铍</td>
-<td style="text-align:center">Be</td>
-<td style="text-align:center">konuuku</td>
-<td style="text-align:center">konu 金属 + uku 黏土</td>
-</tr>
-<tr>
-<td style="text-align:center">硼</td>
-<td style="text-align:center">B</td>
-<td style="text-align:center">pūtiwha</td>
-<td style="text-align:center">pū[pūmotu] 元素 + tiwha 闪光</td>
-</tr>
-<tr>
-<td style="text-align:center">碳</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">waro</td>
-<td style="text-align:center">煤；炭</td>
-</tr>
-<tr>
-<td style="text-align:center">氮</td>
-<td style="text-align:center">N</td>
-<td style="text-align:center">hauota</td>
-<td style="text-align:center">hau 气 + ota 植物</td>
-</tr>
-<tr>
-<td style="text-align:center">氧</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">hāora</td>
-<td style="text-align:center">hā 呼吸 + ora 活着</td>
-</tr>
-<tr>
-<td style="text-align:center">氟</td>
-<td style="text-align:center">F</td>
-<td style="text-align:center">haukōwhai</td>
-<td style="text-align:center">hau 气 + kōwhai 黄</td>
-</tr>
-<tr>
-<td style="text-align:center">氖</td>
-<td style="text-align:center">Ne</td>
-<td style="text-align:center">haukura</td>
-<td style="text-align:center">hau 气 + kura 红</td>
-</tr>
-<tr>
-<td style="text-align:center">钠</td>
-<td style="text-align:center">Na</td>
-<td style="text-align:center">konutai</td>
-<td style="text-align:center">konu 金属 + tai 海</td>
-</tr>
-<tr>
-<td style="text-align:center">镁</td>
-<td style="text-align:center">Mg</td>
-<td style="text-align:center">konupora</td>
-<td style="text-align:center">konu 金属 + pora 一种白色石头</td>
-</tr>
-<tr>
-<td style="text-align:center">铝</td>
-<td style="text-align:center">Al</td>
-<td style="text-align:center">konumohe</td>
-<td style="text-align:center">konu 金属 + mohe 软</td>
-</tr>
-<tr>
-<td style="text-align:center">硅</td>
-<td style="text-align:center">Si</td>
-<td style="text-align:center">takawai</td>
-<td style="text-align:center">石英</td>
-</tr>
-<tr>
-<td style="text-align:center">磷</td>
-<td style="text-align:center">P</td>
-<td style="text-align:center">pūtūtaewhetū</td>
-<td style="text-align:center">磷光物质（？）</td>
-</tr>
-<tr>
-<td style="text-align:center">硫</td>
-<td style="text-align:center">S</td>
-<td style="text-align:center">pungatara</td>
-<td style="text-align:center">自然硫</td>
-</tr>
-<tr>
-<td style="text-align:center">氯</td>
-<td style="text-align:center">Cl</td>
-<td style="text-align:center">haumāota</td>
-<td style="text-align:center">hau 气 + māota 绿</td>
-</tr>
-<tr>
-<td style="text-align:center">氩</td>
-<td style="text-align:center">Ar</td>
-<td style="text-align:center">hauhauhā</td>
-<td style="text-align:center">hau 气 + hauhā 二氧化碳</td>
-</tr>
-<tr>
-<td style="text-align:center">钾</td>
-<td style="text-align:center">K</td>
-<td style="text-align:center">konurehu</td>
-<td style="text-align:center">konu 金属 + rehu 尘；雾</td>
-</tr>
-<tr>
-<td style="text-align:center">钙</td>
-<td style="text-align:center">Ca</td>
-<td style="text-align:center">konupūmā</td>
-<td style="text-align:center">konu 金属 + pūmā 灰白色</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>参考资料：</p>
-<ul>
-<li><a href="https://mi.wikipedia.org/wiki/Ripanga_p%C5%ABmotu" target="_blank" rel="noopener">https://mi.wikipedia.org/wiki/Ripanga_p%C5%ABmotu</a></li>
-<li><a href="http://putaiao.tki.org.nz/Papakupu-Putaiao/Nga-Kupu-Maori" target="_blank" rel="noopener">http://putaiao.tki.org.nz/Papakupu-Putaiao/Nga-Kupu-Maori</a></li>
-</ul>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/04/23/毛利语中化学元素的名称/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -2254,6 +1980,8 @@ bobo2bob2o2bobo$ob6ob5obo$o14bo$b4ob5ob3o$4b2o4bobo$obo4bo2bo2bobo$2ob8o3b2o$3bo
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/guokr.png" alt="AlephAlpha">
+            
               <p class="site-author-name" itemprop="name">AlephAlpha</p>
               <div class="site-description motion-element" itemprop="description"></div>
           </div>
@@ -2265,7 +1993,7 @@ bobo2bob2o2bobo$ob6ob5obo$o14bo$b4ob5ob3o$4b2o4bobo$obo4bo2bo2bobo$2ob8o3b2o$3bo
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2277,6 +2005,10 @@ bobo2bob2o2bobo$ob6ob5obo$o14bo$b4ob5ob3o$4b2o4bobo$obo4bo2bo2bobo$2ob8o3b2o$3bo
                 
                 
                 <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
                   
                     
                     
@@ -2298,12 +2030,19 @@ bobo2bob2o2bobo$ob6ob5obo$o14bo$b4ob5ob3o$4b2o4bobo$obo4bo2bo2bobo$2ob8o3b2o$3bo
                     
                     <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">标签</span>
-                  
+                  </a>
                 </div>
               
             </nav>
           
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
@@ -2356,7 +2095,7 @@ bobo2bob2o2bobo$ob6ob5obo$o14bo$b4ob5ob3o$4b2o4bobo$obo4bo2bo2bobo$2ob8o3b2o$3bo
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.1</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
 
 
 
@@ -2444,7 +2183,9 @@ bobo2bob2o2bobo$ob6ob5obo$o14bo$b4ob5ob3o$4b2o4bobo$obo4bo2bo2bobo$2ob8o3b2o$3bo
   
 
 
-  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
 
 
 

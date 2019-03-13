@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -72,7 +72,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     version: '7.0.1',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
@@ -109,12 +109,14 @@
 <meta property="og:site_name" content="锑星杂记">
 <meta property="og:description" content="测试在 Hexo 中插入 LifeViewer。 x = 59, y = 7, rule = B3/S23 o5b5ob5ob5obo3bob5ob5obobobob5ob4o$o7bo3bo5bo5bo3bo3bo3bo5bobobobo5bo 3bo$o7bo3bo5bo5bo3bo3bo3bo5bobobobo5bo3bo$o7bo3b3o3b3o3bo3bo3bo3b3o3bo bobob">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-13T02:52:46.854Z">
+<meta property="og:updated_time" content="2019-03-13T04:23:33.409Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="测试在 Hexo 中插入 LifeViewer">
 <meta name="twitter:description" content="测试在 Hexo 中插入 LifeViewer。 x = 59, y = 7, rule = B3/S23 o5b5ob5ob5obo3bob5ob5obobobob5ob4o$o7bo3bo5bo5bo3bo3bo3bo5bobobobo5bo 3bo$o7bo3bo5bo5bo3bo3bo3bo5bobobobo5bo3bo$o7bo3b3o3b3o3bo3bo3bo3b3o3bo bobob">
 
 
+
+  <link rel="alternate" href="/atom.xml" title="锑星杂记" type="application/atom+xml">
 
 
 
@@ -236,6 +238,23 @@
         
         
           
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
           <li class="menu-item menu-item-archives">
 
     
@@ -254,9 +273,6 @@
       
     </ul>
   
-
-  
-    
 
   
 
@@ -278,6 +294,9 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
           
           <div id="content" class="content">
             
@@ -303,7 +322,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="AlephAlpha">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/guokr.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -358,7 +377,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-13 10:52:46" itemprop="dateModified" datetime="2019-03-13T10:52:46+08:00">2019-03-13</time>
+                <time title="修改时间：2019-03-13 12:23:33" itemprop="dateModified" datetime="2019-03-13T12:23:33+08:00">2019-03-13</time>
               
             
           </span>
@@ -412,14 +431,15 @@ o5bobobobo5bo3bo$5ob5obo5b5o3bo3b5ob5o2bobo2b5obo3bo!
 #C [[ T 950 X -242 Y 214 ANGLE 20 ]]
 #C [[ T 1050 DEPTH 0 ANGLE 0 AUTOFIT "#T" ]]
 #C [[ T 1100 X 0 Y 0 ZOOM 0.25 THEME CUSTOM ]]</pre><canvas width="480" height="480"></canvas></div>
+<a id="more"></a>
 <p><a href="http://www.conwaylife.com/wiki/LifeViewer" target="_blank" rel="noopener">LifeViewer</a> 是 Chris Rowett 写的一个在线版的生命游戏模拟器，功能十分强大，支持的规则很多，还可以通过脚本来控制其速度和视角。</p>
 <p>我修改了一下 Hexo 的 <a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">NexT</a> 主题，使得可以在文章中方便地插入 LifeViewer。</p>
 <p>只需要修改了 NexT 主题的三个地方：</p>
 <p>首先，下载 <a href="http://www.conwaylife.com/forums/styles/prosilver/template/lv-plugin.js" target="_blank" rel="noopener">lv-plugin.js</a>，放到 <code>source/js/src/</code> 文件夹。</p>
 <p>然后，在 <code>scripts/tags/</code> 文件夹中放进这么一个扩展名为 <code>.js</code> 的文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line"></span><br><span class="line">function lifeViewer(args, content) &#123;</span><br><span class="line">  return `&lt;div class=&quot;rle&quot;&gt;&lt;pre&gt;$&#123;content&#125;&lt;/pre&gt;&lt;canvas width=&quot;480&quot; height=&quot;480&quot;&gt;&lt;/canvas&gt;&lt;/div&gt;`;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">hexo.extend.tag.register(&apos;lifeviewer&apos;, lifeViewer, &#123;ends: true&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lifeViewer</span>(<span class="params">args, content</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`&lt;div class="rle"&gt;&lt;pre&gt;<span class="subst">$&#123;content&#125;</span>&lt;/pre&gt;&lt;canvas width="480" height="480"&gt;&lt;/canvas&gt;&lt;/div&gt;`</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">hexo.extend.tag.register(<span class="string">'lifeviewer'</span>, lifeViewer, &#123;<span class="attr">ends</span>: <span class="literal">true</span>&#125;);</span><br></pre></td></tr></table></figure>
 <p>最后，在 <code>layout/_custom/head.swig</code> 文件中插入这么两行（参见<a href="http://www.conwaylife.com/forums/viewtopic.php?f=3&amp;t=1622#p17014" target="_blank" rel="noopener">此处</a>）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;LifeViewer&quot; content=&quot;rle pre 37 hide limit&quot;&gt;</span><br><span class="line">&lt;script src=&quot;&#123;&#123; url_for(theme.js) &#125;&#125;/src/lv-plugin.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"LifeViewer"</span> <span class="attr">content</span>=<span class="string">"rle pre 37 hide limit"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; url_for(theme.js) &#125;&#125;/src/lv-plugin.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>然后就能用了。比如说，要在文章中插入一架滑翔机，只需要在 MarkDown 中插入：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;% lifeviewer %&#125;</span><br><span class="line">x = 3, y = 3, rule = B3/S23</span><br><span class="line">bob$2bo$3o!</span><br><span class="line">&#123;% endlifeviewer %&#125;</span><br></pre></td></tr></table></figure>
 <p>效果如下：</p>
@@ -461,8 +481,8 @@ bob$2bo$3o!</pre><canvas width="480" height="480"></canvas></div>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/04/用-Mathematica-搜索生命游戏中的静物（三）/" rel="next" title="用-Mathematica-搜索生命游戏中的静物（三）">
-                <i class="fa fa-chevron-left"></i> 用-Mathematica-搜索生命游戏中的静物（三）
+              <a href="/2019/03/04/用-Mathematica-搜索生命游戏中的静物（三）/" rel="next" title="用 Mathematica 搜索生命游戏中的静物（三）">
+                <i class="fa fa-chevron-left"></i> 用 Mathematica 搜索生命游戏中的静物（三）
               </a>
             
           </div>
@@ -518,6 +538,8 @@ bob$2bo$3o!</pre><canvas width="480" height="480"></canvas></div>
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/guokr.png" alt="AlephAlpha">
+            
               <p class="site-author-name" itemprop="name">AlephAlpha</p>
               <div class="site-description motion-element" itemprop="description"></div>
           </div>
@@ -529,7 +551,7 @@ bob$2bo$3o!</pre><canvas width="480" height="480"></canvas></div>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -541,6 +563,10 @@ bob$2bo$3o!</pre><canvas width="480" height="480"></canvas></div>
                 
                 
                 <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
                   
                     
                     
@@ -562,12 +588,19 @@ bob$2bo$3o!</pre><canvas width="480" height="480"></canvas></div>
                     
                     <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">标签</span>
-                  
+                  </a>
                 </div>
               
             </nav>
           
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
@@ -620,7 +653,7 @@ bob$2bo$3o!</pre><canvas width="480" height="480"></canvas></div>
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.1</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
 
 
 
@@ -708,7 +741,9 @@ bob$2bo$3o!</pre><canvas width="480" height="480"></canvas></div>
   
 
 
-  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
 
 
 
