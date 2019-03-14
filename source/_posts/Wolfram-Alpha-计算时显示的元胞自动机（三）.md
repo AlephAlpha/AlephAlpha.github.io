@@ -3,6 +3,7 @@ title: Wolfram|Alpha 计算时显示的元胞自动机（三）
 date: 2019-03-02 19:13:00
 tags:
   - 生命游戏
+  - Mathematica
   - 简书搬运
 ---
 
