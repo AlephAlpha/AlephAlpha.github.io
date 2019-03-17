@@ -473,10 +473,10 @@
 <p>这是我修改后的离线版：<a href="https://github.com/AlephAlpha/apgluxe_offline" target="_blank" rel="noopener">https://github.com/AlephAlpha/apgluxe_offline</a></p>
 <p>这个程序（无论是原版还是我修改后的离线版）是写给64位的 Unix 系统的，32位的操作系统没法使用。在64位的 Windows 上要用的话好像要先装个 <a href="http://cygwin.com/" target="_blank" rel="noopener">Cygwin</a>。反正我不用 Windows。</p>
 <p>下载这个程序时可以用<code>git clone</code>，也可以直接下载 ZIP 压缩包。在下载好之后，要编译程序，在终端里 <code>cd</code> 到这个目录里，然后运行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./recompile.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">./recompile.sh</span><br></pre></td></tr></table></figure>
 <p>即可。</p>
 <p>要运行程序的话，在同一个目录里，运行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./apgluxe -n 1000000</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">./apgluxe -n 1000000</span><br></pre></td></tr></table></figure>
 <p>这里的1000000是每一轮倒的汤的数量，可以换成你喜欢的任何数字。每倒完一轮，会生成一个统计结果，保存在一个类似于 <code>log.一串类似于乱码的东西.txt</code> 的文件当中（图样用的是 <a href="http://conwaylife.com/wiki/Apgcode" target="_blank" rel="noopener">apgcode</a> 格式，我不知道怎样转成 rle 或者别的 Golly 能读的格式），然后自动开始下一轮。什么时候不想玩了，按 Ctrl+C 可以退出。也可以不加 <code>-n 1000000</code> 这个参数，这样默认每轮会煮20000000锅汤（我觉得这个数字有点太大了）。如果 CPU 是多核的，还可以加 <code>-p 4</code> 这样的参数来并行运算，这个4表示4个线程。</p>
 <p>运行时如果找到线性增长的图样（一般是 <a href="http://conwaylife.com/wiki/Block-laying_switch_engine" target="_blank" rel="noopener">Block-laying switch engine</a> 或者 <a href="http://conwaylife.com/wiki/Glider-producing_switch_engine" target="_blank" rel="noopener">Glider-producing switch engine</a>），或者罕见的周期大于2的振荡子，它会直接告诉你。刚才试了一轮，煮到将近第九十万锅汤的时候找到一个 <a href="https://catagolue.appspot.com/object?apgcode=xp30_w33z8kqrqk8zzzw33&amp;rule=b3s23" target="_blank" rel="noopener">xp30_w33z8kqrqk8zzzw33</a>，在 Catagolue 上查了一下是个<a href="http://conwaylife.com/wiki/Queen_bee_shuttle" target="_blank" rel="noopener">蜂王梭</a>，运气不错。</p>
 

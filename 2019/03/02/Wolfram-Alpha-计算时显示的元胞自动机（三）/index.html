@@ -474,12 +474,12 @@
 <p>现在我给 <a href="https://github.com/AlephAlpha/LifeFind" target="_blank" rel="noopener">LifeFind</a> （即前面提到的用来搜索生命游戏中的图样的那个 Mathematica 包）加上了搜索 Generations 规则的功能。于是，它也能够搜 Wolfram|Alpha 的那个元胞自动机。</p>
 <p>搜索速度很慢，而且只能搜周期很小的图样，于是其实没有太多有意思的发现。不过，至少振荡子不再只有那么几个了。</p>
 <p>运行以下的 Mathematica 代码之前先要导入 LifeFind 包（当然，导入之前先要<a href="https://github.com/AlephAlpha/LifeFind/wiki/%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85" target="_blank" rel="noopener">安装</a>）：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt; Life`</span><br></pre></td></tr></table></figure>
+<figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">&lt;&lt; Life`</span><br></pre></td></tr></table></figure>
 <p>搜索结果是随机的。输入下面的代码来搜索很可能会搜出不同的图样。</p>
 <a id="more"></a>
 <h2 id="静物"><a href="#静物" class="headerlink" title="静物"></a>静物</h2><p>静物没什么好说的。原本就能搜 <code>B357/S3457</code> 规则的静物，只是现在可以把这个规则写成 <code>3457/357/5</code> 了。</p>
 <p>还可以加点别的条件，搜个胖乎乎圆滚滚的，好看。</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LifeFind[<span class="number">59</span>, <span class="number">59</span>, <span class="string">"Rule"</span> -&gt; <span class="string">"3457/357/5"</span>, <span class="string">"Symmetry"</span> -&gt; <span class="string">"D8"</span>, </span><br><span class="line"> <span class="string">"KnownCells"</span> -&gt; &#123;DiskMatrix[29] _&#125;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">LifeFind[<span class="number">59</span>, <span class="number">59</span>, <span class="string">"Rule"</span> -&gt; <span class="string">"3457/357/5"</span>, <span class="string">"Symmetry"</span> -&gt; <span class="string">"D8"</span>, </span><br><span class="line"> <span class="string">"KnownCells"</span> -&gt; &#123;DiskMatrix[29] _&#125;]</span><br></pre></td></tr></table></figure>
 <p>搜出的结果：</p>
 <div class="rle"><pre>x = 59, y = 59, rule = 3457/357/5
 25bo7bo$23b5obob5o$18b2ob3ob2ob3ob2ob3ob2o$17bob2obobo2b2ob2o2bobob2ob
@@ -518,36 +518,36 @@ o$13b2obob2obobo2bob3obo2bobob2obob2o$13b2ob2ob3obob2o2bo2b2obob3ob2ob
 2ob3ob2ob3ob2o$23b5obob5o$25bo7bo!</pre><canvas width="480" height="480"></canvas></div>
 <h2 id="振荡子"><a href="#振荡子" class="headerlink" title="振荡子"></a>振荡子</h2><p>由于 LifeFind 找不了周期稍大一点的振荡子，我其实也没有多少新的发现。</p>
 <p>随便倒一锅汤，一般都能看到一个周期8的转圈圈。虽然周期有点大，但个头很小，LifeFind 一搜就出来了：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LifeFind[<span class="number">4</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="string">"Rule"</span> -&gt; <span class="string">"3457/357/5"</span>, <span class="string">"Changing"</span> -&gt; <span class="keyword">True</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">LifeFind[<span class="number">4</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="string">"Rule"</span> -&gt; <span class="string">"3457/357/5"</span>, <span class="string">"Changing"</span> -&gt; <span class="keyword">True</span>]</span><br></pre></td></tr></table></figure>
 <div class="rle"><pre>x = 4, y = 4, rule = 3457/357/5
 3.$3A$B2A$.CD!</pre><canvas width="480" height="480"></canvas></div>
 <p>原本这就是已知的周期最小的振荡子了。现在有了 LifeFind，可以轻松找到周期5的振荡子（比搜生命游戏里同样大小的振荡子快多了，大概因为是 Generations？）：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LifeFind[<span class="number">4</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="string">"Rule"</span> -&gt; <span class="string">"3457/357/5"</span>, <span class="string">"Changing"</span> -&gt; <span class="keyword">True</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">LifeFind[<span class="number">4</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="string">"Rule"</span> -&gt; <span class="string">"3457/357/5"</span>, <span class="string">"Changing"</span> -&gt; <span class="keyword">True</span>]</span><br></pre></td></tr></table></figure>
 <div class="rle"><pre>x = 8, y = 4, rule = 3457/357/5
 .D.D.AB$4AC2AC$B2A.B2AD$.CD2.A!</pre><canvas width="480" height="480"></canvas></div>
 <p>稍大一点的：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LifeFind[<span class="number">4</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="string">"Rule"</span> -&gt; <span class="string">"3457/357/5"</span>, <span class="string">"Changing"</span> -&gt; <span class="keyword">True</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">LifeFind[<span class="number">4</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="string">"Rule"</span> -&gt; <span class="string">"3457/357/5"</span>, <span class="string">"Changing"</span> -&gt; <span class="keyword">True</span>]</span><br></pre></td></tr></table></figure>
 <div class="rle"><pre>x = 7, y = 7, rule = 3457/357/5
 4.CB$3.D3A$4.2A$.BADBA$C2AC$D2AB$2.A!</pre><canvas width="480" height="480"></canvas></div>
 <p>加点对称性条件，能搜到更漂亮的：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LifeFind[<span class="number">10</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="string">"Rule"</span> -&gt; <span class="string">"3457/357/5"</span>, <span class="string">"Changing"</span> -&gt; <span class="keyword">True</span>, </span><br><span class="line"> <span class="string">"Symmetry"</span> -&gt; <span class="string">"C4"</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">LifeFind[<span class="number">10</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="string">"Rule"</span> -&gt; <span class="string">"3457/357/5"</span>, <span class="string">"Changing"</span> -&gt; <span class="keyword">True</span>, </span><br><span class="line"> <span class="string">"Symmetry"</span> -&gt; <span class="string">"C4"</span>]</span><br></pre></td></tr></table></figure>
 <div class="rle"><pre>x = 10, y = 10, rule = 3457/357/5
 4.D$3.B3A$3.C2AB$.AB.DA.CB$.3A2.D2AD$D2AD2.3A$.BC.AD.BA$3.B2AC$3.3AB$
 5.D!</pre><canvas width="480" height="480"></canvas></div>
 <p>有一个长得和它很像的周期6：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LifeFind[<span class="number">10</span>, <span class="number">10</span>, <span class="number">6</span>, <span class="string">"Rule"</span> -&gt; <span class="string">"3457/357/5"</span>, <span class="string">"Changing"</span> -&gt; <span class="keyword">True</span>, </span><br><span class="line"> <span class="string">"Symmetry"</span> -&gt; <span class="string">"C4"</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">LifeFind[<span class="number">10</span>, <span class="number">10</span>, <span class="number">6</span>, <span class="string">"Rule"</span> -&gt; <span class="string">"3457/357/5"</span>, <span class="string">"Changing"</span> -&gt; <span class="keyword">True</span>, </span><br><span class="line"> <span class="string">"Symmetry"</span> -&gt; <span class="string">"C4"</span>]</span><br></pre></td></tr></table></figure>
 <div class="rle"><pre>x = 10, y = 10, rule = 3457/357/5
 4.BA$3.C2A$3.D2A$3.BCDBDC$3AD2.C2AB$B2AC2.D3A$.CDBDCB$4.2AD$4.2AC$4.AB
 !</pre><canvas width="480" height="480"></canvas></div>
 <p>以上这几个振荡子好像都是周期8转圈圈的变种。当然也有不是的，比如这个两个细胞渐渐消失的振荡子：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LifeFind[<span class="number">8</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="string">"Rule"</span> -&gt; <span class="string">"3457/357/5"</span>, <span class="string">"Changing"</span> -&gt; <span class="keyword">True</span>, </span><br><span class="line"> <span class="string">"Symmetry"</span> -&gt; <span class="string">"D4X"</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">LifeFind[<span class="number">8</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="string">"Rule"</span> -&gt; <span class="string">"3457/357/5"</span>, <span class="string">"Changing"</span> -&gt; <span class="keyword">True</span>, </span><br><span class="line"> <span class="string">"Symmetry"</span> -&gt; <span class="string">"D4X"</span>]</span><br></pre></td></tr></table></figure>
 <div class="rle"><pre>x = 8, y = 8, rule = 3457/357/5
 6b2o$2b2o2b2o$bob3o$b2o2bo$2bo2b2o$2b3obo$2o2b2o$2o!</pre><canvas width="480" height="480"></canvas></div>
 <p>还有很多别的振荡子。但由于最小的周期也有5，搜索较大的振荡子比较困难。这里就不贴出更多结果了。</p>
 <h2 id="飞船"><a href="#飞船" class="headerlink" title="飞船"></a>飞船</h2><p>目前找到的飞船速度还是只有 c/2。不过飞船特别多，也不难搜。</p>
 <p>懒得画背景会动的图了。</p>
 <p>以下是几次输入</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LifeFind[<span class="number">16</span>, <span class="number">16</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="string">"Rule"</span> -&gt; <span class="string">"3457/357/5"</span>, <span class="string">"Changing"</span> -&gt; <span class="keyword">True</span>, </span><br><span class="line"> <span class="string">"Symmetry"</span> -&gt; <span class="string">"D2|"</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">LifeFind[<span class="number">16</span>, <span class="number">16</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="string">"Rule"</span> -&gt; <span class="string">"3457/357/5"</span>, <span class="string">"Changing"</span> -&gt; <span class="keyword">True</span>, </span><br><span class="line"> <span class="string">"Symmetry"</span> -&gt; <span class="string">"D2|"</span>]</span><br></pre></td></tr></table></figure>
 <p>得到的结果：</p>
 <div class="rle"><pre>x = 16, y = 16, rule = 3457/357/5
 2$3.D.D4.D.D$.DCBC6.CBCD$.B3A.D2BD.3AB$D.ADABA2CABADA.D$BCABAB4ABABACB
@@ -565,7 +565,7 @@ CB3A$3.2A.4A.2A!</pre><canvas width="480" height="480"></canvas></div>
 2.A.A.4A.A.A$2.DC.D4.D.CD$.CBACB4.BCABC$.2A.A.C2.C.A.2A$CDACACA2DACACA
 DC$AB5A2B5ABA$3A.A.4A.A.3A$.A5.2A5.A!</pre><canvas width="480" height="480"></canvas></div>
 <p>也能搜胖乎乎圆滚滚的飞船（不过毕竟是飞船，没法很圆，像个大虫子）：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LifeFind[<span class="number">47</span>, <span class="number">47</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="string">"Rule"</span> -&gt; <span class="string">"3457/357/5"</span>, <span class="string">"Symmetry"</span> -&gt; <span class="string">"D2|"</span>,</span><br><span class="line">  <span class="string">"KnownCells"</span> -&gt; &#123;DiskMatrix[23] _&#125;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">LifeFind[<span class="number">47</span>, <span class="number">47</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="string">"Rule"</span> -&gt; <span class="string">"3457/357/5"</span>, <span class="string">"Symmetry"</span> -&gt; <span class="string">"D2|"</span>,</span><br><span class="line">  <span class="string">"KnownCells"</span> -&gt; &#123;DiskMatrix[23] _&#125;]</span><br></pre></td></tr></table></figure>
 <div class="rle"><pre>x = 47, y = 47, rule = 3457/357/5
 2$18.D9.D$16.D.BC7.CB.D$8.DC5.CBC2A.D3.D.2ACBC5.CD$8.BADC.CD3A.ACB3.BC
 A.3ADC.CDAB$9.ABA.ABA3.3A3.3A3.ABA.ABA$9.3A.3A3.3A3.3A3.3A.3A$10.A3.A
