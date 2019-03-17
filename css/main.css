@@ -1596,12 +1596,13 @@ pre .javascript .function {
   margin-top: 40px;
 }
 .posts-expand .post-tags {
-  margin-top: 40px;
+/* margin-top: 40px; */
   text-align: center;
 }
 .posts-expand .post-tags a {
   display: inline-block;
   margin-right: 10px;
+  color: #999;
   font-size: 13px;
 }
 .post-nav {
@@ -1890,7 +1891,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #777fd1;
+  background: #8147ff;
 }
 .links-of-blogroll {
   font-size: 13px;
