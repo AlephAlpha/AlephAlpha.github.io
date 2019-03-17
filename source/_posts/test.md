@@ -73,3 +73,5 @@ bob$2bo$3o!
 x = 3, y = 3, rule = B3/S23
 bob$2bo$3o!
 {% endlifeviewer %}
+
+不过在手机上看效果不太好，LifeViewer 总是比手机屏幕要宽，不知道怎么改。

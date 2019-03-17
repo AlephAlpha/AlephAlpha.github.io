@@ -550,8 +550,8 @@ quicklink:
 
 # Disqus
 disqus:
-  enable: false
-  shortname:
+  enable: true
+  shortname: alephalpha
   count: true
   lazyload: false
 
