@@ -14,8 +14,6 @@ tags:
 
 之前写的那篇《{% post_link 用-Mathematica-搜索生命游戏中的静物 %}》，由于自己写的部分多了一点（虽然关键的一步还是用 Mathematica 自带的 `FindPath` 函数），特别慢，还特别耗内存。果然对我这种__完全__不懂算法的人，就应该把所有的事情都交给 Mathematica 才对。
 
-<!--我在 Mathematica StackExchange 上提了一个问题：[Searching for still lifes in Conway's Game of Life](https://mathematica.stackexchange.com/questions/160865/searching-for-still-lifes-in-conways-game-of-life)。大家如果有什么改进代码的建议，欢迎去那里回答。-->
-
 ---
 
 生命游戏里的每个细胞的状态可以看成一个布尔值，一个（大小有限的）图样则可以看成一个由布尔值组成的二维数组。于是，要寻找满足某些条件图样，就相当于要求这些布尔值满足某个方程。于是，这是一个[布尔可满足性问题](https://en.wikipedia.org/wiki/Boolean_satisfiability_problem)（SAT）。Mathematica 里有个叫 [`SatisfiabilityInstances`](http://reference.wolfram.com/language/ref/SatisfiabilityInstances.html) 的函数就是干这个的。
@@ -76,7 +74,7 @@ SearchStillLife[x_, y_] :=
 ArrayPlot[Boole@SearchStillLife[16, 16], Mesh -> All] // AbsoluteTiming
 ```
 
-![](http://upload-images.jianshu.io/upload_images/1770625-d609735164bfbc6a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+{% asset_img 1.png %}
 
 能不能快一些？
 
@@ -93,7 +91,7 @@ StillLifeCondition[i_, j_] :=
 
 后面的 `SearchStillLife` 函数定义不变。现在再找一遍16乘16的静物，果然快了很多，只花了2.2秒。不过找出来的静物……
 
-![居然是空的……](http://upload-images.jianshu.io/upload_images/1770625-554e2d7ef47fe53b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+{% asset_img 2.png 居然是空的…… %}
 
 看来 `SatisfiabilityInstances` 函数在处理 CNF 时用的是和别的形式不同的算法。满足条件的静物有很多，但 `SatisfiabilityInstances` 只会输出其中的第一个。而在输入 CNF 的时候，不巧空静物就是这“第一个”。
 
@@ -143,11 +141,11 @@ SeedRandom[233];
 ArrayPlot[Boole@SearchStillLife[16, 16], Mesh -> All] // AbsoluteTiming
 ```
 
-![](http://upload-images.jianshu.io/upload_images/1770625-39cedb3203c9c013.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+{% asset_img 3.png %}
 
 再试试大一点的静物，比如说64乘64的。花了大概46秒。
 
-![](http://upload-images.jianshu.io/upload_images/1770625-d6e2d72fa2229168.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+{% asset_img 4.png 后来发现时间主要花在生成要满足的条件上了，修改之后速度可以提高到二十多秒 %}
 
 ---
 
@@ -189,11 +187,11 @@ ArrayPlot[#, Mesh -> All] & /@
   Boole@SearchOscillator[2, 16, 16] // AbsoluteTiming
 ```
 
-![](https://upload-images.jianshu.io/upload_images/1770625-31512cd099d389d7.gif?imageMogr2/auto-orient/strip)
+{% asset_img 5.gif %}
 
 周期3的就更慢了，找下面这个振荡子花了14分钟。
 
-![](https://upload-images.jianshu.io/upload_images/1770625-4796a4cbf5b93041.gif?imageMogr2/auto-orient/strip)
+{% asset_img 6.gif 其实是运气不好，随机种子设成233时搜这个就特别慢，换个随机种子就会快很多 %}
 
 更高的周期我就不敢试了。
 

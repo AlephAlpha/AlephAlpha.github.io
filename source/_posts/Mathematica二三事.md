@@ -1,5 +1,5 @@
 ---
-title: Mathematica二三事
+title: Mathematica 二三事
 date: 2017-11-28 23:58:00
 tags:
   - Mathematica
@@ -19,13 +19,13 @@ tags:
 
 第一件事，还是在2011年，当时果壳网的小组还不多，死理性派小组的风气也还好。当时[@dwt](http://www.guokr.com/group/n/dwt) 发了个“表白函数”的帖子，引来大家的膜拜：
 
-![表白函数](http://upload-images.jianshu.io/upload_images/1770625-76d9d53f1a0bd387.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+{% asset_img 表白函数.jpg %}
 
 于是我把这帖子转到了百度贴吧，并照着图片把这段代码打了出来，不过没说明用的是什么软件。
 
 帖子不久就沉了。然后过了几个月，迎来这么一个回帖：
 
-![贴吧回帖](http://upload-images.jianshu.io/upload_images/1770625-3b008f20e8541847.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+{% asset_img 贴吧回帖.png %}
 
 ---
 
@@ -35,7 +35,7 @@ tags:
 
 然后果壳网将这个帖子的内容连着我的回复推到了微博上面：
 
-![果壳微博](https://ww4.sinaimg.cn/mw690/6f0a84e5jw1dqguv30w5lj.jpg)
+{% asset_img 果壳微博.jpg %}
 
 我很高兴，然后在这条微博的评论和转发里看到了这样的内容：
 
@@ -53,7 +53,7 @@ tags:
 
 我刚好在codegolf.stackexchange.com上见过一个类似的问题，那里有个网友用Mathematica给了一个很漂亮的回答，于是把那个答案搬运了过来。总之画出来是这样的：
 
-![圣诞树](https://i.stack.imgur.com/OGv5a.gif)
+{% asset_img 圣诞树.png %}
 
 这个答案在知乎里获得了50多个赞，还有20个收藏。其中有个收藏夹名字叫matlab。我想，大概他是懒得开一个Mathematica的收藏夹，就把这个答案跟一些与Matlab有关的答案放在一起吧。这样想着，我点开了那个收藏夹。
 

@@ -28,11 +28,11 @@ tags:
 
 直到有一天，我在人人网上——当时人人网还不是直播平台——看到这么一个截图：
 
-![Wolfram|Alpha 的元胞自动机。忘了是哪位同学的截图。](https://upload-images.jianshu.io/upload_images/1770625-e0b20d78f3d9817b.gif?imageMogr2/auto-orient/strip)
+{% asset_img WolframAlphaCA.gif Wolfram|Alpha 的元胞自动机。忘了是哪位同学的截图。 %}
 
 不知那位同学用的是什么截图工具，能够截得这么清晰，而且没有掉帧。总之，有了这个截图，我就能把它导入到 Mathematica，一帧一帧地慢慢看……并不能看出它是什么规则，甚至不能看清它有几种状态——最小的两种点个头差不多，只是颜色的深浅稍稍有点区别，肉眼不容易看清。不过我还是看出了一点规律：稍大一点的点会变得越来越大，直到爆掉，消失。而且，我还看到了这个一个振荡子：
 
-![一个周期8的小振荡子。我想给它起名叫 Loading。](https://upload-images.jianshu.io/upload_images/1770625-11e4a70a70ef8fec.gif?imageMogr2/auto-orient/strip)
+{% asset_img Loading.gif 一个周期8的小振荡子。我想给它起名叫 Loading。 %}
 
 除了 Life-like 的规则，还有什么规则？我在 Golly （最好的元胞自动机模拟器，没有之一）的帮助里看到了一类叫 [Generations](http://golly.sourceforge.net/Help/Algorithms/Generations.html) 的规则，觉得和这个有点像。不过那里给的几个 Generations 规则的例子和 Wolfram|Alpha 的这个元胞自动机都对不上。
 
@@ -40,7 +40,7 @@ Generations 的规则和 Life-like 的规则类似，每个细胞也有死活两
 
 比如说，那个叫 Frogs 的元胞自动机，规则按 Golly 的写法是 `12/34/3`。最后这个数字 `3` 表示它有三种状态：一个是死，一个是活，一个是正在死亡。也就是说，一个活细胞在临死前只能多活一个回合。前面的 `12` 说的是：一个活细胞要想继续好好活着，八个邻居里活细胞的个数必须是1或者2； `34` 的意思则是：一个已经死掉的细胞要想活过来，周围的活细胞个数必须是3或者4。
 
-![Frogs 规则因图中的这个像青蛙一样跳跃前进的飞船而得名。小点、大点和没有点分别代表活细胞、半死的细胞和死透了的细胞。](https://upload-images.jianshu.io/upload_images/1770625-0969b4819fee46e2.gif?imageMogr2/auto-orient/strip)
+{% asset_img Frogs.gif Frogs 规则因图中的这个像青蛙一样跳跃前进的飞船而得名。小点、大点和没有点分别代表活细胞、半死的细胞和死透了的细胞。 %}
 
 Wolfram|Alpha 的元胞自动机应该也是 Generations 一类，但肉眼不容易看出具体是什么规则。不过不要紧，我们还有 Mathematica。直接看不出，我们就把图片二值化了看，拆成一个个连通分支来看，数清了每个点周围的活细胞个数再看。
 
@@ -60,7 +60,7 @@ CA = First /@ Split@Import["WolframAlphaCA.gif"];
 Binarize[CA[[1]]]
 ```
 
-![不二值化的话根本看不出这截图还戴黑框。](https://upload-images.jianshu.io/upload_images/1770625-412fbded84edcd35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+{% asset_img Binarized_1.png 不二值化的话根本看不出这截图还戴黑框。 %}
 
 摘掉黑框再二值化。二值化的阈值不能太低，以免最小的点消失；也不能太高，以免相邻的点连起来。试了好几个数，`0.85` 是最合适的。
 
@@ -68,7 +68,7 @@ Binarize[CA[[1]]]
 Binarize[ImagePad[#, -BorderDimensions@#], 0.85] &@CA[[1]]
 ```
 
-![这只是第一帧二值化的结果。](https://upload-images.jianshu.io/upload_images/1770625-9c38605d7dcb8808.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+{% asset_img Binarized_2.png 这只是第一帧二值化的结果。 %}
 
 看起来不错。于是我就把每一帧都二值化了。顺手还给它们反个色，以方便下一步处理。
 
@@ -76,7 +76,7 @@ Binarize[ImagePad[#, -BorderDimensions@#], 0.85] &@CA[[1]]
 CABinarized = 1 - Binarize[ImagePad[#, -BorderDimensions@#], 0.85] & /@ CA;
 ```
 
-![这样好看多了。](https://upload-images.jianshu.io/upload_images/1770625-f9095bbc8fcecf20.gif?imageMogr2/auto-orient/strip)
+{% asset_img Binarized_3.gif 这样好看多了。 %}
 
 现在每个细胞——死细胞不算——是这个图片的一个连通分支。细胞的状态对应于连通分支的大小。于是可以用上 [`ComponentMeasurements`](https://reference.wolfram.com/language/ref/ComponentMeasurements.html) 函数。
 

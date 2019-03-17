@@ -10,7 +10,7 @@ tags:
 
 截图：
 
-![我能吞下玻璃而不伤身体](http://upload-images.jianshu.io/upload_images/1770625-99ea3fa4f4acc9fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+{% asset_img palladius.png 我能吞下玻璃而不伤身体 %}
 
 <!-- more -->
 
