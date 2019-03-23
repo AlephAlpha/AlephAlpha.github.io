@@ -408,11 +408,19 @@
                   
                 
               
-              目前共计 8 个标签
+                
+                  
+                
+              
+                
+                  
+                
+              
+              目前共计 10 个标签
             </div>
             <div class="tag-cloud-tags">
               
-                <a href="/tags/Esolang/" style="font-size: 12px; color: #ccc">Esolang</a> <a href="/tags/Mathematica/" style="font-size: 25.5px; color: #404040">Mathematica</a> <a href="/tags/卅猫传说/" style="font-size: 25.5px; color: #404040">卅猫传说</a> <a href="/tags/文字游戏/" style="font-size: 16.5px; color: #9d9d9d">文字游戏</a> <a href="/tags/果壳搬运/" style="font-size: 21px; color: #6f6f6f">果壳搬运</a> <a href="/tags/生命游戏/" style="font-size: 25.5px; color: #404040">生命游戏</a> <a href="/tags/简书搬运/" style="font-size: 30px; color: #111">简书搬运</a> <a href="/tags/维基百科/" style="font-size: 12px; color: #ccc">维基百科</a>
+                <a href="/tags/Esolang/" style="font-size: 15.6px; color: #a7a7a7">Esolang</a> <a href="/tags/Mathematica/" style="font-size: 26.4px; color: #363636">Mathematica</a> <a href="/tags/卅猫传说/" style="font-size: 26.4px; color: #363636">卅猫传说</a> <a href="/tags/文字游戏/" style="font-size: 19.2px; color: #818181">文字游戏</a> <a href="/tags/果壳搬运/" style="font-size: 22.8px; color: #5c5c5c">果壳搬运</a> <a href="/tags/生命游戏/" style="font-size: 26.4px; color: #363636">生命游戏</a> <a href="/tags/简书搬运/" style="font-size: 30px; color: #111">简书搬运</a> <a href="/tags/维基百科/" style="font-size: 15.6px; color: #a7a7a7">维基百科</a> <a href="/tags/语言/" style="font-size: 12px; color: #ccc">语言</a> <a href="/tags/音乐/" style="font-size: 12px; color: #ccc">音乐</a>
               
             </div>
           </div>
@@ -436,10 +444,7 @@
           
 
   
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-      </div>
+    <div class="comments" id="gitalk-container">
     </div>
 
   
@@ -517,7 +522,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -709,30 +718,36 @@
   
 
   
-  
-  <script id="dsq-count-scr" src="https://alephalpha.disqus.com/count.js" async></script>
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
 
 <script>
-  var disqus_config = function() {
-    this.page.url = "https://AlephAlpha.github.io/tags/index.html";
-    this.page.identifier = "tags/index.html";
-    this.page.title = 'tags';
-    };
-  function loadComments() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://alephalpha.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', '' + +new Date());
-    (d.head || d.body).appendChild(s);
-  }
-  
-    loadComments();
-  
+  var gitalk = new Gitalk({
+    clientID: '8e9e720b5037b9c8840a',
+    clientSecret: '63413c2351327c4239eabf978459976321e38771',
+    repo: 'AlephAlpha.github.io',
+    owner: 'AlephAlpha',
+    admin: ['AlephAlpha'],
+    id: md5(location.pathname),
+    
+      language: window.navigator.language || window.navigator.userLanguage,
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
 </script>
-
-
-
-
 
   
 

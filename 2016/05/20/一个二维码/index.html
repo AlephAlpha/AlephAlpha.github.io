@@ -415,19 +415,6 @@
           
             
             
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2016/05/20/一个二维码/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/05/20/一个二维码/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -438,9 +425,9 @@
           
             <div class="post-tags">
               
-                <a href="/tags/Mathematica/" rel="tag"># Mathematica</a>
+                <a href="/tags/Mathematica/" rel="tag"><i class="fa fa-tag"></i> Mathematica</a>
               
-                <a href="/tags/简书搬运/" rel="tag"># 简书搬运</a>
+                <a href="/tags/简书搬运/" rel="tag"><i class="fa fa-tag"></i> 简书搬运</a>
               
             </div>
           
@@ -527,10 +514,7 @@
           
 
   
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-      </div>
+    <div class="comments" id="gitalk-container">
     </div>
 
   
@@ -608,7 +592,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -800,30 +788,36 @@
   
 
   
-  
-  <script id="dsq-count-scr" src="https://alephalpha.disqus.com/count.js" async></script>
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
 
 <script>
-  var disqus_config = function() {
-    this.page.url = "https://AlephAlpha.github.io/2016/05/20/一个二维码/";
-    this.page.identifier = "2016/05/20/一个二维码/";
-    this.page.title = '一个二维码';
-    };
-  function loadComments() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://alephalpha.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', '' + +new Date());
-    (d.head || d.body).appendChild(s);
-  }
-  
-    loadComments();
-  
+  var gitalk = new Gitalk({
+    clientID: '8e9e720b5037b9c8840a',
+    clientSecret: '63413c2351327c4239eabf978459976321e38771',
+    repo: 'AlephAlpha.github.io',
+    owner: 'AlephAlpha',
+    admin: ['AlephAlpha'],
+    id: md5(location.pathname),
+    
+      language: window.navigator.language || window.navigator.userLanguage,
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
 </script>
-
-
-
-
 
   
 

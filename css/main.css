@@ -1891,7 +1891,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff42e8;
+  background: #fbff86;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2149,6 +2149,14 @@ pre .javascript .function {
     -o-transform: scale(1.1);
     transform: scale(1.1);
   }
+}
+.gt-header a,
+.gt-comments a,
+.gt-popup a {
+  border-bottom: none;
+}
+.gt-container .gt-popup .gt-action.is--active:before {
+  top: 0.7em;
 }
 .local-search-pop-overlay {
   position: fixed;
