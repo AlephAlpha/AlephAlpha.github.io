@@ -12,7 +12,7 @@ tags:
 
 ---
 
-现在我给 [LifeFind](https://github.com/AlephAlpha/LifeFind) （即前面提到的用来搜索生命游戏中的图样的那个 Mathematica 包）加上了搜索 Generations 规则的功能。于是，它也能够搜 Wolfram|Alpha 的那个元胞自动机。
+现在我给 [LifeFind](https://github.com/AlephAlpha/LifeFind) （即{% post_link 用-Mathematica-搜索生命游戏中的静物（三） 前面 %}提到的用来搜索生命游戏中的图样的那个 Mathematica 包）加上了搜索 Generations 规则的功能。于是，它也能够搜 Wolfram|Alpha 的那个元胞自动机。
 
 搜索速度很慢，而且只能搜周期很小的图样，于是其实没有太多有意思的发现。不过，至少振荡子不再只有那么几个了。
 

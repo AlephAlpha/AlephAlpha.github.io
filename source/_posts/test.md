@@ -75,3 +75,5 @@ bob$2bo$3o!
 {% endlifeviewer %}
 
 不过在手机上看效果不太好，LifeViewer 总是比手机屏幕要宽，不知道怎么改。
+
+想要知道 LifeViewer 的更多用法，点击上面这个 LifeViewer 右上方的 Help 即可。例子见《{% post_link π日，来吃个派 %}》。
