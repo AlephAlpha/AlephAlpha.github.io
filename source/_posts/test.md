@@ -7,6 +7,8 @@ tags:
 
 测试在 Hexo 中插入 LifeViewer。
 
+以下 RLE 来自 [LifeWiki 的 LifeViewer 页面](http://www.conwaylife.com/wiki/LifeViewer)：
+
 {% lifeviewer %}
 x = 59, y = 7, rule = B3/S23
 o5b5ob5ob5obo3bob5ob5obobobob5ob4o$o7bo3bo5bo5bo3bo3bo3bo5bobobobo5bo
