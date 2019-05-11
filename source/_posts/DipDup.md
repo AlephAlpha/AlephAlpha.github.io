@@ -1,9 +1,10 @@
 ---
 title: DipDup
-date: 2017-01-20 16:44:00
 tags:
   - Esolang
   - 简书搬运
+abbrlink: afc885ea
+date: 2017-01-20 16:44:00
 ---
 
 在之前的[《那些奇奇怪怪的编程语言》](http://www.jianshu.com/p/ed929cf72312)一文里，我介绍了 Esolang 的概念，以及几种 Esolang 的例子。当然，这种事情自己动手更有意思。于是我也设计了一种编程语言，叫做 DipDup。

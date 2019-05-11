@@ -1,10 +1,11 @@
 ---
 title: Wolfram|Alpha 计算时显示的元胞自动机（二）
-date: 2018-08-09 13:20:00
 tags:
   - 生命游戏
   - Mathematica
   - 简书搬运
+abbrlink: 58d94558
+date: 2018-08-09 13:20:00
 ---
 
 * {% post_link Wolfram-Alpha-计算时显示的元胞自动机（一） %}

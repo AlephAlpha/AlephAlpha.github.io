@@ -1,10 +1,11 @@
 ---
 title: 用 Mathematica 搜索生命游戏中的静物（三）
-date: 2019-03-04 16:44:00
 tags:
   - 生命游戏
   - Mathematica
   - 简书搬运
+abbrlink: 18a3d91c
+date: 2019-03-04 16:44:00
 ---
 
 * {% post_link 用-Mathematica-搜索生命游戏中的静物 %}
@@ -31,7 +32,7 @@ tags:
 LifeFind 的搜索是随机的，同样的搜索可能会得到不同的结果。为了确保以下范例的可重复性，我用以下的命令将每次搜索时的[随机种子](https://en.wikipedia.org/wiki/Random_seed)设为 233，顺便用 [`Timing`](https://reference.wolfram.com/language/ref/Timing.html) 函数给出搜索在我的电脑上所花的时间。
 
 ```Mathematica
-$Pre = Function[x, SeedRandom[233]; 
+$Pre = Function[x, SeedRandom[0]; 
    Last@Echo[Timing@x, "Timing: ", First], HoldAll];
 ```
 
@@ -49,15 +50,15 @@ __代码__：
 LifeFind[16, 16]
 ```
 
-__搜索时间__：0.941665 秒
+__搜索时间__：0.737029 秒
 
 __搜索结果__：
 
 {% lifeviewer %}
 x = 16, y = 16, rule = B3/S23
-bo3b2ob2ob2obo$obo2bo3bobob2o$bobobob2o2bo$3b2obobobo2b2o$2bo3bo2bob2o
-2bo$2b2obobobo3b3o$6bo2b3o$5obobo3b2o$o3bobob2obo2bo$2bo4bo4bobo$b3o5b
-2obob2o$o4b4obobo2bo$ob3obo6bo$bo9b2o$3b2obo3bo2b3o$2b2ob2o3b2o3bo!
+7bo$5b5o3b2o$2o2bo5bo3bo$2o3bobo2bo2bo$6b5obo$3bo7bo$obobo3b2o2b3o$2ob
+obo2bob2o3bo$3bob3o4bobo$2ob2o7bob2o$obo3b2o3b2o$3b3o2bobo3b2o$5bob2ob
+4obo$7bo5bo$ob2o3bob2o3bo$2obo4bobo2b2o!
 {% endlifeviewer %}
 
 ### 2
@@ -71,17 +72,17 @@ LifeFind[20, 20, "Rule" -> "B2c3-ij4ai5iy6c/S2-kn3-enq4cint",
  "Symmetry" -> "C4"]
 ```
 
-__搜索时间__：1.49678 秒
+__搜索时间__：1.0303 秒
 
 __搜索结果__：
 
 {% lifeviewer %}
 x = 20, y = 20, rule = B2c3-ij4ai5iy6c/S2-kn3-enq4cint
-2bo4bo2bo6bo$bob4ob2obo4bobo$obo4bo2bo3b2obobo$bo3bo2bo6bo2bo$2b3ob2o
-5bobo2bo$2bo2bo2b5obobobo$4bobobo4bobo2bo$5bo2bo2bo3bobobo$bo3bob2o2b
-4obobo$obo2bo8bo3bo$bo3bo8bo2bobo$bobob4o2b2obo3bo$obobo3bo2bo2bo$bo2b
-obo4bobobo$bobobob5o2bo2bo$bo2bobo5b2ob3o$bo2bo6bo2bo3bo$obob2o3bo2bo
-4bobo$bobo4bob2ob4obo$2bo6bo2bo4bo!
+3bo7b2o2b4o$3obo2b2o2bo3bo2bo$o2bobo2bo2bobobo2bo$o3bob3o2bob3obobo$4o
+bo5bo4bobo$3bo7bo3bobo$2b2o4bo2bo4bo$o6bob2obo3bobo$7obo2bobo2b3o$7bo
+4bo$7bo4bo$b3o2bobo2bob7o$bobo3bob2obo6bo$3bo4bo2bo4b2o$2bobo3bo7bo$bo
+bo4bo5bob4o$obob3obo2b3obo3bo$bo2bobobo2bo2bobo2bo$bo2bo3bo2b2o2bob3o$
+b4o2b2o7bo!
 {% endlifeviewer %}
 
 ### 3
@@ -95,45 +96,44 @@ LifeFind[59, 59, "Symmetry" -> "D8",
  "KnownCells" -> {DiskMatrix[29] _}]
 ```
 
-__搜索时间__：15.6273 秒
+__搜索时间__：9.23196 秒
 
 __搜索结果__：
 
 {% lifeviewer %}
 x = 59, y = 59, rule = B3/S23
-25b2o5b2o$24bobo2bo2bobo$19b2o2bo2bobobobo2bo2b2o$20b4ob2obobob2ob4o$
-18bo5bo3bobo3bo5bo$12b2o3bob4obo3bobo3bob4obo3b2o$11bo2bo2bobo2bobob2o
-bob2obobo2bobo2bo2bo$11b2o2bobo3bo2bo2bo3bo2bo2bo3bobo2b2o$13b2o2bo2b
-2obobo2b3o2bobob2o2bo2b2o$11b2o4bobo3bob3o3b3obo3bobo4b2o$10bo2b4o2b2o
-b2o4bobo4b2ob2o2b4o2bo$6b2obobobo3b2o5b2o2bobo2b2o5b2o3bobobob2o$5bobo
-bo2bo3bo2bob2obobobobobobob2obo2bo3bo2bobobo$5bo2bob2o3bo2bo3bobob2obo
-b2obobo3bo2bo3b2obo2bo$6bobobo3bo4b3o2bo4bo4bo2b3o4bo3bobobo$7bo2bo2bo
-b4o3b2ob2obobob2ob2o3b4obo2bo2bo$10bobo2bo2bobo2bo2bobobobo2bo2bobo2bo
-2bobo$5b5obo3bo2bob2o2bobobobobobo2b2obo2bo3bob5o$4bo6bobob4o2bob2o2bo
-3bo2b2obo2b4obobo6bo$2bo2b2o2b2obobo4bobo2bo3b3o3bo2bobo4bobob2o2b2o2b
-o$2b2obo2bobo3bob2o2bobo2b3o3b3o2bobo2b2obo3bobo2bob2o$3bobob2o3bobo2b
-3o2b3o2bobobo2b3o2b3o2bobo3b2obobo$3bob2o3bob2obo4b2o3bo2bobo2bo3b2o4b
-ob2obo3b2obo$2b2o4b3o4b2obo2bo2bo4bo4bo2bo2bob2o4b3o4b2o$bo2b4o3b4o2b
-3obobo11bobob3o2b4o3b4o2bo$o2bo4b2obo3bo4bobo13bobo4bo3bob2o4bo2bo$4o
-2bo2bo2b2ob3o2bo5b2o3b2o5bo2b3ob2o2bo2bo2b4o$6b2obo3bo4bob2o4b2o3b2o4b
-2obo4bo3bob2o$2b4o2bob3o2b3obo2bo13bo2bob3o2b3obo2b4o$bo4bobo4b2o4bobo
-bo11bobobo4b2o4bobo4bo$2b4o2bob3o2b3obo2bo13bo2bob3o2b3obo2b4o$6b2obo
-3bo4bob2o4b2o3b2o4b2obo4bo3bob2o$4o2bo2bo2b2ob3o2bo5b2o3b2o5bo2b3ob2o
-2bo2bo2b4o$o2bo4b2obo3bo4bobo13bobo4bo3bob2o4bo2bo$bo2b4o3b4o2b3obobo
-11bobob3o2b4o3b4o2bo$2b2o4b3o4b2obo2bo2bo4bo4bo2bo2bob2o4b3o4b2o$3bob
-2o3bob2obo4b2o3bo2bobo2bo3b2o4bob2obo3b2obo$3bobob2o3bobo2b3o2b3o2bobo
-bo2b3o2b3o2bobo3b2obobo$2b2obo2bobo3bob2o2bobo2b3o3b3o2bobo2b2obo3bobo
-2bob2o$2bo2b2o2b2obobo4bobo2bo3b3o3bo2bobo4bobob2o2b2o2bo$4bo6bobob4o
-2bob2o2bo3bo2b2obo2b4obobo6bo$5b5obo3bo2bob2o2bobobobobobo2b2obo2bo3bo
-b5o$10bobo2bo2bobo2bo2bobobobo2bo2bobo2bo2bobo$7bo2bo2bob4o3b2ob2obobo
-b2ob2o3b4obo2bo2bo$6bobobo3bo4b3o2bo4bo4bo2b3o4bo3bobobo$5bo2bob2o3bo
-2bo3bobob2obob2obobo3bo2bo3b2obo2bo$5bobobo2bo3bo2bob2obobobobobobob2o
-bo2bo3bo2bobobo$6b2obobobo3b2o5b2o2bobo2b2o5b2o3bobobob2o$10bo2b4o2b2o
-b2o4bobo4b2ob2o2b4o2bo$11b2o4bobo3bob3o3b3obo3bobo4b2o$13b2o2bo2b2obob
-o2b3o2bobob2o2bo2b2o$11b2o2bobo3bo2bo2bo3bo2bo2bo3bobo2b2o$11bo2bo2bob
-o2bobob2obob2obobo2bobo2bo2bo$12b2o3bob4obo3bobo3bob4obo3b2o$18bo5bo3b
-obo3bo5bo$20b4ob2obobob2ob4o$19b2o2bo2bobobobo2bo2b2o$24bobo2bo2bobo$
-25b2o5b2o!
+26b2obob2o$25bo2b3o2bo$18bobo5bo5bo5bobo$18b2obobo3b2ob2o3bobob2o$21b
+2obo3bobo3bob2o$14b2o2b2o4bo3bobo3bo4b2o2b2o$11b2o2b4ob2obob2obobob2ob
+ob2ob4o2b2o$10bob2o7b2obo2bobobo2bob2o7b2obo$9bo7b3o4bo2bobobo2bo4b3o
+7bo$8bo7bo2b2ob2ob2o2bo2b2ob2ob2o2bo7bo$7bo6b3o6bo2bobobobo2bo6b3o6bo$
+6bo6bo3b4obo2bo2bobo2bo2bob4o3bo6bo$6b2o5bo2bo2bo3b2ob3ob3ob2o3bo2bo2b
+o5b2o$7bo3b3obobo3b2o2bo7bo2b2o3bobob3o3bo$5bo4bo4b2ob3o2bobob5obobo2b
+3ob2o4bo4bo$5b2o3bo2b2o3bo2bobo2bo5bo2bobo2bo3b2o2bo3b2o$6bo2b2obobo3b
+o2bob2obob3obob2obo2bo3bobob2o2bo$6bobo2bobo5b3o2bo2bo3bo2bo2b3o5bobo
+2bobo$2b2ob2obo2bo2b3o5bobo3bobo3bobo5b3o2bo2bob2ob2o$3bobo2b2ob2obo2b
+o3bobo3b2ob2o3bobo3bo2bob2ob2o2bobo$2bo3bo2bobo2bo2bo3bobobo3bo3bobobo
+3bo2bo2bobo2bo3bo$3b2ob2o5bob3ob3o2bob2o3b2obo2b3ob3obo5b2ob2o$4bo2bob
+obobo4bo3bobobo5bobobo3bo4bobobobo2bo$3bo2bo2b2obob3o2b2o2bo4bobo4bo2b
+2o2b3obob2o2bo2bo$4b2ob2o3bo3b3o2b2o4b2ob2o4b2o2b3o3bo3b2ob2o$bo4bo2bo
+bob2o5bo17bo5b2obobo2bo4bo$obo3bo2b2obo2b2o4b2o4b2ob2o4b2o4b2o2bob2o2b
+o3bobo$o2bo3b2o3bobo2bobobo2bobobobobobo2bobobo2bobo3b2o3bo2bo$bob4o3b
+3obobob2o3b2ob2o3b2ob2o3b2obobob3o3b4obo$2o5b3o4bobo3bo17bo3bobo4b3o5b
+2o$bob4o3b3obobob2o3b2ob2o3b2ob2o3b2obobob3o3b4obo$o2bo3b2o3bobo2bobob
+o2bobobobobobo2bobobo2bobo3b2o3bo2bo$obo3bo2b2obo2b2o4b2o4b2ob2o4b2o4b
+2o2bob2o2bo3bobo$bo4bo2bobob2o5bo17bo5b2obobo2bo4bo$4b2ob2o3bo3b3o2b2o
+4b2ob2o4b2o2b3o3bo3b2ob2o$3bo2bo2b2obob3o2b2o2bo4bobo4bo2b2o2b3obob2o
+2bo2bo$4bo2bobobobo4bo3bobobo5bobobo3bo4bobobobo2bo$3b2ob2o5bob3ob3o2b
+ob2o3b2obo2b3ob3obo5b2ob2o$2bo3bo2bobo2bo2bo3bobobo3bo3bobobo3bo2bo2bo
+bo2bo3bo$3bobo2b2ob2obo2bo3bobo3b2ob2o3bobo3bo2bob2ob2o2bobo$2b2ob2obo
+2bo2b3o5bobo3bobo3bobo5b3o2bo2bob2ob2o$6bobo2bobo5b3o2bo2bo3bo2bo2b3o
+5bobo2bobo$6bo2b2obobo3bo2bob2obob3obob2obo2bo3bobob2o2bo$5b2o3bo2b2o
+3bo2bobo2bo5bo2bobo2bo3b2o2bo3b2o$5bo4bo4b2ob3o2bobob5obobo2b3ob2o4bo
+4bo$7bo3b3obobo3b2o2bo7bo2b2o3bobob3o3bo$6b2o5bo2bo2bo3b2ob3ob3ob2o3bo
+2bo2bo5b2o$6bo6bo3b4obo2bo2bobo2bo2bob4o3bo6bo$7bo6b3o6bo2bobobobo2bo
+6b3o6bo$8bo7bo2b2ob2ob2o2bo2b2ob2ob2o2bo7bo$9bo7b3o4bo2bobobo2bo4b3o7b
+o$10bob2o7b2obo2bobobo2bob2o7b2obo$11b2o2b4ob2obob2obobob2obob2ob4o2b
+2o$14b2o2b2o4bo3bobo3bo4b2o2b2o$21b2obo3bobo3bob2o$18b2obobo3b2ob2o3bo
+bob2o$18bobo5bo5bo5bobo$25bo2b3o2bo$26b2obob2o!
 {% endlifeviewer %}
 
 ### 4
@@ -155,14 +155,14 @@ LifeFind[10, 10, 6, "Rule" -> "B3/S23", "Periodic" -> False,
     10}, 1, And]]
 ```
 
-__搜索时间__：2.97737 秒
+__搜索时间__：2.01369 秒
 
 __搜索结果__：
 
 {% lifeviewer %}
 x = 10, y = 10, rule = B3/S23
-bo$2bo2b2o$3o3bo$6bob2o$3b2obob2o$4bobo$2bobobo$bob2obob2o$bo4bo2bo$2o
-4b2o!
+bo$2bo2b2o$3o3bo$6bob2o$3b2obob2o$4bobo$2bobobob2o$bobo2bo2bo$bobobobo
+$2b2ob2o!
 {% endlifeviewer %}
 
 ## 振荡子
@@ -177,15 +177,15 @@ __代码__：
 LifeFind[16, 16, 3]
 ```
 
-__搜索时间__：343.556 秒
+__搜索时间__：312.22 秒
 
 __搜索结果__：
 
 {% lifeviewer %}
 x = 16, y = 16, rule = B3/S23
-4b2ob2o3bo2bo$5bobo4b4o$bobo3bo2b2o$ob6obo3b3o$o7bo2b2o2bo$bob2obo2b2o
-2b2o$2b2obob2o2bo$5bo2bo2b4o$2b2o2bo8bo$2bo4bo5b3o$2b2obob2o3bo$2b2o3b
-o2bo2bo$b3o2bob2o3bo$o4b3o3b2o$2o2bob3o$4bob2o!
+3b2o3bobo$2bo2bo2b2obo$2bo6bo4b2o$2o3b2o2b3obobo$bobo6bo2b2o$o2b2o3b2o
+2b2o$3o3bo3bo2bo$3b2obo4b2o$2obo2b2obobo$o3b2o2bobo2bo$b3o3bo2bob2o$4b
+2o2b3o$b2o8b3o$bo4bo2b2o3bo$3bo2bobo2bobo$2b2o3bo2b2ob2o!
 {% endlifeviewer %}
 
 ### 6
@@ -200,13 +200,13 @@ __代码__：
 LifeFind[8, 8, 5, "Symmetry" -> "D8", "Changing" -> True]
 ```
 
-__搜索时间__：1.76343 秒
+__搜索时间__：0.967876 秒
 
 __搜索结果__：
 
 {% lifeviewer %}
 x = 8, y = 8, rule = B3/S23
-$2bo2bo$bob2obo$2bo2bo$2bo2bo$bob2obo$2bo2bo!
+2bo2bo$2bo2bo$2ob2ob2o$2bo2bo$2bo2bo$2ob2ob2o$2bo2bo$2bo2bo!
 {% endlifeviewer %}
 
 ### 7
@@ -221,13 +221,13 @@ __代码__：
 LifeFind[6, 6, 4, "Changing" -> {1, 3}]
 ```
 
-__搜索时间__：0.655831 秒
+__搜索时间__：1.39685 秒
 
 __搜索结果__：
 
 {% lifeviewer %}
 x = 6, y = 6, rule = B3/S23
-$3o$3obo$bobobo$2bo2bo$3b2o!
+bo$ob2o$4bo$o2bobo$2bo2bo$3b2o!
 {% endlifeviewer %}
 
 ### 8
@@ -242,14 +242,14 @@ LifeFind[16, 16, 2,
   Array[! C[##, 1] || ! C[##, 2] &, {16, 16}, 1, And]]
 ```
 
-__搜索时间__：4.2407 秒
+__搜索时间__：2.45976 秒
 
 __搜索结果__：
 
 {% lifeviewer %}
 x = 16, y = 16, rule = B3/S23
-$12bo$10bobo$14bo$8b2o$14b2o$9bo$11bobo$7bo3bo$5bobo$9bo$3b2o$9b2o$4bo
-$6bobo$6bo!
+5bo$5bobo$3bo5bo$9bobo$2b2o$12b2o$4bobo$6bo6bo$8bo$14b2o$8b2o$14bo$10b
+obo$12bo!
 {% endlifeviewer %}
 
 ### 9
@@ -262,13 +262,13 @@ __代码__：
 LifeFind[7, 7, 5, "Rule" -> "3457/357/5", "Changing" -> True]
 ```
 
-__搜索时间__：18.3763 秒
+__搜索时间__：7.60117 秒
 
 __搜索结果__：
 
 {% lifeviewer %}
 x = 7, y = 7, rule = 3457/357/5
-.AB$C2AC$D2AD$2.AC.A$3.B2AB$3.3AC$5.D!
+2.A$C2AB$D2AC$2.A.DC$3.B2AB$3.C3A$4.D!
 {% endlifeviewer %}
 
 ### 10
@@ -281,33 +281,33 @@ __代码__：
 LifeFind[5, 5, 11, "Rule" -> "", "Changing" -> True]
 ```
 
-__搜索时间__：17.162 秒
+__搜索时间__：11.9036 秒
 
 __搜索结果__：
 
 {% lifeviewer %}
-x = 5, y = 5, rule = B2k3n4jnry5eiry7c8/S2ck3aeijnqr4erwyz5aijqr6aekn7e8
-bobo$2b3o$3obo$5o$3bo!
+x = 5, y = 5, rule = B4j5ceiry6cik7ce/S2ik3ceijnq4aiknt5aeik6ak7ce
+b2o$4o$o3bo$5o$bobo!
 {% endlifeviewer %}
 
 ### 11
 
-搜索未知的有 4 种状态的 [Generations 规则](http://www.conwaylife.com/wiki/Generations)中大小不超过 5*5 的周期为 11 的振荡子：
+搜索未知的有 3 种状态的 [Generations 规则](http://www.conwaylife.com/wiki/Generations)中大小不超过 5*5 的周期为 11 的振荡子：
 
 __代码__：
 
 ```Mathematica
-LifeFind[5, 5, 11, "Rule" -> "", "Generations" -> 4, 
+LifeFind[5, 5, 11, "Rule" -> "", "Generations" -> 3, 
  "Changing" -> True]
 ```
 
-__搜索时间__：63.1457 秒
+__搜索时间__：12.6993 秒
 
 __搜索结果__：
 
 {% lifeviewer %}
-x = 5, y = 5, rule = 2cik3ijr4aenqwy5ijk6ce/3e4aqw5y6ak/4
-.A.A$ABA.A$A2CA$A2CBA$.3A!
+x = 5, y = 5, rule = 2cen3ciq4cinwyz5acer/3e4e6e/3
+2.A$2A.A$A3.A$2ABA$2.A!
 {% endlifeviewer %}
 
 ### 12
@@ -327,12 +327,12 @@ LifeFind[5, 11, 13, "Rule" -> "", "Periodic" -> False,
        1}}, 0]}]]
 ```
 
-__搜索时间__：37.1343 秒
+__搜索时间__：15.7658 秒
 
 __搜索结果__：
 
 {% lifeviewer %}
-x = 11, y = 5, rule = B2ceik3y4ckqw5kr6cn/S01ce2eikn3eiq4jn5akn6ek
+x = 11, y = 5, rule = B2cek3nr4ckt5acejq/S01e2e3ceik4aijnrw5nq6k
 $2bo$3bo$b3o!
 {% endlifeviewer %}
 
@@ -350,7 +350,7 @@ __代码__：
 LifeFind[5, 16, 3, 1, 0]
 ```
 
-__搜索时间__：1.23444 秒
+__搜索时间__：1.08588 秒
 
 __搜索结果__：
 
@@ -371,7 +371,7 @@ __代码__：
 LifeFind[12, 15, 5, 2, 0, "Symmetry" -> "D2|"]
 ```
 
-__搜索时间__：526.74 秒
+__搜索时间__：73.9559 秒
 
 __搜索结果__：
 
@@ -394,15 +394,15 @@ LifeFind[21, 21, 4, 2, 0,
    1, And]]
 ```
 
-__搜索时间__：42.8359 秒
+__搜索时间__：12.2288 秒
 
 __搜索结果__：
 
 {% lifeviewer %}
 x = 21, y = 21, rule = B3/S23
-$4bo$3bo2bo2b2o5b2o$3bo4bo6bo$10bo5bo$4b2obob5obo$6bo6b3o$8bobo$2b2o7b
-o6b2o$2b3o6bo6b3o$bob2o3bo2bo5bob2o$b3o5b3o5b3o$2bo15bo3$4b2o4b2o4b2o$
-4b3o3b3o3b3o$3bob2o2bob2o2bob2o$3b3o3b3o3b3o$4bo5bo5bo!
+4$5b2ob3o$5b6o4b3o$5bo5b2ob4o$bobob3o3bobo4b2o$2bo3bo6b2o3b2o$2b2o3b2o
+b2o2bo3bo$3b2o2b3o2bo$7bo4bo4bo$4bo2bo8b2o$3b2obo5b3o$3b2ob5o3b2o$3b2o
+4b5ob2o$4bo3bo7bo$4bo2bo4bo2bo$5b3o5b3o!
 {% endlifeviewer %}
 
 ### 16
@@ -416,7 +416,7 @@ LifeFind[10, 10, 5, 1, 1, "Rule" -> "B2-ak3ain/S1",
  "Symmetry" -> "D2\\"]
 ```
 
-__搜索时间__：1.63345 秒
+__搜索时间__：0.716357 秒
 
 __搜索结果__：
 
@@ -439,7 +439,7 @@ LifeFind[15, 15, 5, 1, 1, "Rule" -> "B2-ak3ain/S1",
 $6bo$5bobo$5bo2bo$5bobo$2b3o$bo$2bobo$3bo!", {{5, 1}, {5, 1}}, _]}]
 ```
 
-__搜索时间__：4.2824 秒
+__搜索时间__：1.80908 秒
 
 __搜索结果__：
 
@@ -461,13 +461,13 @@ LifeFind[16, 16, 4, 1, 1, "Rule" -> "B02-ak3ai/S1",
   Array[C[##, 1] \[Equivalent] C[#2 + 1, #1, 3] &, {16, 16}, 1, And]]
 ```
 
-__搜索时间__：2.79788 秒
+__搜索时间__：2.06594 秒
 
 __搜索结果__：
 
 {% lifeviewer %}
 x = 16, y = 16, rule = B02-ak3ai/S1
-2$8bo$5bob2o$3b5ob2o$3b6o$3b9o$3b9o$3b9o$2bo2b7o$5b7o$4bo2b2o2bo!
+2$2b3obo$2b4o$b5obo$bob3o$bob3o$2b2o3b3o$3bobob3o$6bo2bo!
 {% endlifeviewer %}
 
 ### 19
@@ -480,13 +480,13 @@ __代码__：
 LifeFind[5, 5, 6, 2, 1, "Rule" -> ""]
 ```
 
-__搜索时间__：9.79478 秒
+__搜索时间__：3.93996 秒
 
 __搜索结果__：
 
 {% lifeviewer %}
-x = 5, y = 5, rule = B2ceik3ckn4knqr5akq7c/S1e2cek3aeijq4jz5jkq6c
-2o$2b2o$3bo$obo!
+x = 5, y = 5, rule = B2ek3acikn4jkq5j8/S02acek3n4inrwy5aij6n
+bo$2b3o$4o$3o!
 {% endlifeviewer %}
 
 ### 20
@@ -500,13 +500,13 @@ LifeFind[8, 8, 3, 1, 1, "Rule" -> "", "Hexagonal" -> True,
  "Totalistic" -> True, "Changing" -> True]
 ```
 
-__搜索时间__：2.15809 秒
+__搜索时间__：1.13951 秒
 
 __搜索结果__：
 
 {% lifeviewer %}
 x = 8, y = 8, rule = B245/S356H
-bo$3o$b2ob2o$3bob2o$2bob4o$2b5o$3b3o$4bo!
+$b2obobo$b3obo$2b5o$bobob2o$2b3o$bob2o!
 {% endlifeviewer %}
 
 ### 21
@@ -520,12 +520,12 @@ LifeFind[17, 17, 7, 3, 1, "Rule" -> "", "Changing" -> True,
  "KnownCells" -> {ArrayPad[{{0, 1, 0}, {0, 0, 1}, {1, 1, 1}}, 7]}]
 ```
 
-__搜索时间__：130.006 秒
+__搜索时间__：42.7168 秒
 
 __搜索结果__：
 
 {% lifeviewer %}
-x = 17, y = 17, rule = B2ek3aein4aikr5cnr/S1e2ei3aeijknr4k5ckn6a
+x = 17, y = 17, rule = B2ce3iny4kt5in/S1ce2ei3jn4ai
 7$8bo$9bo$7b3o!
 {% endlifeviewer %}
 
@@ -542,13 +542,13 @@ LifeFind[11, 11, 7, 2, 2, "Rule" -> "", "Changing" -> True,
   PatternRules@CA[{{0, 1, 0}, {0, 0, 1}, {1, 1, 1}}, 4]]
 ```
 
-__搜索时间__：53.9408 秒
+__搜索时间__：18.0479 秒
 
 __搜索结果__：
 
 {% lifeviewer %}
-x = 11, y = 11, rule = B3aijnr4kq7c8/S02aen3ajknr4ijrw5air6akn7c
-4$5b2o$4bobo$4b3o!
+x = 11, y = 11, rule = B3aeijnry4kq6c8/S02aen3ajnr4ir5ajry6k7ce
+4$6bo$5b2o$4b3o!
 {% endlifeviewer %}
 
 ## 其它
@@ -563,13 +563,13 @@ __代码__：
 LifeFind[5, 5, 4, "Agar" -> True, "Changing" -> {1, 3}]
 ```
 
-__搜索时间__：5.48619 秒
+__搜索时间__：25.1042 秒
 
 __搜索结果__：
 
 {% lifeviewer %}
 x = 5, y = 5, rule = B3/S23:T5,5
-b3o$4bo$3bo$2o2bo!
+o$b2o$2o$o3bo$bo!
 {% endlifeviewer %}
 
 ### 24
@@ -589,111 +589,111 @@ LifeFind[100, 100, 2, "Periodic" -> False,
        100], 0.8], "Bit"]}]
 ```
 
-__搜索时间__：125.216 秒
+__搜索时间__：71.539 秒
 
 __搜索结果__：
 
 {% lifeviewer %}
 x = 100, y = 100, rule = B3/S23
-9bobob2o5bob2ob2ob2obo3bo10bo4bo5bo2bo5bo3b2ob2o4bo5bo6bob2obo$2bob2o
-2bo3b5o4b10o9bobo3bo2bo3bobo2bo3bobo2bo15bo5bo3b4o$o2b8obobo3b3obobo2b
-4obo4bobo5b3o2b3o3b6o3b12obo3bo6bo2b5obo$4b5o3b2obob4ob2ob2ob4o2b2o2b
-4o2bobob3ob4ob2ob3ob3obob4ob3o2b4o2bob5o2bo2bo$o3bobo5b7ob2ob2ob2ob2ob
-7ob6ob4ob3ob3ob10o3bob2o5bobo2b4ob5o$2bob3o3bobo3b3obobob5ob2obo3bo2b
-3o2bob2obo2bobobo2bo2b2o2b2o2bob2obo5b5o3b8o$obob4o3bobo3bob3ob2ob3obo
-2b2ob3o2b6ob10o2b3obo2b2o3bob3obo2b3obobo3b2o2b3o$b4ob6o3bo2b16ob4ob2o
-2b8obo2b2ob2ob3ob3obob2obobo2bob3o4bo5b4o$2bobobo2b2obo6bo2b2ob4o2b2ob
-2obo2b4o5bo3b2ob4obob6o3b3obob4ob2ob3o5b2ob2o$2bob3o7bo3bo3bob3o4b2ob
-2obo2b2ob2obo2bo3b2o2b2o2b5o3b3obo2b2ob2obo2b3ob3obob3o$4b4o8bo4b2o2b
-2o5b2o2b3ob2ob2obo7b6ob3o2b5ob2ob6ob2o2bob10obo$2bob6o7b7o2bobo2b2o2bo
-bob2obob4o4bo2bob3o2bo2b2ob2ob5o2bob3ob8obo2b2obo$4b2obo3b2ob6ob2ob3ob
-o2b2o4b5obo2b4o2bob7o2bob3obobo2b2o2b6obo3b4o2b2o$2bobob3ob6obobob3obo
-b4ob6o4b2o4b8ob2ob6obob3o4b5ob4ob4obob3o$o2bob7ob3obob2o3b3ob3ob3ob3o
-2bob2o3b2ob6o4b2ob5ob2obob6ob4o3b2ob5ob2o$b2ob2obobob8obob4o3b2obo4b2o
-4b2o2b2o4bo2b3ob2obobobo2bo2bob2o3bobob2o5b2o3bo$2ob2o2bobob2o5b3o3b2o
-3b11o2bob6ob4ob7obob6o4b2ob9o3bo3b2ob2o$3o2b6o4bob3ob2o2bob2o4b3o2bobo
-4bo2b7ob2o4b4o2bo2b4ob2ob3o3bo3bob6o$bobob2o2b4o2bob3ob3ob5ob2o3b2o7bo
-b3o4b4obo3b3obobobob3o2b3o2bobo4b6o2b2o$bo3bo2b3o3b4o2b2ob2obo2b10obo
-2b4ob3obob2obobo3b2ob8o2b6obo5b2obob2o$6ob2ob3ob9ob3o3b4ob2ob2o5bobob
-2obob2ob4ob3obo2b5obob5o3bo3b2obobo$5ob2o2bo3b3obob4o2b4obo4b4obo3b3o
-2b4o2b2ob2ob2ob3o5bo5b3o5b2ob5o2bo$bob2ob5o3b6o2b6ob2o5b2o2bo2b2ob3obo
-2b6obobob2ob3obob4ob4ob6o2bo2b2o3bo$bo2bob2o2b2ob8o3b2o2bobobo2b3ob7ob
-3obobo2b2obobobo2b2o4b2ob4ob5ob3o2bob3obobo$3bobob2o2b5ob4ob2obobobobo
-3b6ob2ob2ob2o3b2o4b7obob2ob4ob2o6b2o2b5obobo$5b3ob5ob2o2b5ob10ob12o2bo
-2b3ob3ob2o2b3o4bo2bob12ob3ob2o3bo$5b2ob2o2b2o2bo5bob3o2b3ob3ob2o2bobo
-2bo2b4ob2ob3ob3obob3obob4o3b5o2b2o2b8o$2o4b3o3b2ob5o3b5obob5o5b2ob4ob
-6o3bo3b2ob9o2b2o9b2o2bobo3b3o$3bo2b2o2bob5ob5o2bob4o3b2o4b3ob11obo2b2o
-b2ob4ob5ob2o4bo5bob2ob2ob4o$7bo3b3o3bo2bob2ob5o2bob4o2b5obo4b3o2b3o3b
-2o2b2o2b2ob2o2bobobo2bobob2ob6obo$6bob3o2b5o2b2ob3ob3o4bob4o2bob2o3bob
-obobo2b2ob2o2bobo2b4o2b2o2b4o3b2ob4ob2obo$ob2o4b4ob3ob2ob4o2b2o2b5o2b
-2ob2o2bo3bo2b3o3b2obob5ob2obob4ob3ob4obob2obobobo$b8obob3ob3o2b10ob4o
-2b4obob6obobob2o5b2ob4obob5ob2ob2o3b2o2bob3obo$2bob6o2bo3b4o4bo3b3o2bo
-b4o3b3ob2ob4o3b2o3bo3bobobo3bobob5o2b6ob3obo$obobobo2b2ob4o3b4o2b4o2b
-2ob2ob2o2bobo4b6o3b2o6b3ob2o2b2ob2o3bo2b3ob8obo$b5o4b6o2b6ob6ob2o2b4o
-4b3ob5obob3o3b2ob2ob7o2b2o2b2ob12o2bo$2b3o3bobobob3ob2ob2obobob3o2bobo
-b7ob3ob2ob2o2b2ob2o4b4obo2b9obo7b5o$ob2obo4b6obobo3bobo2bobob2o5bob2ob
-5o3b2o2bo2b3obo2bo2b3obo2bob2ob2ob2o2bo5b2obo$2b2o4bob4o3b2o2b5ob3ob2o
-bo5b3o2bob2o3bo2b2obo2b2o2bo2bob3ob3o8bob3obo3b2o$bob2o4b5o3b3o3b2ob3o
-2bo6bob2obo2b3ob3obob4ob3o7bo7bo2bo3bobob3ob2o3bo$4b3o3bo2b2obob2obo2b
-3o3b4o2bo2b2o6b5obo2b10ob2o4b2o4bo4bo2bo2bo4bo$bobob6obob3ob3o2bo3b5o
-8bo4bo2bo5bobob4ob14ob2ob2o3b2o3bo2bo3bo$5b6o3bobobob3ob2ob2ob4o2bo2b
-2obobo3bo3bo3b2o3b3obo4b3obo3bo2b2obo5bob2obo$bobob6o2b3o2b2o2b2o3b2ob
-2o3bo3b2o2b3o2bo2bo4b2obob3o2b5ob3o5b2o2bo4b5o2bo2bo$5bo3b2obobobob2ob
-3o2bob2o10bo5b9ob3o2b2o2b3obo2b4obo3bob2o5b2o2bo3bo$o3b7o3b3ob2ob5o3bo
-4bo2b3o2b2ob2o2bo2b4o3b4ob2o3b2o2b3o2bo6bo2bo4b2o2b3o$4b11o3bo2b4obob
-2ob2o2b2obob6ob5o2bo2b5ob3o3b5o2bobob2o2bobo2b2o2b2o2b3o$bob3o2bo2b2o
-2bob3ob3o4b2ob2o2b4ob2o4b3obob2ob5o2b4obob2o2b2o3b2o2b2o3b2o2bo3bob2o$
-2b2obo2b2obobobob3o2bobobo5b4ob2o2b2o2b2o3b2ob3o3bobo4bo2bob2ob3o6bo2b
-obo8b3o$b2o2b4ob2o3bob6o9bo2bo2bo2b2o2b4ob4ob5o3bobob5ob2ob2o2bo4b3o3b
-ob2o2b3o$b5ob2ob2o2bob2obob2o4bob2ob8ob4o2b10obobo3b4o2b5o2bo3bob2o2bo
-2bo2bo2b3o$2bo2bob4o6bob3o6b5obobobob2o2b3o6bo2bob7obobo3bob3obo2bo3bo
-bobo2bo2b3obo$o2bob2o3b2o3bob5obo3b6o2b2obobo7bobob4obob3obo2bo5b5obo
-2bo5bobo3b2obo$5b4ob2o2bob3ob2o3b8o3b5o2b2obo4b2obobobobo2b2o3bo2b3o3b
-2obo2bo6bob2ob2o$bo3bob4o6bo4b5ob4o3b6ob2o2bo5b2o2b8ob3o2bob3o2bo2bo4b
-obo2bob2ob2obo$2bob2o2bobobo2bo2b3ob2ob2o4b6ob3obo5b2o2b2ob2obob5ob2ob
-6o2bo4bo4b2o3bo3b2o$b3ob3o2b2o3b7o2bobo3bobobob6o3bob5o2bob5o3b6o5b2o
-2bobo2b2obo3b2o3bo$ob3ob6obo3b5ob2ob2o5b6o3b2ob3obob4o2b2ob3ob5o2b2o2b
-2o2bobo2b2o2bo2b3ob3o$4bob2o2bo2bo5b2o2b10o2b2o3b6o2b2obo2b5o2b3ob4o7b
-obo4bo6b2ob2ob4o$ob2ob2o4bo3bo5b2obo4b3ob4ob6o2bo2b2obob2ob2obo2b15o3b
-o6bob4obobo$b3ob2obo5bo2bo3b2ob2o2bob4ob2o3b2o2b4ob6obobo3bobo3b2ob6o
-3bobobo3bob3o2b5o$2bo3bobo5b2obo2b2o2b2o5bob4o3bo2bob2ob2ob5ob7o2b2o3b
-obobobo7bob6o2b3o$bob2ob5obobob6obob6obob2o3b2o6b2ob5ob2ob2obob5ob5o4b
-2obob4obo3b2o$3b6o5bo2bo2b2o4b10o3b3o5b2ob3obobob17ob2o5b3o2bobo2b5o$
-2bobob3o5bo2bo2b2obobo5b2obo3b3obobo3bobobob2ob4o2b4o3bobo2b2o7b9o3b4o
-$4bob2o3b2obob4o2bo4b2obob3o2bob2o5bob2ob2ob3o8bo3b3o6bo5bo2b3ob3o3bo$
-3b3ob8ob3ob2ob9obob4ob6o2b2ob2ob3obo4b8o2b2ob2o4bob3obob4o2bo$b4obobob
-o4b4ob5obobob5obobob3ob2ob5obob2o2bobo3b3o5b5obo2bob5o2bob2o$3bob2o2b
-2obo3b2obo6b2ob3ob3obob3obo2b5o2b3ob4o10b3obobo3b3obob3obob3o$ob2o2b5o
-3b2o2b2ob2o3b3obob2ob3ob4obob2ob2ob2ob5o4bobob7ob6o2bo3b2o4b4obo$b3ob
-4obobobob4o4b3o2bob2ob4obo3b3o2b2o2b3ob4obo2bobob2ob2obob5o3b3ob2obob
-2ob3o$2b3obo2b3o2bob4o6bo2b2o2bob3ob2o2bo2b6o2b3ob3o9b3ob2o2b2o2bob6ob
-ob7o$bob3obo2bo3b4o2b2o2b5ob6obob8obo2b4ob2o2bobo4b2o2bob2o2bo2b2o2bob
-o3b4o3b3o$5bo4bobo4bob7obob4o2b3obobo2b4o2bo2bob2o2b2o4b4obo2b6ob2ob2o
-bobob2o2b3obo$bob3o6bo3bobob3o2b2obo2b2obobob3o2bob2o5bo2b3ob9o5b2o2bo
-b2o2b2o3bobo2b4obo$o4b2o3bo3bo3b5o3bob2o3b8ob5o8bob2o2bob5o2bo3b4obo2b
-obobo3b4ob2o$5bobo2bobo5b5obob4ob3o2bo2bo2b2ob2obo2bo2b2ob2obo2bob5o2b
-ob5ob5obobob8o$bob3o6bo4b6o2b3o2b3o4bo2bob3obo2bo4b2o2bo4b2ob2o5bo3b4o
-b2ob3o2b5ob4o$2b3obo3bo3bo2b3obo2b2ob2obobo9b2ob2ob6o2b2ob4ob2o3bo2b2o
-bo3bo2b2ob2o3b2obobobo$obobo4bo3bo2b2obobob3o2b2ob3o3bo4bob6ob3ob2obob
-2ob5ob5o6b2ob3ob3ob4ob2o$bobob6o2bob5o3b2o2bo2b4o2bo3b4o2bob3o3bobob2o
-bobobo3bo2b2o2bobob4o2b4ob7obo$3ob2ob2ob4ob5o3b2o4b2ob3o7b4ob2o2b5ob2o
-b4o2b3o2bobobo4b2obobob4ob3ob3o$3o2b3ob2o4b3o2b2obo3bob2ob3obo8b2o2bob
-5o2bob2ob3ob2o4b7o2b2o3bo3b5obo$b2obo3b2o4b2obo2b4o3bo2bo2b3o6b2ob6o3b
-3ob4ob3obo2bo2b2ob3obob2o2b2obob2o3bobo$b6o2b5ob5ob3ob7obobobob2o4b2ob
-ob4ob4o3bobob2o2bo3b2o3b10o2bo3b2o$2b3o4b2obo3bo2b2obob4o2bobob2o2b4ob
-2o3b3ob2ob3o3b2o2b4o5b2obob2o2bobobob4o2b2obo$2b2o6bo5b6o2b2o2b2o2b2ob
-2obobob3o3b6o2b2o3b2o3b3o2bo3bo2b2o3b2o2b3ob4obobo$obo2bo4b2ob2ob7o2b
-8o2b7o2b2ob2o5bobo5bobobobo6b2obo2bob2ob7ob6o$b2o4bob2obo3bo2bob3ob3ob
-2o2bobo2bob2ob3ob3ob5obo2bob2o2b3o4b3ob2o3b2obob4o3b2o2b2o$4o4b3o2b5ob
-o2b4obob8o2b2obob4ob7o3bo2b3ob2obob5o2b2o3bob4o3b4ob2o$2ob3o3bo3b5o3bo
-2bob6o2b2ob2obob7obo4b7obob2o3b3ob2o2b2o2bob2o8bobob2o$bob9o2bobob6o2b
-11ob2ob5o3b2ob3obob9o3b4ob3ob5o2bo3bo4b5o$ob3ob4obo2b2ob2ob4ob2o4b2obo
-2b3ob5obo2b4ob2obobo2bo2bobo2b2obo2b3o2bobo4bo2bo3bobo$2b3o4bo2bob3o2b
-2ob4obobobobob2o2bob3obo2b2obob2ob2ob4ob3obo2b5o2b2obob9o2bobob2o$b2o
-2bob3o2bo2bobob2o4bo4b2ob4ob4ob2obob3o2bob3obob3ob2o3b3obob3ob3obob7ob
-o3b2o$b9obob6obob2ob6obob2ob2o2bob2o3b2ob3ob6obobobo2bobo2b8o3b5obob6o
-$2bo2bo2bo3b5ob2ob4ob2ob5ob2obob2o2b9ob2o3bo2b2ob5obob3o6b3o5bo2bobob
-3o$bo2bo3bo2bo7bob5o2b4o2b2obobob5ob4o3bobo3bob2ob3o5b3obo2b7o2bob3o2b
-ob2o$7b4obob2ob6o3bo2bo3bo2b4o2b2o7b4o4b10o3bobo2bo4bobo6b8o$bo4bob2o
-9b2o3bo4bo5bob2obo4b2obobob2obo2bob2ob2ob2ob2o4bo6bobo5bob2o2b2obo!
+o4bo9bo2bo2bob2ob2ob2obobob2ob2obobo3b2o4bobo4bo2b2o2bob2o2b2o3bo7bo2b
+o2bo4bo$2bo3bo2bo3bo4bo3b10o3b7o4b6o2bobo2bo2bo6b9o3b2obobo3bo4b2o$obo
+7bo2bobo5b2obobobo2b3obo5b8ob8o2b10o2bob10o5b9o$b3obo6b3o5bobo2b11ob2o
+2b6o2bo3bo2b4obo2b4o2b2o6b2ob2ob6o2b4ob3o$5o3b4obo3bo4b4ob3o2bob2o4b2o
+bobo3b2o3b3obob2ob3o2b3ob3ob5ob4ob2obob2ob3o$10ob2obo3bo2bob2ob2ob7ob
+3obobobobob2o2b5ob3ob2ob3o2b14o2bo4b2ob2o$b3o2b3o2b2o4b6obob3o2bo2bob
+6o5bo2bobobob2o2b2ob4o2bob6obo3b2o2b3obo2b4obo$3o3b2o2b8ob2ob2obo3b2ob
+2o2b2ob3obobo3b2o4b4ob3o3b7ob2ob2ob6ob3o3bo2bobo$2o2bob3ob2obob3ob3ob
+2obobob2ob2o2b5o4b5o2b3o2b3ob2o3bo2bob6ob6obob2obob2ob4o$b2obo2b3o3b3o
+2bob2ob7obobob3obob5ob9o2bobob2o2bo2bo3b2o2b5obob2o3bo2b7o$b2o3b4ob3ob
+obob2ob2o2bobobobob3ob4ob3ob2obobob7obo10b2o2bo2b5ob5obobobobo$2b4obo
+2b4ob4obob3obobob3obob2o2b2o2b9o3b3ob4o6bo3b3ob2o3bo2b5o4bo2b2o$2b2ob
+8obobo2b2o2b2o5b2ob2obo2bobobob2ob2o2b4o3b5o3bo6b2ob2ob3ob2obobob4ob4o
+$4obo2b2ob2ob6ob2obo4bo3b2ob5ob6o2b2o2b2obo2b3o5bo3bob4ob6ob2o2bob7o$
+2bob2ob2o2bob2ob2o2b6obo3b3o2b3obo2bo3bob2obo2bobob4o2bo6bo2bo2bo2b4ob
+2ob2o8bo$2bo2b2ob6o2b2ob3obob2o6b2obo3b4o2b14obo6bo2b3o2b3o6b2o2b2o3bo
+2bo$4bob5o2b2o2b2ob6o3b5ob2o3b3ob3o6b4ob4obo4bo2b5ob3o3bob2o2b3o3bo$bo
+4bo6bob4o2bo2b8o2b3obobo2b2o2bo2bo4b3o2b2o2bob5obo2b2ob2o4b2o4b2o6bo$
+3bo2b3o3b6o2bo6b4o3b4o2b4obo3bo7bob2o2b5o2b3o2b3o2b2o3bo2bob3obo3bo$o
+4b2o3b5o2bo5bob6obobo3b2ob6o5b2o3b3o2b3ob2ob3ob4o2b7obo2b3obo$o2bob2o
+5b2ob4o8bob2obob2obob3ob4o8bob2ob3o3b2ob2o2b7o2bobob4o3b3o3bo$5bo6b3ob
+ob3o3b2ob2ob9obob2o2b3ob4obob2ob2o4b2o2bo2b2o3bo3bob6obo2bobobo$o4b2o
+6b10o4b3obo2b2o2b2ob5ob12o2bo2b2obo2b2ob3o3bo4b2ob4o3bo$4b3o2bobo4bob
+2ob4ob4o2bo2b6o4b5o2bobo4b12ob4o6bob14o$4b4o7b4obo2b3obobo5b3obobobo2b
+obo4b2o2bob3o2b6o2b3o3bo3bobo2b3obobob5o$2o3bob2o3bo2b4ob2obob4ob7o2b
+4o3bob5ob2o2bo2bobo2b2obo2bobobo7b7obo3b2o$4b2ob2o2bo2b2o2b2ob4o3b2ob
+2ob2o2b2obo3b4ob6obob8ob3ob3o5b4obo5b2ob3o$3bob3ob6ob2o2b2ob3o3bo3b4ob
+5o2b3o3b2ob2o3b6o2b2ob4obo2b6ob2o2b3ob3obo$bo4b3obobo2bob2obo2b2obo2b
+3o2b8obobob3o2b3o3bo5b3ob3o2b13obo3b2ob2o3bo$2b5ob5o2b2ob3o2bo4b2o4bo
+2b15o3b2o4bo3bobo3bob6ob6o5bobob4o$ob3o2bob5ob2obob5obob2ob3ob2o2b3ob
+2o4bob5o3bo3bob3o2b3obob4obobo2b4ob4obob2o$2bob2ob2o3b2obob4o2b2obob7o
+b3o2b4obo3bob2obo4bo4b8obob2ob4o3b11ob2o$b5ob2o2b2obob4o3bob5ob3obob3o
+2bob2o2bob2o3bob3obo3b2o2b3o5bo2b9ob4ob4o$ob6o3b2ob5o2bob2ob3o4bob8o2b
+2obob2o3b7o2b2obo2b2ob3ob3obobob4o7b2obo$5b3o4b3o3b2obob6o4b3o3bob3o2b
+4ob2o3b3obob3o5b7obob3o4bo2b2ob2o$b2obo3b2o2bobobob2o4bob4o2b2ob2o3b2o
+b4obo2bobo3b2ob2o2b3o2b3ob2o2b5o5bo$6bob6obo3bo4bo2bob8o4bobo2bo2bob4o
+b2ob3o2bo4b6obob2obo2bo12b2o$ob2o3b2obobo2b5obo4bo2b2obob2o5b2ob3ob4o
+2bob2o2bo3b5obo3bo5b2obo3bo2bo3bo$5bobobob2obob2o2bo4b3o2b7o2b3ob3ob2o
+b2o3b5obo3b3obo3b2o2b2obo3bob3ob2obo$ob3o2b6o3bob2o4bob4obobobobo3b4o
+3b4obo2bob2o6bo2b2o4bobo5bo2b2ob2o2bobo3bo$b9ob2o2bo2b3obo4b4o3b6ob2ob
+2ob4o2bo2bo2bo3bo7b3o3b2obo9bo$2b4o2bob2o5bobob3o3b3o5bob12obo2bo4b3o
+2bo7b4o2b2o2b2obob2o3b2ob2o2bo$o3b2obo2b2o3bo4b2o2bo3b2obobobo7bo3bo3b
+o2b7o5bo2bobob2o7b2o2b2o2bo2bobo3bo$5b4obo3bo2bob2o2b2o2bobobobo3b2o2b
+o2bo5b6ob5o5bo3b4obo2bo2bo4bob4obo$o3b2ob4obo4bob3ob2o4b6o6bobob2o2bob
+6obob2o9b3o2bo3b2ob2ob2obo2b3o$o3b2o2b3o4bo4bobo2bobob3obobo4bo4b6obob
+2o2bob2ob2obo2bobobo2b2o7bob3o2bo2bobo$5b2obob2o3bo4bob2o3bobo4bob9obo
+2b6obo3b2o5bo2b3ob2ob2obo2bo2bob2obo3bobo$5b2ob4o6b5ob3obobo2bo2b2ob4o
+b2obob2ob3o4b6ob3ob5obo2b2ob2o2bo6b2ob4o$2bob2ob2ob3o2b7ob3obo8bobobo
+3b2o3bo2bo2b5obob6obobobobo6bo2bobobo5b2o$2bob2obo2b3o2bob2obob8o4bob
+4ob8obob9ob3o3b3obob2ob2o5bo3b2o2b2o2bo$b5ob2o2b4o2b8ob2o4bo2b5ob2o4b
+2o3b2o3b3obob4ob3o3b3o4b2o3bo3b2obob3o$b4ob3obo2bobo2b2obobo2bob2o6bo
+3b2o2b3ob6o2bob5obo3b4o2b3o2bobob2obo3bo3b6o$2bo2bob7o2b3o2b2ob12o2bo
+2bo3bo3bobob2o4bobo2bo3bobobobob3o3bobo3bo2bo3b3o$o2b2ob4o2b2o2b2o2b2o
+bob5ob3ob3o3b2obo3bobo2b6ob2ob4ob7obo4bo2b3obo2bo2b2o$b4ob5o2b2o2b2ob
+2ob5o3b2o2bob5o2bo2b5obo2b2ob2ob3o3b2ob3ob2o2bobob2ob2obo4b3obo$3obo2b
+ob6o2b2ob6o3b7o2bobo3bo2bobob3ob4o2b3o4b2obob3o2bob2ob2o5b4o2b2o$9o2bo
+2bo3b4o2bo2b4obo2b3ob4o4b3ob5o2b2o2b5ob2ob5o2bo3bo5bob2ob2obo$bo2b2obo
+2bo5bo2bo4b8ob4obobo3b2ob3obo2b9o2b3obob2obo3bo6b2obob3ob3o2bo$bo3b7o
+2b2o3b6ob3o2b4obob2obob4o2b2obo3bo3bobobo3bob2o2bobobo2bob3ob5obob2obo
+$4b3ob4o2bob3ob2ob2obob2o2bob2ob2ob3ob4ob2o6bo3b2o3b3o2b2o3bob2obo4b5o
+bob3o$4b5obo4bob3ob4ob3ob2o2bo2bo3bo2b4o2bo3bo5b10obob6obo3b4o2b2obobo
+2bo$2b7obo3bob2ob2obo2b2ob7ob3obob2o3bo2b2obo2bo3b2ob2o2b2ob5obob2obo
+4bo3bob2obo$o3b2obo5bo2bo3bo2b4o2bobo2b2ob8o2b3ob5o5b6ob3ob3o2bo8bo2b
+5o$b4o2bo3bo3b2o3b6o2b3obobo3bo2b2ob5obob3ob3o2b2ob3o2bo2b3o14b3ob2o3b
+2o$2obob4obo3bob3ob2o4b12o2b3o2bob3ob2o2b6o2bo2bob2ob2o2b2obo5bo2bobob
+ob2o$2ob5ob3o2bob4ob2o2b2o2b3obobob3ob4o2bo2bobob2ob4ob5ob3obo3b2o3b2o
+2bo2b2ob2ob2o$bob3o2b4o3b2o2bob2o2b3o4bo2bob2ob2ob2ob7ob5o2b2ob2obobob
+o2b17ob4o2b2o$3o3bo2b3obo2b2ob4ob2ob3o2b2o4b3o4b2o2bobob2ob4o2bobob3o
+3bo3bob2o2bo2b3ob6o$2ob9o2bo2b3ob5obo3b4o3bob4o2bob7ob3ob3ob4o2bo5bob
+4o3b5ob4o$bob3obo3b4obobo2b3ob3ob3o2b3ob7ob2obobo2b3ob2obob2obo3bobo6b
+4o3bobo3b2o4bo$ob3ob3o3bo2b4o2bob5o3b2obo3b3o2bobob2ob4o3b2ob4obobob3o
+5b6o2bo3b3o3bo$2b2obob2o2b2o3b3ob3o2bobo4b4ob4o2b4obo2bob9ob3o3b4o2b4o
+4b6ob2o6bo$ob4ob2obob2obob4o2b2o2b2obob4ob5ob3obob4obob2o5bob2o2b8o4bo
+b5obob3o3bo$o2b2obob4obo3bobo3b2ob3obob2obo2b3obob3ob2o2bo2b3o2bob5o2b
+ob5obobo2b3obo2b3o3bo$2b3ob3ob2obobob3obob4ob7ob4obobob2ob2obob6o2b2o
+4b2o4bo9bobo2b3o$b5ob4o3bo2b4o2b5o2bobo2b2ob5ob2o3b4ob3ob2obo3bob2o4bo
+6bo2bob3ob2o2bo$b2obob2ob2o3b7ob3o3bob3ob4o2bo2b4ob2obo6bob2obo3bobo2b
+4obo7b2obobobo2bobo$2o2bo2b2ob2obobo5b2o3bo3b11obo2b2ob2ob2ob2ob2o2b2o
+3b2ob8o4bo2bobob2ob3obobo$2ob4o2b4o2bobobobo5b3o2bob2o3b6o2b4ob5ob2ob
+7o2b2ob2obobo7b2ob5o$b6obob2obo3bobob2o2bob3obo3b2o2b5obob3ob2o2bob3ob
+7o3bo2bob2o2bo5b4ob2obo4bo$ob2ob2o6bobo5b2o2bob3o5b6ob2o3b4ob5o2bo2b2o
+2b2ob3o2b6o5b4obo5bo$4b3o2b2obo2bobobobo6b2o2bob4ob5o2bobo2bo2b3o2b2ob
+3ob3o2b2ob2obob4o2b2ob3ob2o3bo$4b2o7bo3bobob6ob3o2b2o4b2o3b5obob2o3b2o
+b5o2bo4b2ob2o2bob6ob3o$o2b2ob5obo3b8ob4ob3ob3obobobob2obob3ob4ob2o2b6o
+b3obobob4ob3o2b2obo7bo$2bob4ob4o3b3o2bobo2b2o2b5o5b2o2b2obo2b3ob2obob
+2o5b4ob4ob3o2b10ob2o4bo$b10o2bob3o3b2ob7o4bob3obobobo3bo3b2obob3ob2o2b
+2o3b2obob2ob2o2bo2b2ob2o4bo$ob5ob2o4b11o2bo2bo2b9o3b2o4b2o2bobob7obo2b
+3ob3ob3obo3b2o2bob2obo$2b2o2b7o2bo2bobobobob2o2b2o3bobo3b2o2b11ob2obo
+2b2obob2ob2ob4o2bo6b10obo$ob2ob2o4b2o2bo2bob3ob9ob3o2b3obob4ob5ob2o3b
+4ob2obob7o2b2o2b6o2b3ob2o$b2ob3obo11b2ob2o4bo2b4o5b4o2bo5b2o2b3ob2o2b
+4o3bobob2ob9obob4obo$2bob3o2bo2bo4bo2b2o2b7obob2obo4b3o3b3o2b2o2bo3bob
+2o4bob3obobob4ob2ob2obob2o2b2o$b2obobo4b2o3bo4bobo2b2o2b3o3bo4bo2b9o2b
+2obob2ob2ob4ob4ob3o2b3ob2ob2ob3obob3o$b4ob2o4bobo4bob6ob5ob2ob3o3b2ob
+3o2b5ob5ob5obob3ob3obobobobo3bobob5o$8o6bobo3b4ob3obob6ob7ob2obo2bo2b
+2ob2obob3obo3bo4bo4b2obobob2ob2ob3o$2ob2obo4b2o3bo2b3o4b2o2b2o2b3o2b4o
+bobob3obob2obo2b2o2b3ob2ob2ob2obobob2ob6ob3o2b2o$bo5bo3bob7obob2o2bob
+4ob2ob2o4bob2ob3o3b3obob2o2b2ob3ob5o5b2ob2o4bob3obobo$2o8bo2b5o2b2o5b
+11ob4ob3ob2ob4ob4ob3o2b2o3b4o2bobob3obo2bob2obob2o$3o4bo3bo2bob6ob5o5b
+o4b10o2b5o2b2obobobobo3b3ob2obobobobob2o3b3o2bobo$bobobo4bo3bo2b8obo3b
+o3bo2b8o3bo2bobo2bo2b11ob5o5b19o$o8bobo4bob2ob2o4bo2bo5bob2ob2o3bo4bob
+o4bob2o2b2ob2o4b2obo3bob2o2b2ob2o2b2ob2o!
 {% endlifeviewer %}

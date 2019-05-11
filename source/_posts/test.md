@@ -1,8 +1,9 @@
 ---
 title: 测试在 Hexo 中插入 LifeViewer
-date: 2019-03-12 21:03:21
 tags:
   - 生命游戏
+abbrlink: d960e01f
+date: 2019-03-12 21:03:21
 ---
 
 测试在 Hexo 中插入 LifeViewer。

@@ -1,9 +1,10 @@
 ---
 title: 用 Mathematica 转发网漫
-date: 2016-03-26 12:59:00
 tags:
   - Mathematica
   - 简书搬运
+abbrlink: 276e4e08
+date: 2016-03-26 12:59:00
 ---
 
 此文本来是发在[果壳日志](http://www.guokr.com/blog/462333/)的，发表时间是2013年6月26日。现在果壳日志下线了，搬来这里。

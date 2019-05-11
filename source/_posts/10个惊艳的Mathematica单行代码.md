@@ -1,9 +1,10 @@
 ---
 title: 10个惊艳的Mathematica单行代码
-date: 2016-05-28 14:56:00
 tags:
   - Mathematica
   - 简书搬运
+abbrlink: 8f61538a
+date: 2016-05-28 14:56:00
 ---
 
 几年前兴起过一个“10个惊艳的XX单行代码”的潮流。始作俑者好象是Marcus Kazmierczak的[《10 Scala One Liners to Impress Your Friends》](https://gist.github.com/mkaz/d11f8f08719d6d27bab5)，然后出现了各种其它语言的版本。

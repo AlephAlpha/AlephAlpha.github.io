@@ -1,10 +1,11 @@
 ---
 title: 在电脑里发现了一个叫pinyin-database-db的文件
-date: 2018-07-02 13:49:00
 tags:
   - 果壳搬运
   - 语言文字
   - 简书搬运
+abbrlink: 4fccdc0f
+date: 2018-07-02 13:49:00
 ---
 
 继续搬运果壳网的[旧帖](https://www.guokr.com/post/543896/)。原帖发表于2013-12-20。我已忘了当时用的是什么输入法，可能是 ibus-pinyin。

@@ -1,10 +1,11 @@
 ---
 title: 用 Mathematica 搜索生命游戏中的静物（二）
-date: 2018-05-13 17:51:00
 tags:
   - 生命游戏
   - Mathematica
   - 简书搬运
+abbrlink: 55bd7a4e
+date: 2018-05-13 17:51:00
 ---
 
 * {% post_link 用-Mathematica-搜索生命游戏中的静物 %}

@@ -1,10 +1,11 @@
 ---
 title: Mathematica 二三事
-date: 2017-11-28 23:58:00
 tags:
   - Mathematica
   - 果壳搬运
   - 简书搬运
+abbrlink: 1942e88d
+date: 2017-11-28 23:58:00
 ---
 
 原发于[果壳网Matlab小组](https://www.guokr.com/post/650918/)。没错，是Matlab小组。
