@@ -104,27 +104,27 @@
 
 
   <meta name="description" content="继续搬运果壳网上的旧帖。部分代码有改动。  Wolfram 公司在 Twitter 上开了个帐号，叫 Tweet-a-Program (@wolframtap)。你只要发一段 Mathematica 代码并@它，它就会自动把运行结果回复给你。由于 Twitter 的字数限制，这段 Mathematica 代码不能超过128字（现在 Twitter 的字数限制涨了，但 Tweet-a-Program">
-<meta name="keywords" content="简书搬运,Mathematica,果壳搬运">
+<meta name="keywords" content="Mathematica,简书搬运,果壳搬运">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一行代码的分形">
 <meta property="og:url" content="https://AlephAlpha.github.io/posts/fc096f53/index.html">
 <meta property="og:site_name" content="锑星杂记">
 <meta property="og:description" content="继续搬运果壳网上的旧帖。部分代码有改动。  Wolfram 公司在 Twitter 上开了个帐号，叫 Tweet-a-Program (@wolframtap)。你只要发一段 Mathematica 代码并@它，它就会自动把运行结果回复给你。由于 Twitter 的字数限制，这段 Mathematica 代码不能超过128字（现在 Twitter 的字数限制涨了，但 Tweet-a-Program">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://alephalpha.github.io/posts/undefined/1.png">
-<meta property="og:image" content="https://alephalpha.github.io/posts/undefined/2.png">
-<meta property="og:image" content="https://alephalpha.github.io/posts/undefined/3.png">
-<meta property="og:image" content="https://alephalpha.github.io/posts/undefined/4.png">
-<meta property="og:image" content="https://alephalpha.github.io/posts/undefined/5.png">
-<meta property="og:image" content="https://alephalpha.github.io/posts/undefined/6.png">
-<meta property="og:image" content="https://alephalpha.github.io/posts/undefined/7.png">
-<meta property="og:image" content="https://alephalpha.github.io/posts/undefined/8.png">
-<meta property="og:image" content="https://alephalpha.github.io/posts/undefined/9.png">
-<meta property="og:updated_time" content="2019-03-17T06:15:04.575Z">
+<meta property="og:image" content="https://alephalpha.github.io/posts/fc096f53/1.png">
+<meta property="og:image" content="https://alephalpha.github.io/posts/fc096f53/2.png">
+<meta property="og:image" content="https://alephalpha.github.io/posts/fc096f53/3.png">
+<meta property="og:image" content="https://alephalpha.github.io/posts/fc096f53/4.png">
+<meta property="og:image" content="https://alephalpha.github.io/posts/fc096f53/5.png">
+<meta property="og:image" content="https://alephalpha.github.io/posts/fc096f53/6.png">
+<meta property="og:image" content="https://alephalpha.github.io/posts/fc096f53/7.png">
+<meta property="og:image" content="https://alephalpha.github.io/posts/fc096f53/8.png">
+<meta property="og:image" content="https://alephalpha.github.io/posts/fc096f53/9.png">
+<meta property="og:updated_time" content="2019-05-11T08:46:15.169Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一行代码的分形">
 <meta name="twitter:description" content="继续搬运果壳网上的旧帖。部分代码有改动。  Wolfram 公司在 Twitter 上开了个帐号，叫 Tweet-a-Program (@wolframtap)。你只要发一段 Mathematica 代码并@它，它就会自动把运行结果回复给你。由于 Twitter 的字数限制，这段 Mathematica 代码不能超过128字（现在 Twitter 的字数限制涨了，但 Tweet-a-Program">
-<meta name="twitter:image" content="https://alephalpha.github.io/posts/undefined/1.png">
+<meta name="twitter:image" content="https://alephalpha.github.io/posts/fc096f53/1.png">
 
 
 
@@ -435,7 +435,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-17 14:15:04" itemprop="dateModified" datetime="2019-03-17T14:15:04+08:00">2019-03-17</time>
+                <time title="修改时间：2019-05-11 16:46:15" itemprop="dateModified" datetime="2019-05-11T16:46:15+08:00">2019-05-11</time>
               
             
           </span>
@@ -455,9 +455,9 @@
           
             <div class="post-tags">
               
-                <a href="/tags/简书搬运/" rel="tag"><i class="fa fa-tag"></i> 简书搬运</a>
-              
                 <a href="/tags/Mathematica/" rel="tag"><i class="fa fa-tag"></i> Mathematica</a>
+              
+                <a href="/tags/简书搬运/" rel="tag"><i class="fa fa-tag"></i> 简书搬运</a>
               
                 <a href="/tags/果壳搬运/" rel="tag"><i class="fa fa-tag"></i> 果壳搬运</a>
               
@@ -487,31 +487,31 @@
 <p>我一般用它来画分形。</p>
 <a id="more"></a>
 <hr>
-<img src="/posts/undefined/1.png">
+<img src="/posts/fc096f53/1.png">
 <figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">Multicolumn[<span class="keyword">Table</span>[<span class="keyword">Image3D</span>@<span class="keyword">Array</span>[<span class="keyword">Boole</span>@SubsetQ[s,<span class="keyword">Plus</span>@@<span class="keyword">Abs</span>[<span class="keyword">IntegerDigits</span>[&#123;##&#125;,<span class="number">3</span>,<span class="number">3</span>]<span class="number">-1</span>]]&amp;,&#123;3,3,3&#125;^<span class="number">3</span>,<span class="number">0</span>],&#123;s,Subsets@&#123;0,1,2,3&#125;&#125;],<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
 <hr>
-<img src="/posts/undefined/2.png">
+<img src="/posts/fc096f53/2.png">
 <figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">JuliaSetPlot[z-(z^<span class="number">9</span><span class="number">-1</span>)/(<span class="number">9</span>z^<span class="number">2</span>),z,<span class="keyword">ColorFunction</span>-&gt;<span class="string">"RustTones"</span>]</span><br></pre></td></tr></table></figure>
 <hr>
-<img src="/posts/undefined/3.png">
+<img src="/posts/fc096f53/3.png">
 <figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Image</span>@<span class="keyword">Array</span>[<span class="keyword">BitAnd</span>,&#123;2,2&#125;^<span class="number">9</span>,<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
 <hr>
-<img src="/posts/undefined/4.png">
+<img src="/posts/fc096f53/4.png">
 <figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Image</span>[<span class="number">1</span>-<span class="keyword">Last</span>@SubstitutionSystem[&#123;0-&gt;&#123;&#123;1,1,1&#125;,&#123;1,1,1&#125;,&#123;1,1,1&#125;&#125;,<span class="number">1</span>-&gt;&#123;&#123;0,1,0&#125;,&#123;1,0,1&#125;,&#123;0,1,0&#125;&#125;&#125;,&#123;&#123;1&#125;&#125;,<span class="number">6</span>]]</span><br></pre></td></tr></table></figure>
 <hr>
-<img src="/posts/undefined/5.png">
+<img src="/posts/fc096f53/5.png">
 <figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Graphics</span>[&#123;RGBColor@##3,Point@&#123;#,#2&#125;&#125;&amp;@@(<span class="number">2</span>y^<span class="keyword">Range</span>[<span class="number">7</span>].#)&amp;/@<span class="keyword">Tuples</span>[&#123;&#123;x=.886,y=.5,y,0,0&#125;,&#123;-x,y,0,y,0&#125;,&#123;0,-1,0,0,y&#125;&#125;,<span class="number">7</span>]]</span><br></pre></td></tr></table></figure>
 <hr>
-<img src="/posts/undefined/6.png">
+<img src="/posts/fc096f53/6.png">
 <figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Image</span>[<span class="keyword">Table</span>[<span class="keyword">If</span>[ColorQ@#,#,<span class="keyword">Black</span>]&amp;[<span class="keyword">Hue</span>[(<span class="keyword">Arg</span>@#+<span class="keyword">Pi</span>)/(<span class="number">2</span><span class="keyword">Pi</span>),<span class="number">1</span>/<span class="keyword">Abs</span>@#]&amp;[MandelbrotSetBoettcher[x+<span class="keyword">I</span> y]]],&#123;y,-2,2,.01&#125;,&#123;x,-2,2,.01&#125;]]</span><br></pre></td></tr></table></figure>
 <hr>
-<img src="/posts/undefined/7.png">
+<img src="/posts/fc096f53/7.png">
 <figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Graphics</span>@<span class="keyword">Line</span>[AnglePath@#,<span class="keyword">VertexColors</span>-&gt;<span class="keyword">Hue</span>/@Subdivide@<span class="keyword">Length</span>@#]&amp;@<span class="keyword">MapIndexed</span>[#(<span class="number">-1</span>)^<span class="keyword">Tr</span>@#<span class="number">2</span>&amp;,<span class="keyword">Flatten</span>@<span class="keyword">Nest</span>[&#123;#,#[[1]]&#125;&amp;,&#123;Pi/2,0&#125;,<span class="number">17</span>]]</span><br></pre></td></tr></table></figure>
 <hr>
-<img src="/posts/undefined/8.png">
+<img src="/posts/fc096f53/8.png">
 <figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">Multicolumn[<span class="keyword">Table</span>[<span class="keyword">Image3D</span>[<span class="keyword">Array</span>[<span class="keyword">BitXor</span>,&#123;2,2,2&#125;^<span class="number">5</span>,<span class="number">0</span>]/.&#123;i-&gt;1,_Integer-&gt;0&#125;],&#123;i,0,31&#125;],<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
 <hr>
-<img src="/posts/undefined/9.png">
+<img src="/posts/fc096f53/9.png">
 <figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">f=&#123;Tuples[Range[2^#]-1,#2],First@HilbertCurve@##&#125;&amp;;<span class="keyword">Grid</span>@<span class="keyword">Table</span>[<span class="keyword">Image</span>@<span class="keyword">Partition</span>[a[[<span class="keyword">Ordering</span>@b]]/<span class="number">2</span>^<span class="number">6</span>,<span class="number">2</span>^<span class="number">9</span>],&#123;a,f[6,3]&#125;,&#123;b,f[9,2]&#125;]</span><br></pre></td></tr></table></figure>
 
       

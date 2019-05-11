@@ -111,15 +111,15 @@
 <meta property="og:site_name" content="锑星杂记">
 <meta property="og:description" content="原发在十五言。现在十五言和果壳网一样，死了。  世界上的编程语言，按照其应用领域，可以粗略地分成三类。 有的语言是多面手，在很多不同的领域都能派上用场。这类编程语言叫 general-purpose language，简称 GPL。大家学过的编程语言很多都属于这一类，比如说 C，Java， Python。 有的语言专注于某一特定的领域，甚至只能用在特定的软件中。这类编程语言叫 domain-spe">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://alephalpha.github.io/posts/undefined/stackoverflow_404.png">
-<meta property="og:image" content="https://alephalpha.github.io/posts/undefined/barinfuck_guokr.jpeg">
-<meta property="og:image" content="https://alephalpha.github.io/posts/undefined/piet.png">
-<meta property="og:image" content="https://alephalpha.github.io/posts/undefined/Velato_HelloWorld.gif">
-<meta property="og:updated_time" content="2019-03-17T05:05:53.016Z">
+<meta property="og:image" content="https://alephalpha.github.io/posts/3e9621cd/stackoverflow_404.png">
+<meta property="og:image" content="https://alephalpha.github.io/posts/3e9621cd/barinfuck_guokr.jpeg">
+<meta property="og:image" content="https://alephalpha.github.io/posts/3e9621cd/piet.png">
+<meta property="og:image" content="https://alephalpha.github.io/posts/3e9621cd/Velato_HelloWorld.gif">
+<meta property="og:updated_time" content="2019-05-11T08:46:15.297Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="那些奇奇怪怪的编程语言">
 <meta name="twitter:description" content="原发在十五言。现在十五言和果壳网一样，死了。  世界上的编程语言，按照其应用领域，可以粗略地分成三类。 有的语言是多面手，在很多不同的领域都能派上用场。这类编程语言叫 general-purpose language，简称 GPL。大家学过的编程语言很多都属于这一类，比如说 C，Java， Python。 有的语言专注于某一特定的领域，甚至只能用在特定的软件中。这类编程语言叫 domain-spe">
-<meta name="twitter:image" content="https://alephalpha.github.io/posts/undefined/stackoverflow_404.png">
+<meta name="twitter:image" content="https://alephalpha.github.io/posts/3e9621cd/stackoverflow_404.png">
 
 
 
@@ -430,7 +430,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-17 13:05:53" itemprop="dateModified" datetime="2019-03-17T13:05:53+08:00">2019-03-17</time>
+                <time title="修改时间：2019-05-11 16:46:15" itemprop="dateModified" datetime="2019-05-11T16:46:15+08:00">2019-05-11</time>
               
             
           </span>
@@ -489,7 +489,7 @@
 <p>没错，这种 esolang 就叫  <a href="http://esolangs.org/wiki/Brainfuck" target="_blank" rel="noopener"><strong>brainfuck</strong></a>。</p>
 <p>看名字就知道不是什么正经的编程语言。</p>
 <p>名字虽然不正经，这却是最著名的一种 esolang。很多地方都可以看到它的身影，比如说 Stack Overflow 的404页面：</p>
-<img src="/posts/undefined/stackoverflow_404.png" title="这段代码可以在包括 brainfuck 在内的几种不同的语言中运行，输出结果都是404">
+<img src="/posts/3e9621cd/stackoverflow_404.png" title="这段代码可以在包括 brainfuck 在内的几种不同的语言中运行，输出结果都是404">
 <p>Brainfuck 的语法非常简单，只有八条指令。除了指令之外，只有一个由很多个存储单元组成的数组（可以想像成一条有无数个格子的纸带），一个指向数组的指针。开始的时候，数组的每个存储单元都被初始化为0，指针指着数组的第一个存储单元。八条指令对应于数组和指针的八个操作：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;	指针向右移动一位</span><br><span class="line">&lt;	指针向左移动一位</span><br><span class="line">+	指针指向的存储单元加一</span><br><span class="line">-	指针指向的存储单元减一</span><br><span class="line">.	将指针指向的存储单元的内容作为字符输出</span><br><span class="line">,	输入一个字符并保存到指针指向的存储单元</span><br><span class="line">[	如果指针指向的存储单元为零，向后跳转到对应的 ] 指令处</span><br><span class="line">]	如果指针指向的存储单元不为零，向前跳转到对应的 [ 指令处</span><br></pre></td></tr></table></figure>
 <p>这里的方括号其实就相当于 C 语言里的 while 循环。</p>
@@ -508,7 +508,7 @@
 <p>不过总是能找到一点用处的吧？</p>
 <p>一个用处是当成智力题。用 brainfuck 写程序相当考验智力，稍复杂一点的程序写起来就有一种脑子被操的感觉。</p>
 <p>另一个用处是用来拼成字符画。由于每个指令只有一个字符，而且可以任意插入别的字符，例如空格和换行，因此很容易把 brainfuck 程序打扮成字符画。就像这样：</p>
-<img src="/posts/undefined/barinfuck_guokr.jpeg" title="输出结果是 Guokr">
+<img src="/posts/3e9621cd/barinfuck_guokr.jpeg" title="输出结果是 Guokr">
 <p>第三种用处则关系到 brainfuck 语言的一个重要特点：它是图灵完备的。</p>
 <h1 id="极简主义与-Turing-Tarpit"><a href="#极简主义与-Turing-Tarpit" class="headerlink" title="极简主义与 Turing Tarpit"></a>极简主义与 Turing Tarpit</h1><p>图灵完备不稀奇。我们熟悉的编程语言，绝大部分都是图灵完备的。<br>神奇的地方在于，brainfuck 仅仅用了八条指令，就实现了一个图灵完备的模型。它是一种极简主义的编程语言。</p>
 <p>从这点来说，这种语言虽然名字难听，却有着独特的美学价值。</p>
@@ -565,7 +565,7 @@
 <p>出了循环向右走，是数字2和数字5——Befunge 里的数字要分开一个个读——和一个乘号。2乘5等于10，对应的是换行的 ASCII 码，于是后面的一个<code>,</code>输出换行。最后<code>@</code>结束程序。</p>
 <p>Befunge 不是唯一一个二维的 esolang。Esolang 维基的 <a href="http://esolangs.org/wiki/Category:Two-dimensional_languages" target="_blank" rel="noopener">Two-dimensional languages</a> 分类里列出了一百多种二维编程语言，其中有 Befunge 的模仿者，也有一些脑洞特别大的作品，比如说 <a href="http://esolangs.org/wiki/Piet" target="_blank" rel="noopener">Piet</a>。</p>
 <p>我也曾写过一个 Piet 程序：</p>
-<img src="/posts/undefined/piet.png" title="Project Euler 第五题的解答">
+<img src="/posts/3e9621cd/piet.png" title="Project Euler 第五题的解答">
 <p>没错，这幅图片就是一个 Piet 程序。这种语言的设计目标就是让程序看起来像抽象画。Piet 这个名字正是来自荷兰风格派画家 Piet Mondrian。</p>
 <h1 id="更多的脑洞"><a href="#更多的脑洞" class="headerlink" title="更多的脑洞"></a>更多的脑洞</h1><p>Befunge 把程序写到二维，Piet 把程序写成图片，都算得上是脑洞之作。</p>
 <p>日常的编程语言往往被看作是工具。无论语言本身设计得多精美，多神奇，我们更看重的往往还是写出来的程序；语言本身的精美和神奇之处也往往只是为了写出更好的程序，或者更好地写出程序。</p>
@@ -589,7 +589,7 @@
 <h3 id="Polynomial"><a href="#Polynomial" class="headerlink" title="Polynomial"></a><a href="http://esolangs.org/wiki/Polynomial" target="_blank" rel="noopener">Polynomial</a></h3><p>这是 <a href="http://esolangs.org/wiki/User:Maedhros777" target="_blank" rel="noopener">Maedhros777</a> 设计的一种语言。一个程序就是一个多项式，指令隐藏在多项式的零点当中。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">f(x) = x^10 - 4827056x^9 + 1192223600x^8 - 8577438158x^7 + 958436165464x^6 - 4037071023854x^5 + 141614997956730x^4 - 365830453724082x^3 + 5225367261446055x^2 - 9213984708801250x + 21911510628393750</span><br></pre></td></tr></table></figure>
 <h3 id="Velato"><a href="#Velato" class="headerlink" title="Velato"></a><a href="http://esolangs.org/wiki/Velato" target="_blank" rel="noopener">Velato</a></h3><p>程序既然能写成图片，当然也能写成音乐。Velato 是一种以 MIDI 音乐为源代码的编程语言，作者是 <a href="http://esolangs.org/wiki/User:Rottytooth" target="_blank" rel="noopener">Rottytooth</a>。</p>
-<img src="/posts/undefined/Velato_HelloWorld.gif" title="这只是程序对应的乐谱，真正的程序是一个 MIDI 文件">
+<img src="/posts/3e9621cd/Velato_HelloWorld.gif" title="这只是程序对应的乐谱，真正的程序是一个 MIDI 文件">
 <p>除此之外，还有一些更加优秀的作品，出自 <a href="http://www.dangermouse.net/esoteric/" target="_blank" rel="noopener">Danger Mouse</a>（Piet 的作者）、<a href="http://esolangs.org/wiki/User:Timwi" target="_blank" rel="noopener">Timwi</a> 这样的 esolang 大师之手。如果这一系列没有坑掉的话，我会在以后专门用一两篇文章介绍他们的作品。</p>
 
       
