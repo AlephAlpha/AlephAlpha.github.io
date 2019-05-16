@@ -104,14 +104,14 @@
 
 
   <meta name="description" content="用 Mathematica 搜索生命游戏中的静物 用 Mathematica 搜索生命游戏中的静物（二）    我把《用 Mathematica 搜索生命游戏中的静物（二）》里的代码整理了一下，写成了个叫做 LifeFind 的 Mathematica 包。现在它支持不同的规则和对称性，可以搜索静物之外的图样，但搜索速度并没有提高。可以在这里下载。 需要强调的是，我之所以用 SAT，不是因为它是">
-<meta name="keywords" content="Mathematica,简书搬运,生命游戏">
+<meta name="keywords" content="生命游戏,简书搬运,Mathematica">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用 Mathematica 搜索生命游戏中的静物（三）">
 <meta property="og:url" content="https://AlephAlpha.github.io/posts/18a3d91c/index.html">
 <meta property="og:site_name" content="锑星杂记">
 <meta property="og:description" content="用 Mathematica 搜索生命游戏中的静物 用 Mathematica 搜索生命游戏中的静物（二）    我把《用 Mathematica 搜索生命游戏中的静物（二）》里的代码整理了一下，写成了个叫做 LifeFind 的 Mathematica 包。现在它支持不同的规则和对称性，可以搜索静物之外的图样，但搜索速度并没有提高。可以在这里下载。 需要强调的是，我之所以用 SAT，不是因为它是">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-11T09:11:08.284Z">
+<meta property="og:updated_time" content="2019-05-16T14:25:29.712Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用 Mathematica 搜索生命游戏中的静物（三）">
 <meta name="twitter:description" content="用 Mathematica 搜索生命游戏中的静物 用 Mathematica 搜索生命游戏中的静物（二）    我把《用 Mathematica 搜索生命游戏中的静物（二）》里的代码整理了一下，写成了个叫做 LifeFind 的 Mathematica 包。现在它支持不同的规则和对称性，可以搜索静物之外的图样，但搜索速度并没有提高。可以在这里下载。 需要强调的是，我之所以用 SAT，不是因为它是">
@@ -425,7 +425,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-11 17:11:08" itemprop="dateModified" datetime="2019-05-11T17:11:08+08:00">2019-05-11</time>
+                <time title="修改时间：2019-05-16 22:25:29" itemprop="dateModified" datetime="2019-05-16T22:25:29+08:00">2019-05-16</time>
               
             
           </span>
@@ -445,11 +445,11 @@
           
             <div class="post-tags">
               
-                <a href="/tags/Mathematica/" rel="tag"><i class="fa fa-tag"></i> Mathematica</a>
+                <a href="/tags/生命游戏/" rel="tag"><i class="fa fa-tag"></i> 生命游戏</a>
               
                 <a href="/tags/简书搬运/" rel="tag"><i class="fa fa-tag"></i> 简书搬运</a>
               
-                <a href="/tags/生命游戏/" rel="tag"><i class="fa fa-tag"></i> 生命游戏</a>
+                <a href="/tags/Mathematica/" rel="tag"><i class="fa fa-tag"></i> Mathematica</a>
               
             </div>
           
@@ -484,7 +484,7 @@
 <hr>
 <p>搜索之前记得<a href="https://github.com/AlephAlpha/LifeFind/wiki/%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85" target="_blank" rel="noopener">下载与安装</a>，并用以下命令来加载这个包：</p>
 <figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">&lt;&lt;Life`</span><br></pre></td></tr></table></figure>
-<p>LifeFind 的搜索是随机的，同样的搜索可能会得到不同的结果。为了确保以下范例的可重复性，我用以下的命令将每次搜索时的<a href="https://en.wikipedia.org/wiki/Random_seed" target="_blank" rel="noopener">随机种子</a>设为 233，顺便用 <a href="https://reference.wolfram.com/language/ref/Timing.html" target="_blank" rel="noopener"><code>Timing</code></a> 函数给出搜索在我的电脑上所花的时间。</p>
+<p>LifeFind 的搜索是随机的，同样的搜索可能会得到不同的结果。为了确保以下范例的可重复性，我用以下的命令将每次搜索时的<a href="https://en.wikipedia.org/wiki/Random_seed" target="_blank" rel="noopener">随机种子</a>设为 0，顺便用 <a href="https://reference.wolfram.com/language/ref/Timing.html" target="_blank" rel="noopener"><code>Timing</code></a> 函数给出搜索在我的电脑上所花的时间。</p>
 <figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line"><span class="keyword">$Pre</span> = <span class="keyword">Function</span>[x, <span class="keyword">SeedRandom</span>[<span class="number">0</span>]; </span><br><span class="line">   <span class="keyword">Last</span>@Echo[<span class="keyword">Timing</span>@x, <span class="string">"Timing: "</span>, <span class="keyword">First</span>], <span class="keyword">HoldAll</span>];</span><br></pre></td></tr></table></figure>
 <p>搜索时间仅供参考。随机种子不同，搜索结果和搜索时间都会有很大区别。</p>
 <h2 id="静物"><a href="#静物" class="headerlink" title="静物"></a>静物</h2><h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><p>搜索生命游戏中大小不超过 16*16 的静物：</p>
@@ -608,7 +608,7 @@ b2o$4o$o3bo$5o$bobo!</pre><canvas width="480" height="480"></canvas></div>
 <p><strong>搜索结果</strong>：</p>
 <div class="rle"><pre>x = 5, y = 5, rule = 2cen3ciq4cinwyz5acer/3e4e6e/3
 2.A$2A.A$A3.A$2ABA$2.A!</pre><canvas width="480" height="480"></canvas></div>
-<h3 id="12"><a href="#12" class="headerlink" title="12"></a>12</h3><p>搜索一个规则，使得生命游戏中的滑翔机在这个规则中是一个周期 48 的 <a href="http://conwaylife.com/wiki/Reflectorless_rotating_oscillator" target="_blank" rel="noopener">Reflectorless rotating oscillator</a>；具体地说，在 12 代之后向右平移 6 格并顺时针旋转 90 度：</p>
+<h3 id="12"><a href="#12" class="headerlink" title="12"></a>12</h3><p>搜索一个规则，使得生命游戏中的滑翔机在这个规则中是一个周期 48 的<a href="http://conwaylife.com/wiki/Reflectorless_rotating_oscillator" target="_blank" rel="noopener">转圈圈</a>；具体地说，在 12 代之后向右平移 6 格并顺时针旋转 90 度：</p>
 <p>我们只需搜索 13 代，就能让搜到的图样满足条件。注意要设置 <code>&quot;Periodic&quot; -&gt; False</code>。</p>
 <p><strong>代码</strong>：</p>
 <figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">LifeFind[<span class="number">5</span>, <span class="number">11</span>, <span class="number">13</span>, <span class="string">"Rule"</span> -&gt; <span class="string">""</span>, <span class="string">"Periodic"</span> -&gt; <span class="keyword">False</span>, </span><br><span class="line"> <span class="string">"KnownCells"</span> -&gt; </span><br><span class="line">  <span class="keyword">Join</span>[&#123;ArrayPad[&#123;&#123;0, 1, 0&#125;, &#123;0, 0, 1&#125;, &#123;1, 1, 1&#125;&#125;, &#123;&#123;1, 1&#125;, &#123;1, 7&#125;&#125;, </span><br><span class="line">     <span class="number">0</span>]&#125;, <span class="keyword">Table</span>[&#123;&#125;, </span><br><span class="line">    <span class="number">11</span>], &#123;ArrayPad[&#123;&#123;1, 0, 0&#125;, &#123;1, 0, 1&#125;, &#123;1, 1, 0&#125;&#125;, &#123;&#123;1, 1&#125;, &#123;7, </span><br><span class="line">       1&#125;&#125;, <span class="number">0</span>]&#125;]]</span><br></pre></td></tr></table></figure>
