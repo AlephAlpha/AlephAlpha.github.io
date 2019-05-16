@@ -29,7 +29,7 @@ date: 2019-03-04 16:44:00
 <<Life`
 ```
 
-LifeFind 的搜索是随机的，同样的搜索可能会得到不同的结果。为了确保以下范例的可重复性，我用以下的命令将每次搜索时的[随机种子](https://en.wikipedia.org/wiki/Random_seed)设为 233，顺便用 [`Timing`](https://reference.wolfram.com/language/ref/Timing.html) 函数给出搜索在我的电脑上所花的时间。
+LifeFind 的搜索是随机的，同样的搜索可能会得到不同的结果。为了确保以下范例的可重复性，我用以下的命令将每次搜索时的[随机种子](https://en.wikipedia.org/wiki/Random_seed)设为 0，顺便用 [`Timing`](https://reference.wolfram.com/language/ref/Timing.html) 函数给出搜索在我的电脑上所花的时间。
 
 ```Mathematica
 $Pre = Function[x, SeedRandom[0]; 
@@ -312,7 +312,7 @@ x = 5, y = 5, rule = 2cen3ciq4cinwyz5acer/3e4e6e/3
 
 ### 12
 
-搜索一个规则，使得生命游戏中的滑翔机在这个规则中是一个周期 48 的 [Reflectorless rotating oscillator](http://conwaylife.com/wiki/Reflectorless_rotating_oscillator)；具体地说，在 12 代之后向右平移 6 格并顺时针旋转 90 度：
+搜索一个规则，使得生命游戏中的滑翔机在这个规则中是一个周期 48 的[转圈圈](http://conwaylife.com/wiki/Reflectorless_rotating_oscillator)；具体地说，在 12 代之后向右平移 6 格并顺时针旋转 90 度：
 
 我们只需搜索 13 代，就能让搜到的图样满足条件。注意要设置 `"Periodic" -> False`。
 
