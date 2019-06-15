@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://AlephAlpha.github.io/"/>
-  <updated>2019-05-11T08:46:15.169Z</updated>
+  <updated>2019-06-15T14:07:58.564Z</updated>
   <id>https://AlephAlpha.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>又写了一个生命游戏搜索程序</title>
+    <link href="https://AlephAlpha.github.io/posts/3826a9a2/"/>
+    <id>https://AlephAlpha.github.io/posts/3826a9a2/</id>
+    <published>2019-06-15T12:34:39.000Z</published>
+    <updated>2019-06-15T14:07:58.564Z</updated>
+    
+    <content type="html"><![CDATA[<p>1969到1970年，在创造生命游戏的过程中，约翰·康威和他的同事们在棋盘上进行了各种试验和搜索，并发现了最初的四种飞船：<a href="http://www.conwaylife.com/wiki/Glider" target="_blank" rel="noopener">滑翔机</a>、<a href="http://www.conwaylife.com/wiki/Lightweight_spaceship" target="_blank" rel="noopener">轻型飞船</a>、<a href="http://www.conwaylife.com/wiki/Middleweight_spaceship" target="_blank" rel="noopener">中型飞船</a>、<a href="http://conwaylife.com/wiki/Heavyweight_spaceship" target="_blank" rel="noopener">重型飞船</a>。</p><p>此后二十年间，通过手动搜索，或者借助计算机的帮助，人们又发现了大量的图样：静物，振荡子，<a href="http://www.conwaylife.com/wiki/Gun" target="_blank" rel="noopener">枪</a>，<a href="http://www.conwaylife.com/wiki/Puffer" target="_blank" rel="noopener">Puffer</a>……但所发现的飞船只是以上四种飞船的组合或变种，或者只是在飞船后面添上一个 <a href="http://www.conwaylife.com/wiki/Tagalong" target="_blank" rel="noopener">tagalong</a>。此时没有真正的搜索程序，计算机在搜索中的用法和棋盘没有本质区别。</p><p>直到1989年，Dean Hickerson 用汇编语言写了一个叫 LS 的小程序，并用它发现了第一艘全新的飞船：<a href="http://conwaylife.com/wiki/64P2H1V0" target="_blank" rel="noopener">64P2H1V0</a>。此后，David Bell 又用 C 语言实现了 Dean Hickerson 的算法，写出了 <a href="http://www.conwaylife.com/wiki/Lifesrc" target="_blank" rel="noopener">lifesrc</a>。人们用 LS 和 Dean Hickerson 发现了大量的新飞船，以及别的图样。可以说，这两个程序开启了生命游戏研究的一个新时代。</p><p>（有点想写一系列文章来详细介绍生命游戏搜索的历史……不过我懒。）</p><a id="more"></a><p>Dean Hickerson 的算法并不复杂，就是简单的回溯法。程序中每个细胞有死、活、未知三种状态。最开始的时候搜索范围内的每一个细胞都设成未知，范围外的则设为死。搜索过程就是取一个未知的细胞，给它设一个值（死或活），并根据生命游戏的规则由它的值推导出另一些细胞（此细胞的前一代、后一代、邻居等）的值，由那些值又推出更多细胞的值……如果推导的时候发现矛盾，则退回来，把原来的未知细胞换成另一个值；如果没有矛盾，则寻找下一个未知的细胞，继续此过程。</p><p>Dean Hickerson 给这个算法写了一个<a href="https://github.com/DavidKinder/Xlife/blob/master/Xlife35/source/lifesearch/ORIGIN" target="_blank" rel="noopener">详细的介绍</a>。David Bell 把这一介绍附在了 lifesrc 的源代码中。</p><p>此后又出现了很多更先进的搜索程序，比如说 David Eppstein 的专搜飞船的 <a href="http://www.conwaylife.com/wiki/Gfind" target="_blank" rel="noopener">gfind</a>，以及它的诸多变种：ofind、afind、zfind、qfind 等……它们的算法也更加复杂。</p><p>（我有点后悔给 <a href="https://github.com/AlephAlpha/LifeFind" target="_blank" rel="noopener">LifeFind</a> 起这个以 find 结尾的名字了，它的算法明明更接近 lifesrc。）</p><p>我写的下面这个程序，基本就是照抄 lifesrc，只不过把用的编程语言换成了 Rust，并且编译成 WebAssembly，在浏览器中就能运行。</p><iframe src="https://alephalpha.github.io/rlifesrc/" width="100%" height="300" frameborder="0" allowfullscreen></iframe><p>用法很简单，按照说明调整图样的规则、宽度、高度、周期、平移等信息，然后点击 “Set World” 来确定这些信息。然后点 “Start” 就可以搜索了。速度不快，需要耐心等待。</p><p>我基本不懂编程，写得非常糟糕，和原版的 lifesrc 相比缺少了很多功能，不过支持 <a href="http://conwaylife.com/wiki/Isotropic_non-totalistic_Life-like_cellular_automaton" target="_blank" rel="noopener">isotropic non-totalistic 的规则</a>。</p><p>此外，lifesrc 给未知细胞选取的新状态总是死，我则添加了总是活、随机选取、“Smart” 三种模式；这里的 “Smart” 表示第一行/第一列的细胞随机选取，其余的细胞总是死。其实这一点也不智能，不过我想不出别的名字了。这个模式适合搜索比较窄但可能很长的图样，但未必比随机选取更快。</p><p>这个网页版比 lifesrc 慢了不少；但如果编译成机器码，在电脑上运行，会比 lifesrc 还略快一些，不过还是比 gfind 及其变种要慢很多。</p><p><a href="https://github.com/AlephAlpha/rlifesrc" target="_blank" rel="noopener">源代码和具体的介绍见这里。</a></p><p>最后是我用这个程序找到的一艘 2c/5 飞船：</p><div class="rle"><pre>x = 38, y = 19, rule = B3/S235bo2bo$b2ob2o5bo6bo3bo9bo$2obo7bo5bo2b2obo7b4o$bo2b6ob3obobo11b2o4bobo$2bo7bo4bobo2b2o2b3obo2b3ob2o$3b3o2bobo4bob3o3b2o3bo4bo3bo$5bo2bobo3bo3b2o3bo4bobob2o$10b2ob3o2b2o4bobo4bo4bo$25bo6b3o2$25bo6b3o$10b2ob3o2b2o4bobo4bo4bo$5bo2bobo3bo3b2o3bo4bobob2o$3b3o2bobo4bob3o3b2o3bo4bo3bo$2bo7bo4bobo2b2o2b3obo2b3ob2o$bo2b6ob3obobo11b2o4bobo$2obo7bo5bo2b2obo7b4o$b2ob2o5bo6bo3bo9bo$5bo2bo!</pre><canvas width="480" height="480"></canvas></div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1969到1970年，在创造生命游戏的过程中，约翰·康威和他的同事们在棋盘上进行了各种试验和搜索，并发现了最初的四种飞船：&lt;a href=&quot;http://www.conwaylife.com/wiki/Glider&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;滑翔机&lt;/a&gt;、&lt;a href=&quot;http://www.conwaylife.com/wiki/Lightweight_spaceship&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;轻型飞船&lt;/a&gt;、&lt;a href=&quot;http://www.conwaylife.com/wiki/Middleweight_spaceship&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;中型飞船&lt;/a&gt;、&lt;a href=&quot;http://conwaylife.com/wiki/Heavyweight_spaceship&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;重型飞船&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;此后二十年间，通过手动搜索，或者借助计算机的帮助，人们又发现了大量的图样：静物，振荡子，&lt;a href=&quot;http://www.conwaylife.com/wiki/Gun&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;枪&lt;/a&gt;，&lt;a href=&quot;http://www.conwaylife.com/wiki/Puffer&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Puffer&lt;/a&gt;……但所发现的飞船只是以上四种飞船的组合或变种，或者只是在飞船后面添上一个 &lt;a href=&quot;http://www.conwaylife.com/wiki/Tagalong&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;tagalong&lt;/a&gt;。此时没有真正的搜索程序，计算机在搜索中的用法和棋盘没有本质区别。&lt;/p&gt;
+&lt;p&gt;直到1989年，Dean Hickerson 用汇编语言写了一个叫 LS 的小程序，并用它发现了第一艘全新的飞船：&lt;a href=&quot;http://conwaylife.com/wiki/64P2H1V0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;64P2H1V0&lt;/a&gt;。此后，David Bell 又用 C 语言实现了 Dean Hickerson 的算法，写出了 &lt;a href=&quot;http://www.conwaylife.com/wiki/Lifesrc&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;lifesrc&lt;/a&gt;。人们用 LS 和 Dean Hickerson 发现了大量的新飞船，以及别的图样。可以说，这两个程序开启了生命游戏研究的一个新时代。&lt;/p&gt;
+&lt;p&gt;（有点想写一系列文章来详细介绍生命游戏搜索的历史……不过我懒。）&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="生命游戏" scheme="https://AlephAlpha.github.io/tags/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>测试在 Hexo 中插入 LifeViewer</title>
@@ -80,11 +103,11 @@ o5bobobobo5bo3bo$5ob5obo5b5o3bo3b5ob5o2bobo2b5obo3bo!
     </summary>
     
     
-      <category term="生命游戏" scheme="https://AlephAlpha.github.io/tags/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/"/>
+      <category term="Mathematica" scheme="https://AlephAlpha.github.io/tags/Mathematica/"/>
     
       <category term="简书搬运" scheme="https://AlephAlpha.github.io/tags/%E7%AE%80%E4%B9%A6%E6%90%AC%E8%BF%90/"/>
     
-      <category term="Mathematica" scheme="https://AlephAlpha.github.io/tags/Mathematica/"/>
+      <category term="生命游戏" scheme="https://AlephAlpha.github.io/tags/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/"/>
     
   </entry>
   
@@ -114,11 +137,11 @@ o5bobobobo5bo3bo$5ob5obo5b5o3bo3b5ob5o2bobo2b5obo3bo!
     </summary>
     
     
-      <category term="生命游戏" scheme="https://AlephAlpha.github.io/tags/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/"/>
+      <category term="Mathematica" scheme="https://AlephAlpha.github.io/tags/Mathematica/"/>
     
       <category term="简书搬运" scheme="https://AlephAlpha.github.io/tags/%E7%AE%80%E4%B9%A6%E6%90%AC%E8%BF%90/"/>
     
-      <category term="Mathematica" scheme="https://AlephAlpha.github.io/tags/Mathematica/"/>
+      <category term="生命游戏" scheme="https://AlephAlpha.github.io/tags/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/"/>
     
   </entry>
   
@@ -153,34 +176,24 @@ o5bobobobo5bo3bo$5ob5obo5b5o3bo3b5ob5o2bobo2b5obo3bo!
     <link href="https://AlephAlpha.github.io/posts/96f4eb3/"/>
     <id>https://AlephAlpha.github.io/posts/96f4eb3/</id>
     <published>2018-08-10T09:52:00.000Z</published>
-    <updated>2019-05-11T08:46:15.253Z</updated>
+    <updated>2019-06-15T11:38:21.500Z</updated>
     
-    <content type="html"><![CDATA[<div class="table-container"><table><thead><tr><th>名称</th><th>作者</th><th>搜索方式</th><th>编程语言</th><th>平台</th><th>网址</th><th>备注</th></tr></thead><tbody><tr><td><a href="http://conwaylife.com/wiki/Apgsearch" target="_blank" rel="noopener">apgsearch</a> (2.0 以上版本)</td><td>Adam P. Goucher</td><td>汤</td><td>C++</td><td>64 位 Linux</td><td><a href="https://gitlab.com/apgoucher/apgmera" target="_blank" rel="noopener">GitLab</a></td><td></td></tr><tr><td><a href="http://conwaylife.com/wiki/Apgsearch" target="_blank" rel="noopener">apgsearch</a> (1.x 版)</td><td>Adam P. Goucher</td><td>汤</td><td>Python</td><td>Golly 脚本</td><td><a href="https://gol.hatsya.co.uk/apgsearch" target="_blank" rel="noopener">Catagolue</a></td><td></td></tr><tr><td><a href="http://conwaylife.com/wiki/Ikpx" target="_blank" rel="noopener">ikpx</a></td><td>Adam P. Goucher</td><td><a href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem" target="_blank" rel="noopener">SAT 问题</a></td><td>Python</td><td>跨平台</td><td><a href="https://gitlab.com/apgoucher/metasat" target="_blank" rel="noopener">GitLab</a></td><td>仅支持生命游戏</td></tr><tr><td><a href="http://conwaylife.com/wiki/Logic_Life_Search" target="_blank" rel="noopener">Logic Life Search</a></td><td>Oscar Cunningham</td><td><a href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem" target="_blank" rel="noopener">SAT 问题</a></td><td>Python</td><td>号称跨平台（Windows 下需要 Cygwin）</td><td><a href="https://github.com/OscarCunningham/logic-life-search" target="_blank" rel="noopener">GitHub</a></td><td>需要自备 SAT Solver</td></tr><tr><td><a href="http://conwaylife.com/wiki/Gfind" target="_blank" rel="noopener">gfind</a></td><td>David Eppstein</td><td>见<a href="http://arxiv.org/abs/cs.AI/0004003" target="_blank" rel="noopener">相关论文</a></td><td>C</td><td>跨平台</td><td><a href="https://www.ics.uci.edu/~eppstein/ca/gfind.c" target="_blank" rel="noopener">代码</a></td><td>专搜飞船</td></tr><tr><td>gsearch</td><td>David Eppstein</td><td>给定范围里的暴力搜索</td><td>C</td><td>跨平台</td><td><a href="https://www.ics.uci.edu/~eppstein/ca/gsearch.c" target="_blank" rel="noopener">代码</a></td><td>很慢</td></tr><tr><td>ofind</td><td>David Eppstein</td><td>类似于gfind</td><td>C</td><td>跨平台</td><td><a href="https://www.ics.uci.edu/~eppstein/ca/ofind.c" target="_blank" rel="noopener">代码</a></td><td>专搜振荡子</td></tr><tr><td><a href="http://conwaylife.com/wiki/Lifesrc" target="_blank" rel="noopener">lifesrc</a></td><td>David Bell</td><td>Dean Hickerson 发明的算法</td><td>C</td><td>跨平台</td><td><a href="http://members.tip.net.au/%7Edbell/programs/lifesrc-3.8.tar.gz" target="_blank" rel="noopener">代码</a></td><td></td></tr><tr><td><a href="http://conwaylife.com/wiki/JavaLifeSearch" target="_blank" rel="noopener">JavaLifeSearch</a></td><td>Karel Suhajda</td><td>同 lifesrc</td><td>Java</td><td>跨平台</td><td><a href="http://conwaylife.com/forums/viewtopic.php?f=9&amp;t=990" target="_blank" rel="noopener">帖子</a></td><td>lifesrc 的 Java 版</td></tr><tr><td><a href="http://conwaylife.com/wiki/WinLifeSearch" target="_blank" rel="noopener">WinLifeSearch</a></td><td>Jason Summers</td><td>同 lifesrc</td><td>C</td><td>Windows</td><td><a href="http://entropymine.com/wls/" target="_blank" rel="noopener">官网</a></td><td>lifesrc 的 Windows（图形界面）版</td></tr><tr><td><a href="http://conwaylife.com/wiki/Catalyst_(search_program" target="_blank" rel="noopener">catalyst</a>)</td><td>Gabriel Nivasch</td><td>静物与给定图样的反应</td><td>C++</td><td>跨平台</td><td><a href="http://www.gabrielnivasch.org/fun/life/catalyst_v10.zip?attredirects=0" target="_blank" rel="noopener">代码</a></td><td>专搜<a href="http://conwaylife.com/wiki/Catalyst" target="_blank" rel="noopener">催化</a></td></tr><tr><td>Random Agar</td><td>Gabriel Nivasch</td><td>类似于汤</td><td>C++</td><td>跨平台</td><td><a href="http://www.gabrielnivasch.org/fun/life/" target="_blank" rel="noopener">代码</a></td><td>专搜琼脂</td></tr><tr><td>CatForce</td><td>simsim314</td><td>暴力搜索？</td><td>C++</td><td>跨平台</td><td><a href="https://github.com/simsim314/CatForce" target="_blank" rel="noopener">Github</a></td><td>专搜<a href="http://conwaylife.com/wiki/Catalyst" target="_blank" rel="noopener">催化</a></td></tr><tr><td>yfind</td><td>strake</td><td><a href="https://en.wikipedia.org/wiki/Satisfiability_modulo_theories" target="_blank" rel="noopener">SMT</a></td><td>Haskell</td><td>跨平台</td><td><a href="https://github.com/strake/yfind" target="_blank" rel="noopener">Github</a></td><td>需要 <a href="https://github.com/Z3Prover/z3" target="_blank" rel="noopener">Z3</a></td></tr><tr><td>zfind</td><td>zdr</td><td>不清楚</td><td>C++</td><td>跨平台</td><td><a href="https://github.com/rokicki/ntzfind" target="_blank" rel="noopener">Github</a></td><td></td></tr><tr><td>life slice ship search</td><td>Andrew Wade</td><td>见其 Readme</td><td>Rust</td><td>Linux</td><td><a href="https://gitlab.com/andrew-j-wade/life_slice_ship_search" target="_blank" rel="noopener">GitLab</a></td></tr></tbody></table></div>]]></content>
+    <content type="html"><![CDATA[<p>更新：<a href="http://www.conwaylife.com/wiki/Tutorials/Software" target="_blank" rel="noopener">LifeWiki 上有一个更详细的汇总</a>。</p><div class="table-container"><table><thead><tr><th>名称</th><th>作者</th><th>搜索方式</th><th>编程语言</th><th>平台</th><th>网址</th><th>备注</th></tr></thead><tbody><tr><td><a href="http://conwaylife.com/wiki/Apgsearch" target="_blank" rel="noopener">apgsearch</a> (2.0 以上版本)</td><td>Adam P. Goucher</td><td>汤</td><td>C++</td><td>64 位 Linux</td><td><a href="https://gitlab.com/apgoucher/apgmera" target="_blank" rel="noopener">GitLab</a></td><td></td></tr><tr><td><a href="http://conwaylife.com/wiki/Apgsearch" target="_blank" rel="noopener">apgsearch</a> (1.x 版)</td><td>Adam P. Goucher</td><td>汤</td><td>Python</td><td>Golly 脚本</td><td><a href="https://gol.hatsya.co.uk/apgsearch" target="_blank" rel="noopener">Catagolue</a></td><td></td></tr><tr><td><a href="http://conwaylife.com/wiki/Ikpx" target="_blank" rel="noopener">ikpx</a></td><td>Adam P. Goucher</td><td><a href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem" target="_blank" rel="noopener">SAT 问题</a></td><td>Python</td><td>跨平台</td><td><a href="https://gitlab.com/apgoucher/metasat" target="_blank" rel="noopener">GitLab</a></td><td>仅支持生命游戏</td></tr><tr><td><a href="http://conwaylife.com/wiki/Logic_Life_Search" target="_blank" rel="noopener">Logic Life Search</a></td><td>Oscar Cunningham</td><td><a href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem" target="_blank" rel="noopener">SAT 问题</a></td><td>Python</td><td>号称跨平台（Windows 下需要 Cygwin）</td><td><a href="https://github.com/OscarCunningham/logic-life-search" target="_blank" rel="noopener">GitHub</a></td><td>需要自备 SAT Solver</td></tr><tr><td><a href="http://conwaylife.com/wiki/Gfind" target="_blank" rel="noopener">gfind</a></td><td>David Eppstein</td><td>见<a href="http://arxiv.org/abs/cs.AI/0004003" target="_blank" rel="noopener">相关论文</a></td><td>C</td><td>跨平台</td><td><a href="https://www.ics.uci.edu/~eppstein/ca/gfind.c" target="_blank" rel="noopener">代码</a></td><td>专搜飞船</td></tr><tr><td>gsearch</td><td>David Eppstein</td><td>给定范围里的暴力搜索</td><td>C</td><td>跨平台</td><td><a href="https://www.ics.uci.edu/~eppstein/ca/gsearch.c" target="_blank" rel="noopener">代码</a></td><td>很慢</td></tr><tr><td>ofind</td><td>David Eppstein</td><td>类似于gfind</td><td>C</td><td>跨平台</td><td><a href="https://www.ics.uci.edu/~eppstein/ca/ofind.c" target="_blank" rel="noopener">代码</a></td><td>专搜振荡子</td></tr><tr><td><a href="http://conwaylife.com/wiki/Lifesrc" target="_blank" rel="noopener">lifesrc</a></td><td>David Bell</td><td>Dean Hickerson 发明的算法，回溯法</td><td>C</td><td>跨平台</td><td><a href="http://members.tip.net.au/%7Edbell/programs/lifesrc-3.8.tar.gz" target="_blank" rel="noopener">代码</a></td><td></td></tr><tr><td><a href="http://conwaylife.com/wiki/JavaLifeSearch" target="_blank" rel="noopener">JavaLifeSearch</a></td><td>Karel Suhajda</td><td>同 lifesrc</td><td>Java</td><td>跨平台</td><td><a href="http://conwaylife.com/forums/viewtopic.php?f=9&amp;t=990" target="_blank" rel="noopener">帖子</a></td><td>lifesrc 的 Java 版</td></tr><tr><td><a href="http://conwaylife.com/wiki/WinLifeSearch" target="_blank" rel="noopener">WinLifeSearch</a></td><td>Jason Summers</td><td>同 lifesrc</td><td>C</td><td>Windows</td><td><a href="http://entropymine.com/wls/" target="_blank" rel="noopener">官网</a></td><td>lifesrc 的 Windows（图形界面）版</td></tr><tr><td><a href="http://conwaylife.com/wiki/Catalyst_(search_program" target="_blank" rel="noopener">catalyst</a>)</td><td>Gabriel Nivasch</td><td>静物与给定图样的反应</td><td>C++</td><td>跨平台</td><td><a href="http://www.gabrielnivasch.org/fun/life/catalyst_v10.zip?attredirects=0" target="_blank" rel="noopener">代码</a></td><td>专搜<a href="http://conwaylife.com/wiki/Catalyst" target="_blank" rel="noopener">催化</a></td></tr><tr><td>Random Agar</td><td>Gabriel Nivasch</td><td>类似于汤</td><td>C++</td><td>跨平台</td><td><a href="http://www.gabrielnivasch.org/fun/life/" target="_blank" rel="noopener">代码</a></td><td>专搜琼脂</td></tr><tr><td>CatForce</td><td>simsim314</td><td>暴力搜索？</td><td>C++</td><td>跨平台</td><td><a href="https://github.com/simsim314/CatForce" target="_blank" rel="noopener">Github</a></td><td>专搜<a href="http://conwaylife.com/wiki/Catalyst" target="_blank" rel="noopener">催化</a></td></tr><tr><td>yfind</td><td>strake</td><td><a href="https://en.wikipedia.org/wiki/Satisfiability_modulo_theories" target="_blank" rel="noopener">SMT</a></td><td>Haskell</td><td>跨平台</td><td><a href="https://github.com/strake/yfind" target="_blank" rel="noopener">Github</a></td><td>需要 <a href="https://github.com/Z3Prover/z3" target="_blank" rel="noopener">Z3</a></td></tr><tr><td>qfind</td><td>Matthias Merzenich</td><td>类似 gfind</td><td>C</td><td>跨平台</td><td><a href="http://www.conwaylife.com/forums/viewtopic.php?f=9&amp;t=2902" target="_blank" rel="noopener">帖子</a></td><td></td></tr><tr><td>zfind</td><td>zdr</td><td>类似 gfind</td><td>C++</td><td>跨平台</td><td><a href="https://github.com/rokicki/ntzfind" target="_blank" rel="noopener">Github</a></td><td></td></tr><tr><td>life slice ship search</td><td>Andrew Wade</td><td>见其 Readme</td><td>Rust</td><td>Linux</td><td><a href="https://gitlab.com/andrew-j-wade/life_slice_ship_search" target="_blank" rel="noopener">GitLab</a></td></tr></tbody></table></div>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;div class=&quot;table-container&quot;&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;名称&lt;/th&gt;
-&lt;th&gt;作者&lt;/th&gt;
-&lt;th&gt;搜索方式&lt;/th&gt;
-&lt;th&gt;编程语言&lt;/th&gt;
-&lt;th&gt;平台&lt;/th&gt;
-&lt;th&gt;网址&lt;/th&gt;
-&lt;th&gt;备注&lt;/th&gt;
-&lt;
+        &lt;p&gt;更新：&lt;a href=&quot;http://www.conwaylife.com/wiki/Tutorials/Software&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;LifeWiki 上有一个更详细的汇总&lt;/a&gt;。&lt;/p&gt;
+&lt;div class=&quot;ta
       
     
     </summary>
     
     
-      <category term="生命游戏" scheme="https://AlephAlpha.github.io/tags/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/"/>
-    
       <category term="简书搬运" scheme="https://AlephAlpha.github.io/tags/%E7%AE%80%E4%B9%A6%E6%90%AC%E8%BF%90/"/>
+    
+      <category term="生命游戏" scheme="https://AlephAlpha.github.io/tags/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/"/>
     
   </entry>
   
@@ -208,11 +221,11 @@ o5bobobobo5bo3bo$5ob5obo5b5o3bo3b5ob5o2bobo2b5obo3bo!
     </summary>
     
     
-      <category term="生命游戏" scheme="https://AlephAlpha.github.io/tags/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/"/>
+      <category term="Mathematica" scheme="https://AlephAlpha.github.io/tags/Mathematica/"/>
     
       <category term="简书搬运" scheme="https://AlephAlpha.github.io/tags/%E7%AE%80%E4%B9%A6%E6%90%AC%E8%BF%90/"/>
     
-      <category term="Mathematica" scheme="https://AlephAlpha.github.io/tags/Mathematica/"/>
+      <category term="生命游戏" scheme="https://AlephAlpha.github.io/tags/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/"/>
     
   </entry>
   
@@ -274,11 +287,11 @@ o5bobobobo5bo3bo$5ob5obo5b5o3bo3b5ob5o2bobo2b5obo3bo!
     </summary>
     
     
-      <category term="生命游戏" scheme="https://AlephAlpha.github.io/tags/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/"/>
+      <category term="Mathematica" scheme="https://AlephAlpha.github.io/tags/Mathematica/"/>
     
       <category term="简书搬运" scheme="https://AlephAlpha.github.io/tags/%E7%AE%80%E4%B9%A6%E6%90%AC%E8%BF%90/"/>
     
-      <category term="Mathematica" scheme="https://AlephAlpha.github.io/tags/Mathematica/"/>
+      <category term="生命游戏" scheme="https://AlephAlpha.github.io/tags/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/"/>
     
   </entry>
   
@@ -328,9 +341,9 @@ o5bobobobo5bo3bo$5ob5obo5b5o3bo3b5ob5o2bobo2b5obo3bo!
     
       <category term="简书搬运" scheme="https://AlephAlpha.github.io/tags/%E7%AE%80%E4%B9%A6%E6%90%AC%E8%BF%90/"/>
     
-      <category term="语言文字" scheme="https://AlephAlpha.github.io/tags/%E8%AF%AD%E8%A8%80%E6%96%87%E5%AD%97/"/>
-    
       <category term="果壳搬运" scheme="https://AlephAlpha.github.io/tags/%E6%9E%9C%E5%A3%B3%E6%90%AC%E8%BF%90/"/>
+    
+      <category term="语言文字" scheme="https://AlephAlpha.github.io/tags/%E8%AF%AD%E8%A8%80%E6%96%87%E5%AD%97/"/>
     
   </entry>
   
@@ -385,11 +398,11 @@ o5bobobobo5bo3bo$5ob5obo5b5o3bo3b5ob5o2bobo2b5obo3bo!
     </summary>
     
     
-      <category term="生命游戏" scheme="https://AlephAlpha.github.io/tags/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/"/>
+      <category term="Mathematica" scheme="https://AlephAlpha.github.io/tags/Mathematica/"/>
     
       <category term="简书搬运" scheme="https://AlephAlpha.github.io/tags/%E7%AE%80%E4%B9%A6%E6%90%AC%E8%BF%90/"/>
     
-      <category term="Mathematica" scheme="https://AlephAlpha.github.io/tags/Mathematica/"/>
+      <category term="生命游戏" scheme="https://AlephAlpha.github.io/tags/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/"/>
     
   </entry>
   
@@ -416,9 +429,9 @@ o5bobobobo5bo3bo$5ob5obo5b5o3bo3b5ob5o2bobo2b5obo3bo!
     </summary>
     
     
-      <category term="生命游戏" scheme="https://AlephAlpha.github.io/tags/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/"/>
-    
       <category term="简书搬运" scheme="https://AlephAlpha.github.io/tags/%E7%AE%80%E4%B9%A6%E6%90%AC%E8%BF%90/"/>
+    
+      <category term="生命游戏" scheme="https://AlephAlpha.github.io/tags/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/"/>
     
   </entry>
   
@@ -441,9 +454,9 @@ o5bobobobo5bo3bo$5ob5obo5b5o3bo3b5ob5o2bobo2b5obo3bo!
     </summary>
     
     
-      <category term="简书搬运" scheme="https://AlephAlpha.github.io/tags/%E7%AE%80%E4%B9%A6%E6%90%AC%E8%BF%90/"/>
-    
       <category term="Mathematica" scheme="https://AlephAlpha.github.io/tags/Mathematica/"/>
+    
+      <category term="简书搬运" scheme="https://AlephAlpha.github.io/tags/%E7%AE%80%E4%B9%A6%E6%90%AC%E8%BF%90/"/>
     
       <category term="果壳搬运" scheme="https://AlephAlpha.github.io/tags/%E6%9E%9C%E5%A3%B3%E6%90%AC%E8%BF%90/"/>
     
@@ -467,9 +480,9 @@ o5bobobobo5bo3bo$5ob5obo5b5o3bo3b5ob5o2bobo2b5obo3bo!
     </summary>
     
     
-      <category term="简书搬运" scheme="https://AlephAlpha.github.io/tags/%E7%AE%80%E4%B9%A6%E6%90%AC%E8%BF%90/"/>
-    
       <category term="Mathematica" scheme="https://AlephAlpha.github.io/tags/Mathematica/"/>
+    
+      <category term="简书搬运" scheme="https://AlephAlpha.github.io/tags/%E7%AE%80%E4%B9%A6%E6%90%AC%E8%BF%90/"/>
     
       <category term="果壳搬运" scheme="https://AlephAlpha.github.io/tags/%E6%9E%9C%E5%A3%B3%E6%90%AC%E8%BF%90/"/>
     
@@ -526,11 +539,11 @@ o5bobobobo5bo3bo$5ob5obo5b5o3bo3b5ob5o2bobo2b5obo3bo!
     </summary>
     
     
-      <category term="生命游戏" scheme="https://AlephAlpha.github.io/tags/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/"/>
+      <category term="Mathematica" scheme="https://AlephAlpha.github.io/tags/Mathematica/"/>
     
       <category term="简书搬运" scheme="https://AlephAlpha.github.io/tags/%E7%AE%80%E4%B9%A6%E6%90%AC%E8%BF%90/"/>
     
-      <category term="Mathematica" scheme="https://AlephAlpha.github.io/tags/Mathematica/"/>
+      <category term="生命游戏" scheme="https://AlephAlpha.github.io/tags/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/"/>
     
   </entry>
   
@@ -553,9 +566,9 @@ o5bobobobo5bo3bo$5ob5obo5b5o3bo3b5ob5o2bobo2b5obo3bo!
     </summary>
     
     
-      <category term="生命游戏" scheme="https://AlephAlpha.github.io/tags/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/"/>
-    
       <category term="简书搬运" scheme="https://AlephAlpha.github.io/tags/%E7%AE%80%E4%B9%A6%E6%90%AC%E8%BF%90/"/>
+    
+      <category term="生命游戏" scheme="https://AlephAlpha.github.io/tags/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/"/>
     
   </entry>
   
@@ -579,38 +592,9 @@ o5bobobobo5bo3bo$5ob5obo5b5o3bo3b5ob5o2bobo2b5obo3bo!
     </summary>
     
     
+      <category term="简书搬运" scheme="https://AlephAlpha.github.io/tags/%E7%AE%80%E4%B9%A6%E6%90%AC%E8%BF%90/"/>
+    
       <category term="生命游戏" scheme="https://AlephAlpha.github.io/tags/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/"/>
-    
-      <category term="简书搬运" scheme="https://AlephAlpha.github.io/tags/%E7%AE%80%E4%B9%A6%E6%90%AC%E8%BF%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>毛利语中化学元素的名称</title>
-    <link href="https://AlephAlpha.github.io/posts/86781b0e/"/>
-    <id>https://AlephAlpha.github.io/posts/86781b0e/</id>
-    <published>2017-04-23T09:05:00.000Z</published>
-    <updated>2019-05-11T08:46:15.221Z</updated>
-    
-    <content type="html"><![CDATA[<p>原发于果壳 <a href="http://www.guokr.com/post/695992/" target="_blank" rel="noopener">Today I Learned 小组</a>。</p><hr><p>毛利语是新西兰原住民毛利人的语言，属于南岛语系马来-波利尼西亚语族。</p><p>大部分语言里化学元素的名称，除了金银铜铁等少数几个元素，都是借自拉丁语或者英语。毛利语是个例外，他们用的是自己造的新词。</p><p>这些新词大多是由现有的词拼成的复合词，而且造词的办法有点像中国化学家造的那批汉字：气体元素都有hau（气体）这个前缀，而金属元素用的是konu（金属）这个前缀。</p><p>不过非气体的非金属元素没有统一的前缀。其中一些用的是pū——毛利语中“元素”一词（pūmotu）的第一个音节。比较特别的是碘：hautawa，直译为“紫气”。碘在常温下是固体，但容易升华成紫色气体。</p><a id="more"></a><p>下面是毛利语中前面二十个元素的名称及其含义：</p><div class="table-container"><table><thead><tr><th style="text-align:center">汉语</th><th style="text-align:center">元素符号</th><th style="text-align:center">毛利语</th><th style="text-align:center">含义</th></tr></thead><tbody><tr><td style="text-align:center">氢</td><td style="text-align:center">H</td><td style="text-align:center">hauwai</td><td style="text-align:center">hau 气 + wai 水</td></tr><tr><td style="text-align:center">氦</td><td style="text-align:center">He</td><td style="text-align:center">haumāmā</td><td style="text-align:center">hau 气 + māmā 轻</td></tr><tr><td style="text-align:center">锂</td><td style="text-align:center">Li</td><td style="text-align:center">konukōhatu</td><td style="text-align:center">konu 金属 + kōhatu 石</td></tr><tr><td style="text-align:center">铍</td><td style="text-align:center">Be</td><td style="text-align:center">konuuku</td><td style="text-align:center">konu 金属 + uku 黏土</td></tr><tr><td style="text-align:center">硼</td><td style="text-align:center">B</td><td style="text-align:center">pūtiwha</td><td style="text-align:center">pū[pūmotu] 元素 + tiwha 闪光</td></tr><tr><td style="text-align:center">碳</td><td style="text-align:center">C</td><td style="text-align:center">waro</td><td style="text-align:center">煤；炭</td></tr><tr><td style="text-align:center">氮</td><td style="text-align:center">N</td><td style="text-align:center">hauota</td><td style="text-align:center">hau 气 + ota 植物</td></tr><tr><td style="text-align:center">氧</td><td style="text-align:center">O</td><td style="text-align:center">hāora</td><td style="text-align:center">hā 呼吸 + ora 活着</td></tr><tr><td style="text-align:center">氟</td><td style="text-align:center">F</td><td style="text-align:center">haukōwhai</td><td style="text-align:center">hau 气 + kōwhai 黄</td></tr><tr><td style="text-align:center">氖</td><td style="text-align:center">Ne</td><td style="text-align:center">haukura</td><td style="text-align:center">hau 气 + kura 红</td></tr><tr><td style="text-align:center">钠</td><td style="text-align:center">Na</td><td style="text-align:center">konutai</td><td style="text-align:center">konu 金属 + tai 海</td></tr><tr><td style="text-align:center">镁</td><td style="text-align:center">Mg</td><td style="text-align:center">konupora</td><td style="text-align:center">konu 金属 + pora 一种白色石头</td></tr><tr><td style="text-align:center">铝</td><td style="text-align:center">Al</td><td style="text-align:center">konumohe</td><td style="text-align:center">konu 金属 + mohe 软</td></tr><tr><td style="text-align:center">硅</td><td style="text-align:center">Si</td><td style="text-align:center">takawai</td><td style="text-align:center">石英</td></tr><tr><td style="text-align:center">磷</td><td style="text-align:center">P</td><td style="text-align:center">pūtūtaewhetū</td><td style="text-align:center">磷光物质（？）</td></tr><tr><td style="text-align:center">硫</td><td style="text-align:center">S</td><td style="text-align:center">pungatara</td><td style="text-align:center">自然硫</td></tr><tr><td style="text-align:center">氯</td><td style="text-align:center">Cl</td><td style="text-align:center">haumāota</td><td style="text-align:center">hau 气 + māota 绿</td></tr><tr><td style="text-align:center">氩</td><td style="text-align:center">Ar</td><td style="text-align:center">hauhauhā</td><td style="text-align:center">hau 气 + hauhā 二氧化碳</td></tr><tr><td style="text-align:center">钾</td><td style="text-align:center">K</td><td style="text-align:center">konurehu</td><td style="text-align:center">konu 金属 + rehu 尘；雾</td></tr><tr><td style="text-align:center">钙</td><td style="text-align:center">Ca</td><td style="text-align:center">konupūmā</td><td style="text-align:center">konu 金属 + pūmā 灰白色</td></tr></tbody></table></div><p>参考资料：</p><ul><li><a href="https://mi.wikipedia.org/wiki/Ripanga_p%C5%ABmotu" target="_blank" rel="noopener">https://mi.wikipedia.org/wiki/Ripanga_p%C5%ABmotu</a></li><li><a href="http://putaiao.tki.org.nz/Papakupu-Putaiao/Nga-Kupu-Maori" target="_blank" rel="noopener">http://putaiao.tki.org.nz/Papakupu-Putaiao/Nga-Kupu-Maori</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;原发于果壳 &lt;a href=&quot;http://www.guokr.com/post/695992/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Today I Learned 小组&lt;/a&gt;。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;毛利语是新西兰原住民毛利人的语言，属于南岛语系马来-波利尼西亚语族。&lt;/p&gt;
-&lt;p&gt;大部分语言里化学元素的名称，除了金银铜铁等少数几个元素，都是借自拉丁语或者英语。毛利语是个例外，他们用的是自己造的新词。&lt;/p&gt;
-&lt;p&gt;这些新词大多是由现有的词拼成的复合词，而且造词的办法有点像中国化学家造的那批汉字：气体元素都有hau（气体）这个前缀，而金属元素用的是konu（金属）这个前缀。&lt;/p&gt;
-&lt;p&gt;不过非气体的非金属元素没有统一的前缀。其中一些用的是pū——毛利语中“元素”一词（pūmotu）的第一个音节。比较特别的是碘：hautawa，直译为“紫气”。碘在常温下是固体，但容易升华成紫色气体。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="简书搬运" scheme="https://AlephAlpha.github.io/tags/%E7%AE%80%E4%B9%A6%E6%90%AC%E8%BF%90/"/>
-    
-      <category term="语言文字" scheme="https://AlephAlpha.github.io/tags/%E8%AF%AD%E8%A8%80%E6%96%87%E5%AD%97/"/>
-    
-      <category term="果壳搬运" scheme="https://AlephAlpha.github.io/tags/%E6%9E%9C%E5%A3%B3%E6%90%AC%E8%BF%90/"/>
     
   </entry>
   
